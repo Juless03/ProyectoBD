@@ -17,18 +17,18 @@ import oracle.jdbc.OracleTypes;
  */
 public class Conexion {
     
-    public static void addAdmin(int pIdPerson, String pAdminUser, String pAdminPassword) throws SQLException{
+    public static void addPhoneNumber(String pPhoneNumberDescription, String pPhonenumberPhone, int pIdPerson) throws SQLException{
         
         String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
         String uName = "mtec";
         String uPass = "mtec";
         
         Connection con = DriverManager.getConnection(host, uName, uPass);
-        CallableStatement stmt = con.prepareCall("{ call addAdmin(?,?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_phonenumber(?,?,?) }");
         
-        stmt.setInt(1, pIdPerson);
-        stmt.setString(2, pAdminUser);
-        stmt.setString(3, pAdminPassword);
+        stmt.setString(1, pPhoneNumberDescription);
+        stmt.setString(2, pPhonenumberPhone);
+        stmt.setInt(3, pIdPerson);
         stmt.execute();
     
     }
