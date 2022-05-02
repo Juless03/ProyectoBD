@@ -5,7 +5,7 @@
  */
 package proyectobd;
 
-import ConexionSQL.Conexion;
+
 import java.sql.SQLException;
 
 /**
@@ -18,9 +18,9 @@ public class ProyectoBD {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        
-        Conexion.addPhoneNumber("Casa", "87524615", 21);
-        
+           
+        //Conexion.addPhoneNumber("Casa", "88888888", 3);
+       
     }
     
 }

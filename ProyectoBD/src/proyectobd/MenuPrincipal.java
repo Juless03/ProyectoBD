@@ -13,12 +13,12 @@ import java.sql.SQLException;
  * @author Dares
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-   
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
+        
     }
 
     /**

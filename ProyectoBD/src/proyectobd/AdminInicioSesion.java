@@ -5,12 +5,19 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dares
  */
 public class AdminInicioSesion extends javax.swing.JDialog {
-
+    
+    private Conexion control;
     /**
      * Creates new form AdminInicioSesion
      */
@@ -34,21 +41,59 @@ public class AdminInicioSesion extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jButton1 = new javax.swing.JButton();
+        Identifica = new javax.swing.JTextField();
+        Tipo = new javax.swing.JTextField();
+        Telefono = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1238, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 512, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Prueba");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 306, -1, -1));
+
+        Identifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdentificaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Identifica, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 100, 32));
+        getContentPane().add(Tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 140, 54));
+
+        Telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TelefonoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 110, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            if(Conexion.addPhoneNumber(Tipo.getText(),Telefono.getText(), Integer.parseInt(Identifica.getText()))){
+                JOptionPane.showMessageDialog(null,"Telefono agregado.");
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
+            }} catch (SQLException ex) {
+            Logger.getLogger(AdminInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void IdentificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdentificaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdentificaActionPerformed
+
+    private void TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TelefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,5 +138,9 @@ public class AdminInicioSesion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Identifica;
+    private javax.swing.JTextField Telefono;
+    private javax.swing.JTextField Tipo;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
