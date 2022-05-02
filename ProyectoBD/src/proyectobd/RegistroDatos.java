@@ -86,6 +86,11 @@ public class RegistroDatos extends javax.swing.JDialog {
         });
 
         Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Genero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GeneroActionPerformed(evt);
+            }
+        });
 
         Categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -185,6 +190,10 @@ public class RegistroDatos extends javax.swing.JDialog {
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonRegresarActionPerformed
+
+    private void GeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GeneroActionPerformed
 
     /**
      * @param args the command line arguments
