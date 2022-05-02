@@ -45,10 +45,12 @@ public class AdminInicioSesion extends javax.swing.JDialog {
         Identifica = new javax.swing.JTextField();
         Tipo = new javax.swing.JTextField();
         Telefono = new javax.swing.JTextField();
+        BotonRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Prueba");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +74,15 @@ public class AdminInicioSesion extends javax.swing.JDialog {
         });
         getContentPane().add(Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 110, 60));
 
+        BotonRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotonRegresar.setText("Regresar");
+        BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 430, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -94,6 +105,10 @@ public class AdminInicioSesion extends javax.swing.JDialog {
     private void TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TelefonoActionPerformed
+
+    private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +153,7 @@ public class AdminInicioSesion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonRegresar;
     private javax.swing.JTextField Identifica;
     private javax.swing.JTextField Telefono;
     private javax.swing.JTextField Tipo;

@@ -45,12 +45,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Titulo.setText("MTEC");
         getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 27, 207, 86));
 
+        BotonProfesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonProfesores.setText("Profesores");
         getContentPane().add(BotonProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, 330, 120));
 
         jLabel1.setText("¡Bienvenidos a la plataforma del Tecnológico de Costa Rica!");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 293, 36));
 
+        BotonAdministradores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonAdministradores.setText("ADMINISTRADORES");
         BotonAdministradores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +61,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(BotonAdministradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 330, 120));
 
+        BotonEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonEstudiantes.setText("Estudiantes");
         BotonEstudiantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
