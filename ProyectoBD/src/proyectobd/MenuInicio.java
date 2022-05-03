@@ -5,12 +5,15 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+
 /**
  *
  * @author Dares
  */
 public class MenuInicio extends javax.swing.JFrame {
-
+    
+    private Conexion InicioSesionAdmin;
     /**
      * Creates new form MenuInicio
      */
@@ -59,7 +62,10 @@ public class MenuInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministradorActionPerformed
-        // TODO add your handling code here:
+       InicioSesionAdministrador iniAdministrador = new InicioSesionAdministrador(this,true);
+       this.dispose();
+       iniAdministrador.setVisible(true);
+       
     }//GEN-LAST:event_AdministradorActionPerformed
 
     /**
