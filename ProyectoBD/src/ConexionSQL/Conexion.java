@@ -46,7 +46,7 @@ public class Conexion {
     
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException{
        
-        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
         String uName = "mtec";
         String uPass = "mtec";
         Connection con = DriverManager.getConnection(host, uName, uPass);
@@ -739,6 +739,7 @@ public class Conexion {
         stmt.setString(5, pDueDate);
         stmt.execute(); 
     }
+     */
     
     public static void updateEvaluationName(int pEvaluationCode, String pEvaluationName) throws SQLException{
         
@@ -753,7 +754,7 @@ public class Conexion {
         stmt.setString(2, pEvaluationName);
         stmt.execute(); 
     }
-    */
+   
     public static void updateEvaluationMembers(int pEvaluationCode, int pMembers) throws SQLException{
         
         String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
