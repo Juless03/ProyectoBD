@@ -114,8 +114,11 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
     private void botonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoActionPerformed
          try {
              //botonUsuario.getText()
-             if(inicioSesionAd.inicioSesionAdmin(botonUsuario.getText(), botonContraseña.getText()) == null ){
+             if(inicioSesionAd.inicioSesionAdmin(botonUsuario.getText(), botonContraseña.getText()) != botonUsuario.getText()){
                  JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
+                 AdminSetup ventanaAdminSetup = new AdminSetup(this,true,inicioSesionAd);
+                 this.dispose();
+                 ventanaAdminSetup.setVisible(true);
                  
                  //AdminSetup ventanaAdmin = new AdminSetup(this,true);
                  //ventanaAdmin.setVisible(true);
