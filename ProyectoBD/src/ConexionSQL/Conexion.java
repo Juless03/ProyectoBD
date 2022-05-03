@@ -444,7 +444,7 @@ public class Conexion {
         String uPass = "mtec";
         
         Connection con = DriverManager.getConnection(host, uName, uPass);
-        CallableStatement stmt = con.prepareCall("{ call AdminDirection.add_university(?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminUniversity.add_university(?) }");
         
         stmt.setString(1, pUniversityName);
         stmt.execute(); 
@@ -457,10 +457,374 @@ public class Conexion {
         String uPass = "mtec";
         
         Connection con = DriverManager.getConnection(host, uName, uPass);
-        CallableStatement stmt = con.prepareCall("{ call AdminDirection.add_universityxperson(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminUniversity.add_universityxperson(?, ?) }");
         
         stmt.setInt(1, pIdPerson);
         stmt.setInt(1, pUniversityCode);
+        stmt.execute(); 
+    }
+    
+    //funciones del paquete adminCourse
+    
+    public static void addStudentxgroup(int pIdPerson, int pGroupCode, int pReviewCode, String pStatus) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_studentxgroup(?, ?, ?, ?) }");
+        
+        stmt.setInt(1, pIdPerson);
+        stmt.setInt(2, pGroupCode);
+        stmt.setInt(3, pReviewCode);
+        stmt.setString(4, pStatus);
+        stmt.execute(); 
+    }
+    
+    public static void upadateStudentxgroupReview(int pIdPerson, int pGroupCode, int pReviewCode) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_studentxgroup_review(?, ?, ?) }");
+        
+        stmt.setInt(1, pIdPerson);
+        stmt.setInt(2, pGroupCode);
+        stmt.setInt(3, pReviewCode);
+        stmt.execute(); 
+    }
+    
+    public static void updateStudentxgroupStatus(int pIdPerson, int pGroupCode, String pStatus) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_studentxgroup_status(?, ?, ?) }");
+        
+        stmt.setInt(1, pIdPerson);
+        stmt.setInt(2, pGroupCode);
+        stmt.setString(3, pStatus);
+        stmt.execute(); 
+    }
+    
+    public static void addReview(int pStars, String pReviewDescription, int pIdPerson, int pIdProfessor) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_review(?, ?, ?, ?) }");
+        
+        stmt.setInt(1, pStars);
+        stmt.setString(2, pReviewDescription);
+        stmt.setInt(3, pIdPerson);
+        stmt.setInt(4, pIdProfessor);
+        stmt.execute(); 
+    }
+     
+    public static void updateReviewStars(int pReviewCode, int pStars) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_review_stars(?, ?) }");
+        
+        stmt.setInt(1, pReviewCode);
+        stmt.setInt(2, pStars);
+        stmt.execute(); 
+    }
+    
+    public static void updateReviewDescription(int pReviewCode, String pReviewDescription) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_review_description(?, ?) }");
+        
+        stmt.setInt(1, pReviewCode);
+        stmt.setString(2, pReviewDescription);
+        stmt.execute(); 
+    }
+    
+    public static void updateReviewPerson(int pReviewCode, int pIdPerson) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_review_description(?, ?) }");
+        
+        stmt.setInt(1, pReviewCode);
+        stmt.setInt(2, pIdPerson);
+        stmt.execute(); 
+    }
+    
+    public static void updateReviewProfessor(int pReviewCode, int pIdProfessor) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_review_professor(?, ?) }");
+        
+        stmt.setInt(1, pReviewCode);
+        stmt.setInt(2, pIdProfessor);
+        stmt.execute(); 
+    }
+    
+    public static void addCourse(int pCredits, String pCourseName) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_course(?, ?) }");
+        
+        stmt.setInt(1, pCredits);
+        stmt.setString(2, pCourseName);
+        stmt.execute(); 
+    }
+    
+    public static void updateCourseCredits(int pCourse_code, int pCredits) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_course_credits(?, ?) }");
+        
+        stmt.setInt(1, pCourse_code);
+        stmt.setInt(2, pCredits);
+        stmt.execute(); 
+    }
+    
+    public static void updateCourseName(int pCourse_code, String pCourseName) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_course_name(?, ?) }");
+        
+        stmt.setInt(1, pCourse_code);
+        stmt.setString(2, pCourseName);
+        stmt.execute(); 
+    }
+    
+    public static void addCourseGroup(pGroupYear, int pGroupSemester, int pIdProfessor, int pIdCourse) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_coursegroup(?, ?, ?, ?) }");
+        
+        stmt.setInt(1, pGroupYear);
+        stmt.setInt(2, pGroupSemester);
+        stmt.setInt(3, pIdProfessor);
+        stmt.setInt(4, pIdCourse);
+        stmt.execute(); 
+    }
+    
+    public static void updateCourseGroupYear(int pGroupCode, pGroupYear) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_coursegroup_year(?, ?) }");
+        
+        stmt.setInt(1, pGroupCode);
+        stmt.setInt(2, pGroupYear);
+        stmt.execute(); 
+    }
+    
+    public static void updateCourseGroupSemester(int pGroupCode, int pGroupSemester) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_coursegroup_semester(?, ?) }");
+        
+        stmt.setInt(1, pGroupCode);
+        stmt.setInt(2, pGroupSemester);
+        stmt.execute(); 
+    }
+    
+    public static void updateCourseGroupProfessor(int pGroupCode, int pIdProfessor) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_coursegroup_professor(?, ?) }");
+        
+        stmt.setInt(1, pGroupCode);
+        stmt.setInt(2, pIdProfessor);
+        stmt.execute(); 
+    }
+   
+    public static void updateCourseGroupCourse(int pGroupCode, int pIdCourse) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_coursegroup_course(?, ?) }");
+        
+        stmt.setInt(1, pGroupCode);
+        stmt.setInt(2, pIdCourse);
+        stmt.execute(); 
+    }
+    
+    public static void addEvaluation(String pEvaluationName, String pEvaluationDes, String pMembers, int pPercentage, pDueDate) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_evaluation(?, ?, ?, ?, ?) }");
+        
+        stmt.setString(1, pEvaluationName);
+        stmt.setString(2, pEvaluationDes);
+        stmt.setString(3, pMembers);
+        stmt.setInt(4, pPercentage);
+        stmt.setString(5, pDueDate);
+        stmt.execute(); 
+    }
+    
+    public static void updateEvaluationName(int pEvaluationCode, String pEvaluationName) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluation_name(?, ?) }");
+        
+        stmt.setInt(1, pEvaluationCode);
+        stmt.setString(2, pEvaluationName);
+        stmt.execute(); 
+    }
+    
+    public static void updateEvaluationMembers(int pEvaluationCode, int pMembers) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluation_members(?, ?) }");
+        
+        stmt.setInt(1, pEvaluationCode);
+        stmt.setInt(2, pMembers);
+        stmt.execute(); 
+    }
+    
+    public static void updateEvaluationPercentage(int pEvaluationCode, int pPercentage) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluation_percentage(?, ?) }");
+        
+        stmt.setInt(1, pEvaluationCode);
+        stmt.setInt(2, pPercentage);
+        stmt.execute(); 
+    }
+    
+    public static void updateEvaluationDueDate(int pEvaluationCode, pDueDate) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluation_duedate(?, ?) }");
+        
+        stmt.setInt(1, pEvaluationCode);
+        stmt.setInt(2, pDueDate);
+        stmt.execute(); 
+    }
+    
+    public static void addEvaluationxStudent(int pIdPerson, int pEvaluationCode, int pPercentageObtained) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_evaluationxstudent(?, ?, ?) }");
+        
+        stmt.setInt(1, pIdPerson);
+        stmt.setInt(2, pEvaluationCode);
+        stmt.setInt(3, pPercentageObtained);
+        stmt.execute(); 
+    }
+    
+    public static void updateEvaluationxstudentStudent(int pIdEvalxstudent, int pIdPerson) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluationxstudent_stud(?, ?) }");
+        
+        stmt.setInt(1, pIdEvalxstudent);
+        stmt.setInt(2, pIdPerson);
+        stmt.execute(); 
+    }
+    
+    public static void updateEvaluationxstudentEvaluation(int pIdEvalxstudent, int pEvaluationCode) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluationxstudent_eval(?, ?) }");
+        
+        stmt.setInt(1, pIdEvalxstudent);
+        stmt.setInt(2, pEvaluationCode);
+        stmt.execute(); 
+    }
+    
+    public static void updateEvaluationxstudentPercentage(int pIdEvalxstudent, int pPercentageObtained) throws SQLException{
+        
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String uName = "mtec";
+        String uPass = "mtec";
+        
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluationxstudent_perc(?, ?) }");
+        
+        stmt.setInt(1, pIdEvalxstudent);
+        stmt.setInt(2, pPercentageObtained);
         stmt.execute(); 
     }
 }
