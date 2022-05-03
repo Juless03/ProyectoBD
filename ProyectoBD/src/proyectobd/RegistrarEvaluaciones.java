@@ -93,6 +93,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Registrar");
 
+        jButton2.setBackground(new java.awt.Color(239, 180, 16));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Regresar");
 
