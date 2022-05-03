@@ -5,6 +5,16 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+import static java.lang.System.out;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author paubo
@@ -14,8 +24,16 @@ public class RegistroDatos extends javax.swing.JDialog {
     /**
      * Creates new form RegistroDatos
      */
+    private Conexion registroDatos;
+    /**
+     * Creates new form RegistroDatos
+     */
     public RegistroDatos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        initComponents();
+    }
+    public RegistroDatos(AdminSetup aThis, boolean modal) {
+        super(aThis, modal);
         initComponents();
     }
 
@@ -42,9 +60,9 @@ public class RegistroDatos extends javax.swing.JDialog {
         SegundoApellido = new javax.swing.JTextField();
         FechaNacimiento = new javax.swing.JTextField();
         BotonRegresar = new javax.swing.JButton();
-        Genero = new javax.swing.JComboBox<>();
-        Categoria = new javax.swing.JComboBox<>();
-        Distrito = new javax.swing.JComboBox<>();
+        BotonGenero = new javax.swing.JComboBox<>();
+        BotonCategoria = new javax.swing.JComboBox<>();
+        BotonDistrito = new javax.swing.JComboBox<>();
         BotonRegistrar = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
@@ -85,19 +103,24 @@ public class RegistroDatos extends javax.swing.JDialog {
             }
         });
 
-        Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Genero.addActionListener(new java.awt.event.ActionListener() {
+        BotonGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "No binario", "Indefinido" }));
+        BotonGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeneroActionPerformed(evt);
+                BotonGeneroActionPerformed(evt);
             }
         });
 
-        Categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        BotonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
 
-        Distrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        BotonDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escobal", "Mercedes", "Pavones", "San Pedro", "Potrero Grande", "Curubandé", "Barbacoas", "Coyolar", "Cahuita", "Orosi" }));
 
         BotonRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonRegistrar.setText("Registrar");
+        BotonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,38 +129,37 @@ public class RegistroDatos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(419, 419, 419)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(107, 107, 107)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(419, 419, 419)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(350, 350, 350)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(107, 107, 107)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SegundoNombre)
-                                    .addComponent(PrimerNombre)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(SegundoApellido)
-                                    .addComponent(PrimerApellido))))
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(109, 109, 109)))
-                .addComponent(Distrito, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(288, 288, 288))
+                            .addComponent(SegundoNombre)
+                            .addComponent(SegundoApellido)
+                            .addComponent(PrimerApellido)
+                            .addComponent(PrimerNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addComponent(FechaNacimiento))))
+                .addGap(340, 340, 340))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(413, 413, 413))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BotonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(245, 245, 245))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(BotonRegresar)
@@ -170,12 +192,12 @@ public class RegistroDatos extends javax.swing.JDialog {
                     .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Distrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addComponent(BotonRegistrar)
-                .addGap(26, 26, 26)
+                    .addComponent(BotonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(BotonRegresar)
                 .addGap(21, 21, 21))
         );
@@ -191,9 +213,88 @@ public class RegistroDatos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
-    private void GeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneroActionPerformed
+    private void BotonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_GeneroActionPerformed
+    }//GEN-LAST:event_BotonGeneroActionPerformed
+
+    private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
+        String Categoria = BotonCategoria.getSelectedItem().toString();
+        // Genero
+        int Genero = 0;
+        if(BotonGenero.getSelectedItem() == "Femenino"){
+            Genero = 1;
+        }
+        if(BotonGenero.getSelectedItem() == "Masculino"){
+            Genero = 2;
+        }
+        if(BotonGenero.getSelectedItem() == "No Binario"){
+            Genero = 3;
+        }
+        if(BotonGenero.getSelectedItem() == "Indefinido"){
+            Genero = 4;
+        }
+    
+        // Distritoint 
+        int Distrito = 0;
+        if(BotonDistrito.getSelectedItem() == "Escobal"){
+            Distrito = 1;
+        }
+        if(BotonDistrito.getSelectedItem() == "Mercedes"){
+            Distrito = 2;
+        }
+        if(BotonDistrito.getSelectedItem() == "Pavones"){
+            Distrito = 3;
+        }
+        if(BotonDistrito.getSelectedItem() == "San Pedro"){
+            Distrito = 4;
+        }
+        if(BotonDistrito.getSelectedItem() == "Potrero Grande"){
+            Distrito = 5;
+        }
+        if(BotonDistrito.getSelectedItem() == "Curunbandé"){
+            Distrito = 6;
+        }
+        if(BotonDistrito.getSelectedItem() == "Barbacoas"){
+            Distrito = 7;
+        }
+        if(BotonDistrito.getSelectedItem() == "Coyolar"){
+            Distrito = 8;
+        }
+        if(BotonDistrito.getSelectedItem() == "Cahuita"){
+            Distrito = 9;
+        }
+        if(BotonDistrito.getSelectedItem() == "Orosi"){
+            Distrito = 10;
+        }
+                
+        // //Fecha
+        
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        Date FechaDate = null;
+        try {
+            FechaDate = formatoFecha.parse(FechaNacimiento.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        java.sql.Date FechaNacimiento = new java.sql.Date(FechaDate.getTime());
+        
+        if(Categoria == "Estudiante"){
+            
+           out. println("Soy un " + Categoria);
+        }
+        if(Categoria == "Profesor"){
+            out. println("Soy un " + Categoria);
+        }
+ 
+        try {
+            registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimiento);
+            JOptionPane.showMessageDialog(null,"Persona Agregada.");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BotonRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,12 +339,12 @@ public class RegistroDatos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BotonCategoria;
+    private javax.swing.JComboBox<String> BotonDistrito;
+    private javax.swing.JComboBox<String> BotonGenero;
     private javax.swing.JButton BotonRegistrar;
     private javax.swing.JButton BotonRegresar;
-    private javax.swing.JComboBox<String> Categoria;
-    private javax.swing.JComboBox<String> Distrito;
     private javax.swing.JTextField FechaNacimiento;
-    private javax.swing.JComboBox<String> Genero;
     private javax.swing.JTextField PrimerApellido;
     private javax.swing.JTextField PrimerNombre;
     private javax.swing.JTextField SegundoApellido;

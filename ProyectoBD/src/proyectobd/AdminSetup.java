@@ -149,7 +149,8 @@ public class AdminSetup extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonRegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarPersonaActionPerformed
-        // TODO add your handling code here:
+       RegistroDatos iniRegistroDatos = new RegistroDatos(this,true);
+       iniRegistroDatos.setVisible(true);
     }//GEN-LAST:event_BotonRegistrarPersonaActionPerformed
 
     private void BotonModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarPersonaActionPerformed
