@@ -106,20 +106,20 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
 
     private void botonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoActionPerformed
          try {
-             
-              if(inicioSesionAd.iniciarSesionAdmin(botonUsuario.getText(), botonContraseña.getText())){
-                  JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
-                  AdminSetup ventanaAdmin = new AdminSetup(this,true);
-                  ventanaAdmin.setVisible(true);
-                  //InicioSesionAdmin configuracionAdmi = new ConfiguracionAdminitrador(this,true,controlIngresoAdministrador);
-                  //this.dispose();
-                  //configuracionAdmi.setVisible(true);
-              }else{
-                  JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
-              }
-          } catch (SQLException ex) {
-              Logger.getLogger(AdminInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
-          }
+             if(inicioSesionAd.inicioSesionAdmin(botonUsuario.getText(), botonContraseña.getText())){
+                 JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
+                 
+                 //AdminSetup ventanaAdmin = new AdminSetup(this,true);
+                 //ventanaAdmin.setVisible(true);
+                 //InicioSesionAdmin configuracionAdmi = new ConfiguracionAdminitrador(this,true,controlIngresoAdministrador);
+                 //this.dispose();
+                 //configuracionAdmi.setVisible(true);
+             }else{
+                 JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(InicioSesionAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }//GEN-LAST:event_botonIngresoActionPerformed
 
     /**

@@ -13,7 +13,7 @@ import ConexionSQL.Conexion;
  */
 public class MenuInicio extends javax.swing.JFrame {
     
-    private Conexion InicioSesionAdmin;
+    Conexion Conexion = new Conexion();
     /**
      * Creates new form MenuInicio
      */
