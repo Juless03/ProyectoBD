@@ -41,7 +41,7 @@ public class ModificarDatos extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Modificacion de Datos");
 
-        Tabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Tabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Canton", "Country ", "Course ", "CourseGroup", "District ", "Email", "Evaluation", "EvaluationXStudent ", "Gender", "Person", "PhoneNumber", "Professor", "Province", "Review", "Student", "StudentXGroup", "University", "UniversityXPerson" }));
 
         Atributo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 

@@ -92,11 +92,26 @@
     <Component class="javax.swing.JComboBox" name="Tabla">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="19">
+            <StringItem index="0" value="Admin"/>
+            <StringItem index="1" value="Canton"/>
+            <StringItem index="2" value="Country "/>
+            <StringItem index="3" value="Course "/>
+            <StringItem index="4" value="CourseGroup"/>
+            <StringItem index="5" value="District "/>
+            <StringItem index="6" value="Email"/>
+            <StringItem index="7" value="Evaluation"/>
+            <StringItem index="8" value="EvaluationXStudent "/>
+            <StringItem index="9" value="Gender"/>
+            <StringItem index="10" value="Person"/>
+            <StringItem index="11" value="PhoneNumber"/>
+            <StringItem index="12" value="Professor"/>
+            <StringItem index="13" value="Province"/>
+            <StringItem index="14" value="Review"/>
+            <StringItem index="15" value="Student"/>
+            <StringItem index="16" value="StudentXGroup"/>
+            <StringItem index="17" value="University"/>
+            <StringItem index="18" value="UniversityXPerson"/>
           </StringArray>
         </Property>
       </Properties>
