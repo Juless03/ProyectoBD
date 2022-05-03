@@ -30,18 +30,18 @@ public class Conexion {
         return con;
     }
    // Aun falta
-    public boolean inicioSesionAdmin(String pUsuario, String pContraseña) throws SQLException{
+    public String inicioSesionAdmin(String pUsuario, String pContraseña) throws SQLException{
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         Connection con = DriverManager.getConnection(host, uName, uPass); 
         CallableStatement stmt = con.prepareCall("{ call inicioSesionAdmin(?,?) }");
-        stmt.setString(1, pUsuario);
-        stmt.setString(2, pContraseña);
-        stmt.execute();
-        return false;
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+        stmt.executeQuery();
+        ResultSet r = (ResultSet) stmt.getObject(1);
+        String Resultado = r.getString("admin_user");
+        return Resultado;
     }
-    
     //funciones del paquete adminPerson
     
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException{

@@ -33,6 +33,13 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
     }
+     
+
+    public InicioSesionAdministrador(MenuInicio aThis, boolean modal, Conexion elControlador) {
+        super(aThis, modal);
+        initComponents();
+        inicioSesionAd = elControlador;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,15 +79,15 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(436, 436, 436)
-                        .addComponent(botonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(318, 318, 318)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(112, 112, 112)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonUsuario)
-                            .addComponent(botonContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))))
+                            .addComponent(botonContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(475, 475, 475)
+                        .addComponent(botonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(381, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,9 +99,9 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
                     .addComponent(botonUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(botonContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                 .addComponent(botonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
+                .addGap(148, 148, 148))
         );
 
         pack();
@@ -106,7 +113,8 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
 
     private void botonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoActionPerformed
          try {
-             if(inicioSesionAd.inicioSesionAdmin(botonUsuario.getText(), botonContraseña.getText())){
+             //botonUsuario.getText()
+             if(inicioSesionAd.inicioSesionAdmin(botonUsuario.getText(), botonContraseña.getText()) == null ){
                  JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
                  
                  //AdminSetup ventanaAdmin = new AdminSetup(this,true);

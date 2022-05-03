@@ -62,7 +62,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministradorActionPerformed
-       InicioSesionAdministrador iniAdministrador = new InicioSesionAdministrador(this,true);
+       InicioSesionAdministrador iniAdministrador = new InicioSesionAdministrador(this,true,Conexion);
        this.dispose();
        iniAdministrador.setVisible(true);
        
