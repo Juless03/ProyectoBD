@@ -181,7 +181,7 @@ public class AdminSetup extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonRegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarPersonaActionPerformed
-       RegistroDatos iniRegistroDatos = new RegistroDatos(this,true);
+       RegistroDatos iniRegistroDatos = new RegistroDatos(this,true,setupAdmin);
        iniRegistroDatos.setVisible(true);
     }//GEN-LAST:event_BotonRegistrarPersonaActionPerformed
 

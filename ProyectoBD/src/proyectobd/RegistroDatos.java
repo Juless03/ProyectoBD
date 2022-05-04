@@ -32,9 +32,12 @@ public class RegistroDatos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-    public RegistroDatos(AdminSetup aThis, boolean modal) {
+   
+
+    public RegistroDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
         super(aThis, modal);
         initComponents();
+        registroDatos = setupAdmin;
     }
 
     /**
@@ -112,7 +115,7 @@ public class RegistroDatos extends javax.swing.JDialog {
 
         BotonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
 
-        BotonDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escobal", "Mercedes", "Pavones", "San Pedro", "Potrero Grande", "Curubandé", "Barbacoas", "Coyolar", "Cahuita", "Orosi" }));
+        BotonDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escobal", "Mercedes", "Pavones", "San Pedro", "Potrero Grande", "Curubande", "Barbacoas", "Coyolar", "Cahuita", "Orosi" }));
 
         BotonRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonRegistrar.setText("Registrar");
@@ -251,7 +254,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         if(BotonDistrito.getSelectedItem() == "Potrero Grande"){
             Distrito = 5;
         }
-        if(BotonDistrito.getSelectedItem() == "Curunbandé"){
+        if(BotonDistrito.getSelectedItem() == "Curubande"){
             Distrito = 6;
         }
         if(BotonDistrito.getSelectedItem() == "Barbacoas"){
@@ -289,6 +292,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         try {
             registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimiento);
             JOptionPane.showMessageDialog(null,"Persona Agregada.");
+            this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {

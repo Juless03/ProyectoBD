@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import oracle.jdbc.OracleTypes;
 import java.util.Date;
@@ -19,34 +20,37 @@ import java.util.Date;
  * @author Juley
  */
 public class Conexion {
- // funciones inicio sesion admin
+
+    
     public static String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
     public static String uName = "mtec";
     public static String uPass = "mtec";
-    
+     // Futura Prueba Conexion
     public static Connection conectarBase() throws SQLException{
         
         Connection con = DriverManager.getConnection(host, uName, uPass);
         return con;
     }
-   // Aun falta
-    public String inicioSesionAdmin(String pUsuario, String pContraseña) throws SQLException{
+   
+    public static int inicioSesionAdmin(String pUsuario, String pContraseña) throws SQLException{
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         Connection con = DriverManager.getConnection(host, uName, uPass); 
-        CallableStatement stmt = con.prepareCall("{ call inicioSesionAdmin(?,?) }");
-        stmt.registerOutParameter(1,OracleTypes.CURSOR);
-        stmt.executeQuery();
-        ResultSet r = (ResultSet) stmt.getObject(1);
-        String Resultado = r.getString("admin_user");
-        return Resultado;
+        int resultado = 0;
+        String direccion = "SELECT admin_user , admin_password FROM admin WHERE admin_user = '" + pUsuario + "' AND admin_password = '" + pContraseña + "' ";
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(direccion);
+        if(rs.next()){
+            resultado = 1;
+        }
+        return resultado;
     }
     //funciones del paquete adminPerson
     
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException{
        
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NElSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         Connection con = DriverManager.getConnection(host, uName, uPass);
