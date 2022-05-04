@@ -240,20 +240,12 @@
     <Component class="javax.swing.JComboBox" name="BotonDistrito">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="10">
-            <StringItem index="0" value="Escobal"/>
-            <StringItem index="1" value="Mercedes"/>
-            <StringItem index="2" value="Pavones"/>
-            <StringItem index="3" value="San Pedro"/>
-            <StringItem index="4" value="Potrero Grande"/>
-            <StringItem index="5" value="Curubande"/>
-            <StringItem index="6" value="Barbacoas"/>
-            <StringItem index="7" value="Coyolar"/>
-            <StringItem index="8" value="Cahuita"/>
-            <StringItem index="9" value="Orosi"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonDistritoActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

@@ -31,13 +31,18 @@ public class RegistroDatos extends javax.swing.JDialog {
     public RegistroDatos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        
+        
     }
-   
-
-    public RegistroDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+    public RegistroDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         registroDatos = setupAdmin;
+        
+        registroDatos.consultarDistritos(BotonDistrito);
+        registroDatos.consultarGenero(BotonGenero);
+
     }
 
     /**
@@ -115,7 +120,11 @@ public class RegistroDatos extends javax.swing.JDialog {
 
         BotonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
 
-        BotonDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escobal", "Mercedes", "Pavones", "San Pedro", "Potrero Grande", "Curubande", "Barbacoas", "Coyolar", "Cahuita", "Orosi" }));
+        BotonDistrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonDistritoActionPerformed(evt);
+            }
+        });
 
         BotonRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonRegistrar.setText("Registrar");
@@ -224,50 +233,20 @@ public class RegistroDatos extends javax.swing.JDialog {
         String Categoria = BotonCategoria.getSelectedItem().toString();
         // Genero
         int Genero = 0;
-        if(BotonGenero.getSelectedItem() == "Femenino"){
-            Genero = 1;
-        }
-        if(BotonGenero.getSelectedItem() == "Masculino"){
-            Genero = 2;
-        }
-        if(BotonGenero.getSelectedItem() == "No Binario"){
-            Genero = 3;
-        }
-        if(BotonGenero.getSelectedItem() == "Indefinido"){
-            Genero = 4;
+        String GeneroNombre = (String) BotonGenero.getSelectedItem();
+        try {
+            Genero = registroDatos.consultarDistritosNumero(GeneroNombre);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     
         // Distritoint 
         int Distrito = 0;
-        if(BotonDistrito.getSelectedItem() == "Escobal"){
-            Distrito = 1;
-        }
-        if(BotonDistrito.getSelectedItem() == "Mercedes"){
-            Distrito = 2;
-        }
-        if(BotonDistrito.getSelectedItem() == "Pavones"){
-            Distrito = 3;
-        }
-        if(BotonDistrito.getSelectedItem() == "San Pedro"){
-            Distrito = 4;
-        }
-        if(BotonDistrito.getSelectedItem() == "Potrero Grande"){
-            Distrito = 5;
-        }
-        if(BotonDistrito.getSelectedItem() == "Curubande"){
-            Distrito = 6;
-        }
-        if(BotonDistrito.getSelectedItem() == "Barbacoas"){
-            Distrito = 7;
-        }
-        if(BotonDistrito.getSelectedItem() == "Coyolar"){
-            Distrito = 8;
-        }
-        if(BotonDistrito.getSelectedItem() == "Cahuita"){
-            Distrito = 9;
-        }
-        if(BotonDistrito.getSelectedItem() == "Orosi"){
-            Distrito = 10;
+        String DistritoNombre = (String) BotonDistrito.getSelectedItem();
+        try {
+            Distrito = registroDatos.consultarDistritosNumero(DistritoNombre);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
         // //Fecha
@@ -299,6 +278,10 @@ public class RegistroDatos extends javax.swing.JDialog {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BotonRegistrarActionPerformed
+
+    private void BotonDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDistritoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonDistritoActionPerformed
 
     /**
      * @param args the command line arguments

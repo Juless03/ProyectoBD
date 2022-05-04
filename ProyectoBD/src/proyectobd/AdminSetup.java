@@ -6,6 +6,9 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -181,8 +184,14 @@ public class AdminSetup extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonRegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarPersonaActionPerformed
-       RegistroDatos iniRegistroDatos = new RegistroDatos(this,true,setupAdmin);
-       iniRegistroDatos.setVisible(true);
+       RegistroDatos iniRegistroDatos;
+         try {
+             iniRegistroDatos = new RegistroDatos(this,true,setupAdmin);
+             iniRegistroDatos.setVisible(true);
+         } catch (SQLException ex) {
+             Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
+         }
+       
     }//GEN-LAST:event_BotonRegistrarPersonaActionPerformed
 
     private void BotonModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarPersonaActionPerformed

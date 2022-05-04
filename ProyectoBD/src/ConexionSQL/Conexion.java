@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import oracle.jdbc.OracleTypes;
 import java.util.Date;
+import javax.swing.JComboBox;
 /**
  *
  * @author Juley
@@ -31,7 +32,69 @@ public class Conexion {
         Connection con = DriverManager.getConnection(host, uName, uPass);
         return con;
     }
-   
+    
+    // Actualizar datos de distrito y genero RegistroPersonas
+    public static void consultarDistritos(JComboBox cbox_distrito) throws SQLException{
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String uName = "mtec";
+        String uPass = "mtec";
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        String direccionDistritos = "SELECT district_name FROM district ORDER BY district_name";
+        Statement sd = con.createStatement();
+      
+        ResultSet rd = sd.executeQuery(direccionDistritos);
+        
+        while(rd.next()){
+          cbox_distrito.addItem(rd.getString("district_name"));
+        }      
+    }
+    public static int consultarDistritosNumero(String distritoName) throws SQLException{
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String uName = "mtec";
+        String uPass = "mtec";
+        Connection con = DriverManager.getConnection(host, uName, uPass); 
+        int resultadoDistrito = 0;
+        String direccionNumero = "SELECT district_code FROM district WHERE district_name = '" + distritoName + "' ";
+        Statement statNumero = con.createStatement();
+        
+        ResultSet resulNumero = statNumero.executeQuery(direccionNumero);
+        if(resulNumero.next()){
+            resultadoDistrito = Integer.parseInt(resulNumero.getString("district_code"));
+        }
+        return resultadoDistrito; 
+    }
+    
+    public static void consultarGenero(JComboBox cbox_genero) throws SQLException{
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String uName = "mtec";
+        String uPass = "mtec";
+        Connection con = DriverManager.getConnection(host, uName, uPass);
+        String direccionGeneroNombre = "SELECT gender_description FROM gender ORDER BY gender_description";
+        Statement statGeneroNombre = con.createStatement();
+      
+        ResultSet rd = statGeneroNombre.executeQuery(direccionGeneroNombre);
+        
+        while(rd.next()){
+          cbox_genero.addItem(rd.getString("gender_description"));
+        }      
+    }
+    public static int consultarDistritosCodigo(String GeneroNombre) throws SQLException{
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String uName = "mtec";
+        String uPass = "mtec";
+        Connection con = DriverManager.getConnection(host, uName, uPass); 
+        int resultadoGeneroCode = 0;
+        String direccionGeneroCode = "SELECT gender_code FROM district WHERE gender_description = '" + GeneroNombre + "' ";
+        Statement statGeneroCode = con.createStatement();
+        
+        ResultSet resulGeneroCode = statGeneroCode.executeQuery(direccionGeneroCode);
+        if(resulGeneroCode.next()){
+            resultadoGeneroCode = Integer.parseInt(resulGeneroCode.getString("gender_code"));
+        }
+        return resultadoGeneroCode; 
+    }
+    
+    
     public static int inicioSesionAdmin(String pUsuario, String pContraseña) throws SQLException{
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
@@ -47,6 +110,8 @@ public class Conexion {
         return resultado;
     }
     //funciones del paquete adminPerson
+    //public void consultarDistritos(JComboBox cbox_paises){
+    //}
     
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException{
        
