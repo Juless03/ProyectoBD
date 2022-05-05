@@ -79,31 +79,41 @@ public class RegistroDatos extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Registro de Datos");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel2.setText("Primer Nombre");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel3.setText("Segundo Nombre");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel4.setText("Primer Apellido");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel6.setText("Segundo Apellido");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel7.setText("Fecha Nacimiento");
 
+        PrimerNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         PrimerNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrimerNombreActionPerformed(evt);
             }
         });
 
-        BotonRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SegundoNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+
+        PrimerApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+
+        SegundoApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+
+        FechaNacimiento.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+
+        BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
+        BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonRegresar.setText("Regresar");
         BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,21 +121,25 @@ public class RegistroDatos extends javax.swing.JDialog {
             }
         });
 
+        botonGenero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGeneroActionPerformed(evt);
             }
         });
 
+        botonCategoria.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
 
+        botonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonDistrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDistritoActionPerformed(evt);
             }
         });
 
-        BotonRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotonRegistrar.setBackground(new java.awt.Color(255, 193, 5));
+        BotonRegistrar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonRegistrar.setText("Registrar");
         BotonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,33 +169,34 @@ public class RegistroDatos extends javax.swing.JDialog {
                             .addComponent(SegundoNombre)
                             .addComponent(SegundoApellido)
                             .addComponent(PrimerApellido)
-                            .addComponent(PrimerNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addComponent(PrimerNombre)
                             .addComponent(FechaNacimiento))))
                 .addGap(340, 340, 340))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(245, 245, 245))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(413, 413, 413))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(245, 245, 245))))
+                        .addComponent(BotonRegresar)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(BotonRegresar)
-                .addGap(78, 78, 78))
+                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(423, 423, 423))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel1)
-                .addGap(68, 68, 68)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -206,11 +221,11 @@ public class RegistroDatos extends javax.swing.JDialog {
                     .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(34, 34, 34)
+                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(BotonRegresar)
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         pack();

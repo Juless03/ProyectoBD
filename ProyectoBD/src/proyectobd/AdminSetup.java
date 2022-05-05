@@ -54,131 +54,96 @@ public class AdminSetup extends javax.swing.JDialog {
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Admin");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 62, -1, -1));
 
-        BotonRegistrarPersona.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotonRegistrarPersona.setBackground(new java.awt.Color(255, 193, 5));
+        BotonRegistrarPersona.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonRegistrarPersona.setText("Registrar Persona");
         BotonRegistrarPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRegistrarPersonaActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonRegistrarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 167, 200, -1));
 
-        BotonModificarPersona.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotonModificarPersona.setBackground(new java.awt.Color(255, 193, 5));
+        BotonModificarPersona.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonModificarPersona.setText("Modificar Persona");
         BotonModificarPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarPersonaActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 167, 200, -1));
 
-        BotonEstadisticas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotonEstadisticas.setBackground(new java.awt.Color(255, 193, 5));
+        BotonEstadisticas.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonEstadisticas.setText("Consultar Estadisticas");
+        getContentPane().add(BotonEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 167, 200, -1));
 
-        BotonEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotonEstudiantes.setBackground(new java.awt.Color(255, 193, 5));
+        BotonEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonEstudiantes.setText("Consultas Estudiantes");
+        getContentPane().add(BotonEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 210, 200, -1));
 
-        BotonProfesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotonProfesores.setBackground(new java.awt.Color(255, 193, 5));
+        BotonProfesores.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonProfesores.setText("Consultas Profesores");
+        getContentPane().add(BotonProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 253, 200, -1));
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton6.setBackground(new java.awt.Color(255, 193, 5));
+        jButton6.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton6.setText("Regresar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 110, -1));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(255, 193, 5));
+        jButton2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton2.setText("Registrar Cursos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 210, 200, -1));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(255, 193, 5));
+        jButton1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton1.setText("Registrar Evaluaciones");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 253, 200, -1));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setBackground(new java.awt.Color(255, 193, 5));
+        jButton3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton3.setText("Registrar Dirección ");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 296, 200, -1));
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setBackground(new java.awt.Color(255, 193, 5));
+        jButton4.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton4.setText("Modificar Cursos");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 200, -1));
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton5.setBackground(new java.awt.Color(255, 193, 5));
+        jButton5.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton5.setText("Modificar Evaluaciones");
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 253, 200, -1));
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton7.setBackground(new java.awt.Color(255, 193, 5));
+        jButton7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton7.setText("Modificar Dirección");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonRegistrarPersona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotonModificarPersona, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(409, 409, 409)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel1)
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonRegistrarPersona)
-                    .addComponent(BotonModificarPersona)
-                    .addComponent(BotonEstadisticas))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(BotonEstudiantes)
-                    .addComponent(jButton4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonProfesores)
-                    .addComponent(jButton1)
-                    .addComponent(jButton5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(25, 25, 25))
-        );
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 296, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
