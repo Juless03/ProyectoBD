@@ -40,8 +40,8 @@ public class RegistroDatos extends javax.swing.JDialog {
         initComponents();
         registroDatos = setupAdmin;
         
-        registroDatos.consultarDistritos(BotonDistrito);
-        registroDatos.consultarGenero(BotonGenero);
+        registroDatos.consultarDistritos(botonDistrito);
+        registroDatos.consultarGenero(botonGenero);
 
     }
 
@@ -68,9 +68,9 @@ public class RegistroDatos extends javax.swing.JDialog {
         SegundoApellido = new javax.swing.JTextField();
         FechaNacimiento = new javax.swing.JTextField();
         BotonRegresar = new javax.swing.JButton();
-        BotonGenero = new javax.swing.JComboBox<>();
-        BotonCategoria = new javax.swing.JComboBox<>();
-        BotonDistrito = new javax.swing.JComboBox<>();
+        botonGenero = new javax.swing.JComboBox<>();
+        botonCategoria = new javax.swing.JComboBox<>();
+        botonDistrito = new javax.swing.JComboBox<>();
         BotonRegistrar = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
@@ -111,18 +111,17 @@ public class RegistroDatos extends javax.swing.JDialog {
             }
         });
 
-        BotonGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "No binario", "Indefinido" }));
-        BotonGenero.addActionListener(new java.awt.event.ActionListener() {
+        botonGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonGeneroActionPerformed(evt);
+                botonGeneroActionPerformed(evt);
             }
         });
 
-        BotonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
+        botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
 
-        BotonDistrito.addActionListener(new java.awt.event.ActionListener() {
+        botonDistrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonDistritoActionPerformed(evt);
+                botonDistritoActionPerformed(evt);
             }
         });
 
@@ -161,16 +160,16 @@ public class RegistroDatos extends javax.swing.JDialog {
                 .addGap(340, 340, 340))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(413, 413, 413))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BotonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(245, 245, 245))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -204,9 +203,9 @@ public class RegistroDatos extends javax.swing.JDialog {
                     .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -225,30 +224,30 @@ public class RegistroDatos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
-    private void BotonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGeneroActionPerformed
+    private void botonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BotonGeneroActionPerformed
+    }//GEN-LAST:event_botonGeneroActionPerformed
 
     private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
-        String Categoria = BotonCategoria.getSelectedItem().toString();
-        // Genero
-        int Genero = 0;
-        String GeneroNombre = (String) BotonGenero.getSelectedItem();
-        try {
-            Genero = registroDatos.consultarDistritosNumero(GeneroNombre);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+        String Categoria = botonCategoria.getSelectedItem().toString();
         // Distritoint 
         int Distrito = 0;
-        String DistritoNombre = (String) BotonDistrito.getSelectedItem();
+        String DistritoNombre = (String) botonDistrito.getSelectedItem();
         try {
             Distrito = registroDatos.consultarDistritosNumero(DistritoNombre);
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
+
+        // Genero
+        int Genero = 0;
+        String GeneroNombre = (String) botonGenero.getSelectedItem();
+        try {
+            Genero = registroDatos.consultarGeneroCodigo(GeneroNombre);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
         // //Fecha
         
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
@@ -279,9 +278,9 @@ public class RegistroDatos extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BotonRegistrarActionPerformed
 
-    private void BotonDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDistritoActionPerformed
+    private void botonDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDistritoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BotonDistritoActionPerformed
+    }//GEN-LAST:event_botonDistritoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,9 +325,6 @@ public class RegistroDatos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BotonCategoria;
-    private javax.swing.JComboBox<String> BotonDistrito;
-    private javax.swing.JComboBox<String> BotonGenero;
     private javax.swing.JButton BotonRegistrar;
     private javax.swing.JButton BotonRegresar;
     private javax.swing.JTextField FechaNacimiento;
@@ -336,6 +332,9 @@ public class RegistroDatos extends javax.swing.JDialog {
     private javax.swing.JTextField PrimerNombre;
     private javax.swing.JTextField SegundoApellido;
     private javax.swing.JTextField SegundoNombre;
+    private javax.swing.JComboBox<String> botonCategoria;
+    private javax.swing.JComboBox<String> botonDistrito;
+    private javax.swing.JComboBox<String> botonGenero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -21,9 +21,11 @@ public class ProyectoBD {
     public static void main(String[] args) throws SQLException {
            // Pruebas
         //Conexion.addPhoneNumber("Casa", "88888888", 3);
-        System.out.println(Conexion.inicioSesionAdmin("Sara", "LauraPassword"));
-       
-       
+        //System.out.println(Conexion.inicioSesionAdmin("LauraAdmin", "LauraPassword"));
+       //Conexion.consultarDistritos();
+       // System.out.println(Conexion.consultarDistritosNumero("Cahuita"));
+       //Conexion.consultarGenero();
+        System.out.println(Conexion.consultarGeneroCodigo("Femenino"));
     }
     
 }
