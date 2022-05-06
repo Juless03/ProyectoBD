@@ -40,8 +40,8 @@ public class RegistroDatos extends javax.swing.JDialog {
         initComponents();
         registroDatos = setupAdmin;
         
-        registroDatos.consultarDistritos(botonDistrito);
-        registroDatos.consultarGenero(botonGenero);
+        registroDatos.getDistrict(botonDistrito);
+        registroDatos.getGender(botonGenero);
 
     }
 
@@ -72,6 +72,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         botonCategoria = new javax.swing.JComboBox<>();
         botonDistrito = new javax.swing.JComboBox<>();
         BotonRegistrar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -129,7 +130,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         });
 
         botonCategoria.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
+        botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", "Admin" }));
 
         botonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonDistrito.addActionListener(new java.awt.event.ActionListener() {
@@ -147,49 +148,57 @@ public class RegistroDatos extends javax.swing.JDialog {
             }
         });
 
+        jLabel8.setText("DD/MM/YYYY");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(419, 419, 419)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(107, 107, 107)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SegundoNombre)
-                            .addComponent(SegundoApellido)
-                            .addComponent(PrimerApellido)
-                            .addComponent(PrimerNombre)
-                            .addComponent(FechaNacimiento))))
-                .addGap(340, 340, 340))
+                .addGap(419, 419, 419)
+                .addComponent(jLabel1))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(366, 366, 366)
+                .addComponent(jLabel2)
+                .addGap(107, 107, 107)
+                .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(jLabel3)
+                .addGap(107, 107, 107)
+                .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(367, 367, 367)
+                .addComponent(jLabel4)
+                .addGap(107, 107, 107)
+                .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(355, 355, 355)
+                .addComponent(jLabel6)
+                .addGap(107, 107, 107)
+                .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(350, 350, 350)
+                .addComponent(jLabel7)
+                .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(245, 245, 245))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BotonRegresar)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(423, 423, 423))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(268, 268, 268)
+                .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(450, 450, 450)
+                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(BotonRegresar))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,35 +206,41 @@ public class RegistroDatos extends javax.swing.JDialog {
                 .addGap(54, 54, 54)
                 .addComponent(jLabel1)
                 .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel7))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
                 .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(BotonRegresar)
-                .addContainerGap())
+                .addGap(46, 46, 46)
+                .addComponent(BotonRegresar))
         );
 
         pack();
@@ -236,7 +251,7 @@ public class RegistroDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_PrimerNombreActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     private void botonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneroActionPerformed
@@ -245,26 +260,25 @@ public class RegistroDatos extends javax.swing.JDialog {
 
     private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
         String Categoria = botonCategoria.getSelectedItem().toString();
-        // Distritoint 
+      
+        // Distrito
         int Distrito = 0;
         String DistritoNombre = (String) botonDistrito.getSelectedItem();
         try {
-            Distrito = registroDatos.consultarDistritosNumero(DistritoNombre);
+            Distrito = registroDatos.getDistrictCode(DistritoNombre);
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         // Genero
         int Genero = 0;
         String GeneroNombre = (String) botonGenero.getSelectedItem();
         try {
-            Genero = registroDatos.consultarGeneroCodigo(GeneroNombre);
+            Genero = registroDatos.getGenderCode(GeneroNombre);
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+      
         // //Fecha
-        
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         Date FechaDate = null;
         try {
@@ -274,17 +288,21 @@ public class RegistroDatos extends javax.swing.JDialog {
         }
         java.sql.Date FechaNacimiento = new java.sql.Date(FechaDate.getTime());
         
-        if(Categoria == "Estudiante"){
-            
-           out. println("Soy un " + Categoria);
-        }
-        if(Categoria == "Profesor"){
-            out. println("Soy un " + Categoria);
-        }
- 
         try {
             registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimiento);
             JOptionPane.showMessageDialog(null,"Persona Agregada.");
+            int idPersona = registroDatos.getPersonID(PrimerNombre.getText(),SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText());
+            if(Categoria == "Estudiante"){
+                registroDatos.addStudent(idPersona);    
+            }
+            if(Categoria == "Profesor"){
+                  registroDatos.addProfessor(idPersona); 
+            }
+            if(Categoria == "Admin"){
+                String UsuarioAdmin = PrimerNombre.getText() + "Admin";
+                String ContraseñaAdmin = PrimerNombre.getText() + "Password";
+                registroDatos.addAdmin(idPersona,UsuarioAdmin,ContraseñaAdmin);  
+            }
             this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -357,6 +375,7 @@ public class RegistroDatos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

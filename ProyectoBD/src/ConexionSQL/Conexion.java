@@ -33,7 +33,7 @@ public class Conexion {
         return con;
     }
     // Actualizar datos de distrito y genero RegistroPersonas
-        public static String inicioSesionAdmin(String pUsuario, String pContraseña) throws SQLException{
+        public static String loginAdmin(String pUsuario, String pContraseña) throws SQLException{
     
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
@@ -48,8 +48,8 @@ public class Conexion {
         String Resultado = stmt.getString(1);
         return Resultado;
     }
-        
-      public static int consultarDistritosNumero(String distritoName) throws SQLException{
+     
+      public static int getDistrictCode(String distritoName) throws SQLException{
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
@@ -62,7 +62,7 @@ public class Conexion {
         return Resultado;
     }
     
-    public static void consultarDistritos(JComboBox cbox_distrito) throws SQLException{    
+    public static void getDistrict(JComboBox cbox_distrito) throws SQLException{    
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
@@ -78,7 +78,7 @@ public class Conexion {
         }
     }
 
-    public static void consultarGenero(JComboBox cbox_genero) throws SQLException{
+    public static void getGender(JComboBox cbox_genero) throws SQLException{
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
@@ -94,7 +94,7 @@ public class Conexion {
         
     }
     
-    public static int consultarGeneroCodigo(String GeneroNombre) throws SQLException{
+    public static int getGenderCode(String GeneroNombre) throws SQLException{
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
@@ -106,9 +106,24 @@ public class Conexion {
         int Resultado = stmt.getInt(1);
         return Resultado;
     }
-
     
     //funciones del paquete adminPerson
+      public static int getPersonID(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname) throws SQLException{
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String uName = "mtec";
+        String uPass = "mtec";
+        Connection con = DriverManager.getConnection(host, uName, uPass); 
+        CallableStatement stmt = con.prepareCall("{?= call getIdPerson(?,?,?,?)}");
+        stmt.registerOutParameter(1,Types.VARCHAR);
+        stmt.setString(2, pFirstName);
+        stmt.setString(3, pMiddleName);
+        stmt.setString(4, pFirstLastname);
+        stmt.setString(5, pSecondLastname);
+        stmt.execute();
+        int Resultado = stmt.getInt(1);
+        return Resultado;
+        
+    }
    
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException{
        
@@ -128,7 +143,7 @@ public class Conexion {
         stmt.execute();
         return true;
     }
-    
+  
      public static void updatePersonName(int pIdPerson, String pFirstName, String pMiddleName, String pFirstLastName, String pSecondLastName) throws SQLException{
         
         String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
@@ -191,7 +206,7 @@ public class Conexion {
     */
     public static void addAdmin(int pIdPerson, String pAdminUser, String pAdminPassword) throws SQLException{
         
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         
@@ -221,7 +236,7 @@ public class Conexion {
     
     public static void addProfessor(int pIdPerson) throws SQLException{
         
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         
@@ -234,7 +249,7 @@ public class Conexion {
     
     public static void addStudent(int pIdPerson) throws SQLException{
         
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         

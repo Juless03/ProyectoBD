@@ -38,7 +38,6 @@ public class MenuInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(204, 255, 51));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAdministrador.setBackground(new java.awt.Color(255, 193, 5));
         botonAdministrador.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -48,25 +47,58 @@ public class MenuInicio extends javax.swing.JFrame {
                 botonAdministradorActionPerformed(evt);
             }
         });
-        getContentPane().add(botonAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 357, 160, 56));
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 360, 317));
 
         botonProfesor.setBackground(new java.awt.Color(255, 193, 5));
         botonProfesor.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonProfesor.setText("Profesor");
-        getContentPane().add(botonProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 491, 160, 56));
 
         botonEstudiante.setBackground(new java.awt.Color(255, 193, 5));
         botonEstudiante.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonEstudiante.setText("Estudiante");
-        getContentPane().add(botonEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 357, 160, 56));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel2.setText("¡Bienvenidos a la plataforma del Tecnológico de Costa Rica!");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, -1, 17));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(540, 540, 540)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(botonAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(215, 215, 215)
+                        .addComponent(jLabel2)
+                        .addGap(124, 124, 124)
+                        .addComponent(botonEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(638, 638, 638)
+                        .addComponent(botonProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(154, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(78, 78, 78)
+                .addComponent(botonProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

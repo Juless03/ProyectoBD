@@ -19,13 +19,14 @@ public class ProyectoBD {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-           // Pruebas
+          // Pruebas
         //Conexion.addPhoneNumber("Casa", "88888888", 3);
         //System.out.println(Conexion.inicioSesionAdmin("LauraAdmin", "LauraPassword"));
        //Conexion.consultarDistritos();
        // System.out.println(Conexion.consultarDistritosNumero("Cahuita"));
        //Conexion.consultarGenero();
-        System.out.println(Conexion.consultarGeneroCodigo("Femenino"));
+        //System.out.println(Conexion.consultarGeneroCodigo("Femenino"));
+        
     }
     
 }

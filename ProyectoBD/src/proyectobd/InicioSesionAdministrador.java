@@ -114,7 +114,7 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
     private void botonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoActionPerformed
         String Usuario = botonUsuario.getText();
          try {
-             String Buenas = inicioSesionAd.inicioSesionAdmin(botonUsuario.getText(), String.valueOf(botonContraInco.getPassword()));
+             String Buenas = inicioSesionAd.loginAdmin(botonUsuario.getText(), String.valueOf(botonContraInco.getPassword()));
              if(Buenas.equals(Usuario)){
                  JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
                  this.dispose();
