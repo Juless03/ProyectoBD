@@ -52,10 +52,6 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         comBoxCanton = new javax.swing.JComboBox<>();
         comBoxProvincia = new javax.swing.JComboBox<>();
         comBoxPais = new javax.swing.JComboBox<>();
-        botonModificarCanton = new javax.swing.JButton();
-        botonModificarDistrito = new javax.swing.JButton();
-        botonModificarPais = new javax.swing.JButton();
-        botonModificarProvincia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,18 +158,6 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         comBoxPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(comBoxPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 605, 97, -1));
 
-        botonModificarCanton.setText("Modificar");
-        getContentPane().add(botonModificarCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, -1));
-
-        botonModificarDistrito.setText("Modificar");
-        getContentPane().add(botonModificarDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 380, -1, -1));
-
-        botonModificarPais.setText("Modificar");
-        getContentPane().add(botonModificarPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 590, -1, -1));
-
-        botonModificarProvincia.setText("Modificar");
-        getContentPane().add(botonModificarProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 660, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -225,10 +209,6 @@ public class RegistrarDireccion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonModificarCanton;
-    private javax.swing.JButton botonModificarDistrito;
-    private javax.swing.JButton botonModificarPais;
-    private javax.swing.JButton botonModificarProvincia;
     private javax.swing.JButton botonRegistrarCanton;
     private javax.swing.JButton botonRegistrarDistrito;
     private javax.swing.JButton botonRegistrarPais;

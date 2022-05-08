@@ -52,9 +52,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
         combBoxProfesores = new javax.swing.JComboBox<>();
         comBoxCurso = new javax.swing.JComboBox<>();
         comBoxEstudiantes = new javax.swing.JComboBox<>();
-        botonModificarCurso = new javax.swing.JButton();
-        botonModificarGrupo = new javax.swing.JButton();
-        botonModificarSxG = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -154,15 +151,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
         comBoxEstudiantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(comBoxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1084, 217, 80, -1));
 
-        botonModificarCurso.setText("Modificar");
-        getContentPane().add(botonModificarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
-
-        botonModificarGrupo.setText("Modificar");
-        getContentPane().add(botonModificarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, -1, -1));
-
-        botonModificarSxG.setText("Modificar");
-        getContentPane().add(botonModificarSxG, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,9 +198,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistrarGrupo;
-    private javax.swing.JButton botonModificarCurso;
-    private javax.swing.JButton botonModificarGrupo;
-    private javax.swing.JButton botonModificarSxG;
     private javax.swing.JButton botonRegistrarCurso;
     private javax.swing.JButton botonRegistrarEstudianteGrupo;
     private javax.swing.JComboBox<String> comBoxCurso;
