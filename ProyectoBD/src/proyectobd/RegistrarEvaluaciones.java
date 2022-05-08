@@ -46,10 +46,12 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         exsPorcentajeObtenido = new javax.swing.JTextField();
         botonRegistrarEvaluacion = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonRegistrarExS = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         comBoxEstudiante = new javax.swing.JComboBox<>();
         comBoxEvaluacion = new javax.swing.JComboBox<>();
+        botonModificarEvaluación = new javax.swing.JButton();
+        botonModificarExS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,10 +123,10 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         botonRegistrarEvaluacion.setText("Registrar");
         getContentPane().add(botonRegistrarEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 505, 100, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 193, 5));
-        jButton1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jButton1.setText("Registrar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1036, 505, 100, -1));
+        botonRegistrarExS.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegistrarExS.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonRegistrarExS.setText("Registrar");
+        getContentPane().add(botonRegistrarExS, new org.netbeans.lib.awtextra.AbsoluteConstraints(1036, 505, 100, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 193, 5));
         jButton2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -138,6 +140,12 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         comBoxEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         comBoxEvaluacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1036, 300, 100, -1));
+
+        botonModificarEvaluación.setText("Modificar");
+        getContentPane().add(botonModificarEvaluación, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 130, 30));
+
+        botonModificarExS.setText("Modificar");
+        getContentPane().add(botonModificarExS, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 510, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,7 +196,10 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonModificarEvaluación;
+    private javax.swing.JButton botonModificarExS;
     private javax.swing.JButton botonRegistrarEvaluacion;
+    private javax.swing.JButton botonRegistrarExS;
     private javax.swing.JComboBox<String> comBoxEstudiante;
     private javax.swing.JComboBox<String> comBoxEvaluacion;
     private javax.swing.JTextField evaluacionCurso;
@@ -197,7 +208,6 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JTextField evaluacionNombre;
     private javax.swing.JTextField evaluacionPorcentaje;
     private javax.swing.JTextField exsPorcentajeObtenido;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

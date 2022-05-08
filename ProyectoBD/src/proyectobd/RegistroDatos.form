@@ -76,6 +76,7 @@
               </Group>
           </Group>
           <Group type="102" attributes="0">
+<<<<<<< Updated upstream
               <EmptySpace min="268" pref="268" max="-2" attributes="0"/>
               <Component id="botonGenero" min="-2" pref="125" max="-2" attributes="0"/>
               <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
@@ -91,6 +92,33 @@
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="BotonRegresar" min="-2" max="-2" attributes="0"/>
           </Group>
+=======
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="BotonRegresar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="botonGenero" pref="125" max="32767" attributes="0"/>
+                          <Component id="botonModificar" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="botonCategoria" min="-2" pref="125" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                              <Component id="botonDistrito" min="-2" pref="125" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="BotonRegistrar" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+>>>>>>> Stashed changes
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -139,9 +167,18 @@
                       <Component id="botonDistrito" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
               </Group>
+<<<<<<< Updated upstream
               <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
               <Component id="BotonRegistrar" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
+=======
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BotonRegistrar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="botonModificar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
               <Component id="BotonRegresar" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -312,9 +349,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonRegistrarActionPerformed"/>
       </Events>
     </Component>
+<<<<<<< Updated upstream
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="text" type="java.lang.String" value="DD/MM/YYYY"/>
+=======
+    <Component class="javax.swing.JButton" name="botonModificar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
+>>>>>>> Stashed changes
       </Properties>
     </Component>
   </SubComponents>
