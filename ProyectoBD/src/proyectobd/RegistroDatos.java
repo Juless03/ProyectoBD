@@ -73,6 +73,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         botonDistrito = new javax.swing.JComboBox<>();
         BotonRegistrar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        botonModificar = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -150,6 +151,13 @@ public class RegistroDatos extends javax.swing.JDialog {
 
         jLabel8.setText("DD/MM/YYYY");
 
+        botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,7 +165,9 @@ public class RegistroDatos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(419, 419, 419)
+                        .addGap(49, 49, 49)
+                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(232, 232, 232)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(366, 366, 366)
@@ -206,9 +216,14 @@ public class RegistroDatos extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -318,6 +333,16 @@ public class RegistroDatos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonDistritoActionPerformed
 
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        ModificarDatos ventanaModificarDatos = null;
+        try {
+            ventanaModificarDatos = new ModificarDatos(this,true,registroDatos); // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ventanaModificarDatos.setVisible(true);
+    }//GEN-LAST:event_botonModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -371,6 +396,7 @@ public class RegistroDatos extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> botonCategoria;
     private javax.swing.JComboBox<String> botonDistrito;
     private javax.swing.JComboBox<String> botonGenero;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

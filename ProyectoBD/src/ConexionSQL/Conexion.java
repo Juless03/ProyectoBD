@@ -5,6 +5,14 @@
  */
 package ConexionSQL;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +24,7 @@ import java.sql.Types;
 import java.text.ParseException;
 import oracle.jdbc.OracleTypes;
 import java.util.Date;
+import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 /**
  *
@@ -32,9 +41,37 @@ public class Conexion {
         Connection con = DriverManager.getConnection(host, uName, uPass);
         return con;
     }
+        public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
+        
+              String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+              String uName = "mtec";
+              String uPass = "mtec";
+              Connection con = DriverManager.getConnection(host, uName, uPass); // 
+              PreparedStatement pstmt = con.prepareStatement("{  call actualizarPersona.update_Picture(?,?)  }");
+              Blob imagenBlob = null;
+              BufferedImage bi = new BufferedImage(mImagen.getWidth(null), mImagen.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+              Graphics2D g2d = bi.createGraphics();
+              g2d.drawImage(mImagen, 0, 0, null);
+              g2d.dispose();
+             ByteArrayOutputStream baos = null;
+                try {
+                    baos = new ByteArrayOutputStream();
+                    ImageIO.write(bi, "png", baos);
+                } finally {
+                    try {
+                        baos.close();
+                    } catch (Exception e) {
+                    }
+                }
+              ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+              pstmt.setBlob(2, bais);
+              pstmt.setInt(1, idPersona);
+              pstmt.executeUpdate();
+              pstmt.close();
+
+    }
     // Actualizar datos de distrito y genero RegistroPersonas
         public static String loginAdmin(String pUsuario, String pContraseña) throws SQLException{
-    
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
@@ -44,7 +81,6 @@ public class Conexion {
         stmt.setString(2, pUsuario);
         stmt.setString(3, pContraseña);
         stmt.execute();
-        //System.out.println(stmt.getString(1));
         String Resultado = stmt.getString(1);
         return Resultado;
     }
@@ -122,7 +158,20 @@ public class Conexion {
         stmt.execute();
         int Resultado = stmt.getInt(1);
         return Resultado;
-        
+    }
+      public static void getPerson(JComboBox cbox_personas) throws SQLException{    
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String uName = "mtec";
+        String uPass = "mtec";
+        Connection con = DriverManager.getConnection(host, uName, uPass); 
+        CallableStatement stmt = con.prepareCall("{?= call getPerson()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1);
+        while(r.next()){
+            cbox_personas.addItem(r.getString("first_name") + " " +  r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname"));
+        }
     }
    
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException{
@@ -146,7 +195,7 @@ public class Conexion {
   
      public static void updatePersonName(int pIdPerson, String pFirstName, String pMiddleName, String pFirstLastName, String pSecondLastName) throws SQLException{
         
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         
@@ -163,7 +212,7 @@ public class Conexion {
      
     public static void updatePersonGender(int pIdPerson, int pGenderCode) throws SQLException{
         
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         
@@ -177,7 +226,7 @@ public class Conexion {
     
     public static void updatePersonDistrict(int pIdPerson, int pDistrictCode) throws SQLException{
         
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         
@@ -189,21 +238,20 @@ public class Conexion {
         stmt.execute(); 
     }
     
-    /*
-    public static void updatePersonBirthday(int pIdPerson, pBirthday) throws SQLException{
+    
+    public static void updatePersonBirthday(int pIdPerson, Date pBirthday) throws SQLException{
         
-        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
         String uName = "mtec";
         String uPass = "mtec";
         
         Connection con = DriverManager.getConnection(host, uName, uPass);
         CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_person_birthday(?,?) }");
-        
         stmt.setInt(1, pIdPerson);
-        stmt.setInt(2, pBirthday);
+        stmt.setDate(2, (java.sql.Date) pBirthday);
         stmt.execute(); 
     }
-    */
+   
     public static void addAdmin(int pIdPerson, String pAdminUser, String pAdminPassword) throws SQLException{
         
         String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
