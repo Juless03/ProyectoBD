@@ -5,21 +5,20 @@
  */
 package proyectobd;
 
-import ConexionSQL.Conexion;
-import java.awt.Color;
-
 /**
  *
  * @author Juley
  */
 public class EvaluaciónDocente extends javax.swing.JDialog {
-    private Conexion evaluacionDocente;
+
     /**
      * Creates new form EvaluaciónDocente
      */
     public EvaluaciónDocente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+<<<<<<< HEAD
+=======
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
@@ -27,12 +26,15 @@ public class EvaluaciónDocente extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         evaluacionDocente = elContralador;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
     
     public EvaluaciónDocente(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
         super(aThis, modal);
         initComponents();
         evaluacionDocente = setupAdmin;
+        this.getContentPane().setBackground(new Color(157,210,228));
+>>>>>>> parent of 41460af (Revert "Merge branch 'main' of https://github.com/Nelson6203/ProyectoBD")
     }
 
     /**
@@ -44,247 +46,21 @@ public class EvaluaciónDocente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        nombreCursos = new javax.swing.JTextField();
-        semestreCursos = new javax.swing.JTextField();
-        añoCursos = new javax.swing.JTextField();
-        botonMostrarCursos = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        canetEvaluaciones = new javax.swing.JTextField();
-        evaluacionEvaluaciones = new javax.swing.JTextField();
-        fechaEntregaEvaluaciones = new javax.swing.JTextField();
-        estudianteEvaluaciones = new javax.swing.JTextField();
-        botonMostrarEvaluaciones = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaCursos = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaEstudiantes = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        listaEvaluaciones = new javax.swing.JList<>();
-        botonRegresar = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
-        jLabel1.setText("Profesor");
-
-        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel2.setText("Cursos");
-
-        jLabel3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel3.setText("Estudiantes");
-
-        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel4.setText("Evaluaciones");
-
-        jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel5.setText("Nombre");
-
-        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel6.setText("Semestre");
-
-        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel7.setText("Año");
-
-        nombreCursos.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        semestreCursos.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        añoCursos.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        botonMostrarCursos.setBackground(new java.awt.Color(255, 193, 5));
-        botonMostrarCursos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        botonMostrarCursos.setText("Mostrar");
-
-        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel8.setText("Carnet");
-
-        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel9.setText("Estudiante");
-
-        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel10.setText("Evaluación");
-
-        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel11.setText("Fecha de entrega");
-
-        canetEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        evaluacionEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        fechaEntregaEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        estudianteEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        botonMostrarEvaluaciones.setBackground(new java.awt.Color(255, 193, 5));
-        botonMostrarEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        botonMostrarEvaluaciones.setText("Mostrar");
-
-        listaCursos.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        listaCursos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listaCursos);
-
-        listaEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        listaEstudiantes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(listaEstudiantes);
-
-        listaEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        listaEvaluaciones.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(listaEvaluaciones);
-
-        botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
-        botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        botonRegresar.setText("Regresar");
-        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRegresarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(533, 533, 533)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6))
-                                        .addGap(200, 200, 200)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(botonMostrarCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(añoCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(68, 68, 68)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombreCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                            .addComponent(semestreCursos))
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel7)
-                        .addGap(9, 9, 9)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(canetEvaluaciones)
-                                    .addComponent(estudianteEvaluaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(jLabel10))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel11)))
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fechaEntregaEvaluaciones)
-                                    .addComponent(evaluacionEvaluaciones)
-                                    .addComponent(botonMostrarEvaluaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(175, 175, 175))))
+            .addGap(0, 1161, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(nombreCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(añoCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10)
-                            .addComponent(canetEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(evaluacionEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(semestreCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonMostrarCursos)
-                            .addComponent(jLabel11)
-                            .addComponent(fechaEntregaEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(estudianteEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonMostrarEvaluaciones)
-                                .addGap(47, 47, 47)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(botonRegresar)
-                .addContainerGap())
+            .addGap(0, 577, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    MenuInicio menuInicio = new MenuInicio();
-    this.dispose();
-    menuInicio.setVisible(true);         // TODO add your handling code here:
-    }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,32 +105,5 @@ public class EvaluaciónDocente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField añoCursos;
-    private javax.swing.JButton botonMostrarCursos;
-    private javax.swing.JButton botonMostrarEvaluaciones;
-    private javax.swing.JButton botonRegresar;
-    private javax.swing.JTextField canetEvaluaciones;
-    private javax.swing.JTextField estudianteEvaluaciones;
-    private javax.swing.JTextField evaluacionEvaluaciones;
-    private javax.swing.JTextField fechaEntregaEvaluaciones;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JList<String> listaCursos;
-    private javax.swing.JList<String> listaEstudiantes;
-    private javax.swing.JList<String> listaEvaluaciones;
-    private javax.swing.JTextField nombreCursos;
-    private javax.swing.JTextField semestreCursos;
     // End of variables declaration//GEN-END:variables
 }

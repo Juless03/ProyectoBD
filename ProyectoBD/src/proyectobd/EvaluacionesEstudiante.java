@@ -5,8 +5,6 @@
  */
 package proyectobd;
 
-import java.awt.Color;
-
 /**
  *
  * @author Juley
@@ -19,7 +17,6 @@ public class EvaluacionesEstudiante extends javax.swing.JDialog {
     public EvaluacionesEstudiante(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**

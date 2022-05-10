@@ -6,7 +6,6 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
-import java.awt.Color;
 import static java.lang.System.out;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -32,18 +31,18 @@ public class RegistroDatos extends javax.swing.JDialog {
     public RegistroDatos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.getContentPane().setBackground(new Color(157,210,228));
-        
-        
     }
-    public RegistroDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
+    public RegistroDatos(AdminSetup aThis, boolean modal) {
         super(aThis, modal);
         initComponents();
+<<<<<<< HEAD
+=======
         registroDatos = setupAdmin;
         
         registroDatos.getDistrict(botonDistrito);
         registroDatos.getGender(botonGenero);
-
+        this.getContentPane().setBackground(new Color(157,210,228));
+>>>>>>> parent of 41460af (Revert "Merge branch 'main' of https://github.com/Nelson6203/ProyectoBD")
     }
 
     /**
@@ -69,12 +68,10 @@ public class RegistroDatos extends javax.swing.JDialog {
         SegundoApellido = new javax.swing.JTextField();
         FechaNacimiento = new javax.swing.JTextField();
         BotonRegresar = new javax.swing.JButton();
-        botonGenero = new javax.swing.JComboBox<>();
-        botonCategoria = new javax.swing.JComboBox<>();
-        botonDistrito = new javax.swing.JComboBox<>();
+        BotonGenero = new javax.swing.JComboBox<>();
+        BotonCategoria = new javax.swing.JComboBox<>();
+        BotonDistrito = new javax.swing.JComboBox<>();
         BotonRegistrar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        botonModificar = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -82,41 +79,31 @@ public class RegistroDatos extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setText("Registro de Datos");
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Primer Nombre");
 
-        jLabel3.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Segundo Nombre");
 
-        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Primer Apellido");
 
-        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Segundo Apellido");
 
-        jLabel7.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Fecha Nacimiento");
 
-        PrimerNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         PrimerNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrimerNombreActionPerformed(evt);
             }
         });
 
-        SegundoNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        PrimerApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        SegundoApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        FechaNacimiento.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
-        BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        BotonRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonRegresar.setText("Regresar");
         BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,38 +111,22 @@ public class RegistroDatos extends javax.swing.JDialog {
             }
         });
 
-        botonGenero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        botonGenero.addActionListener(new java.awt.event.ActionListener() {
+        BotonGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "No binario", "Indefinido" }));
+        BotonGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGeneroActionPerformed(evt);
+                BotonGeneroActionPerformed(evt);
             }
         });
 
-        botonCategoria.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", "Admin" }));
+        BotonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", " " }));
 
-        botonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        botonDistrito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonDistritoActionPerformed(evt);
-            }
-        });
+        BotonDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escobal", "Mercedes", "Pavones", "San Pedro", "Potrero Grande", "Curubandé", "Barbacoas", "Coyolar", "Cahuita", "Orosi" }));
 
-        BotonRegistrar.setBackground(new java.awt.Color(255, 193, 5));
-        BotonRegistrar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        BotonRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotonRegistrar.setText("Registrar");
         BotonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRegistrarActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("DD/MM/YYYY");
-
-        botonModificar.setText("Modificar");
-        botonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificarActionPerformed(evt);
             }
         });
 
@@ -166,100 +137,77 @@ public class RegistroDatos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(232, 232, 232)
+                        .addGap(419, 419, 419)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(366, 366, 366)
-                        .addComponent(jLabel2)
-                        .addGap(107, 107, 107)
-                        .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(354, 354, 354)
-                        .addComponent(jLabel3)
-                        .addGap(107, 107, 107)
-                        .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(367, 367, 367)
-                        .addComponent(jLabel4)
-                        .addGap(107, 107, 107)
-                        .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(355, 355, 355)
-                        .addComponent(jLabel6)
-                        .addGap(107, 107, 107)
-                        .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(350, 350, 350)
-                        .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addGap(107, 107, 107)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(SegundoNombre)
+                            .addComponent(SegundoApellido)
+                            .addComponent(PrimerApellido)
+                            .addComponent(PrimerNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addComponent(FechaNacimiento))))
+                .addGap(340, 340, 340))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(413, 413, 413))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(450, 450, 450)
-                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(BotonRegresar)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                        .addComponent(BotonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(245, 245, 245))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BotonRegresar)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(55, 55, 55)
+                .addComponent(jLabel1)
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
-                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(BotonRegresar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(BotonRegresar)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -270,36 +218,65 @@ public class RegistroDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_PrimerNombreActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,registroDatos);
-    this.dispose();
-    adminSetup.setVisible(true);          
+        // TODO add your handling code here:
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
-    private void botonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneroActionPerformed
+    private void BotonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonGeneroActionPerformed
+    }//GEN-LAST:event_BotonGeneroActionPerformed
 
     private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
-        String Categoria = botonCategoria.getSelectedItem().toString();
-      
-        // Distrito
-        int Distrito = 0;
-        String DistritoNombre = (String) botonDistrito.getSelectedItem();
-        try {
-            Distrito = registroDatos.getDistrictCode(DistritoNombre);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String Categoria = BotonCategoria.getSelectedItem().toString();
         // Genero
         int Genero = 0;
-        String GeneroNombre = (String) botonGenero.getSelectedItem();
-        try {
-            Genero = registroDatos.getGenderCode(GeneroNombre);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+        if(BotonGenero.getSelectedItem() == "Femenino"){
+            Genero = 1;
         }
-      
+        if(BotonGenero.getSelectedItem() == "Masculino"){
+            Genero = 2;
+        }
+        if(BotonGenero.getSelectedItem() == "No Binario"){
+            Genero = 3;
+        }
+        if(BotonGenero.getSelectedItem() == "Indefinido"){
+            Genero = 4;
+        }
+    
+        // Distritoint 
+        int Distrito = 0;
+        if(BotonDistrito.getSelectedItem() == "Escobal"){
+            Distrito = 1;
+        }
+        if(BotonDistrito.getSelectedItem() == "Mercedes"){
+            Distrito = 2;
+        }
+        if(BotonDistrito.getSelectedItem() == "Pavones"){
+            Distrito = 3;
+        }
+        if(BotonDistrito.getSelectedItem() == "San Pedro"){
+            Distrito = 4;
+        }
+        if(BotonDistrito.getSelectedItem() == "Potrero Grande"){
+            Distrito = 5;
+        }
+        if(BotonDistrito.getSelectedItem() == "Curunbandé"){
+            Distrito = 6;
+        }
+        if(BotonDistrito.getSelectedItem() == "Barbacoas"){
+            Distrito = 7;
+        }
+        if(BotonDistrito.getSelectedItem() == "Coyolar"){
+            Distrito = 8;
+        }
+        if(BotonDistrito.getSelectedItem() == "Cahuita"){
+            Distrito = 9;
+        }
+        if(BotonDistrito.getSelectedItem() == "Orosi"){
+            Distrito = 10;
+        }
+                
         // //Fecha
+        
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         Date FechaDate = null;
         try {
@@ -309,42 +286,23 @@ public class RegistroDatos extends javax.swing.JDialog {
         }
         java.sql.Date FechaNacimiento = new java.sql.Date(FechaDate.getTime());
         
+        if(Categoria == "Estudiante"){
+            
+           out. println("Soy un " + Categoria);
+        }
+        if(Categoria == "Profesor"){
+            out. println("Soy un " + Categoria);
+        }
+ 
         try {
             registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimiento);
             JOptionPane.showMessageDialog(null,"Persona Agregada.");
-            int idPersona = registroDatos.getPersonID(PrimerNombre.getText(),SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText());
-            if(Categoria == "Estudiante"){
-                registroDatos.addStudent(idPersona);    
-            }
-            if(Categoria == "Profesor"){
-                  registroDatos.addProfessor(idPersona); 
-            }
-            if(Categoria == "Admin"){
-                String UsuarioAdmin = PrimerNombre.getText() + "Admin";
-                String ContraseñaAdmin = PrimerNombre.getText() + "Password";
-                registroDatos.addAdmin(idPersona,UsuarioAdmin,ContraseñaAdmin);  
-            }
-            this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BotonRegistrarActionPerformed
-
-    private void botonDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDistritoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonDistritoActionPerformed
-
-    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        ModificarDatos ventanaModificarDatos = null;
-        try {
-            ventanaModificarDatos = new ModificarDatos(this,true,registroDatos); // TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ventanaModificarDatos.setVisible(true);
-    }//GEN-LAST:event_botonModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,6 +347,9 @@ public class RegistroDatos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BotonCategoria;
+    private javax.swing.JComboBox<String> BotonDistrito;
+    private javax.swing.JComboBox<String> BotonGenero;
     private javax.swing.JButton BotonRegistrar;
     private javax.swing.JButton BotonRegresar;
     private javax.swing.JTextField FechaNacimiento;
@@ -396,10 +357,6 @@ public class RegistroDatos extends javax.swing.JDialog {
     private javax.swing.JTextField PrimerNombre;
     private javax.swing.JTextField SegundoApellido;
     private javax.swing.JTextField SegundoNombre;
-    private javax.swing.JComboBox<String> botonCategoria;
-    private javax.swing.JComboBox<String> botonDistrito;
-    private javax.swing.JComboBox<String> botonGenero;
-    private javax.swing.JButton botonModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -407,7 +364,6 @@ public class RegistroDatos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

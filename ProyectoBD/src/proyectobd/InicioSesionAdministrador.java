@@ -6,7 +6,6 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
-import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,11 +28,12 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
     public InicioSesionAdministrador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
     public InicioSesionAdministrador(MenuInicio aThis, boolean modal) {
         super(aThis, modal);
         initComponents();
+<<<<<<< HEAD
+=======
         this.getContentPane().setBackground(new Color(157,210,228));
     }
      
@@ -41,12 +41,15 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         inicioSesionAd = elControlador;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
     
     public InicioSesionAdministrador(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
         super(aThis, modal);
         initComponents();
         inicioSesionAd = setupAdmin;
+        this.getContentPane().setBackground(new Color(157,210,228));
+>>>>>>> parent of 41460af (Revert "Merge branch 'main' of https://github.com/Nelson6203/ProyectoBD")
     }
 
     /**
@@ -61,61 +64,56 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         botonIngreso = new javax.swing.JButton();
         botonUsuario = new javax.swing.JTextField();
-        botonContraInco = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        botonRegresar = new javax.swing.JButton();
+        botonContraseña = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel1.setText("Contraseña");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 101, 28));
+        jLabel1.setText("jLabel1");
 
-        botonIngreso.setBackground(new java.awt.Color(255, 193, 5));
-        botonIngreso.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonIngreso.setText("Ingresar");
         botonIngreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonIngresoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 220, 40));
 
-        botonUsuario.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         botonUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(botonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 186, 197, 42));
 
-        botonContraInco.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonContraInco, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 246, 193, 40));
-
-        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
-        jLabel2.setText("Inicio de Sesión Administrador ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 480, 43));
-
-        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jLabel3.setText("Ingrese sus credenciales");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 230, 35));
-
-        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel4.setText("Usuario");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 189, 72, 33));
-
-        botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
-        botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        botonRegresar.setText("Regresar");
-        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRegresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 493, 100, 30));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(436, 436, 436)
+                        .addComponent(botonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(318, 318, 318)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonUsuario)
+                            .addComponent(botonContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))))
+                .addContainerGap(381, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(botonContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(botonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(147, 147, 147))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,28 +123,22 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
     }//GEN-LAST:event_botonUsuarioActionPerformed
 
     private void botonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoActionPerformed
-        String Usuario = botonUsuario.getText();
          try {
-             String Buenas = inicioSesionAd.loginAdmin(botonUsuario.getText(), String.valueOf(botonContraInco.getPassword()));
-             if(Buenas.equals(Usuario)){
+             if(inicioSesionAd.inicioSesionAdmin(botonUsuario.getText(), botonContraseña.getText())){
                  JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
-                 this.dispose();
-                 AdminSetup ventanaAdminSetup =  new AdminSetup(this,true,inicioSesionAd);
-                 ventanaAdminSetup.setVisible(true);
+                 
+                 //AdminSetup ventanaAdmin = new AdminSetup(this,true);
+                 //ventanaAdmin.setVisible(true);
+                 //InicioSesionAdmin configuracionAdmi = new ConfiguracionAdminitrador(this,true,controlIngresoAdministrador);
+                 //this.dispose();
+                 //configuracionAdmi.setVisible(true);
              }else{
                  JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
-             } } catch (SQLException ex) {
+             }
+         } catch (SQLException ex) {
              Logger.getLogger(InicioSesionAdministrador.class.getName()).log(Level.SEVERE, null, ex);
          }
-  
-             
     }//GEN-LAST:event_botonIngresoActionPerformed
-
-    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    MenuInicio menuInicio = new MenuInicio();
-    this.dispose();
-    menuInicio.setVisible(true);         // TODO add your handling code here:
-    }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,13 +183,9 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField botonContraInco;
+    private javax.swing.JTextField botonContraseña;
     private javax.swing.JButton botonIngreso;
-    private javax.swing.JButton botonRegresar;
     private javax.swing.JTextField botonUsuario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

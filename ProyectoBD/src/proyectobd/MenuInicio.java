@@ -6,11 +6,6 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -24,7 +19,6 @@ public class MenuInicio extends javax.swing.JFrame {
      */
     public MenuInicio() {
         initComponents();
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**
@@ -36,78 +30,43 @@ public class MenuInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botonAdministrador = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        botonProfesor = new javax.swing.JButton();
-        botonEstudiante = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        Administrador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("MenuInicio");
-        setBackground(new java.awt.Color(157, 210, 228));
-        setForeground(new java.awt.Color(0, 0, 102));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonAdministrador.setBackground(new java.awt.Color(255, 193, 5));
-        botonAdministrador.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        botonAdministrador.setText("Administrador");
-        botonAdministrador.addActionListener(new java.awt.event.ActionListener() {
+        Administrador.setText("Administrador");
+        Administrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAdministradorActionPerformed(evt);
+                AdministradorActionPerformed(evt);
             }
         });
-        getContentPane().add(botonAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 533, 160, 56));
 
-        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 14));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\paubo\\Downloads\\Logo.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 589, 532));
-
-        botonProfesor.setBackground(new java.awt.Color(255, 193, 5));
-        botonProfesor.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        botonProfesor.setText("Profesor");
-        botonProfesor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonProfesorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 667, 160, 56));
-
-        botonEstudiante.setBackground(new java.awt.Color(255, 193, 5));
-        botonEstudiante.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        botonEstudiante.setText("Estudiante");
-        botonEstudiante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEstudianteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 540, 160, 56));
-
-        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jLabel2.setText("¡Bienvenidos a la plataforma del Tecnológico de Costa Rica!");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, -1, 17));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(Administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(564, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(250, Short.MAX_VALUE)
+                .addComponent(Administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(191, 191, 191))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdministradorActionPerformed
-       InicioSesionAdministrador iniAdministrador = new InicioSesionAdministrador(this,true,Conexion);
+    private void AdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministradorActionPerformed
+       InicioSesionAdministrador iniAdministrador = new InicioSesionAdministrador(this,true);
        this.dispose();
        iniAdministrador.setVisible(true);
        
-    }//GEN-LAST:event_botonAdministradorActionPerformed
-
-    private void botonProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProfesorActionPerformed
-    EvaluaciónDocente evaluacionDocente = new EvaluaciónDocente(this,true,Conexion);
-    this.dispose();
-    evaluacionDocente.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_botonProfesorActionPerformed
-
-    private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
-    InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,Conexion);
-    this.dispose();
-    inicioEstudiante.setVisible(true);      // TODO add your handling code here:
-    }//GEN-LAST:event_botonEstudianteActionPerformed
+    }//GEN-LAST:event_AdministradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +104,6 @@ public class MenuInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAdministrador;
-    private javax.swing.JButton botonEstudiante;
-    private javax.swing.JButton botonProfesor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton Administrador;
     // End of variables declaration//GEN-END:variables
 }
