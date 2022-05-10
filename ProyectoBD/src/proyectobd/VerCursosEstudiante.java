@@ -5,6 +5,8 @@
  */
 package proyectobd;
 
+import java.awt.Color;
+
 /**
  *
  * @author Juley
@@ -17,6 +19,7 @@ public class VerCursosEstudiante extends javax.swing.JDialog {
     public VerCursosEstudiante(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**
@@ -34,11 +37,11 @@ public class VerCursosEstudiante extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1269, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 719, Short.MAX_VALUE)
         );
 
         pack();

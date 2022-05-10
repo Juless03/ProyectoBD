@@ -5,18 +5,28 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+import java.awt.Color;
+
 /**
  *
  * @author paubo
  */
 public class ConsultarEstadisticas extends javax.swing.JDialog {
-
+    private Conexion consultarEstadisticas;
     /**
      * Creates new form ConsultarEstadisticas
      */
     public ConsultarEstadisticas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
+    
+    public ConsultarEstadisticas(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+        super(aThis, modal);
+        initComponents();
+        consultarEstadisticas = setupAdmin;
     }
 
     /**
@@ -148,6 +158,11 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonRegresar.setText("Regresar");
+        BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 100, -1));
 
         pack();
@@ -160,6 +175,12 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
     private void RangoTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RangoTopActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RangoTopActionPerformed
+
+    private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
+    AdminSetup adminSetup = new AdminSetup(this,true,consultarEstadisticas);
+    this.dispose();
+    adminSetup.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -50,6 +50,12 @@ public class ModificarDatos extends javax.swing.JDialog {
 
       
     }
+    
+    public ModificarDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+        super(aThis, modal);
+        initComponents();
+        modificarDatos = setupAdmin;
+    }
 
     public ModificarDatos(RegistroDatos aThis, boolean modal, Conexion registroDatos) throws SQLException {
         super(aThis, modal);

@@ -6,6 +6,11 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +24,7 @@ public class MenuInicio extends javax.swing.JFrame {
      */
     public MenuInicio() {
         initComponents();
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**
@@ -37,7 +43,10 @@ public class MenuInicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setForeground(new java.awt.Color(204, 255, 51));
+        setTitle("MenuInicio");
+        setBackground(new java.awt.Color(157, 210, 228));
+        setForeground(new java.awt.Color(0, 0, 102));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAdministrador.setBackground(new java.awt.Color(255, 193, 5));
         botonAdministrador.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -47,58 +56,36 @@ public class MenuInicio extends javax.swing.JFrame {
                 botonAdministradorActionPerformed(evt);
             }
         });
+        getContentPane().add(botonAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 533, 160, 56));
 
-        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 14));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\paubo\\Downloads\\Logo.png")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 589, 532));
 
         botonProfesor.setBackground(new java.awt.Color(255, 193, 5));
         botonProfesor.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonProfesor.setText("Profesor");
+        botonProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonProfesorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 667, 160, 56));
 
         botonEstudiante.setBackground(new java.awt.Color(255, 193, 5));
         botonEstudiante.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonEstudiante.setText("Estudiante");
+        botonEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEstudianteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 540, 160, 56));
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel2.setText("¡Bienvenidos a la plataforma del Tecnológico de Costa Rica!");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(540, 540, 540)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(botonAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(215, 215, 215)
-                        .addComponent(jLabel2)
-                        .addGap(124, 124, 124)
-                        .addComponent(botonEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(638, 638, 638)
-                        .addComponent(botonProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(78, 78, 78)
-                .addComponent(botonProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, -1, 17));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -109,6 +96,18 @@ public class MenuInicio extends javax.swing.JFrame {
        iniAdministrador.setVisible(true);
        
     }//GEN-LAST:event_botonAdministradorActionPerformed
+
+    private void botonProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProfesorActionPerformed
+    EvaluaciónDocente evaluacionDocente = new EvaluaciónDocente(this,true,Conexion);
+    this.dispose();
+    evaluacionDocente.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_botonProfesorActionPerformed
+
+    private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
+    InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,Conexion);
+    this.dispose();
+    inicioEstudiante.setVisible(true);      // TODO add your handling code here:
+    }//GEN-LAST:event_botonEstudianteActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,12 +24,46 @@ public class AdminSetup extends javax.swing.JDialog {
     public AdminSetup(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
     
      public AdminSetup(InicioSesionAdministrador aThis, boolean modal, Conexion inicioSesionAd) {
         super(aThis, modal);
         initComponents();
         setupAdmin = inicioSesionAd;
+    }
+     public AdminSetup(ConsultarEstadisticas aThis, boolean modal, Conexion consultarEstadisticas) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = consultarEstadisticas;
+    }
+
+    AdminSetup(ModificarCursos aThis, boolean b, Conexion modificarCurso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    AdminSetup(ModificarDireccion aThis, boolean b, Conexion modificarDireccion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    AdminSetup(ModificarEvaluaciones aThis, boolean b, Conexion modificarEvaluaciones) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    AdminSetup(RegistrarCursos aThis, boolean b, Conexion registrarCursos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    AdminSetup(RegistrarDireccion aThis, boolean b, Conexion registrarDireccion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    AdminSetup(RegistrarEvaluaciones aThis, boolean b, Conexion registrarEvaluaciones) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    AdminSetup(RegistroDatos aThis, boolean b, Conexion registroDatos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,16 +118,31 @@ public class AdminSetup extends javax.swing.JDialog {
         BotonEstadisticas.setBackground(new java.awt.Color(255, 193, 5));
         BotonEstadisticas.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonEstadisticas.setText("Consultar Estadisticas");
+        BotonEstadisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEstadisticasActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 167, 200, -1));
 
         BotonEstudiantes.setBackground(new java.awt.Color(255, 193, 5));
         BotonEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonEstudiantes.setText("Consultas Estudiantes");
+        BotonEstudiantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEstudiantesActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 210, 200, -1));
 
         BotonProfesores.setBackground(new java.awt.Color(255, 193, 5));
         BotonProfesores.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonProfesores.setText("Consultas Profesores");
+        BotonProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonProfesoresActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 253, 200, -1));
 
         jButton6.setBackground(new java.awt.Color(255, 193, 5));
@@ -118,11 +168,21 @@ public class AdminSetup extends javax.swing.JDialog {
         jButton1.setBackground(new java.awt.Color(255, 193, 5));
         jButton1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton1.setText("Registrar Evaluaciones");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 253, 200, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 193, 5));
         jButton3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton3.setText("Registrar Dirección ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 296, 200, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 193, 5));
@@ -138,11 +198,21 @@ public class AdminSetup extends javax.swing.JDialog {
         jButton5.setBackground(new java.awt.Color(255, 193, 5));
         jButton5.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton5.setText("Modificar Evaluaciones");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 253, 200, -1));
 
         jButton7.setBackground(new java.awt.Color(255, 193, 5));
         jButton7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton7.setText("Modificar Dirección");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 296, 200, -1));
 
         pack();
@@ -160,20 +230,70 @@ public class AdminSetup extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonRegistrarPersonaActionPerformed
 
     private void BotonModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarPersonaActionPerformed
-        // TODO add your handling code here:
+    ModificarDatos modificarDatos = new ModificarDatos(this,true,setupAdmin);
+    this.dispose();
+    modificarDatos.setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_BotonModificarPersonaActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+    InicioSesionAdministrador inicioSesionAdministrador = new InicioSesionAdministrador(this,true,setupAdmin);
+    this.dispose();
+    inicioSesionAdministrador.setVisible(true);     // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    RegistrarCursos registrarCursos = new RegistrarCursos(this,true,setupAdmin);
+    this.dispose();
+    registrarCursos.setVisible(true);   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+    ModificarCursos modificarCursos = new ModificarCursos(this,true,setupAdmin);
+    this.dispose();
+    modificarCursos.setVisible(true);      // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    RegistrarEvaluaciones registrarEvaluaciones = new RegistrarEvaluaciones(this,true,setupAdmin);
+    this.dispose();
+    registrarEvaluaciones.setVisible(true);         
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    RegistrarDireccion registrarDireccion = new RegistrarDireccion(this,true,setupAdmin);
+    this.dispose();
+    registrarDireccion.setVisible(true);      // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    ModificarEvaluaciones modificarEvaluaciones = new ModificarEvaluaciones(this,true,setupAdmin);
+    this.dispose();
+    modificarEvaluaciones.setVisible(true);       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    ModificarDireccion modificarDireccion = new ModificarDireccion(this,true,setupAdmin);
+    this.dispose();
+    modificarDireccion.setVisible(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void BotonEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstadisticasActionPerformed
+    ConsultarEstadisticas consultarEstadisticas = new ConsultarEstadisticas(this,true,setupAdmin);
+    this.dispose();
+    consultarEstadisticas.setVisible(true);      // TODO add your handling code here:
+    }//GEN-LAST:event_BotonEstadisticasActionPerformed
+
+    private void BotonEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesActionPerformed
+    InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,setupAdmin);
+    this.dispose();
+    inicioEstudiante.setVisible(true);     // TODO add your handling code here:
+    }//GEN-LAST:event_BotonEstudiantesActionPerformed
+
+    private void BotonProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProfesoresActionPerformed
+    EvaluaciónDocente evaluaciónDocente = new EvaluaciónDocente(this,true,setupAdmin);
+    this.dispose();
+    evaluaciónDocente.setVisible(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_BotonProfesoresActionPerformed
 
     /**
      * @param args the command line arguments

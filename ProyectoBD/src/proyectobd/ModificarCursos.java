@@ -5,18 +5,28 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+import java.awt.Color;
+
 /**
  *
  * @author paubo
  */
 public class ModificarCursos extends javax.swing.JDialog {
-
+    private Conexion modificarCurso;
     /**
      * Creates new form ModificarCursos
      */
     public ModificarCursos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }       
+    
+    public ModificarCursos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+        super(aThis, modal);
+        initComponents();
+        modificarCurso = setupAdmin;
     }
 
     /**
@@ -146,6 +156,11 @@ public class ModificarCursos extends javax.swing.JDialog {
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegresar.setText("Regresar");
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,6 +275,12 @@ public class ModificarCursos extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
+    AdminSetup adminSetup = new AdminSetup(this,true,modificarCurso);
+    this.dispose();
+    adminSetup.setVisible(true);            // TODO add your handling code here:
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**
      * @param args the command line arguments

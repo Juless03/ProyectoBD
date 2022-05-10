@@ -5,18 +5,28 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+import java.awt.Color;
+
 /**
  *
  * @author paubo
  */
 public class RegistrarCursos extends javax.swing.JDialog {
-
+    private Conexion registrarCursos;
     /**
      * Creates new form RegistrarCursos
      */
     public RegistrarCursos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
+    
+    public RegistrarCursos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+        super(aThis, modal);
+        initComponents();
+        registrarCursos = setupAdmin;
     }
 
     /**
@@ -137,6 +147,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
         jButton2.setBackground(new java.awt.Color(255, 193, 5));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 696, 100, -1));
 
         combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
@@ -153,6 +168,12 @@ public class RegistrarCursos extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    AdminSetup adminSetup = new AdminSetup(this,true,registrarCursos);
+    this.dispose();
+    adminSetup.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

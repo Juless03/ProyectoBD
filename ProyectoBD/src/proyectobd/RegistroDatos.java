@@ -6,6 +6,7 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
+import java.awt.Color;
 import static java.lang.System.out;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -31,7 +32,7 @@ public class RegistroDatos extends javax.swing.JDialog {
     public RegistroDatos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+        this.getContentPane().setBackground(new Color(157,210,228));
         
         
     }
@@ -269,7 +270,9 @@ public class RegistroDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_PrimerNombreActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-        this.dispose();
+    AdminSetup adminSetup = new AdminSetup(this,true,registroDatos);
+    this.dispose();
+    adminSetup.setVisible(true);          
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     private void botonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneroActionPerformed
