@@ -104,9 +104,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonProfesorActionPerformed
 
     private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
-    InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,Conexion);
-    this.dispose();
-    inicioEstudiante.setVisible(true);      // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_botonEstudianteActionPerformed
 
     /**

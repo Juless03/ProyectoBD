@@ -284,9 +284,7 @@ public class AdminSetup extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonEstadisticasActionPerformed
 
     private void BotonEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesActionPerformed
-    InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,setupAdmin);
-    this.dispose();
-    inicioEstudiante.setVisible(true);     // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_BotonEstudiantesActionPerformed
 
     private void BotonProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProfesoresActionPerformed
