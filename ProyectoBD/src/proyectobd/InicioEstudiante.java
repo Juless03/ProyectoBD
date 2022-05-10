@@ -26,12 +26,14 @@ public class InicioEstudiante extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         inicioEstudiante = elContralador;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
     
     public InicioEstudiante(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
         super(aThis, modal);
         initComponents();
         inicioEstudiante = setupAdmin;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**

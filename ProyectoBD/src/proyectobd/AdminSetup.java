@@ -31,39 +31,62 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = inicioSesionAd;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
      public AdminSetup(ConsultarEstadisticas aThis, boolean modal, Conexion consultarEstadisticas) {
         super(aThis, modal);
         initComponents();
         setupAdmin = consultarEstadisticas;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(ModificarCursos aThis, boolean b, Conexion modificarCurso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public AdminSetup(ModificarCursos aThis, boolean modal, Conexion modificarCurso) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = modificarCurso;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(ModificarDireccion aThis, boolean b, Conexion modificarDireccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(ModificarDireccion aThis, boolean modal, Conexion modificarDireccion) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = modificarDireccion;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(ModificarEvaluaciones aThis, boolean b, Conexion modificarEvaluaciones) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(ModificarEvaluaciones aThis, boolean modal, Conexion modificarEvaluaciones) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = modificarEvaluaciones;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistrarCursos aThis, boolean b, Conexion registrarCursos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistrarCursos aThis, boolean modal, Conexion registrarCursos) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = registrarCursos;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistrarDireccion aThis, boolean b, Conexion registrarDireccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistrarDireccion aThis, boolean modal, Conexion registrarDireccion) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = registrarDireccion;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistrarEvaluaciones aThis, boolean b, Conexion registrarEvaluaciones) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistrarEvaluaciones aThis, boolean modal, Conexion registrarEvaluaciones) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = registrarEvaluaciones;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistroDatos aThis, boolean b, Conexion registroDatos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistroDatos aThis, boolean modal, Conexion registroDatos) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = registroDatos;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
     /**
      * This method is called from within the constructor to initialize the form.
