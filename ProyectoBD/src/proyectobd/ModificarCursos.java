@@ -27,6 +27,7 @@ public class ModificarCursos extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         modificarCurso = setupAdmin;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**
