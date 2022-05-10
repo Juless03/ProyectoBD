@@ -27,7 +27,6 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         modificarEvaluaciones = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**

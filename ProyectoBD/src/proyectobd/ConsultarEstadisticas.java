@@ -5,20 +5,21 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+import java.awt.Color;
+
 /**
  *
  * @author paubo
  */
 public class ConsultarEstadisticas extends javax.swing.JDialog {
-
+    private Conexion consultarEstadisticas;
     /**
      * Creates new form ConsultarEstadisticas
      */
     public ConsultarEstadisticas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-<<<<<<< HEAD
-=======
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
@@ -26,8 +27,6 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         consultarEstadisticas = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
->>>>>>> parent of 41460af (Revert "Merge branch 'main' of https://github.com/Nelson6203/ProyectoBD")
     }
 
     /**
@@ -62,176 +61,109 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         BotonRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Estadísticas del sistema");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel2.setText("Elija la estadística que desea visualizar:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel3.setText("Total de estudiantes por curso por género");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel4.setText("Ingrese el nombre del curso:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
+        NombreCurso.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(NombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 98, -1));
+
+        BotonEstudiantesxCursoxGenero.setBackground(new java.awt.Color(255, 193, 5));
+        BotonEstudiantesxCursoxGenero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonEstudiantesxCursoxGenero.setText("Ver");
+        getContentPane().add(BotonEstudiantesxCursoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 240, 90, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel5.setText("Top de mejores estudiantes");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel6.setText("Ingrese el nombre del curso:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel7.setText("Ingrese el género:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel8.setText("Ingrese el rango del top:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
 
+        NombreCursoMejoresEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         NombreCursoMejoresEstudiantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreCursoMejoresEstudiantesActionPerformed(evt);
             }
         });
+        getContentPane().add(NombreCursoMejoresEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, 57, -1));
 
+        RangoTop.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         RangoTop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RangoTopActionPerformed(evt);
             }
         });
+        getContentPane().add(RangoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 57, -1));
 
+        Genero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(Genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 240, 70, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel9.setText("Promedio de notas por curso");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel10.setText("Porcentaje de abandonos de curso");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel11.setText("Total de estudiantes por rango de edad");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, -1));
 
+        BotonTopMejoresEstudiantes.setBackground(new java.awt.Color(255, 193, 5));
+        BotonTopMejoresEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonTopMejoresEstudiantes.setText("Ver");
+        getContentPane().add(BotonTopMejoresEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 327, 90, -1));
 
+        BotonPromedioNotas.setBackground(new java.awt.Color(255, 193, 5));
+        BotonPromedioNotas.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonPromedioNotas.setText("Ver");
+        getContentPane().add(BotonPromedioNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 505, 90, -1));
 
+        BotonPorcentajeAbandonos.setBackground(new java.awt.Color(255, 193, 5));
+        BotonPorcentajeAbandonos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonPorcentajeAbandonos.setText("Ver");
+        getContentPane().add(BotonPorcentajeAbandonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 505, 90, -1));
 
+        BotonEstudiantesRangoEdad.setBackground(new java.awt.Color(255, 193, 5));
+        BotonEstudiantesRangoEdad.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonEstudiantesRangoEdad.setText("Ver");
+        getContentPane().add(BotonEstudiantesRangoEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, 90, -1));
 
+        BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
+        BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonRegresar.setText("Regresar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BotonEstudiantesxCursoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addComponent(NombreCurso)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(187, 187, 187))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(52, 52, 52))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(106, 106, 106))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(73, 73, 73)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(RangoTop)
-                            .addComponent(Genero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NombreCursoMejoresEstudiantes, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel9)
-                .addGap(142, 142, 142)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(jLabel11)
-                .addGap(115, 115, 115))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(BotonPromedioNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(242, 242, 242)
-                .addComponent(BotonPorcentajeAbandonos, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonEstudiantesRangoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BotonTopMejoresEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(246, 246, 246))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BotonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(377, 377, 377))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(NombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(NombreCursoMejoresEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonEstudiantesxCursoxGenero)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(RangoTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(BotonTopMejoresEstudiantes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonPromedioNotas)
-                    .addComponent(BotonPorcentajeAbandonos)
-                    .addComponent(BotonEstudiantesRangoEdad))
-                .addGap(72, 72, 72)
-                .addComponent(BotonRegresar)
-                .addContainerGap())
-        );
+        BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,6 +175,12 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
     private void RangoTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RangoTopActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RangoTopActionPerformed
+
+    private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
+    AdminSetup adminSetup = new AdminSetup(this,true,consultarEstadisticas);
+    this.dispose();
+    adminSetup.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
