@@ -6,7 +6,6 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
-import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -48,7 +47,7 @@ public class ModificarDatos extends javax.swing.JDialog {
         comboBoxGeneral.setVisible(false);
         botonFotoSeleccionada.setVisible(false);
         botonSeleccionarFoto.setVisible(false);
-        this.getContentPane().setBackground(new Color(157,210,228));
+
       
     }
     
@@ -56,7 +55,6 @@ public class ModificarDatos extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         modificarDatos = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     public ModificarDatos(RegistroDatos aThis, boolean modal, Conexion registroDatos) throws SQLException {
@@ -77,7 +75,7 @@ public class ModificarDatos extends javax.swing.JDialog {
         botonFotoSeleccionada.setVisible(false);
         botonSeleccionarFoto.setVisible(false);
         modificarDatos.getPerson(botonPersonas);
-        this.getContentPane().setBackground(new Color(157,210,228));
+        
     }
 
     /**
@@ -110,22 +108,15 @@ public class ModificarDatos extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel1.setText("Seleccione la persona a  modificar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 230, 25));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 230, 25));
 
-        botonPersonas.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         getContentPane().add(botonPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 302, 33));
 
-        botonOpcionModificar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonOpcionModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Genero", "Distrito", "Fecha de nacimiento", "Foto" }));
         getContentPane().add(botonOpcionModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 119, 160, 50));
-
-        botonTexto4.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         getContentPane().add(botonTexto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 218, 39));
 
-        botonModificar.setBackground(new java.awt.Color(255, 193, 5));
-        botonModificar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,46 +125,34 @@ public class ModificarDatos extends javax.swing.JDialog {
         });
         getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, 133, 58));
 
-        botonSeleccionar.setBackground(new java.awt.Color(255, 193, 5));
-        botonSeleccionar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonSeleccionar.setText("Seleccionar");
         botonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSeleccionarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 110, 50));
+        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 100, 50));
 
         titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 240, 22));
 
-        segundoNombreTitulo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         segundoNombreTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         segundoNombreTitulo.setText("Segundo Nombre");
         getContentPane().add(segundoNombreTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 118, -1));
 
-        primerApellidoTitulo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         primerApellidoTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         primerApellidoTitulo.setText("Primer Apellido");
-        getContentPane().add(primerApellidoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 120, -1));
+        getContentPane().add(primerApellidoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 89, -1));
 
-        segundoApellidoTitulo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         segundoApellidoTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         segundoApellidoTitulo.setText("Segundo Apellido");
-        getContentPane().add(segundoApellidoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 120, 30));
-
-        botonTexto1.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(segundoApellidoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, 89, 30));
         getContentPane().add(botonTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 218, 39));
-
-        botonTexto2.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         getContentPane().add(botonTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 218, 39));
-
-        botonTexto3.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         getContentPane().add(botonTexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 218, 39));
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel2.setText("Seleccione la categoria a modificar");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 230, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 230, 30));
 
         comboBoxGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

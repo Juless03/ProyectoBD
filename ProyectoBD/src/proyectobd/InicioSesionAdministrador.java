@@ -41,14 +41,12 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         inicioSesionAd = elControlador;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
     
     public InicioSesionAdministrador(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
         super(aThis, modal);
         initComponents();
         inicioSesionAd = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**

@@ -27,7 +27,6 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         registrarEvaluaciones = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**

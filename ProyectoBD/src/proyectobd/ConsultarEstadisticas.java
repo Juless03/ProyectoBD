@@ -27,7 +27,6 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         consultarEstadisticas = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**

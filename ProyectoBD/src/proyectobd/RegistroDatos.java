@@ -43,7 +43,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         
         registroDatos.getDistrict(botonDistrito);
         registroDatos.getGender(botonGenero);
-        this.getContentPane().setBackground(new Color(157,210,228));
+
     }
 
     /**

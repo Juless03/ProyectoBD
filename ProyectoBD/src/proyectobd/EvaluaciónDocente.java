@@ -27,14 +27,12 @@ public class EvaluaciónDocente extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         evaluacionDocente = elContralador;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
     
     public EvaluaciónDocente(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
         super(aThis, modal);
         initComponents();
         evaluacionDocente = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**

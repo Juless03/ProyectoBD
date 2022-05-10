@@ -27,7 +27,6 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         registrarDireccion = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
 
