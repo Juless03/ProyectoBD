@@ -5,18 +5,28 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
+import java.awt.Color;
+
 /**
  *
  * @author paubo
  */
 public class RegistrarCursos extends javax.swing.JDialog {
-
+    private Conexion registrarCursos;
     /**
      * Creates new form RegistrarCursos
      */
     public RegistrarCursos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
+    
+    public RegistrarCursos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+        super(aThis, modal);
+        initComponents();
+        registrarCursos = setupAdmin;
     }
 
     /**
@@ -43,173 +53,127 @@ public class RegistrarCursos extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         grupoAño = new javax.swing.JTextField();
         grupoSemestre = new javax.swing.JTextField();
-        grupoProfessor = new javax.swing.JTextField();
-        grupoCurso = new javax.swing.JTextField();
         BotonRegistrarGrupo = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        sxgEstudiante = new javax.swing.JTextField();
         sxgReview = new javax.swing.JTextField();
         botonRegistrarEstudianteGrupo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        combBoxProfesores = new javax.swing.JComboBox<>();
+        comBoxCurso = new javax.swing.JComboBox<>();
+        comBoxEstudiantes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Registro de Cursos");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(551, 31, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel2.setText("Créditos");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 217, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cursoCreditos.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(cursoCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 217, 80, -1));
+
+        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel3.setText("Nombre del Curso");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 287, -1, -1));
 
-        botonRegistrarCurso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nombreCurso.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(nombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 287, 80, -1));
+
+        botonRegistrarCurso.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegistrarCurso.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarCurso.setText("Registrar");
+        getContentPane().add(botonRegistrarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 357, 100, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel4.setText("Curso");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 138, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel5.setText("Grupo");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel6.setText("Estudiante en un Grupo");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 140, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel7.setText("Año");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 217, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel8.setText("Id Profesor");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 361, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Semestre");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 287, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel10.setText("Id Curso");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 436, -1, -1));
 
-        BotonRegistrarGrupo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        grupoAño.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(grupoAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 217, 157, -1));
+
+        grupoSemestre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(grupoSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 287, 157, -1));
+
+        BotonRegistrarGrupo.setBackground(new java.awt.Color(255, 193, 5));
+        BotonRegistrarGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonRegistrarGrupo.setText("Registrar");
+        getContentPane().add(BotonRegistrarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(718, 505, 100, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel11.setText("Id Estudiante");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(926, 217, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel13.setText("Review");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(956, 287, 54, -1));
 
-        botonRegistrarEstudianteGrupo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sxgReview.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(sxgReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(1084, 287, 80, -1));
+
+        botonRegistrarEstudianteGrupo.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegistrarEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarEstudianteGrupo.setText("Registrar");
+        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1064, 357, 100, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 193, 5));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 696, 100, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(jLabel4)
-                .addGap(376, 376, 376)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(153, 153, 153))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(538, 538, 538)
-                        .addComponent(jLabel1)
-                        .addGap(0, 5, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(100, 100, 100)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cursoCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(botonRegistrarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(188, 188, 188)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(grupoAño)
-                            .addComponent(grupoSemestre)
-                            .addComponent(grupoProfessor)
-                            .addComponent(grupoCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonRegistrarGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(108, 108, 108)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(sxgEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(sxgReview)))
-                    .addComponent(botonRegistrarEstudianteGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(126, 126, 126))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cursoCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(grupoAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(sxgEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(nombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(grupoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(sxgReview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRegistrarCurso)
-                    .addComponent(jLabel8)
-                    .addComponent(grupoProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonRegistrarEstudianteGrupo))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(grupoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(BotonRegistrarGrupo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
-        );
+        combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        combBoxProfesores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(combBoxProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 361, 157, -1));
+
+        comBoxCurso.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        comBoxCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 436, 157, -1));
+
+        comBoxEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        comBoxEstudiantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1084, 217, 80, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    AdminSetup adminSetup = new AdminSetup(this,true,registrarCursos);
+    this.dispose();
+    adminSetup.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,10 +221,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private javax.swing.JButton BotonRegistrarGrupo;
     private javax.swing.JButton botonRegistrarCurso;
     private javax.swing.JButton botonRegistrarEstudianteGrupo;
+    private javax.swing.JComboBox<String> comBoxCurso;
+    private javax.swing.JComboBox<String> comBoxEstudiantes;
+    private javax.swing.JComboBox<String> combBoxProfesores;
     private javax.swing.JTextField cursoCreditos;
     private javax.swing.JTextField grupoAño;
-    private javax.swing.JTextField grupoCurso;
-    private javax.swing.JTextField grupoProfessor;
     private javax.swing.JTextField grupoSemestre;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -276,7 +241,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nombreCurso;
-    private javax.swing.JTextField sxgEstudiante;
     private javax.swing.JTextField sxgReview;
     // End of variables declaration//GEN-END:variables
 }
