@@ -33,7 +33,7 @@ import javax.swing.JComboBox;
 public class Conexion {
 
     
-    public static String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+    public static String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
     public static String uName = "mtec";
     public static String uPass = "mtec";
      // Futura Prueba Conexion
@@ -43,7 +43,7 @@ public class Conexion {
     }
         public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
         
-              String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+              String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
               String uName = "mtec";
               String uPass = "mtec";
               Connection con = DriverManager.getConnection(host, uName, uPass); // 
@@ -72,7 +72,7 @@ public class Conexion {
     }
     // Actualizar datos de distrito y genero RegistroPersonas
         public static String loginAdmin(String pUsuario, String pContraseña) throws SQLException{
-        String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+        String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
         String uName = "mtec";
         String uPass = "mtec";
         Connection con = DriverManager.getConnection(host, uName, uPass); 

@@ -31,39 +31,76 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = inicioSesionAd;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
      public AdminSetup(ConsultarEstadisticas aThis, boolean modal, Conexion consultarEstadisticas) {
         super(aThis, modal);
         initComponents();
         setupAdmin = consultarEstadisticas;
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(ModificarCursos aThis, boolean b, Conexion modificarCurso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(ModificarCursos aThis, boolean modal, Conexion modificarCurso) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = modificarCurso;
+       this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(ModificarDireccion aThis, boolean b, Conexion modificarDireccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(ModificarDireccion aThis, boolean modal, Conexion modificarDireccion) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = modificarDireccion;
+       this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(ModificarEvaluaciones aThis, boolean b, Conexion modificarEvaluaciones) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(ModificarEvaluaciones aThis, boolean modal, Conexion modificarEvaluaciones) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = modificarEvaluaciones;
+       this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistrarCursos aThis, boolean b, Conexion registrarCursos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistrarCursos aThis, boolean modal, Conexion registrarCursos) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = registrarCursos;
+       this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistrarDireccion aThis, boolean b, Conexion registrarDireccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistrarDireccion aThis, boolean modal, Conexion registrarDireccion) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = registrarDireccion;
+       this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistrarEvaluaciones aThis, boolean b, Conexion registrarEvaluaciones) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistrarEvaluaciones aThis, boolean modal, Conexion registrarEvaluaciones) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = registrarEvaluaciones;
+       this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(RegistroDatos aThis, boolean b, Conexion registroDatos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    AdminSetup(RegistroDatos aThis, boolean modal, Conexion registroDatos) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = registroDatos;
+       this.getContentPane().setBackground(new Color(157,210,228));
+    }
+
+    AdminSetup(ModificarDatos aThis, boolean modal, Conexion modificarDatos) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = modificarDatos;
+       this.getContentPane().setBackground(new Color(157,210,228));
+    }
+
+    AdminSetup(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) {
+       super(aThis, modal);
+       initComponents();
+       setupAdmin = inicioEstudiante;
+       this.getContentPane().setBackground(new Color(157,210,228));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -232,13 +269,13 @@ public class AdminSetup extends javax.swing.JDialog {
     private void BotonModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarPersonaActionPerformed
     ModificarDatos modificarDatos = new ModificarDatos(this,true,setupAdmin);
     this.dispose();
-    modificarDatos.setVisible(true);         // TODO add your handling code here:
+    modificarDatos.setVisible(true);         
     }//GEN-LAST:event_BotonModificarPersonaActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
     InicioSesionAdministrador inicioSesionAdministrador = new InicioSesionAdministrador(this,true,setupAdmin);
     this.dispose();
-    inicioSesionAdministrador.setVisible(true);     // TODO add your handling code here:
+    inicioSesionAdministrador.setVisible(true);     
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -250,7 +287,7 @@ public class AdminSetup extends javax.swing.JDialog {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
     ModificarCursos modificarCursos = new ModificarCursos(this,true,setupAdmin);
     this.dispose();
-    modificarCursos.setVisible(true);      // TODO add your handling code here:
+    modificarCursos.setVisible(true);      
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -262,35 +299,37 @@ public class AdminSetup extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     RegistrarDireccion registrarDireccion = new RegistrarDireccion(this,true,setupAdmin);
     this.dispose();
-    registrarDireccion.setVisible(true);      // TODO add your handling code here:
+    registrarDireccion.setVisible(true);     
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
     ModificarEvaluaciones modificarEvaluaciones = new ModificarEvaluaciones(this,true,setupAdmin);
     this.dispose();
-    modificarEvaluaciones.setVisible(true);       // TODO add your handling code here:
+    modificarEvaluaciones.setVisible(true);       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
     ModificarDireccion modificarDireccion = new ModificarDireccion(this,true,setupAdmin);
     this.dispose();
-    modificarDireccion.setVisible(true);    // TODO add your handling code here:
+    modificarDireccion.setVisible(true);   
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void BotonEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstadisticasActionPerformed
     ConsultarEstadisticas consultarEstadisticas = new ConsultarEstadisticas(this,true,setupAdmin);
     this.dispose();
-    consultarEstadisticas.setVisible(true);      // TODO add your handling code here:
+    consultarEstadisticas.setVisible(true);      
     }//GEN-LAST:event_BotonEstadisticasActionPerformed
 
     private void BotonEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesActionPerformed
-        // TODO add your handling code here:
+    InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,setupAdmin);
+    this.dispose();
+    inicioEstudiante.setVisible(true);      
     }//GEN-LAST:event_BotonEstudiantesActionPerformed
 
     private void BotonProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProfesoresActionPerformed
     EvaluaciónDocente evaluaciónDocente = new EvaluaciónDocente(this,true,setupAdmin);
     this.dispose();
-    evaluaciónDocente.setVisible(true);    // TODO add your handling code here:
+    evaluaciónDocente.setVisible(true);   
     }//GEN-LAST:event_BotonProfesoresActionPerformed
 
     /**

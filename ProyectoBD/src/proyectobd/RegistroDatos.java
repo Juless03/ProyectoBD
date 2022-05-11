@@ -33,7 +33,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.getContentPane().setBackground(new Color(157,210,228));
-        
+        this.getContentPane().setBackground(new Color(157,210,228));
         
     }
     public RegistroDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
@@ -43,7 +43,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         
         registroDatos.getDistrict(botonDistrito);
         registroDatos.getGender(botonGenero);
-
+        this.getContentPane().setBackground(new Color(157,210,228));
     }
 
     /**
