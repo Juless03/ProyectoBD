@@ -255,7 +255,9 @@ public class RegistroDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_PrimerNombreActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-        this.setVisible(false);        
+        this.dispose();
+        AdminSetup ventaAdminSetup = new AdminSetup(this,true,registroDatos);
+        ventaAdminSetup.setVisible(true);
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     private void botonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneroActionPerformed

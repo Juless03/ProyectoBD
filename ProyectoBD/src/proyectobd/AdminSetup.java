@@ -33,6 +33,13 @@ public class AdminSetup extends javax.swing.JDialog {
         setupAdmin = inicioSesionAd;
         this.getContentPane().setBackground(new Color(157,210,228));
     }
+     
+     public AdminSetup(RegistroDatos aThis, boolean modal, Conexion registroDatos) {
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = registroDatos;
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,7 +128,7 @@ public class AdminSetup extends javax.swing.JDialog {
                 regresarActionPerformed(evt);
             }
         });
-        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 110, -1));
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 110, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 193, 5));
         jButton2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -187,7 +194,8 @@ public class AdminSetup extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonRegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarPersonaActionPerformed
-       RegistroDatos iniRegistroDatos;
+       this.dispose();
+        RegistroDatos iniRegistroDatos;
          try {
              iniRegistroDatos = new RegistroDatos(this,true,setupAdmin);
              iniRegistroDatos.setVisible(true);
@@ -208,9 +216,10 @@ public class AdminSetup extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonModificarPersonaActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
-
         this.dispose();
-     
+        InicioSesionAdministrador ventaAdmin = new InicioSesionAdministrador(this,true,setupAdmin);
+        ventaAdmin.setVisible(true);
+
     }//GEN-LAST:event_regresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

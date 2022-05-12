@@ -283,9 +283,7 @@ public class EvaluaciónDocente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    MenuInicio menuInicio = new MenuInicio();
-    this.dispose();
-    menuInicio.setVisible(true);         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**

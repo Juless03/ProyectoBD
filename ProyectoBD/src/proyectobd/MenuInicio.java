@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -27,12 +28,10 @@ public class MenuInicio extends javax.swing.JFrame {
      */
     public MenuInicio() throws IOException {
         initComponents();
-        
         File pathToFile = new File("./imagenes/logo3.jpeg");
         BufferedImage bufferImage = ImageIO.read(pathToFile);
         ImageIcon imageIcon = new ImageIcon(bufferImage);
         jLabel1.setIcon(imageIcon);
-        
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -99,6 +98,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdministradorActionPerformed
+
        InicioSesionAdministrador iniAdministrador = new InicioSesionAdministrador(this,true,Conexion);
        iniAdministrador.setVisible(true);
        

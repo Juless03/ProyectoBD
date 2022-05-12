@@ -32,6 +32,13 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
         inicioSesionAd = elControlador;
         this.getContentPane().setBackground(new Color(157,210,228));
     }
+    
+    public InicioSesionAdministrador(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+        super(aThis, modal);
+        initComponents();
+        inicioSesionAd = setupAdmin;
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -131,7 +138,8 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         this.dispose();
-        // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**
