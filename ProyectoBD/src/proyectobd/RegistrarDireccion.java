@@ -7,10 +7,18 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.awt.Color;
+import static java.lang.System.out;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author paubo
+ * @author Juley
  */
 public class RegistrarDireccion extends javax.swing.JDialog {
     private Conexion registrarDireccion;
@@ -23,10 +31,12 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
-    public RegistrarDireccion(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+    public RegistrarDireccion(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         registrarDireccion = setupAdmin;
+        
+        registrarDireccion.getCanton(comBoxProvincia);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -118,11 +128,21 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         botonRegistrarCanton.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarCanton.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarCanton.setText("Registrar");
+        botonRegistrarCanton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarCantonActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonRegistrarCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 387, 100, -1));
 
         botonRegistrarDistrito.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarDistrito.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarDistrito.setText("Registrar");
+        botonRegistrarDistrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarDistritoActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonRegistrarDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 387, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -146,11 +166,21 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         botonRegistrarProvincia.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarProvincia.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarProvincia.setText("Registrar");
+        botonRegistrarProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarProvinciaActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonRegistrarProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 661, -1, -1));
 
         botonRegistrarPais.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarPais.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarPais.setText("Registrar");
+        botonRegistrarPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarPaisActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonRegistrarPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(905, 584, -1, -1));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
@@ -188,6 +218,68 @@ public class RegistrarDireccion extends javax.swing.JDialog {
     adminSetup.setVisible(true);          // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
+    private void botonRegistrarCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarCantonActionPerformed
+        int provincia = 0;
+        String provinciaNombre = (String) comBoxProvincia.getSelectedItem();
+        try{
+            provincia = registrarDireccion.getProvinceCode(provinciaNombre);
+        }catch (SQLException ex){
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            registrarDireccion.addCanton(cantonNombre.getText(), provincia);
+            JOptionPane.showMessageDialog(null,"Canton Agregado.");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+
+    }//GEN-LAST:event_botonRegistrarCantonActionPerformed
+
+    private void botonRegistrarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarProvinciaActionPerformed
+        int pais = 0;
+        String paisNombre = (String) comBoxPais.getSelectedItem();
+        try{
+            pais = registrarDireccion.getCountryCode(paisNombre);
+        }catch (SQLException ex){
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            registrarDireccion.addProvince(provinciaNombre.getText(), pais);
+            JOptionPane.showMessageDialog(null,"Provincia Agregada.");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }//GEN-LAST:event_botonRegistrarProvinciaActionPerformed
+
+    private void botonRegistrarDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarDistritoActionPerformed
+        int canton = 0;
+        String cantonNombre = (String) comBoxCanton.getSelectedItem();
+        try{
+            canton = registrarDireccion.getCantonCode(cantonNombre);
+        }catch (SQLException ex){
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            registrarDireccion.addDistrict(distritoNombre.getText(), canton);
+            JOptionPane.showMessageDialog(null,"Distrito Agregada.");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }//GEN-LAST:event_botonRegistrarDistritoActionPerformed
+
+    private void botonRegistrarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarPaisActionPerformed
+        try {
+            registrarDireccion.addCountry(paisNombre.getText());
+            JOptionPane.showMessageDialog(null,"País Agregado.");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botonRegistrarPaisActionPerformed
+    
+   
     /**
      * @param args the command line arguments
      */

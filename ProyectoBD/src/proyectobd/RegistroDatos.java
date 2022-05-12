@@ -290,6 +290,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         // Genero
         int Genero = 0;
         String GeneroNombre = (String) botonGenero.getSelectedItem();
