@@ -276,9 +276,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,modificarEvaluaciones);
-    this.dispose();
-    adminSetup.setVisible(true);           // TODO add your handling code here:
+    this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**

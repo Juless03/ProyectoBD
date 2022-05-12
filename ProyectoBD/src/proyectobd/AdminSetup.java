@@ -33,75 +33,6 @@ public class AdminSetup extends javax.swing.JDialog {
         setupAdmin = inicioSesionAd;
         this.getContentPane().setBackground(new Color(157,210,228));
     }
-     public AdminSetup(ConsultarEstadisticas aThis, boolean modal, Conexion consultarEstadisticas) {
-        super(aThis, modal);
-        initComponents();
-        setupAdmin = consultarEstadisticas;
-        this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(ModificarCursos aThis, boolean modal, Conexion modificarCurso) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = modificarCurso;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(ModificarDireccion aThis, boolean modal, Conexion modificarDireccion) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = modificarDireccion;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(ModificarEvaluaciones aThis, boolean modal, Conexion modificarEvaluaciones) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = modificarEvaluaciones;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(RegistrarCursos aThis, boolean modal, Conexion registrarCursos) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = registrarCursos;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(RegistrarDireccion aThis, boolean modal, Conexion registrarDireccion) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = registrarDireccion;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(RegistrarEvaluaciones aThis, boolean modal, Conexion registrarEvaluaciones) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = registrarEvaluaciones;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(RegistroDatos aThis, boolean modal, Conexion registroDatos) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = registroDatos;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(ModificarDatos aThis, boolean modal, Conexion modificarDatos) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = modificarDatos;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    AdminSetup(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) {
-       super(aThis, modal);
-       initComponents();
-       setupAdmin = inicioEstudiante;
-       this.getContentPane().setBackground(new Color(157,210,228));
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -117,7 +48,7 @@ public class AdminSetup extends javax.swing.JDialog {
         BotonEstadisticas = new javax.swing.JButton();
         BotonEstudiantes = new javax.swing.JButton();
         BotonProfesores = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -182,15 +113,15 @@ public class AdminSetup extends javax.swing.JDialog {
         });
         getContentPane().add(BotonProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 253, 200, -1));
 
-        jButton6.setBackground(new java.awt.Color(255, 193, 5));
-        jButton6.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jButton6.setText("Regresar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        regresar.setBackground(new java.awt.Color(255, 193, 5));
+        regresar.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        regresar.setText("Regresar");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                regresarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 110, -1));
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 110, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 193, 5));
         jButton2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -267,69 +198,69 @@ public class AdminSetup extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonRegistrarPersonaActionPerformed
 
     private void BotonModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarPersonaActionPerformed
-    ModificarDatos modificarDatos = new ModificarDatos(this,true,setupAdmin);
-    this.dispose();
-    modificarDatos.setVisible(true);         
+        ModificarDatos ventanaModificarDatos = null;
+         try {
+             ventanaModificarDatos = new ModificarDatos(this,true,setupAdmin);
+         } catch (SQLException ex) {
+             Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        ventanaModificarDatos.setVisible(true);
     }//GEN-LAST:event_BotonModificarPersonaActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-    InicioSesionAdministrador inicioSesionAdministrador = new InicioSesionAdministrador(this,true,setupAdmin);
-    this.dispose();
-    inicioSesionAdministrador.setVisible(true);     
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+
+        this.dispose();
+     
+    }//GEN-LAST:event_regresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    RegistrarCursos registrarCursos = new RegistrarCursos(this,true,setupAdmin);
-    this.dispose();
-    registrarCursos.setVisible(true);   
+        RegistrarCursos registrarCursos = new RegistrarCursos(this,true,setupAdmin);
+        registrarCursos.setVisible(true);   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    ModificarCursos modificarCursos = new ModificarCursos(this,true,setupAdmin);
-    this.dispose();
+    ModificarCursos modificarCursos = null;
+         try {
+             modificarCursos = new ModificarCursos(this,true,setupAdmin);
+         } catch (SQLException ex) {
+             Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
+         }
     modificarCursos.setVisible(true);      
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    RegistrarEvaluaciones registrarEvaluaciones = new RegistrarEvaluaciones(this,true,setupAdmin);
-    this.dispose();
-    registrarEvaluaciones.setVisible(true);         
+        RegistrarEvaluaciones registrarEvaluaciones = new RegistrarEvaluaciones(this,true,setupAdmin);
+        registrarEvaluaciones.setVisible(true);         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    RegistrarDireccion registrarDireccion = new RegistrarDireccion(this,true,setupAdmin);
-    this.dispose();
-    registrarDireccion.setVisible(true);     
+        RegistrarDireccion registrarDireccion = new RegistrarDireccion(this,true,setupAdmin);
+        registrarDireccion.setVisible(true);     
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    ModificarEvaluaciones modificarEvaluaciones = new ModificarEvaluaciones(this,true,setupAdmin);
-    this.dispose();
-    modificarEvaluaciones.setVisible(true);       
+        ModificarEvaluaciones modificarEvaluaciones = new ModificarEvaluaciones(this,true,setupAdmin);
+        modificarEvaluaciones.setVisible(true);       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-    ModificarDireccion modificarDireccion = new ModificarDireccion(this,true,setupAdmin);
-    this.dispose();
-    modificarDireccion.setVisible(true);   
+        ModificarDireccion modificarDireccion = new ModificarDireccion(this,true,setupAdmin);
+        modificarDireccion.setVisible(true);   
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void BotonEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstadisticasActionPerformed
-    ConsultarEstadisticas consultarEstadisticas = new ConsultarEstadisticas(this,true,setupAdmin);
-    this.dispose();
-    consultarEstadisticas.setVisible(true);      
+        ConsultarEstadisticas consultarEstadisticas = new ConsultarEstadisticas(this,true,setupAdmin);
+        consultarEstadisticas.setVisible(true);      
     }//GEN-LAST:event_BotonEstadisticasActionPerformed
 
     private void BotonEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesActionPerformed
-    InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,setupAdmin);
-    this.dispose();
-    inicioEstudiante.setVisible(true);      
+        InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,setupAdmin);
+        inicioEstudiante.setVisible(true);      
     }//GEN-LAST:event_BotonEstudiantesActionPerformed
 
     private void BotonProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProfesoresActionPerformed
-    EvaluaciónDocente evaluaciónDocente = new EvaluaciónDocente(this,true,setupAdmin);
-    this.dispose();
-    evaluaciónDocente.setVisible(true);   
+        EvaluaciónDocente evaluaciónDocente = new EvaluaciónDocente(this,true,setupAdmin);
+        evaluaciónDocente.setVisible(true);   
     }//GEN-LAST:event_BotonProfesoresActionPerformed
 
     /**
@@ -385,8 +316,8 @@ public class AdminSetup extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

@@ -183,9 +183,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
     }//GEN-LAST:event_distritoNombreActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,registrarDireccion);
-    this.dispose();
-    adminSetup.setVisible(true);          // TODO add your handling code here:
+    this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**

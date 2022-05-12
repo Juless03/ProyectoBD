@@ -92,15 +92,13 @@ public class MenuInicio extends javax.swing.JFrame {
 
     private void botonAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdministradorActionPerformed
        InicioSesionAdministrador iniAdministrador = new InicioSesionAdministrador(this,true,Conexion);
-       this.dispose();
        iniAdministrador.setVisible(true);
        
     }//GEN-LAST:event_botonAdministradorActionPerformed
 
     private void botonProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProfesorActionPerformed
-    EvaluaciónDocente evaluacionDocente = new EvaluaciónDocente(this,true,Conexion);
-    this.dispose();
-    evaluacionDocente.setVisible(true);        // TODO add your handling code here:
+        EvaluaciónDocente evaluacionDocente = new EvaluaciónDocente(this,true,Conexion);
+        evaluacionDocente.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonProfesorActionPerformed
 
     private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
