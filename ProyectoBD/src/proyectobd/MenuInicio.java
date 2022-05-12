@@ -9,6 +9,9 @@ import ConexionSQL.Conexion;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -22,8 +25,14 @@ public class MenuInicio extends javax.swing.JFrame {
     /**
      * Creates new form MenuInicio
      */
-    public MenuInicio() {
+    public MenuInicio() throws IOException {
         initComponents();
+        
+        File pathToFile = new File("./imagenes/logo3.jpeg");
+        BufferedImage bufferImage = ImageIO.read(pathToFile);
+        ImageIcon imageIcon = new ImageIcon(bufferImage);
+        jLabel1.setIcon(imageIcon);
+        
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -60,8 +69,7 @@ public class MenuInicio extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 14));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\paubo\\Downloads\\Logo.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 589, 532));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 530, 440));
 
         botonProfesor.setBackground(new java.awt.Color(255, 193, 5));
         botonProfesor.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -134,8 +142,13 @@ public class MenuInicio extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new MenuInicio().setVisible(true);
+                try {
+                    new MenuInicio().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuInicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
