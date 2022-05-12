@@ -112,12 +112,12 @@ public class AdminSetup extends javax.swing.JDialog {
         BotonEstudiantes = new javax.swing.JButton();
         BotonProfesores = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BotonRegistrarCursos = new javax.swing.JButton();
+        BotonRegistrarEvaluaciones = new javax.swing.JButton();
         BotonRegistrarDireccion = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        BotonModificarCursos = new javax.swing.JButton();
+        BotonModificarEvaluaciones = new javax.swing.JButton();
+        BotonModificarDireccion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,25 +186,25 @@ public class AdminSetup extends javax.swing.JDialog {
         });
         getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 110, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 193, 5));
-        jButton2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jButton2.setText("Registrar Cursos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotonRegistrarCursos.setBackground(new java.awt.Color(255, 193, 5));
+        BotonRegistrarCursos.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        BotonRegistrarCursos.setText("Registrar Cursos");
+        BotonRegistrarCursos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotonRegistrarCursosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 210, 200, -1));
+        getContentPane().add(BotonRegistrarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 210, 200, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 193, 5));
-        jButton1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jButton1.setText("Registrar Evaluaciones");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonRegistrarEvaluaciones.setBackground(new java.awt.Color(255, 193, 5));
+        BotonRegistrarEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        BotonRegistrarEvaluaciones.setText("Registrar Evaluaciones");
+        BotonRegistrarEvaluaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonRegistrarEvaluacionesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 253, 200, -1));
+        getContentPane().add(BotonRegistrarEvaluaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 253, 200, -1));
 
         BotonRegistrarDireccion.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrarDireccion.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -216,35 +216,35 @@ public class AdminSetup extends javax.swing.JDialog {
         });
         getContentPane().add(BotonRegistrarDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 296, 200, -1));
 
-        jButton4.setBackground(new java.awt.Color(255, 193, 5));
-        jButton4.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jButton4.setText("Modificar Cursos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificarCursos.setBackground(new java.awt.Color(255, 193, 5));
+        BotonModificarCursos.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        BotonModificarCursos.setText("Modificar Cursos");
+        BotonModificarCursos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BotonModificarCursosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 200, -1));
+        getContentPane().add(BotonModificarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 200, -1));
 
-        jButton5.setBackground(new java.awt.Color(255, 193, 5));
-        jButton5.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jButton5.setText("Modificar Evaluaciones");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificarEvaluaciones.setBackground(new java.awt.Color(255, 193, 5));
+        BotonModificarEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        BotonModificarEvaluaciones.setText("Modificar Evaluaciones");
+        BotonModificarEvaluaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                BotonModificarEvaluacionesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 253, 200, -1));
+        getContentPane().add(BotonModificarEvaluaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 253, 200, -1));
 
-        jButton7.setBackground(new java.awt.Color(255, 193, 5));
-        jButton7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
-        jButton7.setText("Modificar Dirección");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificarDireccion.setBackground(new java.awt.Color(255, 193, 5));
+        BotonModificarDireccion.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        BotonModificarDireccion.setText("Modificar Dirección");
+        BotonModificarDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                BotonModificarDireccionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 296, 200, -1));
+        getContentPane().add(BotonModificarDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 296, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,7 +279,7 @@ public class AdminSetup extends javax.swing.JDialog {
 
     }//GEN-LAST:event_regresarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BotonRegistrarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarCursosActionPerformed
         this.dispose();
         RegistrarCursos registrarCursos = null;
          try {
@@ -288,9 +288,9 @@ public class AdminSetup extends javax.swing.JDialog {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
          }
         registrarCursos.setVisible(true);   
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BotonRegistrarCursosActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BotonModificarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarCursosActionPerformed
     this.dispose();
         ModificarCursos modificarCursos = null;
          try {
@@ -299,9 +299,9 @@ public class AdminSetup extends javax.swing.JDialog {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
          }
     modificarCursos.setVisible(true);      
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BotonModificarCursosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotonRegistrarEvaluacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarEvaluacionesActionPerformed
         this.dispose();
         RegistrarEvaluaciones registrarEvaluaciones = null;
          try {
@@ -310,7 +310,7 @@ public class AdminSetup extends javax.swing.JDialog {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
          }
         registrarEvaluaciones.setVisible(true);         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotonRegistrarEvaluacionesActionPerformed
 
     private void BotonRegistrarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarDireccionActionPerformed
     this.dispose();
@@ -323,7 +323,7 @@ public class AdminSetup extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BotonRegistrarDireccionActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void BotonModificarEvaluacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarEvaluacionesActionPerformed
         this.dispose();
         ModificarEvaluaciones modificarEvaluaciones = null;
          try {
@@ -332,9 +332,9 @@ public class AdminSetup extends javax.swing.JDialog {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
          }
         modificarEvaluaciones.setVisible(true);       
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_BotonModificarEvaluacionesActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void BotonModificarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarDireccionActionPerformed
         this.dispose();
         ModificarDireccion modificarDireccion = null;
          try {
@@ -343,7 +343,7 @@ public class AdminSetup extends javax.swing.JDialog {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
          }
         modificarDireccion.setVisible(true);   
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_BotonModificarDireccionActionPerformed
 
     private void BotonEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstadisticasActionPerformed
         this.dispose();
@@ -408,15 +408,15 @@ public class AdminSetup extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEstadisticas;
     private javax.swing.JButton BotonEstudiantes;
+    private javax.swing.JButton BotonModificarCursos;
+    private javax.swing.JButton BotonModificarDireccion;
+    private javax.swing.JButton BotonModificarEvaluaciones;
     private javax.swing.JButton BotonModificarPersona;
     private javax.swing.JButton BotonProfesores;
+    private javax.swing.JButton BotonRegistrarCursos;
     private javax.swing.JButton BotonRegistrarDireccion;
+    private javax.swing.JButton BotonRegistrarEvaluaciones;
     private javax.swing.JButton BotonRegistrarPersona;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables

@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,7 +63,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         sxgReview = new javax.swing.JTextField();
         botonRegistrarEstudianteGrupo = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonRegresar = new javax.swing.JButton();
         combBoxProfesores = new javax.swing.JComboBox<>();
         comBoxCurso = new javax.swing.JComboBox<>();
         comBoxEstudiantes = new javax.swing.JComboBox<>();
@@ -91,6 +92,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
         botonRegistrarCurso.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarCurso.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarCurso.setText("Registrar");
+        botonRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarCursoActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonRegistrarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 357, 100, -1));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -130,6 +136,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
         BotonRegistrarGrupo.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrarGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonRegistrarGrupo.setText("Registrar");
+        BotonRegistrarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarGrupoActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonRegistrarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(718, 505, 100, -1));
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -146,17 +157,22 @@ public class RegistrarCursos extends javax.swing.JDialog {
         botonRegistrarEstudianteGrupo.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarEstudianteGrupo.setText("Registrar");
-        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1064, 357, 100, -1));
-
-        jButton2.setBackground(new java.awt.Color(255, 193, 5));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Regresar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonRegistrarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonRegistrarEstudianteGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 696, 100, -1));
+        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1064, 357, 100, -1));
+
+        botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botonRegresar.setText("Regresar");
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 696, 100, -1));
 
         combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         combBoxProfesores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -173,7 +189,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
     this.dispose();
     AdminSetup ventaAdminSetup = null;
         try {
@@ -182,7 +198,24 @@ public class RegistrarCursos extends javax.swing.JDialog {
             Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
         }
     ventaAdminSetup.setVisible(true); 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void botonRegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarCursoActionPerformed
+        try {
+            registrarCursos.addCourse(Integer.parseInt(cursoCreditos.getText()), nombreCurso.getText());
+            JOptionPane.showMessageDialog(null,"Curso Agregado.");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botonRegistrarCursoActionPerformed
+
+    private void BotonRegistrarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonRegistrarGrupoActionPerformed
+
+    private void botonRegistrarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEstudianteGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonRegistrarEstudianteGrupoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,13 +263,13 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private javax.swing.JButton BotonRegistrarGrupo;
     private javax.swing.JButton botonRegistrarCurso;
     private javax.swing.JButton botonRegistrarEstudianteGrupo;
+    private javax.swing.JButton botonRegresar;
     private javax.swing.JComboBox<String> comBoxCurso;
     private javax.swing.JComboBox<String> comBoxEstudiantes;
     private javax.swing.JComboBox<String> combBoxProfesores;
     private javax.swing.JTextField cursoCreditos;
     private javax.swing.JTextField grupoAño;
     private javax.swing.JTextField grupoSemestre;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

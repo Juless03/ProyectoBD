@@ -7,11 +7,7 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.awt.Color;
-import static java.lang.System.out;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,7 +31,6 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         registrarDireccion = setupAdmin;
-        
         registrarDireccion.getCanton(comBoxProvincia);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
