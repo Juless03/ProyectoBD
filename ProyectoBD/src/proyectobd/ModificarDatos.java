@@ -38,12 +38,7 @@ public class ModificarDatos extends javax.swing.JDialog {
         initComponents();
         titulo1.setVisible(false);
         botonTexto1.setEnabled(false);
-        segundoNombreTitulo.setVisible(false);
-        botonTexto2.setVisible(false);
-        primerApellidoTitulo.setVisible(false);
         botonTexto3.setVisible(false);
-        segundoApellidoTitulo.setVisible(false);
-        botonTexto4.setVisible(false);
         botonModificar.setEnabled(false);
         comboBoxGeneral.setVisible(false);
         botonFotoSeleccionada.setVisible(false);
@@ -51,33 +46,22 @@ public class ModificarDatos extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
       
     }
-    
-    public ModificarDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+
+    public ModificarDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         modificarDatos = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
-    public ModificarDatos(RegistroDatos aThis, boolean modal, Conexion registroDatos) throws SQLException {
-        super(aThis, modal);
-        initComponents();
-        modificarDatos = registroDatos;
-        
         titulo1.setVisible(false);
-        botonTexto1.setEnabled(false);
-        segundoNombreTitulo.setVisible(false);
-        botonTexto2.setVisible(false);
-        primerApellidoTitulo.setVisible(false);
+        botonTexto1.setVisible(false);
         botonTexto3.setVisible(false);
-        segundoApellidoTitulo.setVisible(false);
-        botonTexto4.setVisible(false);
         botonModificar.setEnabled(false);
         comboBoxGeneral.setVisible(false);
         botonFotoSeleccionada.setVisible(false);
         botonSeleccionarFoto.setVisible(false);
         modificarDatos.getPerson(botonPersonas);
+        comboBoxNombres.setVisible(false);
         this.getContentPane().setBackground(new Color(157,210,228));
+
     }
 
     /**
@@ -89,18 +73,14 @@ public class ModificarDatos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         botonPersonas = new javax.swing.JComboBox<>();
         botonOpcionModificar = new javax.swing.JComboBox<>();
-        botonTexto4 = new javax.swing.JTextField();
         botonModificar = new javax.swing.JButton();
         botonSeleccionar = new javax.swing.JButton();
         titulo1 = new javax.swing.JLabel();
-        segundoNombreTitulo = new javax.swing.JLabel();
-        primerApellidoTitulo = new javax.swing.JLabel();
-        segundoApellidoTitulo = new javax.swing.JLabel();
         botonTexto1 = new javax.swing.JTextField();
-        botonTexto2 = new javax.swing.JTextField();
         botonTexto3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         comboBoxGeneral = new javax.swing.JComboBox<>();
@@ -108,6 +88,9 @@ public class ModificarDatos extends javax.swing.JDialog {
         botonFotoSeleccionada = new javax.swing.JLabel();
         botonRegresar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        comboBoxNombres = new javax.swing.JComboBox<>();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,9 +105,6 @@ public class ModificarDatos extends javax.swing.JDialog {
         botonOpcionModificar.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         botonOpcionModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Genero", "Distrito", "Fecha de nacimiento", "Foto" }));
         getContentPane().add(botonOpcionModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 160, 50));
-
-        botonTexto4.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonTexto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 550, 218, 39));
 
         botonModificar.setBackground(new java.awt.Color(255, 193, 5));
         botonModificar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -144,31 +124,13 @@ public class ModificarDatos extends javax.swing.JDialog {
                 botonSeleccionarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 100, 50));
+        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 120, 50));
 
         titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 240, 22));
-
-        segundoNombreTitulo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        segundoNombreTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        segundoNombreTitulo.setText("Segundo Nombre");
-        getContentPane().add(segundoNombreTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 118, -1));
-
-        primerApellidoTitulo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        primerApellidoTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        primerApellidoTitulo.setText("Primer Apellido");
-        getContentPane().add(primerApellidoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 110, -1));
-
-        segundoApellidoTitulo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        segundoApellidoTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        segundoApellidoTitulo.setText("Segundo Apellido");
-        getContentPane().add(segundoApellidoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, 130, 30));
+        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 550, 22));
 
         botonTexto1.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 218, 39));
-
-        botonTexto2.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 218, 39));
+        getContentPane().add(botonTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 218, 39));
 
         botonTexto3.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         getContentPane().add(botonTexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 218, 39));
@@ -182,7 +144,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                 comboBoxGeneralActionPerformed(evt);
             }
         });
-        getContentPane().add(comboBoxGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 210, 50));
+        getContentPane().add(comboBoxGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 210, 50));
 
         botonSeleccionarFoto.setText("Seleccionar Foto");
         botonSeleccionarFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +155,7 @@ public class ModificarDatos extends javax.swing.JDialog {
         getContentPane().add(botonSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 130, 60));
 
         botonFotoSeleccionada.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(botonFotoSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 190, 180));
+        getContentPane().add(botonFotoSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 190, 180));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -209,6 +171,9 @@ public class ModificarDatos extends javax.swing.JDialog {
         jLabel3.setText("Modificar Datos");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
+        comboBoxNombres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido" }));
+        getContentPane().add(comboBoxNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 140, 60));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,6 +185,8 @@ public class ModificarDatos extends javax.swing.JDialog {
         String primerApellido = nombrePartes[2];
         String segundoApellido = nombrePartes[3];
         int idPersona = 0;
+        boolean validandoFecha = false;
+        //boolean validandoFec
         try {
             idPersona = modificarDatos.getPersonID(primerNombre,segundoNombre,primerApellido,segundoApellido);
         } catch (SQLException ex) {
@@ -228,13 +195,62 @@ public class ModificarDatos extends javax.swing.JDialog {
         
         String Modificar = botonOpcionModificar.getSelectedItem().toString();
         if(Modificar == "Nombre"){
-            try {
-                modificarDatos.updatePersonName(idPersona, botonTexto1.getText(), botonTexto2.getText(), botonTexto3.getText(), botonTexto4.getText());
-                JOptionPane.showMessageDialog(null,"Nombre Modificado!");
-                this.dispose();
-            } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
-            }  
+            String TipoNombre = comboBoxNombres.getSelectedItem().toString();
+            String Dato = botonTexto3.getText().toString();
+           if(TipoNombre == "Primer Nombre"){
+               if(botonTexto3.getText().isEmpty()){
+                   JOptionPane.showMessageDialog(null,"No se ha modificado nada!\n El campo está vacio");
+               } else {
+                   try {
+                       modificarDatos.updatePersonFirstName(idPersona,Dato);
+                   } catch (SQLException ex) {
+                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   JOptionPane.showMessageDialog(null,"Persona Modificada");
+                   this.dispose();
+               }
+           }
+           if(TipoNombre == "Segundo Nombre"){
+               if(botonTexto3.getText().isEmpty()){
+                   JOptionPane.showMessageDialog(null,"No se ha modificado nada!\n El campo está vacio");
+               } else {
+                   
+                   try {
+                       modificarDatos.updatePersonMiddleName(idPersona,Dato);
+                   } catch (SQLException ex) {
+                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   JOptionPane.showMessageDialog(null,"Persona Modificada");
+                   this.dispose();
+               }
+           }
+            if(TipoNombre == "Primer Apellido"){
+               if(botonTexto3.getText().isEmpty()){
+                   JOptionPane.showMessageDialog(null,"No se ha modificado nada!\n El campo está vacio");
+               } else {
+                   
+                   try {
+                       modificarDatos.updatePersonFirstLastName(idPersona,Dato);
+                   } catch (SQLException ex) {
+                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   JOptionPane.showMessageDialog(null,"Persona Modificada");
+                   this.dispose();
+               }
+           }
+            if(TipoNombre == "Segundo Apellido"){
+               if(botonTexto3.getText().isEmpty()){
+                   JOptionPane.showMessageDialog(null,"No se ha modificado nada!\n El campo está vacio");
+               } else {
+                   try {
+                       modificarDatos.updatePersonSecondLastName(idPersona,Dato);
+                   } catch (SQLException ex) {
+                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   JOptionPane.showMessageDialog(null,"Persona Modificada");
+                   this.dispose();
+               }
+           }
         }
         
         if(Modificar == "Genero"){
@@ -272,24 +288,67 @@ public class ModificarDatos extends javax.swing.JDialog {
             }
         }
         if(Modificar == "Fecha de nacimiento"){
+           if(botonTexto1.getText().isEmpty()){
+               JOptionPane.showMessageDialog(null,"No se ha modificado nada!\nTodos el espacio de fecha está vacio");
+            } else {
+                    String FechaNacimientoClienteRegistro = botonTexto1.getText();
+                    String[] partesFecha = FechaNacimientoClienteRegistro.split("/");
+                    String ParteDia = partesFecha[0];
+                    String ParteMes = partesFecha[1];
+                    String ParteAños = partesFecha[2];
+                    int parte1int = Integer.parseInt(ParteDia);
+                    int parte2int = Integer.parseInt(ParteMes);
+                    int parte3int = Integer.parseInt(ParteAños);
+                    if(ParteDia.length() != 2 || ParteMes.length() != 2 || ParteAños.length() != 4){
+                            JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nError en el formato.");  
+                        } else {
+                            if(parte1int != 00){
+                              if(parte1int > 0 && parte1int <= 31){
+                                if(parte2int > 0 && parte2int <= 12){
+                                   if(parte3int > 1800 && parte3int < 2022){
+                                     validandoFecha = true;
+                                    } else {
+                                    JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nEl año debe estar entre 1800 y 2022");
+                                    validandoFecha = false;   
+                                    }
+                                } else{
+                                    JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \n El nes debe estar entre 1 y 12");
+                                    validandoFecha = false;
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nEl día debe estar entre entre 1 y 31");
+                                validandoFecha = false;}
+                            } else {
+                            JOptionPane.showMessageDialog(null,"Error en Fecha DE Nacimiento \nDía debe estar entre 1 y 31");
+                                validandoFecha = false;
+                            }
+                    }
+                    if(validandoFecha){
+                    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                    Date FechaDate = null;
+                    try {
+                        FechaDate = formatoFecha.parse(botonTexto1.getText());
+                    } catch (ParseException ex) {
+                        Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    java.sql.Date FechaNacimiento = new java.sql.Date(FechaDate.getTime());
+
+                    try {
+                         modificarDatos.updatePersonBirthday(idPersona, FechaNacimiento);
+                         JOptionPane.showMessageDialog(null,"Fecha de nacimiento modificada!"); 
+                         this.dispose();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                     } else {
+                        JOptionPane.showMessageDialog(null,"Error!\nFecha no actualizada!"); 
+                    }
+                    
+            } 
+          }
             
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        Date FechaDate = null;
-        try {
-            FechaDate = formatoFecha.parse(botonTexto1.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        java.sql.Date FechaNacimiento = new java.sql.Date(FechaDate.getTime());
-        
-        try {
-             modificarDatos.updatePersonBirthday(idPersona, FechaNacimiento);
-             JOptionPane.showMessageDialog(null,"Fecha de nacimiento modificada!"); 
-             this.dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+       
         if(Modificar == "Foto"){
             try {
                 modificarDatos.escribeImagenEnBBDD(idPersona,mImagen);
@@ -307,21 +366,17 @@ public class ModificarDatos extends javax.swing.JDialog {
         String opcionSeleccionada = botonOpcionModificar.getSelectedItem().toString();
         if(opcionSeleccionada == "Nombre"){
             titulo1.setVisible(false);
-            titulo1.setText("Primer Nombre");
+            titulo1.setText("Seleccione el dato que desea modificar");
             titulo1.setVisible(true);
-            botonTexto1.setEnabled(true);
-            botonTexto1.setVisible(true);
-            segundoNombreTitulo.setVisible(true);
-            botonTexto2.setVisible(true);
-            primerApellidoTitulo.setVisible(true);
+            comboBoxNombres.setVisible(true);
             botonTexto3.setVisible(true);
-            segundoApellidoTitulo.setVisible(true);
-            botonTexto4.setVisible(true);
             botonModificar.setEnabled(true);
             //Apagar ComboBox
             comboBoxGeneral.setVisible(false);
             botonFotoSeleccionada.setVisible(false);
             botonSeleccionarFoto.setVisible(false);
+            botonTexto1.setVisible(false);
+            
 
         }
          if(opcionSeleccionada == "Genero"){
@@ -340,16 +395,13 @@ public class ModificarDatos extends javax.swing.JDialog {
            
             //Apagar Botones y Texto
             botonTexto1.setVisible(false);
-            segundoNombreTitulo.setVisible(false);
-            botonTexto2.setVisible(false);
-            primerApellidoTitulo.setVisible(false);
             botonTexto3.setVisible(false);
-            segundoApellidoTitulo.setVisible(false);
-            botonTexto4.setVisible(false);
             botonFotoSeleccionada.setVisible(false);
             botonSeleccionarFoto.setVisible(false);
+            comboBoxNombres.setVisible(false);
         }
          if(opcionSeleccionada == "Distrito"){
+            
              titulo1.setVisible(false);
              titulo1.setText("Seleccione el nuevo distrito");
              titulo1.setVisible(true);
@@ -365,34 +417,26 @@ public class ModificarDatos extends javax.swing.JDialog {
 
             //Apagar Botones y Texto
             botonTexto1.setVisible(false);
-            segundoNombreTitulo.setVisible(false);
-            botonTexto2.setVisible(false);
-            primerApellidoTitulo.setVisible(false);
             botonTexto3.setVisible(false);
-            segundoApellidoTitulo.setVisible(false);
-            botonTexto4.setVisible(false);
             botonFotoSeleccionada.setVisible(false);
              botonSeleccionarFoto.setVisible(false);
-
+              comboBoxNombres.setVisible(false);
         }
           if(opcionSeleccionada == "Fecha de nacimiento"){
              titulo1.setVisible(false);
              titulo1.setText("Formato fecha nacimiento DD/MM/YYYY");
              titulo1.setVisible(true);
+             botonModificar.setEnabled(true);
              botonTexto1.setVisible(true);
              botonTexto1.setEnabled(true);
              //Activar boton principal modifcar
             // Apagar Botones y texto
-            segundoNombreTitulo.setVisible(false);
-            botonTexto2.setVisible(false);
-            primerApellidoTitulo.setVisible(false);
             botonTexto3.setVisible(false);
-            segundoApellidoTitulo.setVisible(false);
-            botonTexto4.setVisible(false);
             botonFotoSeleccionada.setVisible(false);
              botonSeleccionarFoto.setVisible(false);
             // Apagar Combobox
             comboBoxGeneral.setVisible(false);
+            comboBoxNombres.setVisible(false);
         }
             if(opcionSeleccionada == "Foto"){
              botonModificar.setEnabled(false);
@@ -401,21 +445,15 @@ public class ModificarDatos extends javax.swing.JDialog {
             // Apagar Botones y texto
             titulo1.setVisible(false);
             botonTexto1.setVisible(false);
-            segundoNombreTitulo.setVisible(false);
-            botonTexto2.setVisible(false);
-            primerApellidoTitulo.setVisible(false);
             botonTexto3.setVisible(false);
-            segundoApellidoTitulo.setVisible(false);
-            botonTexto4.setVisible(false);
             // Apagar Combobox
             comboBoxGeneral.setVisible(false);
+            comboBoxNombres.setVisible(false);
         }
     }//GEN-LAST:event_botonSeleccionarActionPerformed
 
     private void comboBoxGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGeneralActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,modificarDatos);
-    this.dispose();
-    adminSetup.setVisible(true);     
+
     }//GEN-LAST:event_comboBoxGeneralActionPerformed
 
     private void botonSeleccionarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarFotoActionPerformed
@@ -440,9 +478,7 @@ public class ModificarDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonSeleccionarFotoActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,modificarDatos);
-    this.dispose();
-    adminSetup.setVisible(true);    
+        this.setVisible(false);
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**
@@ -496,16 +532,13 @@ public class ModificarDatos extends javax.swing.JDialog {
     private javax.swing.JButton botonSeleccionar;
     private javax.swing.JButton botonSeleccionarFoto;
     private javax.swing.JTextField botonTexto1;
-    private javax.swing.JTextField botonTexto2;
     private javax.swing.JTextField botonTexto3;
-    private javax.swing.JTextField botonTexto4;
     private javax.swing.JComboBox<String> comboBoxGeneral;
+    private javax.swing.JComboBox<String> comboBoxNombres;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel primerApellidoTitulo;
-    private javax.swing.JLabel segundoApellidoTitulo;
-    private javax.swing.JLabel segundoNombreTitulo;
     private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
 }

@@ -74,7 +74,6 @@ public class RegistroDatos extends javax.swing.JDialog {
         botonDistrito = new javax.swing.JComboBox<>();
         BotonRegistrar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        botonModificar = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -152,13 +151,6 @@ public class RegistroDatos extends javax.swing.JDialog {
 
         jLabel8.setText("DD/MM/YYYY");
 
-        botonModificar.setText("Modificar");
-        botonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,9 +158,7 @@ public class RegistroDatos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(232, 232, 232)
+                        .addGap(419, 419, 419)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(366, 366, 366)
@@ -217,14 +207,9 @@ public class RegistroDatos extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(8, 8, 8)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel1)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,9 +255,7 @@ public class RegistroDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_PrimerNombreActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,registroDatos);
-    this.dispose();
-    adminSetup.setVisible(true);          
+        this.setVisible(false);        
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     private void botonGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneroActionPerformed
@@ -281,8 +264,71 @@ public class RegistroDatos extends javax.swing.JDialog {
 
     private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
         String Categoria = botonCategoria.getSelectedItem().toString();
-      
-        // Distrito
+        boolean validandoPrimerNombre = false;
+        boolean validandoPrimerApellido = false;
+        boolean validandoFomatoFecha = false;
+        java.sql.Date FechaNacimientoValidada = null;
+        
+        if(PrimerNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error: \n El campo Primer Nombre está vacio.");  
+         } else {
+            validandoPrimerNombre = true;
+        }
+        // Validando primer apellido no es vacio
+        if(PrimerApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error: \n El campo Primer Apellido está vacio.");  
+         } else {
+            validandoPrimerApellido = true;
+        }
+          // //Fecha
+        if(FechaNacimiento.getText().isEmpty()){   
+            validandoFomatoFecha = true;
+        } else {
+            String FechaNacimientoClienteRegistro = FechaNacimiento.getText();
+            String[] partesFecha = FechaNacimientoClienteRegistro.split("/");
+            String ParteDia = partesFecha[0];
+            String ParteMes = partesFecha[1];
+            String ParteAños = partesFecha[2];
+            int parte1int = Integer.parseInt(ParteDia);
+            int parte2int = Integer.parseInt(ParteMes);
+            int parte3int = Integer.parseInt(ParteAños);
+            if(ParteDia.length() != 2 || ParteMes.length() != 2 || ParteAños.length() != 4){
+                    JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nError en el formato.");  
+             } else {
+                    if(parte1int != 00){
+                      if(parte1int > 0 && parte1int <= 31){
+                        if(parte2int > 0 && parte2int <= 12){
+                           if(parte3int > 1800 && parte3int < 2022){
+                             validandoFomatoFecha = true;
+                            } else {
+                            JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nEl año debe estar entre 1800 y 2022");
+                            validandoFomatoFecha = false;   
+                            }
+                        } else{
+                            JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \n El nes debe estar entre 1 y 12");
+                            validandoFomatoFecha = false;
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nEl día debe estar entre entre 1 y 31");
+                        validandoFomatoFecha = false;}
+                    } else {
+                    JOptionPane.showMessageDialog(null,"Error en Fecha DE Nacimiento \nDía debe estar entre 1 y 31");
+                        validandoFomatoFecha = false;
+                    }
+                } 
+            if(validandoFomatoFecha){
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                Date FechaDate = null;
+                try {
+                    FechaDate = formatoFecha.parse(FechaNacimiento.getText());
+                } catch (ParseException ex) {
+                    Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                FechaNacimientoValidada = new java.sql.Date(FechaDate.getTime());   
+            }
+        }
+
+         // Distrito
         int Distrito = 0;
         String DistritoNombre = (String) botonDistrito.getSelectedItem();
         try {
@@ -299,53 +345,41 @@ public class RegistroDatos extends javax.swing.JDialog {
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-        // //Fecha
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        Date FechaDate = null;
         try {
-            FechaDate = formatoFecha.parse(FechaNacimiento.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        java.sql.Date FechaNacimiento = new java.sql.Date(FechaDate.getTime());
-        
-        try {
-            registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimiento);
-            JOptionPane.showMessageDialog(null,"Persona Agregada.");
-            int idPersona = registroDatos.getPersonID(PrimerNombre.getText(),SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText());
-            if(Categoria == "Estudiante"){
-                registroDatos.addStudent(idPersona);    
+            if(validandoPrimerNombre & validandoPrimerApellido & validandoFomatoFecha){
+                if(registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimientoValidada)){
+                    int idPersona = registroDatos.getPersonID(PrimerNombre.getText(),SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText());
+                    if(Categoria == "Estudiante"){
+                        registroDatos.addStudent(idPersona);    
+                    }
+                    if(Categoria == "Profesor"){
+                          registroDatos.addProfessor(idPersona); 
+                    }
+                    if(Categoria == "Admin"){
+                        String UsuarioAdmin = PrimerNombre.getText() + "Admin";
+                        String ContraseñaAdmin = PrimerNombre.getText() + "Password";
+                        registroDatos.addAdmin(idPersona,UsuarioAdmin,ContraseñaAdmin);  
+                    }
+                    JOptionPane.showMessageDialog(null,"Persona Agregada.");
+                    this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null,"Persona no agregada.");
             }
-            if(Categoria == "Profesor"){
-                  registroDatos.addProfessor(idPersona); 
+            
+         } else {
+                JOptionPane.showMessageDialog(null,"Fallo al agregar persona.");
             }
-            if(Categoria == "Admin"){
-                String UsuarioAdmin = PrimerNombre.getText() + "Admin";
-                String ContraseñaAdmin = PrimerNombre.getText() + "Password";
-                registroDatos.addAdmin(idPersona,UsuarioAdmin,ContraseñaAdmin);  
-            }
-            this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_BotonRegistrarActionPerformed
 
     private void botonDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDistritoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonDistritoActionPerformed
-
-    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        ModificarDatos ventanaModificarDatos = null;
-        try {
-            ventanaModificarDatos = new ModificarDatos(this,true,registroDatos); // TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ventanaModificarDatos.setVisible(true);
-    }//GEN-LAST:event_botonModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,7 +434,6 @@ public class RegistroDatos extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> botonCategoria;
     private javax.swing.JComboBox<String> botonDistrito;
     private javax.swing.JComboBox<String> botonGenero;
-    private javax.swing.JButton botonModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

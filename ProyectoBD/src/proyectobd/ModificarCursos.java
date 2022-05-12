@@ -7,6 +7,8 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.awt.Color;
+import java.sql.SQLException;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -23,13 +25,15 @@ public class ModificarCursos extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }       
     
-    public ModificarCursos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+    public ModificarCursos(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         modificarCurso = setupAdmin;
         this.getContentPane().setBackground(new Color(157,210,228));
-    }
+        modificarCurso.getCourse(comBoxCurso);
+        modificarCurso.getCourseGroup(comBoxGrupo);
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,7 +89,6 @@ public class ModificarCursos extends javax.swing.JDialog {
         jLabel4.setText("Nombre del Curso");
 
         comBoxCurso.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        comBoxCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setText("Seleccione el curso a modificar:");
@@ -117,7 +120,11 @@ public class ModificarCursos extends javax.swing.JDialog {
         jLabel11.setText("Id Curso");
 
         comBoxGrupo.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comBoxGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comBoxGrupoActionPerformed(evt);
+            }
+        });
 
         añoGrupo.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
 
@@ -168,9 +175,9 @@ public class ModificarCursos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+                .addGap(176, 176, 176)
                 .addComponent(jLabel2)
-                .addGap(346, 346, 346)
+                .addGap(335, 335, 335)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12)
@@ -178,35 +185,38 @@ public class ModificarCursos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(387, 387, 387)
-                        .addComponent(jLabel1))
+                        .addGap(22, 22, 22)
+                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(creditosCurso)
-                            .addComponent(nombreCurso, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comBoxCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonModificarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonModificarGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(comBoxGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(añoGrupo)
-                            .addComponent(semestreGrupo)
-                            .addComponent(profesorGrupo)
-                            .addComponent(cursoGrupo))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(creditosCurso)
+                                    .addComponent(nombreCurso, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(comBoxCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonModificarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                                .addGap(60, 60, 60)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botonModificarGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                    .addComponent(comBoxGrupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(añoGrupo)
+                                    .addComponent(semestreGrupo)
+                                    .addComponent(profesorGrupo)
+                                    .addComponent(cursoGrupo))))
                         .addGap(145, 145, 145)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,18 +227,15 @@ public class ModificarCursos extends javax.swing.JDialog {
                             .addComponent(comBoxExG, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(estudianteSxG)
                             .addComponent(reviewSxG)
-                            .addComponent(botonModificarSxG, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botonModificarSxG, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel6)
@@ -269,7 +276,7 @@ public class ModificarCursos extends javax.swing.JDialog {
                     .addComponent(cursoGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(botonModificarGrupo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(botonRegresar)
                 .addGap(75, 75, 75))
         );
@@ -278,10 +285,13 @@ public class ModificarCursos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,modificarCurso);
-    this.dispose();
-    adminSetup.setVisible(true);            // TODO add your handling code here:
+    this.setVisible(false);
+         // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void comBoxGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comBoxGrupoActionPerformed
 
     /**
      * @param args the command line arguments

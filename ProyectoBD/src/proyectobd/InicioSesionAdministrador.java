@@ -19,38 +19,20 @@ import javax.swing.JOptionPane;
 public class InicioSesionAdministrador extends javax.swing.JDialog {
     
      private Conexion inicioSesionAd;
-    /** 
-     * Creates new form AdminInicioSesion
-     */
 
-    /**
-     * Creates new form InicioSesionAdministrador
-     */
     public InicioSesionAdministrador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.getContentPane().setBackground(new Color(157,210,228));
     }
-    public InicioSesionAdministrador(MenuInicio aThis, boolean modal) {
-        super(aThis, modal);
-        initComponents();
-        this.getContentPane().setBackground(new Color(157,210,228));
-    }
-     
+ 
     public InicioSesionAdministrador(MenuInicio aThis, boolean modal, Conexion elControlador) {
         super(aThis, modal);
         initComponents();
         inicioSesionAd = elControlador;
         this.getContentPane().setBackground(new Color(157,210,228));
     }
-    
-    public InicioSesionAdministrador(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
-        super(aThis, modal);
-        initComponents();
-        inicioSesionAd = setupAdmin;
-        this.getContentPane().setBackground(new Color(157,210,228));
-    }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,7 +81,7 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel2.setText("Inicio de Sesión Administrador ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 480, 43));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 480, 43));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel3.setText("Ingrese sus credenciales");
@@ -117,7 +99,7 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
                 botonRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 493, 100, 30));
+        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 100, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,27 +109,29 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
     }//GEN-LAST:event_botonUsuarioActionPerformed
 
     private void botonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoActionPerformed
-        String Usuario = botonUsuario.getText();
-         try {
-             String Buenas = inicioSesionAd.loginAdmin(botonUsuario.getText(), String.valueOf(botonContraInco.getPassword()));
-             if(Buenas.equals(Usuario)){
-                 JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
-                 this.dispose();
-                 AdminSetup ventanaAdminSetup =  new AdminSetup(this,true,inicioSesionAd);
-                 ventanaAdminSetup.setVisible(true);
-             }else{
-                 JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
-             } } catch (SQLException ex) {
-             Logger.getLogger(InicioSesionAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-         }
-  
+        if(!botonUsuario.getText().isEmpty() || botonContraInco.getText().isEmpty()){ 
+            String Usuario = botonUsuario.getText();
+             try {
+                 String Buenas = inicioSesionAd.loginAdmin(botonUsuario.getText(), String.valueOf(botonContraInco.getPassword()));
+                 if(Buenas.equals(Usuario)){
+                     JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
+                     this.dispose();
+                     AdminSetup ventanaAdminSetup =  new AdminSetup(this,true,inicioSesionAd);
+                     ventanaAdminSetup.setVisible(true);
+                 }else{
+                     JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
+                 } } catch (SQLException ex) {
+                 Logger.getLogger(InicioSesionAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         } else {
+            JOptionPane.showMessageDialog(null,"Error\nCampos vacios.");
+        }
              
     }//GEN-LAST:event_botonIngresoActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    MenuInicio menuInicio = new MenuInicio();
-    this.dispose();
-    menuInicio.setVisible(true);         // TODO add your handling code here:
+        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**

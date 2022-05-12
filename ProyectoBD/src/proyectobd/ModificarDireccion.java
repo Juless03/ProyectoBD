@@ -303,9 +303,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,modificarDireccion);
-    this.dispose();
-    adminSetup.setVisible(true);           // TODO add your handling code here:
+    this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**

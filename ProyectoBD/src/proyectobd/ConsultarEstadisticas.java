@@ -178,9 +178,7 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_RangoTopActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-    AdminSetup adminSetup = new AdminSetup(this,true,consultarEstadisticas);
-    this.dispose();
-    adminSetup.setVisible(true);        // TODO add your handling code here:
+    this.setVisible(false);       // TODO add your handling code here:
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**

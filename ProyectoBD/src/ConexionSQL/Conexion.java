@@ -32,41 +32,63 @@ import javax.swing.JComboBox;
  */
 public class Conexion {
 
-    public static String nombreBase = "BDPRUEBA";
-    public static String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
+    
+    public static String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
     public static String uName = "mtec";
     public static String uPass = "mtec";
-    // Futura Prueba Conexion
-
-    public static Connection conectarBase() throws SQLException {
-        Connection con = DriverManager.getConnection(host, uName, uPass);
-        return con;
-    }
-
-    public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
-
-        Connection con = conectarBase(); // 
-        PreparedStatement pstmt = con.prepareStatement("{  call actualizarPersona.update_Picture(?,?)  }");
-        Blob imagenBlob = null;
-        BufferedImage bi = new BufferedImage(mImagen.getWidth(null), mImagen.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = bi.createGraphics();
-        g2d.drawImage(mImagen, 0, 0, null);
-        g2d.dispose();
-        ByteArrayOutputStream baos = null;
-        try {
-            baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "png", baos);
-        } finally {
-            try {
-                baos.close();
-            } catch (Exception e) {
-            }
+     // Futura Prueba Conexion
+    
+        public static Connection conectarBase() throws SQLException{
+            Connection con = DriverManager.getConnection(host, uName, uPass);
+            return con;
         }
-        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-        pstmt.setBlob(2, bais);
-        pstmt.setInt(1, idPersona);
-        pstmt.executeUpdate();
-        pstmt.close();
+        public static void getCourse(JComboBox cbox_course) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getCourse()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            cbox_course.addItem(r.getString("course_name"));  
+        }
+        }
+         public static void getCourseGroup(JComboBox cbox_coursegroup) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getCourseGroup()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            cbox_coursegroup.addItem(r.getString("group_code"));  
+        }
+    }
+    
+        public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
+        
+              Connection con = conectarBase(); // 
+              PreparedStatement pstmt = con.prepareStatement("{  call actualizarPersona.update_Picture(?,?)  }");
+              Blob imagenBlob = null;
+              BufferedImage bi = new BufferedImage(mImagen.getWidth(null), mImagen.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+              Graphics2D g2d = bi.createGraphics();
+              g2d.drawImage(mImagen, 0, 0, null);
+              g2d.dispose();
+             ByteArrayOutputStream baos = null;
+                try {
+                    baos = new ByteArrayOutputStream();
+                    ImageIO.write(bi, "png", baos);
+                } finally {
+                    try {
+                        baos.close();
+                    } catch (Exception e) {
+                    }
+                }
+              ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+              pstmt.setBlob(2, bais);
+              pstmt.setInt(1, idPersona);
+              pstmt.executeUpdate();
+              pstmt.close();
 
     }
 
@@ -238,17 +260,35 @@ public class Conexion {
         stmt.execute();
         return true;
     }
-
-    public static void updatePersonName(int pIdPerson, String pFirstName, String pMiddleName, String pFirstLastName, String pSecondLastName) throws SQLException {
-
+  
+     public static void updatePersonFirstName(int pIdPerson, String pFirstName) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_person_name(?,?,?,?,?) }");
-
+        CallableStatement stmt = con.prepareCall("{ call update_person_first_name(?,?) }");
         stmt.setInt(1, pIdPerson);
         stmt.setString(2, pFirstName);
-        stmt.setString(3, pMiddleName);
-        stmt.setString(4, pFirstLastName);
-        stmt.setString(5, pSecondLastName);
+        stmt.execute();
+    }
+     
+      public static void updatePersonMiddleName(int pIdPerson, String pMiddleName) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{ call update_person_middle_name(?,?) }");
+        stmt.setInt(1, pIdPerson);
+        stmt.setString(2, pMiddleName);
+        stmt.execute();
+    }
+      
+    public static void updatePersonFirstLastName(int pIdPerson, String pFirstLastName) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{ call update_person_first_last_name(?,?) }");
+        stmt.setInt(1, pIdPerson);
+        stmt.setString(2, pFirstLastName);
+        stmt.execute();
+    } 
+    public static void updatePersonSecondLastName(int pIdPerson, String pSecondLastName) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{ call update_person_second_last_name(?,?) }");
+        stmt.setInt(1, pIdPerson);
+        stmt.setString(2, pSecondLastName);
         stmt.execute();
     }
 
