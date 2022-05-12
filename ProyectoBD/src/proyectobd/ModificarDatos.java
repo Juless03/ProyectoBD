@@ -478,7 +478,14 @@ public class ModificarDatos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonSeleccionarFotoActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-        this.setVisible(false);
+    this.dispose();
+    AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true, modificarDatos);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**

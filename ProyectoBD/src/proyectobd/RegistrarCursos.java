@@ -7,6 +7,9 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +26,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
-    public RegistrarCursos(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+    public RegistrarCursos(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException{
         super(aThis, modal);
         initComponents();
         registrarCursos = setupAdmin;
@@ -171,7 +174,14 @@ public class RegistrarCursos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);       // TODO add your handling code here:
+    this.dispose();
+    AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true, registrarCursos);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

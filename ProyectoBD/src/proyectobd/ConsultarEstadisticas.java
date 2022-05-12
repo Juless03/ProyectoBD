@@ -7,6 +7,9 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -178,7 +181,14 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_RangoTopActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-    this.setVisible(false);       // TODO add your handling code here:
+    this.dispose();
+    AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true, consultarEstadisticas);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**

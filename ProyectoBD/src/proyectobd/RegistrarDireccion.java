@@ -213,7 +213,14 @@ public class RegistrarDireccion extends javax.swing.JDialog {
     }//GEN-LAST:event_distritoNombreActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    this.setVisible(false);         // TODO add your handling code here:
+    this.dispose();
+    AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true, registrarDireccion);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true);       // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonRegistrarCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarCantonActionPerformed

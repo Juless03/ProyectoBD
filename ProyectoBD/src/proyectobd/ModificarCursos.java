@@ -8,6 +8,8 @@ package proyectobd;
 import ConexionSQL.Conexion;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 
 /**
@@ -285,8 +287,14 @@ public class ModificarCursos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    this.setVisible(false);
-         // TODO add your handling code here:
+    this.dispose();
+    AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true, modificarCurso);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void comBoxGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxGrupoActionPerformed

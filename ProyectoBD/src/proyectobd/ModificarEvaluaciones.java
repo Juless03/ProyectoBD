@@ -7,6 +7,9 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +26,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
-    public ModificarEvaluaciones(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+    public ModificarEvaluaciones(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         modificarEvaluaciones = setupAdmin;
@@ -276,7 +279,14 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    this.setVisible(false);          // TODO add your handling code here:
+    this.dispose();
+    AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true, modificarEvaluaciones);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true);          // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**

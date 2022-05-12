@@ -256,7 +256,12 @@ public class RegistroDatos extends javax.swing.JDialog {
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
         this.dispose();
-        AdminSetup ventaAdminSetup = new AdminSetup(this,true,registroDatos);
+        AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true,registroDatos);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ventaAdminSetup.setVisible(true);
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
