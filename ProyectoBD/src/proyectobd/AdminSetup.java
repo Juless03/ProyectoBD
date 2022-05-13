@@ -34,7 +34,7 @@ public class AdminSetup extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
      
-     public AdminSetup(RegistroDatos aThis, boolean modal, Conexion registroDatos) throws SQLException {
+     public AdminSetup(RegistroPersona aThis, boolean modal, Conexion registroDatos) throws SQLException {
         super(aThis, modal);
         initComponents();
         setupAdmin = registroDatos;
@@ -76,7 +76,7 @@ public class AdminSetup extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    AdminSetup(ModificarDatos aThis, boolean modal, Conexion modificarDatos) throws SQLException{
+    AdminSetup(ModificarPersona aThis, boolean modal, Conexion modificarDatos) throws SQLException{
         super(aThis, modal);
         initComponents();
         setupAdmin = modificarDatos;
@@ -94,6 +94,20 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = consultarEstadisticas;
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
+
+    AdminSetup(ConsultasProfesor aThis, boolean modal, Conexion evaluacionDocente) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = evaluacionDocente;
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
+
+    AdminSetup(ConsultasEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = inicioEstudiante;
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     /**
@@ -251,9 +265,9 @@ public class AdminSetup extends javax.swing.JDialog {
 
     private void BotonRegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarPersonaActionPerformed
        this.dispose();
-        RegistroDatos iniRegistroDatos;
+        RegistroPersona iniRegistroDatos;
          try {
-             iniRegistroDatos = new RegistroDatos(this,true,setupAdmin);
+             iniRegistroDatos = new RegistroPersona(this,true,setupAdmin);
              iniRegistroDatos.setVisible(true);
          } catch (SQLException ex) {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
@@ -263,9 +277,9 @@ public class AdminSetup extends javax.swing.JDialog {
 
     private void BotonModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarPersonaActionPerformed
         this.dispose();
-        ModificarDatos ventanaModificarDatos = null;
+        ModificarPersona ventanaModificarDatos = null;
          try {
-             ventanaModificarDatos = new ModificarDatos(this,true,setupAdmin);
+             ventanaModificarDatos = new ModificarPersona(this,true,setupAdmin);
          } catch (SQLException ex) {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -353,13 +367,13 @@ public class AdminSetup extends javax.swing.JDialog {
 
     private void BotonEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesActionPerformed
         this.dispose();
-        InicioEstudiante inicioEstudiante = new InicioEstudiante(this,true,setupAdmin);
+        ConsultasEstudiante inicioEstudiante = new ConsultasEstudiante(this,true,setupAdmin);
         inicioEstudiante.setVisible(true);      
     }//GEN-LAST:event_BotonEstudiantesActionPerformed
 
     private void BotonProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProfesoresActionPerformed
         this.dispose();
-        EvaluaciónDocente evaluaciónDocente = new EvaluaciónDocente(this,true,setupAdmin);
+        ConsultasProfesor evaluaciónDocente = new ConsultasProfesor(this,true,setupAdmin);
         evaluaciónDocente.setVisible(true);   
     }//GEN-LAST:event_BotonProfesoresActionPerformed
 

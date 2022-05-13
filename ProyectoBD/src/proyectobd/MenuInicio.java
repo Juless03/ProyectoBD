@@ -28,7 +28,7 @@ public class MenuInicio extends javax.swing.JFrame {
      */
     public MenuInicio() throws IOException {
         initComponents();
-        File pathToFile = new File("./imagenes/logo3.jpeg");
+        File pathToFile = new File("./imagenes/Logo.png");
         BufferedImage bufferImage = ImageIO.read(pathToFile);
         ImageIcon imageIcon = new ImageIcon(bufferImage);
         jLabel1.setIcon(imageIcon);
@@ -112,9 +112,9 @@ public class MenuInicio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
@@ -139,7 +139,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAdministradorActionPerformed
 
     private void botonProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProfesorActionPerformed
-        EvaluaciónDocente evaluacionDocente = new EvaluaciónDocente(this,true,Conexion);
+        ConsultasProfesor evaluacionDocente = new ConsultasProfesor(this,true,Conexion);
         evaluacionDocente.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_botonProfesorActionPerformed
 

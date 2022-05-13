@@ -24,7 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Dares
  */
-public class ModificarDatos extends javax.swing.JDialog {
+public class ModificarPersona extends javax.swing.JDialog {
     
     private Conexion modificarDatos;
     
@@ -33,7 +33,7 @@ public class ModificarDatos extends javax.swing.JDialog {
     /**
      * Creates new form ModificarDatos
      */
-    public ModificarDatos(java.awt.Frame parent, boolean modal) {
+    public ModificarPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         titulo1.setVisible(false);
@@ -47,7 +47,7 @@ public class ModificarDatos extends javax.swing.JDialog {
       
     }
 
-    public ModificarDatos(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
+    public ModificarPersona(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         modificarDatos = setupAdmin;
@@ -89,6 +89,20 @@ public class ModificarDatos extends javax.swing.JDialog {
         botonRegresar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         comboBoxNombres = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        numeroAModificar = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        comBoxTipoNimero = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        personaNumero = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        nuevoNumero = new javax.swing.JTextField();
+        botonModificarNumero = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        direccionEmail = new javax.swing.JTextField();
+        comBoxPersonaEmail = new javax.swing.JComboBox<>();
+        modificarEmail = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -97,14 +111,14 @@ public class ModificarDatos extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel1.setText("Seleccione la persona a  modificar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 230, 25));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 230, 30));
 
         botonPersonas.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 302, 33));
+        getContentPane().add(botonPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 302, 40));
 
         botonOpcionModificar.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         botonOpcionModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Genero", "Distrito", "Fecha de nacimiento", "Foto" }));
-        getContentPane().add(botonOpcionModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 160, 50));
+        getContentPane().add(botonOpcionModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 160, 60));
 
         botonModificar.setBackground(new java.awt.Color(255, 193, 5));
         botonModificar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -114,7 +128,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                 botonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 610, 133, 58));
+        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 133, 60));
 
         botonSeleccionar.setBackground(new java.awt.Color(255, 193, 5));
         botonSeleccionar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -124,27 +138,27 @@ public class ModificarDatos extends javax.swing.JDialog {
                 botonSeleccionarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 120, 50));
+        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 120, 60));
 
         titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 550, 22));
+        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 550, 30));
 
         botonTexto1.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 218, 39));
+        getContentPane().add(botonTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 218, 50));
 
         botonTexto3.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonTexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 218, 39));
+        getContentPane().add(botonTexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 218, 50));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel2.setText("Seleccione la categoria a modificar");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 230, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 230, 40));
 
         comboBoxGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxGeneralActionPerformed(evt);
             }
         });
-        getContentPane().add(comboBoxGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 210, 50));
+        getContentPane().add(comboBoxGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 210, 60));
 
         botonSeleccionarFoto.setText("Seleccionar Foto");
         botonSeleccionarFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -152,10 +166,10 @@ public class ModificarDatos extends javax.swing.JDialog {
                 botonSeleccionarFotoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 130, 60));
+        getContentPane().add(botonSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 130, 70));
 
         botonFotoSeleccionada.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(botonFotoSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 190, 180));
+        getContentPane().add(botonFotoSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 190, 180));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -168,11 +182,67 @@ public class ModificarDatos extends javax.swing.JDialog {
         getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
-        jLabel3.setText("Modificar Datos");
+        jLabel3.setText("Modificar Persona");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
         comboBoxNombres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido" }));
-        getContentPane().add(comboBoxNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 140, 60));
+        getContentPane().add(comboBoxNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 140, 70));
+
+        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel4.setText("Seleccione el numero a modificar:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, -1, -1));
+
+        numeroAModificar.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        numeroAModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(numeroAModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 130, 100, -1));
+
+        jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel5.setText("Tipo");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
+
+        comBoxTipoNimero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        comBoxTipoNimero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Celular", "Trabajo", " " }));
+        getContentPane().add(comBoxTipoNimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 190, 100, -1));
+
+        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel6.setText("Persona");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, -1, -1));
+
+        personaNumero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        personaNumero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(personaNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 240, 100, -1));
+
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel7.setText("Número");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, -1, -1));
+
+        nuevoNumero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(nuevoNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 300, 100, -1));
+
+        botonModificarNumero.setBackground(new java.awt.Color(255, 193, 5));
+        botonModificarNumero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonModificarNumero.setText("Modificar");
+        getContentPane().add(botonModificarNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 100, 50));
+
+        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel8.setText("Direccion Email");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel9.setText("Persona");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, -1, -1));
+
+        direccionEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(direccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 100, -1));
+
+        comBoxPersonaEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        comBoxPersonaEmail.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxPersonaEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 100, -1));
+
+        modificarEmail.setBackground(new java.awt.Color(255, 193, 5));
+        modificarEmail.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        modificarEmail.setText("Modificar");
+        getContentPane().add(modificarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 600, 110, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,7 +260,7 @@ public class ModificarDatos extends javax.swing.JDialog {
         try {
             idPersona = modificarDatos.getPersonID(primerNombre,segundoNombre,primerApellido,segundoApellido);
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String Modificar = botonOpcionModificar.getSelectedItem().toString();
@@ -204,7 +274,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                    try {
                        modificarDatos.updatePersonFirstName(idPersona,Dato);
                    } catch (SQLException ex) {
-                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                       Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
                    JOptionPane.showMessageDialog(null,"Persona Modificada");
                    this.dispose();
@@ -218,7 +288,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                    try {
                        modificarDatos.updatePersonMiddleName(idPersona,Dato);
                    } catch (SQLException ex) {
-                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                       Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
                    JOptionPane.showMessageDialog(null,"Persona Modificada");
                    this.dispose();
@@ -232,7 +302,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                    try {
                        modificarDatos.updatePersonFirstLastName(idPersona,Dato);
                    } catch (SQLException ex) {
-                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                       Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
                    JOptionPane.showMessageDialog(null,"Persona Modificada");
                    this.dispose();
@@ -245,7 +315,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                    try {
                        modificarDatos.updatePersonSecondLastName(idPersona,Dato);
                    } catch (SQLException ex) {
-                       Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                       Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
                    JOptionPane.showMessageDialog(null,"Persona Modificada");
                    this.dispose();
@@ -260,14 +330,14 @@ public class ModificarDatos extends javax.swing.JDialog {
             try {
                 Genero = modificarDatos.getGenderCode(GeneroNombre);
             } catch (SQLException ex) {
-                Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 modificarDatos.updatePersonGender(idPersona, Genero);
                 JOptionPane.showMessageDialog(null,"Genero Modificado!");
                 this.dispose();
             } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -277,14 +347,14 @@ public class ModificarDatos extends javax.swing.JDialog {
             try {
                 Distrito = modificarDatos.getDistrictCode(DistritoNombre);
             } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 modificarDatos.updatePersonDistrict(idPersona, Distrito);
                 JOptionPane.showMessageDialog(null,"Distrito Modificado!"); 
                 this.dispose();
             } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if(Modificar == "Fecha de nacimiento"){
@@ -329,7 +399,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                     try {
                         FechaDate = formatoFecha.parse(botonTexto1.getText());
                     } catch (ParseException ex) {
-                        Logger.getLogger(RegistroDatos.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     java.sql.Date FechaNacimiento = new java.sql.Date(FechaDate.getTime());
 
@@ -338,7 +408,7 @@ public class ModificarDatos extends javax.swing.JDialog {
                          JOptionPane.showMessageDialog(null,"Fecha de nacimiento modificada!"); 
                          this.dispose();
                     } catch (SQLException ex) {
-                        Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                      } else {
@@ -354,9 +424,9 @@ public class ModificarDatos extends javax.swing.JDialog {
                 modificarDatos.escribeImagenEnBBDD(idPersona,mImagen);
                 JOptionPane.showMessageDialog(null,"Imagen Modificado!");
             } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
  
@@ -388,7 +458,7 @@ public class ModificarDatos extends javax.swing.JDialog {
             try {
                 modificarDatos.getGender(comboBoxGeneral);
             } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
             comboBoxGeneral.setVisible(true);
             botonModificar.setEnabled(true);
@@ -410,7 +480,7 @@ public class ModificarDatos extends javax.swing.JDialog {
             try {
                 modificarDatos.getDistrict(comboBoxGeneral);
             } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
             comboBoxGeneral.setVisible(true);
             botonModificar.setEnabled(true);
@@ -483,7 +553,7 @@ public class ModificarDatos extends javax.swing.JDialog {
         try {
             ventaAdminSetup = new AdminSetup(this,true, modificarDatos);
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
     ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_botonRegresarActionPerformed
@@ -505,20 +575,21 @@ public class ModificarDatos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModificarDatos dialog = new ModificarDatos(new javax.swing.JFrame(), true);
+                ModificarPersona dialog = new ModificarPersona(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -533,6 +604,7 @@ public class ModificarDatos extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel botonFotoSeleccionada;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JButton botonModificarNumero;
     private javax.swing.JComboBox<String> botonOpcionModificar;
     private javax.swing.JComboBox<String> botonPersonas;
     private javax.swing.JButton botonRegresar;
@@ -540,12 +612,25 @@ public class ModificarDatos extends javax.swing.JDialog {
     private javax.swing.JButton botonSeleccionarFoto;
     private javax.swing.JTextField botonTexto1;
     private javax.swing.JTextField botonTexto3;
+    private javax.swing.JComboBox<String> comBoxPersonaEmail;
+    private javax.swing.JComboBox<String> comBoxTipoNimero;
     private javax.swing.JComboBox<String> comboBoxGeneral;
     private javax.swing.JComboBox<String> comboBoxNombres;
+    private javax.swing.JTextField direccionEmail;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton modificarEmail;
+    private javax.swing.JTextField nuevoNumero;
+    private javax.swing.JComboBox<String> numeroAModificar;
+    private javax.swing.JComboBox<String> personaNumero;
     private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
 }
