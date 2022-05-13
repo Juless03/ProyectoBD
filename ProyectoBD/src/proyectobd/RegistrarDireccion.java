@@ -31,7 +31,10 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         registrarDireccion = setupAdmin;
-        registrarDireccion.getCanton(comBoxProvincia);
+        registrarDireccion.getProvince(comBoxProvincia);
+        registrarDireccion.getCountry(comBoxPais);
+        registrarDireccion.getCanton(comBoxCanton);
+        
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
