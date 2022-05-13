@@ -54,7 +54,6 @@ public class MenuInicio extends javax.swing.JFrame {
         setTitle("MenuInicio");
         setBackground(new java.awt.Color(157, 210, 228));
         setForeground(new java.awt.Color(0, 0, 102));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAdministrador.setBackground(new java.awt.Color(255, 193, 5));
         botonAdministrador.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -64,11 +63,9 @@ public class MenuInicio extends javax.swing.JFrame {
                 botonAdministradorActionPerformed(evt);
             }
         });
-        getContentPane().add(botonAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 533, 160, 56));
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 14));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 530, 440));
 
         botonProfesor.setBackground(new java.awt.Color(255, 193, 5));
         botonProfesor.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -78,7 +75,6 @@ public class MenuInicio extends javax.swing.JFrame {
                 botonProfesorActionPerformed(evt);
             }
         });
-        getContentPane().add(botonProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 667, 160, 56));
 
         botonEstudiante.setBackground(new java.awt.Color(255, 193, 5));
         botonEstudiante.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -88,11 +84,49 @@ public class MenuInicio extends javax.swing.JFrame {
                 botonEstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(botonEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 540, 160, 56));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel2.setText("¡Bienvenidos a la plataforma del Tecnológico de Costa Rica!");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, -1, 17));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(botonAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(195, 195, 195)
+                        .addComponent(jLabel2)
+                        .addGap(143, 143, 143)
+                        .addComponent(botonEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(638, 638, 638)
+                        .addComponent(botonProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(botonAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(botonEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(71, 71, 71)
+                .addComponent(botonProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
