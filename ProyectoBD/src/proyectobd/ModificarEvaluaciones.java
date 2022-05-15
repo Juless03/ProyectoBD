@@ -8,8 +8,12 @@ package proyectobd;
 import ConexionSQL.Conexion;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,6 +34,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         modificarEvaluaciones = setupAdmin;
+        modificarEvaluaciones.getStudent(comboBoxEstudiantes);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -44,7 +49,6 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -57,49 +61,52 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         porcentajeEvaluacion = new javax.swing.JTextField();
         cantidadEvaluaion = new javax.swing.JTextField();
         cursoEvaluacion = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        iestudianteExS = new javax.swing.JTextField();
-        evaluacionExS = new javax.swing.JTextField();
-        porcentajeExS = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        comBoxExS = new javax.swing.JComboBox<>();
-        botonModificarExS = new javax.swing.JButton();
         botonModificarEvaluacion = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
+        cursoEvaluacion1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        comboBoxEstudiantes = new javax.swing.JComboBox<>();
+        botonSeleccionarEstudiante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Modificar Evaluaciones");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel2.setText("Evaluación");
-
-        jLabel3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel3.setText("Evaluar Estudiante");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 230, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Nombre");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setText("Descripción");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel6.setText("Porcentaje");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 330, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel7.setText("Cantidad de Personas");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel8.setText("Curso");
+        jLabel8.setText("Fecha de Entrega");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, 160, 30));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Seleccione la evaluación a modificar:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
         comBoxEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxEvaluacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 101, -1));
 
         nombreEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         nombreEvaluacion.addActionListener(new java.awt.event.ActionListener() {
@@ -107,47 +114,29 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
                 nombreEvaluacionActionPerformed(evt);
             }
         });
+        getContentPane().add(nombreEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 100, -1));
 
         descripcionEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(descripcionEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 211, 124));
 
         porcentajeEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(porcentajeEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 340, 100, -1));
 
         cantidadEvaluaion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(cantidadEvaluaion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 100, -1));
 
         cursoEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel10.setText("Id Estudiante");
-
-        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel11.setText("Id Evaluación");
-
-        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel12.setText("Porcentaje");
-
-        iestudianteExS.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        evaluacionExS.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        porcentajeExS.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        jTextField9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jTextField9.setText("Seleccione noc:");
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-
-        comBoxExS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        botonModificarExS.setBackground(new java.awt.Color(255, 193, 5));
-        botonModificarExS.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        botonModificarExS.setText("Modificar");
+        getContentPane().add(cursoEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, 100, -1));
 
         botonModificarEvaluacion.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonModificarEvaluacion.setText("Modificar");
+        botonModificarEvaluacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarEvaluacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonModificarEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, 130, 60));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -157,115 +146,26 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
                 botonRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, 101, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(233, 233, 233)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(207, 207, 207))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(536, 536, 536)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(nombreEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(descripcionEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel4)
-                                            .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(65, 65, 65)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8))
-                                        .addGap(46, 46, 46)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(porcentajeEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cantidadEvaluaion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cursoEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(botonModificarEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(comBoxEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(188, 188, 188)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonModificarExS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comBoxExS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(evaluacionExS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(iestudianteExS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(porcentajeExS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(comBoxEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(nombreEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(porcentajeEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(cantidadEvaluaion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(evaluacionExS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(descripcionEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(cursoEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(porcentajeExS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonModificarEvaluacion)
-                            .addComponent(botonModificarExS))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                        .addComponent(botonRegresar)
-                        .addGap(92, 92, 92))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(comBoxExS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(iestudianteExS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        cursoEvaluacion1.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(cursoEvaluacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, 100, -1));
+
+        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel10.setText("Curso");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Llene lo que desea modificar");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 290, 30));
+
+        jLabel11.setText("Seleccione el estudiante al cual se le va a modificar la evaluación");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 430, 50));
+
+        getContentPane().add(comboBoxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 230, 50));
+
+        botonSeleccionarEstudiante.setText("Seleccionar");
+        getContentPane().add(botonSeleccionarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 100, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,10 +173,6 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     private void nombreEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreEvaluacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreEvaluacionActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
     this.dispose();
@@ -288,6 +184,48 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         }
     ventaAdminSetup.setVisible(true);          // TODO add your handling code here:
     }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void botonModificarEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarEvaluacionActionPerformed
+        java.sql.Date DueDateValida = null;
+       /*
+        boolean validando = false;
+       int porcentaje = 0;
+       if(!botonFechaEntrega.getText().isEmpty()){
+       String DueDate = botonFechaEntrega.getText();
+       SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+       Date FechaDate = null;
+       try {
+       FechaDate = formatoFecha.parse(botonFechaEntrega.getText());
+        } catch (ParseException ex) {
+           //Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null,"Error!\nFormato de fecha incorrecto.");
+        }
+       
+        DueDateValida = new java.sql.Date(FechaDate.getTime());} 
+       if(!evaluacionPorcentaje.getText().isEmpty()){
+        porcentaje = Integer.parseInt(evaluacionPorcentaje.getText());    
+        }
+        try {
+            registrarEvaluaciones.addEvaluation(evaluacionNombre.getText(),evaluacionDescripcion.getText(),evaluacionMiembros.getText(),porcentaje,DueDateValida);
+            validando = true;
+        } catch (SQLException ex) {
+            //Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error!\nEvaluación no agregada");
+            validando = false;
+        }
+        if(validando){
+        JOptionPane.showMessageDialog(null,"Evaluación registrada!");
+        this.dispose();
+         AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true,registrarEvaluaciones);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true);  
+        }
+        */
+    }//GEN-LAST:event_botonModificarEvaluacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,19 +271,17 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonModificarEvaluacion;
-    private javax.swing.JButton botonModificarExS;
     private javax.swing.JButton botonRegresar;
+    private javax.swing.JButton botonSeleccionarEstudiante;
     private javax.swing.JTextField cantidadEvaluaion;
     private javax.swing.JComboBox<String> comBoxEvaluacion;
-    private javax.swing.JComboBox<String> comBoxExS;
+    private javax.swing.JComboBox<String> comboBoxEstudiantes;
     private javax.swing.JTextField cursoEvaluacion;
+    private javax.swing.JTextField cursoEvaluacion1;
     private javax.swing.JTextField descripcionEvaluacion;
-    private javax.swing.JTextField evaluacionExS;
-    private javax.swing.JTextField iestudianteExS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -354,9 +290,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField nombreEvaluacion;
     private javax.swing.JTextField porcentajeEvaluacion;
-    private javax.swing.JTextField porcentajeExS;
     // End of variables declaration//GEN-END:variables
 }

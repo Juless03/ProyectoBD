@@ -32,6 +32,7 @@ public class ProyectoBD {
         //Conexion.updateCourseName("Algebra", "Cálculo Diferencial");
         //Conexion.getStudentEvaluation(1);
         //Conexion.getStudentGroup(2);
+        //Conexion.getStudent();
     }
     
 }

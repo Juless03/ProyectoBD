@@ -35,7 +35,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         initComponents();
         registrarEvaluaciones = setupAdmin;
         this.setLocationRelativeTo(null);
-        registrarEvaluaciones.getIDStudent(comBoxEstudiante);
+        registrarEvaluaciones.getStudent(comBoxEstudiante);
         comBoxEvaluacion.setEnabled(false);
         exsPorcentajeObtenido.setEnabled(false);
         botonRegistrarEvaEstudiante.setEnabled(false);
@@ -120,12 +120,12 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 141, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel9.setText("Id Estudiante");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(815, 200, -1, -1));
+        jLabel9.setText("Estudiante");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel10.setText("Id Evaluación");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 300, -1, -1));
+        jLabel10.setText("Evaluación");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 300, 110, -1));
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel11.setText("Porcentaje Obtenido");
@@ -165,10 +165,15 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 684, 100, -1));
 
         comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 200, 90, 40));
+        getContentPane().add(comBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 220, 40));
 
         comBoxEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 290, 110, 40));
+        comBoxEvaluacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comBoxEvaluacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 280, 40));
 
         jLabel12.setText("Fecha de entrega");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 100, 40));
@@ -180,7 +185,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 200, 100, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 200, 100, 40));
 
         jLabel7.setText("Seleccione el id de la evaluación");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 270, 220, -1));
@@ -244,10 +249,13 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
 
     private void botonRegistrarEvaEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEvaEstudianteActionPerformed
         boolean validandoActualizacionPorcentaje = false;
-        int idEvaluacion = Integer.parseInt(comBoxEvaluacion.getSelectedItem().toString());
+        String NombreEvaluacion = (String) comBoxEvaluacion.getSelectedItem();
+        String[] obteniendoIDEvaluacion= NombreEvaluacion.split(" ");
+        String ID = obteniendoIDEvaluacion[0];
+        int idEstudiante = Integer.parseInt(ID);
         int porcentajeEvaluacion = Integer.parseInt(exsPorcentajeObtenido.getText().toString());
         try {
-            registrarEvaluaciones.updateEvaluationxstudentPercentage(idEvaluacion, porcentajeEvaluacion);
+            registrarEvaluaciones.updateEvaluationxstudentPercentage(idEstudiante, porcentajeEvaluacion);
             validandoActualizacionPorcentaje = true;
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
@@ -272,15 +280,23 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         comBoxEvaluacion.removeAllItems();
         exsPorcentajeObtenido.setEnabled(true);
         botonRegistrarEvaEstudiante.setEnabled(true);
-        int IdEstudiante = Integer.parseInt(comBoxEstudiante.getSelectedItem().toString());
+        comBoxEvaluacion.setEnabled(true);
+        String NombreEstudiante = (String) comBoxEstudiante.getSelectedItem();
+        String[] obteniendoIDEstudiante = NombreEstudiante.split(" ");
+        String ID = obteniendoIDEstudiante[0];
+        int idEstudiante = Integer.parseInt(ID);
         try {
             comBoxEvaluacion.setEnabled(true);
-            registrarEvaluaciones.getStudentEvaluation(comBoxEvaluacion,IdEstudiante);
+            registrarEvaluaciones.getStudentEvaluation(comBoxEvaluacion,idEstudiante);
             //comBoxEvaluacion.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void comBoxEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxEvaluacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comBoxEvaluacionActionPerformed
 
     /**
      * @param args the command line arguments

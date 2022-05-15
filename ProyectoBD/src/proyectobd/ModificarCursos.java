@@ -166,11 +166,11 @@ public class ModificarCursos extends javax.swing.JDialog {
                 botonModificarGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 120, 60));
+        getContentPane().add(botonModificarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 470, 120, 60));
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel12.setText("Estudiante en un Grupo");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 170, 209, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 170, 209, -1));
 
         comboboxEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         comboboxEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
@@ -178,11 +178,11 @@ public class ModificarCursos extends javax.swing.JDialog {
                 comboboxEstudianteGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(comboboxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 200, 130, 40));
+        getContentPane().add(comboboxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 200, 130, 40));
 
         jLabel14.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel14.setText("Id Estudiante");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 310, -1, -1));
+        jLabel14.setText("Estudiante");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
 
         botonModificarSxG.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarSxG.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -192,7 +192,7 @@ public class ModificarCursos extends javax.swing.JDialog {
                 botonModificarSxGActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificarSxG, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 460, 110, 30));
+        getContentPane().add(botonModificarSxG, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 120, 50));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -223,7 +223,7 @@ public class ModificarCursos extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Status");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 360, 80, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 370, 80, 30));
 
         checkAbandono.setText("ABANDONO");
         checkAbandono.addActionListener(new java.awt.event.ActionListener() {
@@ -231,15 +231,20 @@ public class ModificarCursos extends javax.swing.JDialog {
                 checkAbandonoActionPerformed(evt);
             }
         });
-        getContentPane().add(checkAbandono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 370, 100, 30));
+        getContentPane().add(checkAbandono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 390, 100, 30));
 
         checkActivo.setText("ACTIVO");
-        getContentPane().add(checkActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 340, 100, 30));
+        getContentPane().add(checkActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 360, 100, 30));
 
         jLabel9.setText("Grupo");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 200, 50, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 50, 30));
 
-        getContentPane().add(comboBoxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 300, 100, 30));
+        comboBoxEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxEstudianteGrupoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(comboBoxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 300, 270, 30));
 
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -247,11 +252,11 @@ public class ModificarCursos extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 200, 100, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 200, 100, 40));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Seleccione el id del estudiante a modificar");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 260, 260, -1));
+        jLabel10.setText("Seleccione el estudiante a modificar");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 270, 260, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -481,7 +486,10 @@ public class ModificarCursos extends javax.swing.JDialog {
         String StatusNuevo = null;
         int idEstudiante = 0;
         int Grupo = Integer.parseInt(comboboxEstudianteGrupo.getSelectedItem().toString());
-        idEstudiante = Integer.parseInt(comboBoxEstudianteGrupo.getSelectedItem().toString());
+        String NombreEstudiante = (String) comboBoxEstudianteGrupo.getSelectedItem();
+        String[] obteniendoIDEstudiante = NombreEstudiante.split(" ");
+        String ID = obteniendoIDEstudiante[0];
+        idEstudiante = Integer.parseInt(ID);
         if(checkActivo.isSelected()){
             StatusNuevo = "ACTIVO";
             validandoStatus = true;
@@ -542,6 +550,10 @@ public class ModificarCursos extends javax.swing.JDialog {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboBoxEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEstudianteGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxEstudianteGrupoActionPerformed
 
     /**
      * @param args the command line arguments

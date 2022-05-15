@@ -51,8 +51,20 @@ public class Conexion {
         stmt.execute();
         ResultSet r = (ResultSet) stmt.getObject(1); 
         while(r.next()){
-            comBoxEvaluacion.addItem(r.getString("id_person"));  
+            comBoxEvaluacion.addItem(r.getString("id_person") + " " + r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname") );  
             
+            }
+        }
+        
+        public static void getStudent(JComboBox comboBoxStudents) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getStudent()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            comboBoxStudents.addItem(r.getString("id_person") + " " +r.getString("first_name") + " "+ r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname"));  
             }
         }
         
@@ -87,7 +99,7 @@ public class Conexion {
         stmt.execute();
         ResultSet r = (ResultSet) stmt.getObject(1); 
         while(r.next()){
-            comBoxEvaluacion.addItem(r.getString("id_evalxstudent"));  
+            comBoxEvaluacion.addItem(r.getString("id_evalxstudent") + " " + r.getString("evaluation_des"));  
             }
         }
         
