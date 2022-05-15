@@ -244,12 +244,14 @@ public class Review extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarActionPerformed
-    String idProfesor = (String) comBoxProfesor.getSelectedItem();
-    idProfesor = idProfesor.substring(0, 2);
-    String idEstudiante = (String) comBoxEstudiantes.getSelectedItem();
-    idEstudiante = idEstudiante.substring(0, 2);
+    String profesor = (String) comBoxProfesor.getSelectedItem();
+    String [] idProfesor= profesor.split(" ");
+    String id = idProfesor[0];
+    String estudiante = (String) comBoxEstudiantes.getSelectedItem();
+    String [] idEstudiante = estudiante.split(" ");
+    String idE = idEstudiante[0];
         try {
-            review.addReview(estrella ,descripccionReview.getText(),Integer.parseInt(idEstudiante), Integer.parseInt(idProfesor));
+            review.addReview(estrella ,descripccionReview.getText(),Integer.parseInt(idE), Integer.parseInt(id));
             JOptionPane.showMessageDialog(null,"Review enviada correctamente.");
         } catch (SQLException ex) {
             Logger.getLogger(Review.class.getName()).log(Level.SEVERE, null, ex);

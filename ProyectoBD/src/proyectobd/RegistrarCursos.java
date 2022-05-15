@@ -39,7 +39,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
         registrarCursos.getCourseRegistroGrupo(comBoxCurso);
         registrarCursos.getStudent(comBoxEstudiantes);
         registrarCursos.getProfessor(combBoxProfesores);
+<<<<<<< Updated upstream
         this.setLocationRelativeTo(null);
+=======
+        registrarCursos.getCourseGroup(comBoxGrupo);
+>>>>>>> Stashed changes
     }
 
     /**
@@ -75,6 +79,10 @@ public class RegistrarCursos extends javax.swing.JDialog {
         combBoxProfesores = new javax.swing.JComboBox<>();
         comBoxCurso = new javax.swing.JComboBox<>();
         comBoxEstudiantes = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        comBoxGrupo = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        comBoxStatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -157,10 +165,10 @@ public class RegistrarCursos extends javax.swing.JDialog {
 
         jLabel13.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel13.setText("Review");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(956, 287, 54, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 360, 54, -1));
 
         sxgReview.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(sxgReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(1084, 287, 80, -1));
+        getContentPane().add(sxgReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 360, 80, -1));
 
         botonRegistrarEstudianteGrupo.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -170,7 +178,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
                 botonRegistrarEstudianteGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1064, 357, 100, -1));
+        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 510, 100, -1));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -196,6 +204,21 @@ public class RegistrarCursos extends javax.swing.JDialog {
         comBoxEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         getContentPane().add(comBoxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1044, 217, 230, -1));
 
+        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel12.setText("Grupo");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 290, -1, -1));
+
+        comBoxGrupo.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(comBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 290, 220, -1));
+
+        jLabel14.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel14.setText("Status");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 430, -1, -1));
+
+        comBoxStatus.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        comBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABANDONO", "ACTIVO", " " }));
+        getContentPane().add(comBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 430, 220, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,6 +243,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegistrarCursoActionPerformed
 
     private void BotonRegistrarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarGrupoActionPerformed
+<<<<<<< Updated upstream
        boolean validandoRegistroCurso = false;
        String idProfesor = (String) combBoxProfesores.getSelectedItem();
        String[] obteniendoIDEstudiante = idProfesor.split(" ");
@@ -229,6 +253,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
        String[] obteniendoIDCurso = idCurso.split(" ");
        String IDCurso = obteniendoIDCurso[0];
        int IDCURSO = Integer.parseInt(IDCurso);
+=======
+       String profesor = (String) combBoxProfesores.getSelectedItem();
+       String [] idProfesor= profesor.split(" ");
+       String id = idProfesor[0];
+>>>>>>> Stashed changes
        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
        Date FechaDate = null;
         try {
@@ -239,10 +268,16 @@ public class RegistrarCursos extends javax.swing.JDialog {
         }
        java.sql.Date nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
         try {
+<<<<<<< Updated upstream
             registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText().toString()), idProfe,
             IDCURSO);
             validandoRegistroCurso = true;
             
+=======
+            registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText()), Integer.parseInt(id),
+                    Integer.parseInt(registrarCursos.getIDCourse((String) comBoxCurso.getSelectedItem())));
+            JOptionPane.showMessageDialog(null,"Grupo Agregado.");
+>>>>>>> Stashed changes
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"curso no agregado");
@@ -262,8 +297,17 @@ public class RegistrarCursos extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonRegistrarGrupoActionPerformed
 
     private void botonRegistrarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEstudianteGrupoActionPerformed
-       String idProfesor = (String) comBoxEstudiantes.getSelectedItem();
-       idProfesor = idProfesor.substring(0, 2);
+        String estudiante = (String) comBoxEstudiantes.getSelectedItem();
+        String [] idEstudiante = estudiante.split(" ");
+        String id = idEstudiante[0];
+        System.out.println(idEstudiante);
+        try {
+            registrarCursos.addStudentxgroup(Integer.parseInt(id), Integer.parseInt((String) comBoxGrupo.getSelectedItem()),
+                    Integer.parseInt(sxgReview.getText()),(String) comBoxStatus.getSelectedItem());
+           JOptionPane.showMessageDialog(null,"Estudiante agregado al grupo.");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonRegistrarEstudianteGrupoActionPerformed
 
     private void combBoxProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combBoxProfesoresActionPerformed
@@ -319,6 +363,8 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private javax.swing.JButton botonRegresar;
     private javax.swing.JComboBox<String> comBoxCurso;
     private javax.swing.JComboBox<String> comBoxEstudiantes;
+    private javax.swing.JComboBox<String> comBoxGrupo;
+    private javax.swing.JComboBox<String> comBoxStatus;
     private javax.swing.JComboBox<String> combBoxProfesores;
     private javax.swing.JTextField cursoCreditos;
     private javax.swing.JTextField grupoAño;
@@ -326,7 +372,9 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

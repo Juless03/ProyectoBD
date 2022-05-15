@@ -434,7 +434,12 @@ public class AdminSetup extends javax.swing.JDialog {
 
     private void BotonEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesActionPerformed
         this.dispose();
-        ConsultasEstudiante inicioEstudiante = new ConsultasEstudiante(this,true,setupAdmin);
+        ConsultasEstudiante inicioEstudiante = null;
+         try {
+             inicioEstudiante = new ConsultasEstudiante(this,true,setupAdmin);
+         } catch (SQLException ex) {
+             Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
+         }
         inicioEstudiante.setVisible(true);      
     }//GEN-LAST:event_BotonEstudiantesActionPerformed
 

@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.text.ParseException;
+import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
 import java.util.Date;
 import javax.imageio.ImageIO;
@@ -91,6 +92,7 @@ public class Conexion {
             cbox_course.addItem(r.getString("course_code") + " " + r.getString("course_name"));  
             }
         }
+<<<<<<< Updated upstream
         public static void getIDStudent(JComboBox comBoxEstudiante) throws SQLException{
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{?= call getIDStudent()}");
@@ -112,6 +114,9 @@ public class Conexion {
         int Resultado = stmt.getInt(1);
         return Resultado;
     }
+=======
+
+>>>>>>> Stashed changes
         
         public static void getProfessor(JComboBox comBoxEstudiante) throws SQLException{
         Connection con = conectarBase();
@@ -927,5 +932,35 @@ public class Conexion {
         stmt.setInt(1, pIdEvalxstudent);
         stmt.setInt(2, pPercentageObtained);
         stmt.execute();
+    }
+    
+    public static void coursesRegistered(ArrayList<String> cursos, String pcCourseName, int pnGroupSemester, Date pnGroupYear) throws SQLException {
+
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{ call coursesRegistered(?, ?, ?) }");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+        stmt.setString(2, pcCourseName);
+        stmt.setInt(3, pnGroupSemester);
+        stmt.setDate(4, (java.sql.Date) pnGroupYear);
+        stmt.executeQuery();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            cursos.add(r.getString("Nombre_Curso") + " " + r.getString("Semestre") + " " + r.getString("Año") );  
+            
+        }
+    }
+    
+    public static void noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
+
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{ call noteCourseAndEvaluations(?) }");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+        stmt.setInt(2, pnIdPerson);
+        stmt.executeQuery();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            evaluaciones.add(r.getString("Nombre_Curso") + " " + r.getString("Descripcion") + " " + r.getString("Porcentaje") + " " + r.getString("NotaTotal"));  
+            
+        }
     }
 }

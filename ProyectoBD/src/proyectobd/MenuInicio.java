@@ -145,7 +145,12 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonProfesorActionPerformed
 
     private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
-     ConsultasEstudiante consultasEstudiante = new ConsultasEstudiante(this,true,Conexion);
+     ConsultasEstudiante consultasEstudiante = null;
+        try {
+            consultasEstudiante = new ConsultasEstudiante(this,true,Conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
      consultasEstudiante.setVisible(true);
     }//GEN-LAST:event_botonEstudianteActionPerformed
 
