@@ -92,7 +92,7 @@ public class Conexion {
             cbox_course.addItem(r.getString("course_code") + " " + r.getString("course_name"));  
             }
         }
-<<<<<<< Updated upstream
+
         public static void getIDStudent(JComboBox comBoxEstudiante) throws SQLException{
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{?= call getIDStudent()}");
@@ -114,9 +114,6 @@ public class Conexion {
         int Resultado = stmt.getInt(1);
         return Resultado;
     }
-=======
-
->>>>>>> Stashed changes
         
         public static void getProfessor(JComboBox comBoxEstudiante) throws SQLException{
         Connection con = conectarBase();

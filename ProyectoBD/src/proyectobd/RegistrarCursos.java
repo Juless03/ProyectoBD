@@ -39,11 +39,9 @@ public class RegistrarCursos extends javax.swing.JDialog {
         registrarCursos.getCourseRegistroGrupo(comBoxCurso);
         registrarCursos.getStudent(comBoxEstudiantes);
         registrarCursos.getProfessor(combBoxProfesores);
-<<<<<<< Updated upstream
         this.setLocationRelativeTo(null);
-=======
         registrarCursos.getCourseGroup(comBoxGrupo);
->>>>>>> Stashed changes
+
     }
 
     /**
@@ -243,7 +241,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegistrarCursoActionPerformed
 
     private void BotonRegistrarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarGrupoActionPerformed
-<<<<<<< Updated upstream
+
        boolean validandoRegistroCurso = false;
        String idProfesor = (String) combBoxProfesores.getSelectedItem();
        String[] obteniendoIDEstudiante = idProfesor.split(" ");
@@ -253,11 +251,9 @@ public class RegistrarCursos extends javax.swing.JDialog {
        String[] obteniendoIDCurso = idCurso.split(" ");
        String IDCurso = obteniendoIDCurso[0];
        int IDCURSO = Integer.parseInt(IDCurso);
-=======
-       String profesor = (String) combBoxProfesores.getSelectedItem();
-       String [] idProfesor= profesor.split(" ");
-       String id = idProfesor[0];
->>>>>>> Stashed changes
+
+
+
        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
        Date FechaDate = null;
         try {
@@ -268,16 +264,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
         }
        java.sql.Date nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
         try {
-<<<<<<< Updated upstream
             registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText().toString()), idProfe,
             IDCURSO);
             validandoRegistroCurso = true;
-            
-=======
-            registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText()), Integer.parseInt(id),
-                    Integer.parseInt(registrarCursos.getIDCourse((String) comBoxCurso.getSelectedItem())));
             JOptionPane.showMessageDialog(null,"Grupo Agregado.");
->>>>>>> Stashed changes
+
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"curso no agregado");
