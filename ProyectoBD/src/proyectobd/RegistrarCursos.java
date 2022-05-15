@@ -36,9 +36,10 @@ public class RegistrarCursos extends javax.swing.JDialog {
         initComponents();
         registrarCursos = setupAdmin;
         this.getContentPane().setBackground(new Color(157,210,228));
-        registrarCursos.getCourse(comBoxCurso);
+        registrarCursos.getCourseRegistroGrupo(comBoxCurso);
         registrarCursos.getStudent(comBoxEstudiantes);
         registrarCursos.getProfessor(combBoxProfesores);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -148,7 +149,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
                 BotonRegistrarGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegistrarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(718, 505, 100, -1));
+        getContentPane().add(BotonRegistrarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, 100, -1));
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel11.setText("Estudiante");
@@ -219,23 +220,45 @@ public class RegistrarCursos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegistrarCursoActionPerformed
 
     private void BotonRegistrarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarGrupoActionPerformed
+       boolean validandoRegistroCurso = false;
        String idProfesor = (String) combBoxProfesores.getSelectedItem();
-       idProfesor = idProfesor.substring(0, 2);
+       String[] obteniendoIDEstudiante = idProfesor.split(" ");
+       String ID = obteniendoIDEstudiante[0];
+       int idProfe = Integer.parseInt(ID);
+       String idCurso = (String) comBoxCurso.getSelectedItem();
+       String[] obteniendoIDCurso = idCurso.split(" ");
+       String IDCurso = obteniendoIDCurso[0];
+       int IDCURSO = Integer.parseInt(IDCurso);
        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
        Date FechaDate = null;
         try {
             FechaDate = formatoFecha.parse(grupoAño.getText());
         } catch (ParseException ex) {
             Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error en formato.");
         }
        java.sql.Date nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
         try {
-            registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText()), Integer.parseInt(idProfesor),
-                    Integer.parseInt(registrarCursos.getIDCourse((String) comBoxCurso.getSelectedItem())));
-            JOptionPane.showMessageDialog(null,"Grupo Agregado.");
+            registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText().toString()), idProfe,
+            IDCURSO);
+            validandoRegistroCurso = true;
+            
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"curso no agregado");
+            validandoRegistroCurso = false;
         }
+        if(validandoRegistroCurso){
+          JOptionPane.showMessageDialog(null,"Grupo Agregado.");
+          this.dispose();
+            AdminSetup ventaAdminSetup = null;
+                try {
+                    ventaAdminSetup = new AdminSetup(this,true, registrarCursos);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            ventaAdminSetup.setVisible(true); 
+         }
     }//GEN-LAST:event_BotonRegistrarGrupoActionPerformed
 
     private void botonRegistrarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEstudianteGrupoActionPerformed

@@ -36,6 +36,14 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         modificarEvaluaciones = setupAdmin;
         modificarEvaluaciones.getStudent(comboBoxEstudiantes);
         this.getContentPane().setBackground(new Color(157,210,228));
+        this.setLocationRelativeTo(null);
+        nombreEvaluacion.setEnabled(false);
+        descripcionEvaluacion.setEnabled(false);
+        porcentajeEvaluacion.setEnabled(false);
+        cantidadEvaluaion.setEnabled(false);
+        nombreCurso.setEnabled(false);
+        botonFechaEntrega.setEnabled(false);
+        comBoxEvaluacion.setEnabled(false);
     }
 
     /**
@@ -60,10 +68,10 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         descripcionEvaluacion = new javax.swing.JTextField();
         porcentajeEvaluacion = new javax.swing.JTextField();
         cantidadEvaluaion = new javax.swing.JTextField();
-        cursoEvaluacion = new javax.swing.JTextField();
+        botonFechaEntrega = new javax.swing.JTextField();
         botonModificarEvaluacion = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
-        cursoEvaluacion1 = new javax.swing.JTextField();
+        nombreCurso = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -83,7 +91,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Nombre");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setText("Descripción");
@@ -103,10 +111,10 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Seleccione la evaluación a modificar:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
 
         comBoxEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 101, -1));
+        getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 200, 40));
 
         nombreEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         nombreEvaluacion.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +122,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
                 nombreEvaluacionActionPerformed(evt);
             }
         });
-        getContentPane().add(nombreEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 100, -1));
+        getContentPane().add(nombreEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 100, -1));
 
         descripcionEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         getContentPane().add(descripcionEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 211, 124));
@@ -125,8 +133,8 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         cantidadEvaluaion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         getContentPane().add(cantidadEvaluaion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 100, -1));
 
-        cursoEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(cursoEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, 100, -1));
+        botonFechaEntrega.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(botonFechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, 100, -1));
 
         botonModificarEvaluacion.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -136,7 +144,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
                 botonModificarEvaluacionActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificarEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, 130, 60));
+        getContentPane().add(botonModificarEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, 130, 60));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -148,8 +156,8 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         });
         getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, 101, -1));
 
-        cursoEvaluacion1.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(cursoEvaluacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, 100, -1));
+        nombreCurso.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(nombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, 100, -1));
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel10.setText("Curso");
@@ -165,6 +173,11 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         getContentPane().add(comboBoxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 230, 50));
 
         botonSeleccionarEstudiante.setText("Seleccionar");
+        botonSeleccionarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSeleccionarEstudianteActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonSeleccionarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 100, 50));
 
         pack();
@@ -227,6 +240,29 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         */
     }//GEN-LAST:event_botonModificarEvaluacionActionPerformed
 
+    private void botonSeleccionarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarEstudianteActionPerformed
+        comBoxEvaluacion.removeAllItems();
+        nombreEvaluacion.setEnabled(true);
+        descripcionEvaluacion.setEnabled(true);
+        porcentajeEvaluacion.setEnabled(true);
+        cantidadEvaluaion.setEnabled(true);
+        nombreCurso.setEnabled(true);
+        botonFechaEntrega.setEnabled(true);
+        comBoxEvaluacion.setEnabled(true);
+        String NombreEstudiante = (String) comboBoxEstudiantes.getSelectedItem();
+        String[] obteniendoIDEstudiante = NombreEstudiante.split(" ");
+        String ID = obteniendoIDEstudiante[0];
+        int idEstudiante = Integer.parseInt(ID);
+      
+        try {
+            comBoxEvaluacion.setEnabled(true);
+            modificarEvaluaciones.getStudentEvaluation(comBoxEvaluacion,idEstudiante);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_botonSeleccionarEstudianteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,14 +306,13 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField botonFechaEntrega;
     private javax.swing.JButton botonModificarEvaluacion;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JButton botonSeleccionarEstudiante;
     private javax.swing.JTextField cantidadEvaluaion;
     private javax.swing.JComboBox<String> comBoxEvaluacion;
     private javax.swing.JComboBox<String> comboBoxEstudiantes;
-    private javax.swing.JTextField cursoEvaluacion;
-    private javax.swing.JTextField cursoEvaluacion1;
     private javax.swing.JTextField descripcionEvaluacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -290,6 +325,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField nombreCurso;
     private javax.swing.JTextField nombreEvaluacion;
     private javax.swing.JTextField porcentajeEvaluacion;
     // End of variables declaration//GEN-END:variables

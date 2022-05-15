@@ -147,6 +147,11 @@ public class ModificarCursos extends javax.swing.JDialog {
         getContentPane().add(comBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 160, 40));
 
         botonAño.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        botonAño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAñoActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 130, 40));
 
         botonSemestre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
@@ -395,6 +400,7 @@ public class ModificarCursos extends javax.swing.JDialog {
                             }
                     }
                     if(validandoAño){
+                        java.sql.Date nuevoAñoCurso = null;
                         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
                         Date FechaDate = null;
                         try {
@@ -402,8 +408,7 @@ public class ModificarCursos extends javax.swing.JDialog {
                         } catch (ParseException ex) {
                             Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        java.sql.Date nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
-
+                        nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
                         try {
                              modificarCurso.updateCourseGroupYear(Grupo, nuevoAñoCurso);
                         } catch (SQLException ex) {
@@ -554,6 +559,10 @@ public class ModificarCursos extends javax.swing.JDialog {
     private void comboBoxEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEstudianteGrupoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxEstudianteGrupoActionPerformed
+
+    private void botonAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAñoActionPerformed
 
     /**
      * @param args the command line arguments
