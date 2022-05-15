@@ -33,7 +33,7 @@ import javax.swing.JComboBox;
 public class Conexion {
 
     
-    public static String host = "jdbc:oracle:thin:@localhost:1521:NELSONBASE";
+    public static String host = "jdbc:oracle:thin:@localhost:1521:BDPRUEBA";
     public static String uName = "mtec";
     public static String uPass = "mtec";
      // Futura Prueba Conexion
@@ -91,6 +91,30 @@ public class Conexion {
             }
         }
         
+        public static void getStudent(JComboBox comBoxEstudiante) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getStudent()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            comBoxEstudiante.addItem(r.getString("id_person") + " " + r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname"));  
+            }
+        }
+        
+        public static void getProfessor(JComboBox comBoxEstudiante) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getProfessor()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            comBoxEstudiante.addItem(r.getString("id_person") + " " + r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname"));  
+            }
+        }
+        
         public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{?= call getIDEvalaution(?)}");
@@ -101,6 +125,19 @@ public class Conexion {
         while(r.next()){
             comBoxEvaluacion.addItem(r.getString("id_evalxstudent") + " " + r.getString("evaluation_des"));  
             }
+        }
+        
+        public static String getIDCourse(String curso) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getIDCourse()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            return (r.getString("course_code"));
+            }
+        return null;
         }
         
          
@@ -744,19 +781,19 @@ public class Conexion {
         stmt.execute();
     }
 
-    /*
-    public static void addCourseGroup(pGroupYear, int pGroupSemester, int pIdProfessor, int pIdCourse) throws SQLException{
+    
+    public static void addCourseGroup(Date pGroupYear, int pGroupSemester, int pIdProfessor, int pIdCourse) throws SQLException{
         
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_coursegroup(?, ?, ?, ?) }");
         
-        stmt.setInt(1, pGroupYear);
+        stmt.setDate(1, (java.sql.Date) pGroupYear);
         stmt.setInt(2, pGroupSemester);
         stmt.setInt(3, pIdProfessor);
         stmt.setInt(4, pIdCourse);
         stmt.execute(); 
     }
-   */
+   
     public static void updateCourseGroupYear(int pGroupCode, Date pGroupYear) throws SQLException{
         
         Connection con = conectarBase();

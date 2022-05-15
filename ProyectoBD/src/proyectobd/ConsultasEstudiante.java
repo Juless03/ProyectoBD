@@ -35,6 +35,14 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
        this.getContentPane().setBackground(new Color(157,210,228));
        botonRegresar.setVisible(false);
     }
+    
+    ConsultasEstudiante(MenuInicio aThis, boolean modal, Conexion conexion) {
+       super(aThis, modal);
+       initComponents();
+       inicioEstudiante = conexion;
+       this.getContentPane().setBackground(new Color(157,210,228));
+       botonRegresarAdmin.setVisible(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,7 +122,6 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         jLabel7.setText("Seleccione el estudiante: ");
 
         jComboBox1.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         botonReview.setBackground(new java.awt.Color(255, 193, 5));
         botonReview.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -240,6 +247,8 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         try {
             review = new Review(this,true,inicioEstudiante);
         } catch (IOException ex) {
+            Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
     review.setVisible(true);        // TODO add your handling code here:

@@ -7,20 +7,25 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Juley
  */
 public class Review extends javax.swing.JDialog {
-
+    private Conexion review;
+    private int estrella = 1;
     /**
      * Creates new form EvaluacionesEstudiante
      */
@@ -38,7 +43,7 @@ public class Review extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    Review(ConsultasEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws IOException {
+    Review(ConsultasEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws IOException, SQLException {
         super(aThis, modal);
         initComponents();
         File pathToFile = new File("./imagenes/estrella.png");
@@ -50,6 +55,9 @@ public class Review extends javax.swing.JDialog {
         estrella4.setIcon(imageIcon);
         estrella5.setIcon(imageIcon);
         this.getContentPane().setBackground(new Color(157,210,228));
+        review = inicioEstudiante;
+        review.getStudent(comBoxEstudiantes);
+        review.getProfessor(comBoxProfesor);
     }
 
     /**
@@ -80,14 +88,39 @@ public class Review extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         estrella1.setBackground(new java.awt.Color(157, 210, 228));
+        estrella1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estrella1ActionPerformed(evt);
+            }
+        });
 
         estrella2.setBackground(new java.awt.Color(157, 210, 228));
+        estrella2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estrella2ActionPerformed(evt);
+            }
+        });
 
         estrella3.setBackground(new java.awt.Color(157, 210, 228));
+        estrella3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estrella3ActionPerformed(evt);
+            }
+        });
 
         estrella4.setBackground(new java.awt.Color(157, 210, 228));
+        estrella4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estrella4ActionPerformed(evt);
+            }
+        });
 
         estrella5.setBackground(new java.awt.Color(157, 210, 228));
+        estrella5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estrella5ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Review");
@@ -104,17 +137,20 @@ public class Review extends javax.swing.JDialog {
         jLabel4.setText("Estudiante que califica: ");
 
         comBoxEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        comBoxEstudiantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel5.setText("Profesor a calificar:");
 
         comBoxProfesor.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        comBoxProfesor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         botonEnviar.setBackground(new java.awt.Color(255, 193, 5));
         botonEnviar.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonEnviar.setText("Enviar");
+        botonEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEnviarActionPerformed(evt);
+            }
+        });
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -149,21 +185,21 @@ public class Review extends javax.swing.JDialog {
                                 .addComponent(estrella4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
                                 .addComponent(estrella5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(18, 34, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(botonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comBoxEstudiantes, 0, 208, Short.MAX_VALUE)
-                                    .addComponent(comBoxProfesor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(botonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comBoxEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comBoxProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,13 +215,10 @@ public class Review extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(comBoxEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(comBoxProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comBoxProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -209,6 +242,44 @@ public class Review extends javax.swing.JDialog {
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
     this.dispose();        
     }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void botonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarActionPerformed
+    String idProfesor = (String) comBoxProfesor.getSelectedItem();
+    idProfesor = idProfesor.substring(0, 2);
+    String idEstudiante = (String) comBoxEstudiantes.getSelectedItem();
+    idEstudiante = idEstudiante.substring(0, 2);
+        try {
+            review.addReview(estrella ,descripccionReview.getText(),Integer.parseInt(idEstudiante), Integer.parseInt(idProfesor));
+            JOptionPane.showMessageDialog(null,"Review enviada correctamente.");
+        } catch (SQLException ex) {
+            Logger.getLogger(Review.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_botonEnviarActionPerformed
+
+    private void estrella1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrella1ActionPerformed
+    estrella = 1;
+    System.out.println("Estrella1");
+    }//GEN-LAST:event_estrella1ActionPerformed
+
+    private void estrella2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrella2ActionPerformed
+    estrella = 2;
+    System.out.println("Estrella2");
+    }//GEN-LAST:event_estrella2ActionPerformed
+
+    private void estrella3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrella3ActionPerformed
+    estrella = 3;
+    System.out.println("Estrella3");
+    }//GEN-LAST:event_estrella3ActionPerformed
+
+    private void estrella4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrella4ActionPerformed
+    estrella = 4;
+    System.out.println("Estrella4");
+    }//GEN-LAST:event_estrella4ActionPerformed
+
+    private void estrella5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrella5ActionPerformed
+    estrella = 5;
+    System.out.println("Estrella5");
+    }//GEN-LAST:event_estrella5ActionPerformed
 
     /**
      * @param args the command line arguments

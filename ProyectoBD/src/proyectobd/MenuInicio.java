@@ -96,12 +96,12 @@ public class MenuInicio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(440, 440, 440)
+                        .addGap(476, 476, 476)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(botonAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(195, 195, 195)
+                        .addGap(189, 189, 189)
                         .addComponent(jLabel2)
                         .addGap(143, 143, 143)
                         .addComponent(botonEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -141,11 +141,12 @@ public class MenuInicio extends javax.swing.JFrame {
 
     private void botonProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProfesorActionPerformed
         ConsultasProfesor evaluacionDocente = new ConsultasProfesor(this,true,Conexion);
-        evaluacionDocente.setVisible(true);        // TODO add your handling code here:
+        evaluacionDocente.setVisible(true);       
     }//GEN-LAST:event_botonProfesorActionPerformed
 
     private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
-      // TODO add your handling code here:
+     ConsultasEstudiante consultasEstudiante = new ConsultasEstudiante(this,true,Conexion);
+     consultasEstudiante.setVisible(true);
     }//GEN-LAST:event_botonEstudianteActionPerformed
 
     /**
