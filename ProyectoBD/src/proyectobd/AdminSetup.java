@@ -24,6 +24,7 @@ public class AdminSetup extends javax.swing.JDialog {
     public AdminSetup(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
@@ -31,6 +32,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = inicioSesionAd;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
      
@@ -38,6 +40,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = registroDatos;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -45,6 +48,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = registrarEvaluaciones;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -52,6 +56,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = registrarDireccion;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -59,6 +64,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = registrarCursos;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -66,6 +72,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = modificarEvaluaciones;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -73,6 +80,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = modificarDireccion;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -80,6 +88,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = modificarDatos;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -87,6 +96,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = modificarCurso;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -94,6 +104,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = consultarEstadisticas;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -101,6 +112,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = evaluacionDocente;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -108,6 +120,7 @@ public class AdminSetup extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         setupAdmin = inicioEstudiante;
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     /**
@@ -134,11 +147,9 @@ public class AdminSetup extends javax.swing.JDialog {
         BotonModificarDireccion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Admin");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 62, -1, -1));
 
         BotonRegistrarPersona.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrarPersona.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -148,7 +159,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonRegistrarPersonaActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegistrarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 167, 200, -1));
 
         BotonModificarPersona.setBackground(new java.awt.Color(255, 193, 5));
         BotonModificarPersona.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -158,7 +168,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonModificarPersonaActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 167, 200, -1));
 
         BotonEstadisticas.setBackground(new java.awt.Color(255, 193, 5));
         BotonEstadisticas.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -168,7 +177,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonEstadisticasActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 167, 200, -1));
 
         BotonEstudiantes.setBackground(new java.awt.Color(255, 193, 5));
         BotonEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -178,7 +186,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonEstudiantesActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 210, 200, -1));
 
         BotonProfesores.setBackground(new java.awt.Color(255, 193, 5));
         BotonProfesores.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -188,7 +195,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonProfesoresActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(664, 253, 200, -1));
 
         regresar.setBackground(new java.awt.Color(255, 193, 5));
         regresar.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -198,7 +204,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 regresarActionPerformed(evt);
             }
         });
-        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 110, -1));
 
         BotonRegistrarCursos.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrarCursos.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -208,7 +213,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonRegistrarCursosActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegistrarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 210, 200, -1));
 
         BotonRegistrarEvaluaciones.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrarEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -218,7 +222,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonRegistrarEvaluacionesActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegistrarEvaluaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 253, 200, -1));
 
         BotonRegistrarDireccion.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrarDireccion.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -228,7 +231,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonRegistrarDireccionActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegistrarDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 296, 200, -1));
 
         BotonModificarCursos.setBackground(new java.awt.Color(255, 193, 5));
         BotonModificarCursos.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -238,7 +240,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonModificarCursosActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 200, -1));
 
         BotonModificarEvaluaciones.setBackground(new java.awt.Color(255, 193, 5));
         BotonModificarEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -248,7 +249,6 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonModificarEvaluacionesActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarEvaluaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 253, 200, -1));
 
         BotonModificarDireccion.setBackground(new java.awt.Color(255, 193, 5));
         BotonModificarDireccion.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
@@ -258,7 +258,74 @@ public class AdminSetup extends javax.swing.JDialog {
                 BotonModificarDireccionActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 296, 200, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(409, 409, 409)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(BotonRegistrarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107)
+                        .addComponent(BotonModificarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addComponent(BotonEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(BotonRegistrarCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107)
+                        .addComponent(BotonModificarCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addComponent(BotonEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(BotonRegistrarEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107)
+                        .addComponent(BotonModificarEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addComponent(BotonProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(BotonRegistrarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107)
+                        .addComponent(BotonModificarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabel1)
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonRegistrarPersona)
+                    .addComponent(BotonModificarPersona)
+                    .addComponent(BotonEstadisticas))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonRegistrarCursos)
+                    .addComponent(BotonModificarCursos)
+                    .addComponent(BotonEstudiantes))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonRegistrarEvaluaciones)
+                    .addComponent(BotonModificarEvaluaciones)
+                    .addComponent(BotonProfesores))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonRegistrarDireccion)
+                    .addComponent(BotonModificarDireccion))
+                .addGap(245, 245, 245)
+                .addComponent(regresar))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -176,6 +176,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
 
         combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         combBoxProfesores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combBoxProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combBoxProfesoresActionPerformed(evt);
+            }
+        });
         getContentPane().add(combBoxProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 361, 157, -1));
 
         comBoxCurso.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
@@ -216,6 +221,10 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private void botonRegistrarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEstudianteGrupoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonRegistrarEstudianteGrupoActionPerformed
+
+    private void combBoxProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combBoxProfesoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combBoxProfesoresActionPerformed
 
     /**
      * @param args the command line arguments

@@ -34,13 +34,14 @@ public class RegistroPersona extends javax.swing.JDialog {
         initComponents();
         this.getContentPane().setBackground(new Color(157,210,228));
         this.getContentPane().setBackground(new Color(157,210,228));
+        this.setLocationRelativeTo(null);
         
     }
     public RegistroPersona(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         registroDatos = setupAdmin;
-        
+        this.setLocationRelativeTo(null);
         registroDatos.getDistrict(botonDistrito);
         registroDatos.getGender(botonGenero);
         this.getContentPane().setBackground(new Color(157,210,228));
@@ -448,7 +449,7 @@ public class RegistroPersona extends javax.swing.JDialog {
             Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            if(validandoPrimerNombre & validandoPrimerApellido & validandoFomatoFecha){
+            if(validandoPrimerNombre && validandoPrimerApellido && validandoFomatoFecha){
                 if(registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimientoValidada)){
                     int idPersona = registroDatos.getPersonID(PrimerNombre.getText(),SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText());
                     if(Categoria == "Estudiante"){
@@ -464,10 +465,13 @@ public class RegistroPersona extends javax.swing.JDialog {
                     }
                     JOptionPane.showMessageDialog(null,"Persona Agregada.");
                     this.dispose();
+                    AdminSetup ventaAdminSetup = null;
+                    ventaAdminSetup = new AdminSetup(this,true,registroDatos);
+                    ventaAdminSetup.setVisible(true); 
+                    
             } else {
                 JOptionPane.showMessageDialog(null,"Persona no agregada.");
             }
-            
          } else {
                 JOptionPane.showMessageDialog(null,"Fallo al agregar persona.");
             }
@@ -476,7 +480,6 @@ public class RegistroPersona extends javax.swing.JDialog {
         } catch (ParseException ex) {
             Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_BotonRegistrarActionPerformed
 
     private void botonDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDistritoActionPerformed

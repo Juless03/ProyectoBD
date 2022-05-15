@@ -42,6 +42,20 @@ public class Conexion {
             Connection con = DriverManager.getConnection(host, uName, uPass);
             return con;
         }
+        
+        public static void getStudentGroup(JComboBox comBoxEvaluacion,int pGroupCode) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getStudentGroup(?)}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+        stmt.setInt(2, pGroupCode);
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            comBoxEvaluacion.addItem(r.getString("id_person"));  
+            
+            }
+        }
+        
         public static void getCourse(JComboBox cbox_course) throws SQLException{
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{?= call getCourse()}");
@@ -51,9 +65,34 @@ public class Conexion {
         ResultSet r = (ResultSet) stmt.getObject(1); 
         while(r.next()){
             cbox_course.addItem(r.getString("course_name"));  
+            }
         }
+        public static void getIDStudent(JComboBox comBoxEstudiante) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getIDStudent()}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            comBoxEstudiante.addItem(r.getString("id_person"));  
+            }
         }
-         public static void getCourseGroup(JComboBox cbox_coursegroup) throws SQLException{
+        
+        public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getIDEvalaution(?)}");
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+        stmt.setInt(2, pIDStudent);
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1); 
+        while(r.next()){
+            comBoxEvaluacion.addItem(r.getString("id_evalxstudent"));  
+            }
+        }
+        
+         
+        public static void getCourseGroup(JComboBox cbox_coursegroup) throws SQLException{
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{?= call getCourseGroup()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
@@ -62,8 +101,8 @@ public class Conexion {
         ResultSet r = (ResultSet) stmt.getObject(1); 
         while(r.next()){
             cbox_coursegroup.addItem(r.getString("group_code"));  
+            }
         }
-    }
     
         public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
         
@@ -248,8 +287,7 @@ public class Conexion {
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException {
 
         Connection con = conectarBase();
-        //CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_person(?,?,?,?,?,?,?,?) }");
-        PreparedStatement stmt = con.prepareStatement("{ call AdminPerson.add_person(?,?,?,?,?,?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_person(?,?,?,?,?,?,?) }");
         stmt.setString(1, pFirstName);
         stmt.setString(2, pMiddleName);
         stmt.setString(3, pFirstLastname);
@@ -678,23 +716,19 @@ public class Conexion {
         stmt.execute();
     }
 
-    public static void updateCourseCredits(int pCourse_code, int pCredits) throws SQLException {
-
+    public static void updateCourseCredits(String pCourseName, int pCredits) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_course_credits(?, ?) }");
-
-        stmt.setInt(1, pCourse_code);
+        CallableStatement stmt = con.prepareCall("{ call update_course_credits2(?, ?) }");
+        stmt.setString(1, pCourseName);
         stmt.setInt(2, pCredits);
         stmt.execute();
     }
 
-    public static void updateCourseName(int pCourse_code, String pCourseName) throws SQLException {
-
+    public static void updateCourseName(String pCourseName, String pNewCourseName) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_course_name(?, ?) }");
-
-        stmt.setInt(1, pCourse_code);
-        stmt.setString(2, pCourseName);
+        CallableStatement stmt = con.prepareCall("{ call update_course_name2(?, ?) }");
+        stmt.setString(1, pCourseName);
+        stmt.setString(2, pNewCourseName);
         stmt.execute();
     }
 
@@ -710,17 +744,17 @@ public class Conexion {
         stmt.setInt(4, pIdCourse);
         stmt.execute(); 
     }
-   
-    public static void updateCourseGroupYear(int pGroupCode, pGroupYear) throws SQLException{
+   */
+    public static void updateCourseGroupYear(int pGroupCode, Date pGroupYear) throws SQLException{
         
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_coursegroup_year(?, ?) }");
         
         stmt.setInt(1, pGroupCode);
-        stmt.setInt(2, pGroupYear);
+        stmt.setDate(2, (java.sql.Date) pGroupYear);
         stmt.execute(); 
     }
-     */
+     
     public static void updateCourseGroupSemester(int pGroupCode, int pGroupSemester) throws SQLException {
 
         Connection con = conectarBase();
@@ -751,20 +785,19 @@ public class Conexion {
         stmt.execute();
     }
 
-    /*
-    public static void addEvaluation(String pEvaluationName, String pEvaluationDes, String pMembers, int pPercentage, pDueDate) throws SQLException{
+    
+    public static void addEvaluation(String pEvaluationName, String pEvaluationDes, String pMembers, int pPercentage, Date pDueDate) throws SQLException{
         
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminCourse.add_evaluation(?, ?, ?, ?, ?) }");
-        
         stmt.setString(1, pEvaluationName);
         stmt.setString(2, pEvaluationDes);
         stmt.setString(3, pMembers);
         stmt.setInt(4, pPercentage);
-        stmt.setString(5, pDueDate);
+        stmt.setDate(5, (java.sql.Date) pDueDate);
         stmt.execute(); 
     }
-     */
+     
 
     public static void updateEvaluationName(int pEvaluationCode, String pEvaluationName) throws SQLException {
 

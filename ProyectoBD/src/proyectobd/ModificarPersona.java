@@ -60,6 +60,7 @@ public class ModificarPersona extends javax.swing.JDialog {
         botonSeleccionarFoto.setVisible(false);
         modificarDatos.getPerson(botonPersonas);
         comboBoxNombres.setVisible(false);
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
 
     }
@@ -222,6 +223,11 @@ public class ModificarPersona extends javax.swing.JDialog {
         botonModificarNumero.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarNumero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonModificarNumero.setText("Modificar");
+        botonModificarNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarNumeroActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonModificarNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 100, 50));
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -361,8 +367,8 @@ public class ModificarPersona extends javax.swing.JDialog {
            if(botonTexto1.getText().isEmpty()){
                JOptionPane.showMessageDialog(null,"No se ha modificado nada!\nTodos el espacio de fecha está vacio");
             } else {
-                    String FechaNacimientoClienteRegistro = botonTexto1.getText();
-                    String[] partesFecha = FechaNacimientoClienteRegistro.split("/");
+                    String FechaNacimientoModicar = botonTexto1.getText();
+                    String[] partesFecha = FechaNacimientoModicar.split("/");
                     String ParteDia = partesFecha[0];
                     String ParteMes = partesFecha[1];
                     String ParteAños = partesFecha[2];
@@ -418,7 +424,6 @@ public class ModificarPersona extends javax.swing.JDialog {
             } 
           }
             
-       
         if(Modificar == "Foto"){
             try {
                 modificarDatos.escribeImagenEnBBDD(idPersona,mImagen);
@@ -557,6 +562,10 @@ public class ModificarPersona extends javax.swing.JDialog {
         }
     ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void botonModificarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonModificarNumeroActionPerformed
 
     /**
      * @param args the command line arguments

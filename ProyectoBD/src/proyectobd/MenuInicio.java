@@ -32,6 +32,7 @@ public class MenuInicio extends javax.swing.JFrame {
         BufferedImage bufferImage = ImageIO.read(pathToFile);
         ImageIcon imageIcon = new ImageIcon(bufferImage);
         jLabel1.setIcon(imageIcon);
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 

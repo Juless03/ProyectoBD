@@ -27,16 +27,11 @@ public class ProyectoBD {
        //Conexion.consultarGenero();
         //System.out.println(Conexion.consultarGeneroCodigo("Femenino"));
         //Conexion.getPerson();
-        String PersonaElegida = "Nelson Adolfo Alvarado Navarro";
-        String[] nombrePartes = PersonaElegida.split(" ");
-        String primerNombre =  nombrePartes[0]; 
-        String segundoNombre = nombrePartes[1];
-        String primerApellido = nombrePartes[2];
-        String segundoApellido = nombrePartes[3];
-        System.out.println("PrimerNombre: " + primerNombre);
-        System.out.println("SegundoNombre: " + segundoNombre);
-        System.out.println("PrimerApellido: " + primerApellido);
-        System.out.println("SegundoApellido: " + segundoApellido);
+ 
+        //Conexion.updateCourseCredits("Cálculo Diferencial", 3);
+        //Conexion.updateCourseName("Algebra", "Cálculo Diferencial");
+        //Conexion.getStudentEvaluation(1);
+        //Conexion.getStudentGroup(2);
     }
     
 }
