@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +30,11 @@ public class ModificarDireccion extends javax.swing.JDialog {
         super(aThis, modal);
         initComponents();
         modificarDireccion = setupAdmin;
+        modificarDireccion.getProvince(comBoxProvincia);
+        modificarDireccion.getCanton(comBoxCanton);
+        modificarDireccion.getCountry(comBoxPais);
+        modificarDireccion.getDistrict(comBoxDistrito);
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -75,96 +81,144 @@ public class ModificarDireccion extends javax.swing.JDialog {
         botonRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Modificar Direcciones");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 46, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel2.setText("Canton");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 149, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel3.setText("Seleccione el canton a modificar:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 194, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Nombre");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 269, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setText("Id Provincia");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 329, -1, -1));
 
         comBoxCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxCanton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 193, 100, -1));
 
         nombreCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(nombreCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 267, 100, -1));
 
         provinciaCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(provinciaCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 329, 100, -1));
 
         botonModificarCanton.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarCanton.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonModificarCanton.setText("Modificar");
+        botonModificarCanton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarCantonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonModificarCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 390, 100, -1));
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel6.setText("Distrito");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 149, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel7.setText("Seleccione el distrito a modificar:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 194, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel8.setText("Nombre");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 267, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Id Canton");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 329, 216, -1));
 
         comBoxDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(1031, 194, 103, -1));
 
         nombreDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(nombreDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(1031, 267, 103, -1));
 
         cantonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(cantonDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(1031, 329, 103, -1));
 
         botonModificarDistrito.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarDistrito.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonModificarDistrito.setText("Modificar");
+        botonModificarDistrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarDistritoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonModificarDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 370, 103, -1));
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel10.setText("Provincia");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 461, 85, -1));
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel11.setText("Seleccione la provincia a modificar:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 501, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel12.setText("Nombre");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 558, 74, -1));
 
         jLabel13.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel13.setText("Id País");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 622, 74, -1));
 
         comBoxProvincia.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 500, 100, -1));
 
         nombreProvincia.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(nombreProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 558, 100, -1));
 
         paisProvincia.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(paisProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 622, 100, -1));
 
         botonModificarProvincia.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarProvincia.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonModificarProvincia.setText("Modificar");
+        botonModificarProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarProvinciaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonModificarProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 659, 100, -1));
 
         jLabel14.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel14.setText("País");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(934, 461, 40, -1));
 
         jLabel15.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel15.setText("Seleccione lelpais a modificar:");
+        jLabel15.setText("Seleccione el pais a modificar:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 501, 216, -1));
 
         jLabel16.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel16.setText("Nombre");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 558, 64, -1));
 
         comBoxPais.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(comBoxPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(1031, 501, 103, -1));
 
         nombrePais.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(nombrePais, new org.netbeans.lib.awtextra.AbsoluteConstraints(1031, 558, 103, -1));
 
         botonModificarPais.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarPais.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonModificarPais.setText("Modificar");
+        botonModificarPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarPaisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonModificarPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(1031, 618, 103, -1));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -174,133 +228,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
                 botonRegresarActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(456, 456, 456)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel11)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(botonModificarProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonModificarCanton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(comBoxCanton, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nombreCanton)
-                                    .addComponent(provinciaCanton)
-                                    .addComponent(comBoxProvincia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nombreProvincia)
-                                    .addComponent(paisProvincia))
-                                .addGap(295, 295, 295)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comBoxDistrito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombreDistrito)
-                    .addComponent(cantonDistrito)
-                    .addComponent(botonModificarDistrito, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(comBoxPais, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombrePais)
-                    .addComponent(botonModificarPais, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                .addGap(190, 190, 190))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(350, 350, 350))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(comBoxCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(comBoxDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nombreCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)
-                        .addComponent(nombreDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(provinciaCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(cantonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonModificarCanton)
-                    .addComponent(botonModificarDistrito))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(comBoxProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(comBoxPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(nombreProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16)
-                    .addComponent(nombrePais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(paisProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonModificarPais))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(botonModificarProvincia)
-                .addGap(26, 26, 26))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonRegresar)
-                .addContainerGap())
-        );
+        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 674, 101, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -315,6 +243,193 @@ public class ModificarDireccion extends javax.swing.JDialog {
         }
     ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void botonModificarCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarCantonActionPerformed
+        boolean validandoCantonNombre = false;
+        boolean validandoPronvincia = false;
+        String Canton = (String) comBoxCanton.getSelectedItem();
+        int CantonCode = 0;
+        int ProvinceCode = 0;
+        try {
+            CantonCode = modificarDireccion.getCantonCode(Canton);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String NuevoCanton = nombreCanton.getText().toString();
+        if(nombreCanton.getText().isEmpty() && provinciaCanton.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+        } else {
+            if(!nombreCanton.getText().isEmpty()){
+                try {
+                    modificarDireccion.updateCantonName(CantonCode,NuevoCanton);
+                    validandoCantonNombre = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error Nombre Canton no modificado!");
+                    validandoCantonNombre = false;
+                }
+            }
+            if(!provinciaCanton.getText().isEmpty()){
+                try {
+                    ProvinceCode = Integer.parseInt(provinciaCanton.getText()); 
+                    modificarDireccion.updateCantonProvince(CantonCode,ProvinceCode);
+                    validandoPronvincia = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error Provincia Canton no modificado!");
+                    validandoPronvincia = false;
+                }
+            }  
+        }
+        if(validandoCantonNombre || validandoPronvincia){
+            JOptionPane.showMessageDialog(null,"Canton Modificado!!");
+            this.dispose();
+            AdminSetup ventaAdminSetup = null;
+                try {
+                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            ventaAdminSetup.setVisible(true); 
+        }
+    }//GEN-LAST:event_botonModificarCantonActionPerformed
+
+    private void botonModificarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarProvinciaActionPerformed
+       boolean validandoProvinciaNombre = false;
+        boolean validandoPais = false;
+        String Provincia = (String) comBoxProvincia.getSelectedItem();
+        int ProvinciaCode = 0;
+        int PaisCode = 0;
+        try {
+            ProvinciaCode = modificarDireccion.getProvinceCode(Provincia);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            String NuevaProvinciaNombre = nombreProvincia.getText().toString();
+        if(nombreProvincia.getText().isEmpty() && paisProvincia.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+        } else {
+            if(!nombreProvincia.getText().isEmpty()){
+                try {
+                    modificarDireccion.updateProvinceName(ProvinciaCode,NuevaProvinciaNombre);
+                    validandoProvinciaNombre = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error Nombre Provincia no modificado!");
+                    validandoProvinciaNombre = false;
+                }
+            }
+            if(!paisProvincia.getText().isEmpty()){
+                try {
+                    PaisCode = Integer.parseInt(paisProvincia.getText());
+                    modificarDireccion.updateProvinceCountry(ProvinciaCode,PaisCode);
+                    validandoPais = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error País provincia no modificado!");
+                    validandoPais = false;
+                }
+            }  
+        }
+        if(validandoProvinciaNombre || validandoPais){
+            JOptionPane.showMessageDialog(null,"Provincia Modificada!!");
+            this.dispose();
+            AdminSetup ventaAdminSetup = null;
+                try {
+                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            ventaAdminSetup.setVisible(true); 
+        }
+    }//GEN-LAST:event_botonModificarProvinciaActionPerformed
+
+    private void botonModificarDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarDistritoActionPerformed
+        boolean validandoDistritoNombre = false;
+        boolean validandoCanton = false;
+        String Distrito = (String) comBoxDistrito.getSelectedItem();
+        int DistritoCode = 0;
+        int CantonCode = 0;
+        try {
+            DistritoCode = modificarDireccion.getDistrictCode(Distrito);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            String NuevoNombreDistrito = nombreDistrito.getText().toString();
+        if(nombreDistrito.getText().isEmpty() && cantonDistrito.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+        } else {
+            if(!nombreDistrito.getText().isEmpty()){
+                try {
+                    modificarDireccion.updateDistrictName(DistritoCode,NuevoNombreDistrito);
+                    validandoDistritoNombre = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error Nombre Distrito no modificado!");
+                    validandoDistritoNombre = false;
+                }
+            }
+            if(!cantonDistrito.getText().isEmpty()){
+                try {
+                    CantonCode = Integer.parseInt(cantonDistrito.getText());
+                    modificarDireccion.updateDistrictCanton(DistritoCode,CantonCode);
+                    validandoCanton = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error Canton Distrito no modificado!");
+                    validandoCanton = false;
+                }
+            }  
+        }
+        if(validandoDistritoNombre || validandoCanton){
+            JOptionPane.showMessageDialog(null,"Distrito Modificada!!");
+            this.dispose();
+            AdminSetup ventaAdminSetup = null;
+                try {
+                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            ventaAdminSetup.setVisible(true); 
+        }
+    }//GEN-LAST:event_botonModificarDistritoActionPerformed
+
+    private void botonModificarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarPaisActionPerformed
+
+        boolean validandoNombrePais = false;
+        String Pais = (String) comBoxDistrito.getSelectedItem();
+        int PaisCode = 0;
+        String NuevoNombrePais = nombrePais.getText().toString();
+        if(nombrePais.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+        } else {
+            try {
+                PaisCode = modificarDireccion.getCountryCode(Pais);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                modificarDireccion.updateCountryName(PaisCode,NuevoNombrePais);
+                validandoNombrePais = true;
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                validandoNombrePais = false;
+                JOptionPane.showMessageDialog(null,"Error País nombre no modificado!");
+            }
+        }
+        if(validandoNombrePais){
+            JOptionPane.showMessageDialog(null,"País modificado!");
+            this.dispose();
+            AdminSetup ventaAdminSetup = null;
+                try {
+                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            ventaAdminSetup.setVisible(true); 
+        }
+         
+    }//GEN-LAST:event_botonModificarPaisActionPerformed
 
     /**
      * @param args the command line arguments

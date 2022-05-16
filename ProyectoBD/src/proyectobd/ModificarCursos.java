@@ -90,6 +90,7 @@ public class ModificarCursos extends javax.swing.JDialog {
         comboBoxEstudianteGrupo = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -152,16 +153,16 @@ public class ModificarCursos extends javax.swing.JDialog {
                 botonAñoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 130, 40));
+        getContentPane().add(botonAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 130, 40));
 
         botonSemestre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(botonSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 130, 40));
+        getContentPane().add(botonSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 130, 40));
 
         botonIDProfesor.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(botonIDProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 130, 40));
+        getContentPane().add(botonIDProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 130, 40));
 
         botonIdCourse.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(botonIdCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 130, 40));
+        getContentPane().add(botonIdCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, 130, 40));
 
         botonModificarGrupo.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -171,7 +172,7 @@ public class ModificarCursos extends javax.swing.JDialog {
                 botonModificarGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 470, 120, 60));
+        getContentPane().add(botonModificarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, 120, 60));
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel12.setText("Estudiante en un Grupo");
@@ -215,16 +216,16 @@ public class ModificarCursos extends javax.swing.JDialog {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 260, -1));
 
         jLabel3.setText("IDCurso");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 60, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 60, 20));
 
         jLabel4.setText("IDProfessor");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 70, 20));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 70, 20));
 
         jLabel5.setText("Año");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 60, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 60, 30));
 
         jLabel8.setText("Semestre");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 60, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 60, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Status");
@@ -262,6 +263,9 @@ public class ModificarCursos extends javax.swing.JDialog {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Seleccione el estudiante a modificar");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 270, 260, 30));
+
+        jLabel11.setText("DD/MM/YYYY");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 90, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -626,6 +630,7 @@ public class ModificarCursos extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;

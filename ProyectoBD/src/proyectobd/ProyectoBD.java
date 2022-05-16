@@ -33,8 +33,7 @@ public class ProyectoBD {
         //Conexion.getStudentEvaluation(1);
         //Conexion.getStudentGroup(2);
         //Conexion.getStudent();
-        String a = "11 Buenas Tardes";
-        String B = a.substring(0, 2);
+        System.out.println(Conexion.getIDCourse("ingle"));
     }
     
 }

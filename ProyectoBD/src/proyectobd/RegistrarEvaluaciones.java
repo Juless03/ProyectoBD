@@ -75,6 +75,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         botonFechaEntrega = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -190,6 +191,9 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         jLabel7.setText("Seleccione el id de la evaluación");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 270, 220, -1));
 
+        jLabel13.setText("MM/DD/YYYY");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 110, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,9 +209,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonRegistrarEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEvaluacionActionPerformed
-       //if(evaluacionNombre.getText().isEmpty() && evaluacionPorcentaje.getText().isEmpty() && evaluacionMiembros.getText().isEmpty() && evaluacionDescripcion.getText().isEmpty()){ 
-         //      JOptionPane.showMessageDialog(null,"Error!\nTodos los campos están vacios.");
-       //}
+    
        java.sql.Date DueDateValida = null;
        boolean validando = false;
        int porcentaje = 0;
@@ -360,6 +362,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
