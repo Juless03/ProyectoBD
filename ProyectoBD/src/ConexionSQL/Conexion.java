@@ -45,7 +45,7 @@ public class Conexion {
         }
         public static void getPhoneNumber(JComboBox cbox_PhoneNumber) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getPhoneNumber()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getPhoneNumber()}");
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
         stmt.execute();
         ResultSet r = (ResultSet) stmt.getObject(1);
@@ -56,7 +56,7 @@ public class Conexion {
         
         public static int getIDPhone(int phoneNumber) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getPhoneID(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getPhoneID(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setInt(2, phoneNumber);
         stmt.execute();
@@ -67,7 +67,7 @@ public class Conexion {
         
         public static void getStudentGroup(JComboBox comBoxEvaluacion,int pGroupCode) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getStudentGroup(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getStudentGroup(?)}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
         stmt.setInt(2, pGroupCode);
         stmt.execute();
@@ -80,7 +80,7 @@ public class Conexion {
         
         public static void getStudent(JComboBox comboBoxStudents) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getStudent()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getStudent()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
 
         stmt.execute();
@@ -92,7 +92,7 @@ public class Conexion {
         
         public static void getCourse(JComboBox cbox_course) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getCourse()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getCourse()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
 
         stmt.execute();
@@ -104,7 +104,7 @@ public class Conexion {
         
         public static void getCourseRegistroGrupo(JComboBox cbox_course) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getCourseGrupo()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getCourseGrupo()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
 
         stmt.execute();
@@ -116,7 +116,7 @@ public class Conexion {
 
         public static void getIDStudent(JComboBox comBoxEstudiante) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getIDStudent()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getIDStudent()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
 
         stmt.execute();
@@ -128,7 +128,7 @@ public class Conexion {
 
         public static int getIDCourse(String curso) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getIDCourse(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getIDCourse(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, curso);
         stmt.execute();
@@ -138,7 +138,7 @@ public class Conexion {
         
         public static void getProfessor(JComboBox comBoxEstudiante) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getProfessor()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getProfessor()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
 
         stmt.execute();
@@ -150,7 +150,7 @@ public class Conexion {
         
         public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getEvalautionStudent(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getEvalautionStudent(?)}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
         stmt.setInt(2, pIDStudent);
         stmt.execute();
@@ -161,7 +161,7 @@ public class Conexion {
         }
         public static void getEvaluation(JComboBox comboBoxEvaluacion) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getEvaluation()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getEvaluation()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
         stmt.execute();
         ResultSet r = (ResultSet) stmt.getObject(1); 
@@ -172,7 +172,7 @@ public class Conexion {
 
         public static void getCourseGroup(JComboBox cbox_coursegroup) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getCourseGroup()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getCourseGroup()}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
 
         stmt.execute();
@@ -185,7 +185,7 @@ public class Conexion {
         public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
         
               Connection con = conectarBase(); // 
-              PreparedStatement pstmt = con.prepareStatement("{  call actualizarPersona.update_Picture(?,?)  }");
+              PreparedStatement pstmt = con.prepareStatement("{  call AdminPerson.update_Picture(?,?)  }");
               Blob imagenBlob = null;
               BufferedImage bi = new BufferedImage(mImagen.getWidth(null), mImagen.getHeight(null), BufferedImage.TYPE_INT_ARGB);
               Graphics2D g2d = bi.createGraphics();
@@ -211,7 +211,7 @@ public class Conexion {
 
     public static int getCantonCode(String cantonName) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getCantonCode(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getCantonCode(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, cantonName);
         stmt.execute();
@@ -221,7 +221,7 @@ public class Conexion {
 
     public static void getCanton(JComboBox cbox_canton) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getCanton()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getCanton()}");
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
 
         stmt.execute();
@@ -233,7 +233,7 @@ public class Conexion {
     
     public static int getCountryCode(String countryName) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getCountryCode(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getCountryCode(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, countryName);
         stmt.execute();
@@ -243,7 +243,7 @@ public class Conexion {
 
     public static void getCountry(JComboBox cbox_country) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getCountry()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getCountry()}");
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
 
         stmt.execute();
@@ -254,7 +254,7 @@ public class Conexion {
     }
      public static int getProvinceCode(String provinceName) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getProvinceCode(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getProvinceCode(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, provinceName);
         stmt.execute();
@@ -264,7 +264,7 @@ public class Conexion {
      
     public static void getProvince(JComboBox cbox_province) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getProvince()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getProvince()}");
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
         stmt.execute();
         ResultSet r = (ResultSet) stmt.getObject(1);
@@ -278,7 +278,7 @@ public class Conexion {
     // Actualizar datos de distrito y genero RegistroPersonas
     public static String loginAdmin(String pUsuario, String pContraseña) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call adminLogin(?,?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getAdminLogin(?,?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, pUsuario);
         stmt.setString(3, pContraseña);
@@ -289,7 +289,7 @@ public class Conexion {
 
     public static int getDistrictCode(String distritoName) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getDistrictCode(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getDistrictCode(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, distritoName);
         stmt.execute();
@@ -299,7 +299,7 @@ public class Conexion {
 
     public static void getDistrict(JComboBox cbox_distrito) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getDistrict()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getDistrict()}");
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
 
         stmt.execute();
@@ -312,7 +312,7 @@ public class Conexion {
 
     public static void getGender(JComboBox cbox_genero) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getGender()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getGender()}");
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
 
         stmt.execute();
@@ -325,7 +325,7 @@ public class Conexion {
 
     public static int getGenderCode(String GeneroNombre) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getGenderCode(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getGenderCode(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, GeneroNombre);
         stmt.execute();
@@ -336,7 +336,7 @@ public class Conexion {
     //funciones del paquete adminPerson
     public static int getPersonID(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getIdPerson(?,?,?,?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getIdPerson(?,?,?,?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setString(2, pFirstName);
         stmt.setString(3, pMiddleName);
@@ -349,7 +349,7 @@ public class Conexion {
 
     public static void getPerson(JComboBox cbox_personas) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getPerson()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getPerson()}");
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
 
         stmt.execute();
@@ -376,7 +376,7 @@ public class Conexion {
   
      public static void updatePersonFirstName(int pIdPerson, String pFirstName) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call update_person_first_name(?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_person_first_name(?,?) }");
         stmt.setInt(1, pIdPerson);
         stmt.setString(2, pFirstName);
         stmt.execute();
@@ -384,7 +384,7 @@ public class Conexion {
      
       public static void updatePersonMiddleName(int pIdPerson, String pMiddleName) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call update_person_middle_name(?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_person_middle_name(?,?) }");
         stmt.setInt(1, pIdPerson);
         stmt.setString(2, pMiddleName);
         stmt.execute();
@@ -392,14 +392,14 @@ public class Conexion {
       
     public static void updatePersonFirstLastName(int pIdPerson, String pFirstLastName) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call update_person_first_last_name(?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_person_first_last_name(?,?) }");
         stmt.setInt(1, pIdPerson);
         stmt.setString(2, pFirstLastName);
         stmt.execute();
     } 
     public static void updatePersonSecondLastName(int pIdPerson, String pSecondLastName) throws SQLException{
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call update_person_second_last_name(?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_person_second_last_name(?,?) }");
         stmt.setInt(1, pIdPerson);
         stmt.setString(2, pSecondLastName);
         stmt.execute();
@@ -494,7 +494,7 @@ public class Conexion {
       
     public static int getEmailID(int idPerson) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call getIDEmail(?)}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getIDEmail(?)}");
         stmt.registerOutParameter(1, Types.VARCHAR);
         stmt.setInt(2, idPerson);
         stmt.execute();
@@ -508,11 +508,11 @@ public class Conexion {
         stmt.setString(2, EmailDes);
         stmt.execute();
     }
-    public static void addPhoneNumber(String pPhonenumberDescription, int pPhonenumberPhone, int pIdPerson) throws SQLException {
+    public static void addPhoneNumber(String pPhonenumberDescription, String pPhonenumberPhone, int pIdPerson) throws SQLException {
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_phonenumber(?, ?, ?) }");
         stmt.setString(1, pPhonenumberDescription);
-        stmt.setInt(2, pPhonenumberPhone);
+        stmt.setString(2, pPhonenumberPhone);
         stmt.setInt(3, pIdPerson);
         stmt.execute();
     }
@@ -524,13 +524,13 @@ public class Conexion {
         stmt.execute();
     }
 
-    public static void updatePhoneNumber(int pPhonenumberCode, int pPhonenumberPhone) throws SQLException {
+    public static void updatePhoneNumber(int pPhonenumberCode, String pPhonenumberPhone) throws SQLException {
 
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_phone_number(?, ?) }");
 
         stmt.setInt(1, pPhonenumberCode);
-        stmt.setInt(2, pPhonenumberPhone);
+        stmt.setString(2, pPhonenumberPhone);
         stmt.execute();
     }
 
@@ -792,7 +792,7 @@ public class Conexion {
 
     public static void updateCourseCredits(String pCourseName, int pCredits) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call update_course_credits2(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ AdminCourse.call update_course_credits2(?, ?) }");
         stmt.setString(1, pCourseName);
         stmt.setInt(2, pCredits);
         stmt.execute();
@@ -800,7 +800,7 @@ public class Conexion {
 
     public static void updateCourseName(String pCourseName, String pNewCourseName) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call update_course_name2(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_course_name2(?, ?) }");
         stmt.setString(1, pCourseName);
         stmt.setString(2, pNewCourseName);
         stmt.execute();
@@ -915,7 +915,7 @@ public class Conexion {
      public static void updateEvaluationCourseCode(int pEvaluationCode, int pCourseCode) throws SQLException {
 
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call update_evaluation_course_code(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminCourse.update_evaluation_course_code(?, ?) }");
         stmt.setInt(1, pEvaluationCode);
         stmt.setInt(2, pCourseCode);
         stmt.execute();
@@ -975,7 +975,7 @@ public class Conexion {
     
     public static ArrayList<String> coursesRegistered(ArrayList<String> cursos, String pcCourseName, int pnGroupSemester, Date pnGroupYear) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call coursesRegistered(?, ?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call studentsConsults.coursesRegistered(?, ?, ?) }");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
         stmt.setString(2, pcCourseName);
         stmt.setInt(3, pnGroupSemester);
@@ -991,7 +991,7 @@ public class Conexion {
     public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
 
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call noteCourseAndEvaluations(?) }");
+        CallableStatement stmt = con.prepareCall("{ call studentsConsults.noteCourseAndEvaluations(?) }");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
         stmt.setInt(2, pnIdPerson);
         stmt.executeQuery();

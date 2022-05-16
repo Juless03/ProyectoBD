@@ -572,16 +572,17 @@ public class ModificarPersona extends javax.swing.JDialog {
 
     private void botonModificarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarNumeroActionPerformed
         boolean validandoTelefono = false;
-        int telefono = Integer.parseInt(numeroAModificar.getSelectedItem().toString());
+        String Telefono = numeroAModificar.getSelectedItem().toString();
+        int telefonoNunmero = Integer.parseInt(numeroAModificar.getSelectedItem().toString());
         int idTelefono = 0;
-        int nuevoNumeroTelefono = 0;
+        String nuevoNumeroTelefono;
         if(nuevoNumero.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
                  
         } else{
-             nuevoNumeroTelefono = Integer.parseInt(nuevoNumero.getText().toString());
+             nuevoNumeroTelefono = nuevoNumero.getText().toString();
             try {
-                idTelefono = modificarDatos.getIDPhone(telefono);
+                idTelefono = modificarDatos.getIDPhone(telefonoNunmero);
             } catch (SQLException ex) {
                 Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }

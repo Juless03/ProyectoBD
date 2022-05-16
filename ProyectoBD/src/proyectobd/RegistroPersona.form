@@ -76,14 +76,6 @@
                       <Component id="personaTelefono" min="-2" pref="180" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="124" pref="124" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
-                      <Component id="SegundoApellido" min="-2" pref="97" max="-2" attributes="0"/>
-                      <EmptySpace min="346" pref="346" max="-2" attributes="0"/>
-                      <Component id="botonRegistrarTelefono" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace min="119" pref="119" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
@@ -100,18 +92,6 @@
                       <Component id="jLabel15" min="-2" pref="156" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
-                      <Component id="botonGenero" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
-                      <Component id="botonCategoria" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
-                      <Component id="botonDistrito" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="103" pref="103" max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
-                      <Component id="personaEmail" min="-2" pref="180" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace min="640" pref="640" max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
@@ -126,6 +106,36 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="BotonRegresar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                              <Component id="botonGenero" min="-2" pref="125" max="-2" attributes="0"/>
+                              <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
+                              <Component id="botonCategoria" min="-2" pref="125" max="-2" attributes="0"/>
+                              <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
+                              <Component id="botonDistrito" min="-2" pref="125" max="-2" attributes="0"/>
+                              <EmptySpace min="103" pref="103" max="-2" attributes="0"/>
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="124" pref="124" max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
+                              <Component id="SegundoApellido" min="-2" pref="97" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="personaEmail" min="-2" pref="180" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="botonRegistrarTelefono" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="177" max="32767" attributes="0"/>
@@ -163,16 +173,18 @@
                       <Component id="personaTelefono" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonRegistrarTelefono" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
+                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                       <Component id="SegundoApellido" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="botonRegistrarTelefono" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
