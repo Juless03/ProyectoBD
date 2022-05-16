@@ -43,6 +43,27 @@ public class Conexion {
             Connection con = DriverManager.getConnection(host, uName, uPass);
             return con;
         }
+        public static void getPhoneNumber(JComboBox cbox_PhoneNumber) throws SQLException {
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getPhoneNumber()}");
+        stmt.registerOutParameter(1, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet r = (ResultSet) stmt.getObject(1);
+        while (r.next()) {
+            cbox_PhoneNumber.addItem(r.getString("phonenumber_phone"));
+            }
+        }
+        
+        public static int getIDPhone(int phoneNumber) throws SQLException {
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{?= call getPhoneID(?)}");
+        stmt.registerOutParameter(1, Types.VARCHAR);
+        stmt.setInt(2, phoneNumber);
+        stmt.execute();
+        int Resultado = stmt.getInt(1);
+        return Resultado;
+    }
+        
         
         public static void getStudentGroup(JComboBox comBoxEvaluacion,int pGroupCode) throws SQLException{
         Connection con = conectarBase();
@@ -470,11 +491,21 @@ public class Conexion {
         stmt.setInt(2, pEmailDirection);
         stmt.execute();
     }
-    public static void updateEmailPerson(int pEmailCode, int pIdPerson) throws SQLException {
+      
+    public static int getEmailID(int idPerson) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_email_person(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{?= call getIDEmail(?)}");
+        stmt.registerOutParameter(1, Types.VARCHAR);
+        stmt.setInt(2, idPerson);
+        stmt.execute();
+        int Resultado = stmt.getInt(1);
+        return Resultado;
+    }
+    public static void updateEmailDirection(int pEmailCode, String EmailDes) throws SQLException {
+        Connection con = conectarBase();
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_email_direction(?, ?) }");
         stmt.setInt(1, pEmailCode);
-        stmt.setInt(2, pIdPerson);
+        stmt.setString(2, EmailDes);
         stmt.execute();
     }
     public static void addPhoneNumber(String pPhonenumberDescription, int pPhonenumberPhone, int pIdPerson) throws SQLException {
@@ -957,7 +988,7 @@ public class Conexion {
         return cursos;
     }
     
-    public static void noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
+    public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
 
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call noteCourseAndEvaluations(?) }");
@@ -966,8 +997,9 @@ public class Conexion {
         stmt.executeQuery();
         ResultSet r = (ResultSet) stmt.getObject(1); 
         while(r.next()){
-            evaluaciones.add(r.getString("Nombre_Curso") + " " + r.getString("Descripcion") + " " + r.getString("Porcentaje") + " " + r.getString("NotaTotal"));  
+            evaluaciones.add(r.getString("course_name") + " " + r.getString("evaluation_des"));  
             
         }
+        return evaluaciones;
     }
 }

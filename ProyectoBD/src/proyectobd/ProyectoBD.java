@@ -39,8 +39,10 @@ public class ProyectoBD {
         //Conexion.getStudentEvaluation(1);
         //Conexion.getStudentGroup(2);
         //Conexion.getStudent();
+       
         ArrayList ArrayCursos = new ArrayList();
         ArrayList ArrayCursos1 = new ArrayList();
+         /*
         String Fecha = "22/03/2022";
         java.sql.Date FechaNacimientoValidada = null;
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
@@ -54,6 +56,10 @@ public class ProyectoBD {
         
         ArrayCursos1 = Conexion.coursesRegistered(ArrayCursos,"Bases de Datos I", 5, FechaNacimientoValidada);
         System.out.println(ArrayCursos1);
+        */
+     
+        //System.out.println(Conexion.getIDPhone(11111111));
     }
+
     
 }

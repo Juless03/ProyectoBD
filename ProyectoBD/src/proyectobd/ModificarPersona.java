@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -60,11 +62,11 @@ public class ModificarPersona extends javax.swing.JDialog {
         botonSeleccionarFoto.setVisible(false);
         modificarDatos.getPerson(botonPersonas);
         comboBoxNombres.setVisible(false);
+        modificarDatos.getPhoneNumber(numeroAModificar);
+        modificarDatos.getPerson(comBoxPersonaEmail);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
-
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,8 +96,6 @@ public class ModificarPersona extends javax.swing.JDialog {
         numeroAModificar = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         comBoxTipoNimero = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        personaNumero = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         nuevoNumero = new javax.swing.JTextField();
         botonModificarNumero = new javax.swing.JButton();
@@ -104,6 +104,8 @@ public class ModificarPersona extends javax.swing.JDialog {
         direccionEmail = new javax.swing.JTextField();
         comBoxPersonaEmail = new javax.swing.JComboBox<>();
         modificarEmail = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -191,34 +193,25 @@ public class ModificarPersona extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Seleccione el numero a modificar:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
         numeroAModificar.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        numeroAModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(numeroAModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 130, 100, -1));
+        getContentPane().add(numeroAModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 200, 130, -1));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setText("Tipo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, -1, -1));
 
         comBoxTipoNimero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxTipoNimero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Celular", "Trabajo", " " }));
-        getContentPane().add(comBoxTipoNimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 190, 100, -1));
-
-        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel6.setText("Persona");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, -1, -1));
-
-        personaNumero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        personaNumero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(personaNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 240, 100, -1));
+        comBoxTipoNimero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Celular", "Trabajo" }));
+        getContentPane().add(comBoxTipoNimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 250, 100, -1));
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel7.setText("Número");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, -1, -1));
 
         nuevoNumero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(nuevoNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 300, 100, -1));
+        getContentPane().add(nuevoNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 300, 100, -1));
 
         botonModificarNumero.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarNumero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -228,27 +221,41 @@ public class ModificarPersona extends javax.swing.JDialog {
                 botonModificarNumeroActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificarNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 100, 50));
+        getContentPane().add(botonModificarNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 340, 100, 50));
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel8.setText("Direccion Email");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Persona");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, -1, -1));
 
         direccionEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(direccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 100, -1));
+        getContentPane().add(direccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 530, 190, -1));
 
         comBoxPersonaEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        comBoxPersonaEmail.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(comBoxPersonaEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 100, -1));
+        getContentPane().add(comBoxPersonaEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 490, 190, -1));
 
         modificarEmail.setBackground(new java.awt.Color(255, 193, 5));
         modificarEmail.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         modificarEmail.setText("Modificar");
-        getContentPane().add(modificarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 600, 110, 50));
+        modificarEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEmailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modificarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 570, 110, 50));
+
+        jLabel10.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Modificar Email Persona");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, 260, 40));
+
+        jLabel11.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Modificar Teléfono Persona");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 260, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -564,8 +571,100 @@ public class ModificarPersona extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonModificarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarNumeroActionPerformed
-        // TODO add your handling code here:
+        boolean validandoTelefono = false;
+        int telefono = Integer.parseInt(numeroAModificar.getSelectedItem().toString());
+        int idTelefono = 0;
+        int nuevoNumeroTelefono = 0;
+        if(nuevoNumero.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+                 
+        } else{
+             nuevoNumeroTelefono = Integer.parseInt(nuevoNumero.getText().toString());
+            try {
+                idTelefono = modificarDatos.getIDPhone(telefono);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+     
+            try {
+                modificarDatos.updatePhoneNumber(idTelefono,nuevoNumeroTelefono);
+                validandoTelefono = true;
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                validandoTelefono = false;
+            }
+        }
+        if(validandoTelefono){
+            JOptionPane.showMessageDialog(null,"Teléfono modificado!");
+             this.dispose();
+            AdminSetup ventaAdminSetup = null;
+                try {
+                    ventaAdminSetup = new AdminSetup(this,true, modificarDatos);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            ventaAdminSetup.setVisible(true); 
+            
+        }
+        
+           
     }//GEN-LAST:event_botonModificarNumeroActionPerformed
+
+    private void modificarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmailActionPerformed
+        boolean validandoCorreo = false;
+        String PersonaElegida = (String) comBoxPersonaEmail.getSelectedItem();
+        String[] nombrePartes = PersonaElegida.split(" ");
+        String primerNombre =  nombrePartes[0]; 
+        String segundoNombre = nombrePartes[1];
+        String primerApellido = nombrePartes[2];
+        String segundoApellido = nombrePartes[3];
+        String nuevoEmail = direccionEmail.getText().toString();
+        int idPersona = 0;
+        int IdEmailCode = 0;
+        try {
+            idPersona = modificarDatos.getPersonID(primerNombre,segundoNombre,primerApellido,segundoApellido);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        if(direccionEmail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+        } else {
+            try {
+                IdEmailCode = modificarDatos.getEmailID(idPersona);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Pattern pattern = Pattern.compile("^[_a-z-A-Z0-9-]+(\\.[_a-z0-9-]+)*@" + 
+                "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$");
+            Matcher mather = pattern.matcher(direccionEmail.getText().toString());
+            if (mather.find()) {
+                validandoCorreo = true;
+                try {
+                    modificarDatos.updateEmailDirection(IdEmailCode, nuevoEmail);
+                    validandoCorreo = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+                    validandoCorreo = false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,"El email inválido."); 
+            }
+            if(validandoCorreo){
+                JOptionPane.showMessageDialog(null,"Email Modificado."); 
+                this.dispose();
+                AdminSetup ventaAdminSetup = null;
+                    try {
+                        ventaAdminSetup = new AdminSetup(this,true, modificarDatos);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                ventaAdminSetup.setVisible(true); 
+
+            }
+            
+    
+        } 
+    }//GEN-LAST:event_modificarEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -628,18 +727,18 @@ public class ModificarPersona extends javax.swing.JDialog {
     private javax.swing.JTextField direccionEmail;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton modificarEmail;
     private javax.swing.JTextField nuevoNumero;
     private javax.swing.JComboBox<String> numeroAModificar;
-    private javax.swing.JComboBox<String> personaNumero;
     private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
 }

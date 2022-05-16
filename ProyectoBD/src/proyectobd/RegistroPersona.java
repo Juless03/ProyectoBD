@@ -91,37 +91,32 @@ public class RegistroPersona extends javax.swing.JDialog {
         direccionEmail = new javax.swing.JTextField();
         personaEmail = new javax.swing.JComboBox<>();
         registrarEmail = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Registro de Persona");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 54, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel2.setText("Primer Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 148, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel3.setText("Segundo Nombre");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 195, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Primer Apellido");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 249, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel6.setText("Segundo Apellido");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 310, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel7.setText("Fecha Nacimiento");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 384, -1, -1));
 
         PrimerNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         PrimerNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -129,19 +124,14 @@ public class RegistroPersona extends javax.swing.JDialog {
                 PrimerNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(PrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 148, 97, -1));
 
         SegundoNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(SegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 195, 97, -1));
 
         PrimerApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(PrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 249, 97, -1));
 
         SegundoApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(SegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 319, 97, -1));
 
         FechaNacimiento.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 382, 97, -1));
 
         BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -151,7 +141,6 @@ public class RegistroPersona extends javax.swing.JDialog {
                 BotonRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 628, -1, -1));
 
         botonGenero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonGenero.addActionListener(new java.awt.event.ActionListener() {
@@ -159,11 +148,9 @@ public class RegistroPersona extends javax.swing.JDialog {
                 botonGeneroActionPerformed(evt);
             }
         });
-        getContentPane().add(botonGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 435, 125, 47));
 
         botonCategoria.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", "Admin" }));
-        getContentPane().add(botonCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 435, 125, 47));
 
         botonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonDistrito.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +158,6 @@ public class RegistroPersona extends javax.swing.JDialog {
                 botonDistritoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 437, 125, 43));
 
         BotonRegistrar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -181,32 +167,24 @@ public class RegistroPersona extends javax.swing.JDialog {
                 BotonRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 521, 150, 40));
 
         jLabel8.setText("DD/MM/YYYY");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 359, 80, 30));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Número ");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 148, -1, -1));
 
         numeroTelefono.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(numeroTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 148, 100, -1));
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel10.setText("Tipo");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 195, 40, -1));
 
         tipoTelefono.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         tipoTelefono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa ", "Celular", "Oficina" }));
-        getContentPane().add(tipoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 195, 100, -1));
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel11.setText("Persona");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 249, -1, -1));
 
         personaTelefono.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(personaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 180, -1));
 
         botonRegistrarTelefono.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarTelefono.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -216,21 +194,16 @@ public class RegistroPersona extends javax.swing.JDialog {
                 botonRegistrarTelefonoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 310, 100, 36));
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel12.setText("Direccion Email");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 437, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel13.setText("Persona");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 500, -1, -1));
 
         direccionEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(direccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 150, -1));
 
         personaEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(personaEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 180, -1));
 
         registrarEmail.setBackground(new java.awt.Color(255, 193, 5));
         registrarEmail.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -240,7 +213,165 @@ public class RegistroPersona extends javax.swing.JDialog {
                 registrarEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(registrarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 558, 100, 40));
+
+        jLabel14.setText("Registrar Número Persona");
+
+        jLabel15.setText("Registrar Email Persona");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(419, 419, 419)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(740, 740, 740)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel2)
+                        .addGap(107, 107, 107)
+                        .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(170, 170, 170)
+                        .addComponent(jLabel9)
+                        .addGap(118, 118, 118)
+                        .addComponent(numeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel3)
+                        .addGap(107, 107, 107)
+                        .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(136, 136, 136)
+                        .addComponent(tipoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel4)
+                        .addGap(120, 120, 120)
+                        .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel11)
+                        .addGap(74, 74, 74)
+                        .addComponent(personaTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jLabel6)
+                        .addGap(107, 107, 107)
+                        .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(346, 346, 346)
+                        .addComponent(botonRegistrarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabel7)
+                        .addGap(107, 107, 107)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(780, 780, 780)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel13)
+                        .addGap(57, 57, 57)
+                        .addComponent(personaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(640, 640, 640)
+                        .addComponent(jLabel12)
+                        .addGap(43, 43, 43)
+                        .addComponent(direccionEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(420, 420, 420)
+                        .addComponent(registrarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(BotonRegresar)))
+                .addContainerGap(177, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(numeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(tipoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(personaTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonRegistrarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel13))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(personaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(direccionEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(registrarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addComponent(BotonRegresar))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -539,6 +670,8 @@ public class RegistroPersona extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
