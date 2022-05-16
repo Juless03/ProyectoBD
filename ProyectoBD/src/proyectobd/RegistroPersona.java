@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +46,8 @@ public class RegistroPersona extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         registroDatos.getDistrict(botonDistrito);
         registroDatos.getGender(botonGenero);
+        registroDatos.getPerson(personaTelefono);
+        registroDatos.getPerson(personaEmail);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -93,24 +97,31 @@ public class RegistroPersona extends javax.swing.JDialog {
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Registro de Persona");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 54, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel2.setText("Primer Nombre");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 148, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel3.setText("Segundo Nombre");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 195, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Primer Apellido");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 249, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel6.setText("Segundo Apellido");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 310, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel7.setText("Fecha Nacimiento");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 384, -1, -1));
 
         PrimerNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         PrimerNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -118,14 +129,19 @@ public class RegistroPersona extends javax.swing.JDialog {
                 PrimerNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(PrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 148, 97, -1));
 
         SegundoNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(SegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 195, 97, -1));
 
         PrimerApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(PrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 249, 97, -1));
 
         SegundoApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(SegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 319, 97, -1));
 
         FechaNacimiento.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 382, 97, -1));
 
         BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -135,6 +151,7 @@ public class RegistroPersona extends javax.swing.JDialog {
                 BotonRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 628, -1, -1));
 
         botonGenero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonGenero.addActionListener(new java.awt.event.ActionListener() {
@@ -142,9 +159,11 @@ public class RegistroPersona extends javax.swing.JDialog {
                 botonGeneroActionPerformed(evt);
             }
         });
+        getContentPane().add(botonGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 435, 125, 47));
 
         botonCategoria.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", "Admin" }));
+        getContentPane().add(botonCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 435, 125, 47));
 
         botonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonDistrito.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +171,7 @@ public class RegistroPersona extends javax.swing.JDialog {
                 botonDistritoActionPerformed(evt);
             }
         });
+        getContentPane().add(botonDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 437, 125, 43));
 
         BotonRegistrar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -161,187 +181,66 @@ public class RegistroPersona extends javax.swing.JDialog {
                 BotonRegistrarActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 521, 150, 40));
 
         jLabel8.setText("DD/MM/YYYY");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 359, 80, 30));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Número ");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 148, -1, -1));
 
         numeroTelefono.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(numeroTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 148, 100, -1));
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel10.setText("Tipo");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 195, 40, -1));
 
         tipoTelefono.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        tipoTelefono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa ", "Celular", "Oficina", " " }));
+        tipoTelefono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa ", "Celular", "Oficina" }));
+        getContentPane().add(tipoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 195, 100, -1));
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel11.setText("Persona");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 249, -1, -1));
 
         personaTelefono.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        personaTelefono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(personaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 180, -1));
 
         botonRegistrarTelefono.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarTelefono.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarTelefono.setText("Registrar");
+        botonRegistrarTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarTelefonoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonRegistrarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 310, 100, 36));
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel12.setText("Direccion Email");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 437, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel13.setText("Persona");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 500, -1, -1));
 
         direccionEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        getContentPane().add(direccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 150, -1));
 
         personaEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        personaEmail.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(personaEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 180, -1));
 
         registrarEmail.setBackground(new java.awt.Color(255, 193, 5));
         registrarEmail.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         registrarEmail.setText("Registrar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(419, 419, 419)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(BotonRegresar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jLabel7)
-                                .addGap(107, 107, 107)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(98, 98, 98)
-                                                .addComponent(jLabel2)
-                                                .addGap(107, 107, 107)
-                                                .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(86, 86, 86)
-                                                .addComponent(jLabel3)
-                                                .addGap(107, 107, 107)
-                                                .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(99, 99, 99)
-                                                .addComponent(jLabel4)
-                                                .addGap(107, 107, 107)
-                                                .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(169, 169, 169)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel13)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(87, 87, 87)
-                                        .addComponent(jLabel6)
-                                        .addGap(107, 107, 107)
-                                        .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(69, 69, 69)
-                                        .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(66, 66, 66)
-                                        .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(182, 182, 182)
-                                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(69, 69, 69)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(numeroTelefono)
-                                    .addComponent(tipoTelefono, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(personaTelefono, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonRegistrarTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(direccionEmail)
-                                    .addComponent(personaEmail, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(registrarEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(127, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9)
-                        .addComponent(numeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10)
-                        .addComponent(tipoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11)
-                        .addComponent(personaTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonRegistrarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel12)
-                                        .addComponent(direccionEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(botonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel13))
-                    .addComponent(personaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(registrarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(BotonRegresar))
-        );
+        registrarEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarEmailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(registrarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 558, 100, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -387,8 +286,8 @@ public class RegistroPersona extends javax.swing.JDialog {
         if(FechaNacimiento.getText().isEmpty()){   
             validandoFomatoFecha = true;
         } else {
-            String FechaNacimientoClienteRegistro = FechaNacimiento.getText();
-            String[] partesFecha = FechaNacimientoClienteRegistro.split("/");
+            String FechaNacimientoRegistro = FechaNacimiento.getText();
+            String[] partesFecha = FechaNacimientoRegistro.split("/");
             String ParteDia = partesFecha[0];
             String ParteMes = partesFecha[1];
             String ParteAños = partesFecha[2];
@@ -485,6 +384,99 @@ public class RegistroPersona extends javax.swing.JDialog {
     private void botonDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDistritoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonDistritoActionPerformed
+
+    private void registrarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmailActionPerformed
+        boolean validandoCorreo = false;
+        String Correo = direccionEmail.getText();
+        if(direccionEmail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error: \nEl campo Correo esta vacio.");  
+        } else {
+            int idPersona = 0;
+            String NombrePersona = personaEmail.getSelectedItem().toString();
+            String[] partesNombre = NombrePersona.split(" ");
+            String PrimerNombre = partesNombre[0];
+            String SegundoNombre = partesNombre[1];
+            String PrimerApellido = partesNombre[2];
+            String SegundoApellido = partesNombre[3];
+            String Description = tipoTelefono.getSelectedItem().toString();
+            try {
+               idPersona = registroDatos.getPersonID(PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Pattern pattern = Pattern.compile("^[_a-z-A-Z0-9-]+(\\.[_a-z0-9-]+)*@" + 
+                "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$");
+            Matcher mather = pattern.matcher(direccionEmail.getText().toString());
+            if (mather.find()) {
+                validandoCorreo = true;
+                try {
+                    registroDatos.addEmail(Correo,idPersona);
+                    validandoCorreo = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+                    validandoCorreo = false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,"El email inválido."); 
+            }
+        }
+        if(validandoCorreo){
+            JOptionPane.showMessageDialog(null,"Email registrado."); 
+            this.dispose();
+            AdminSetup ventaAdminSetup = null;
+            try {
+                ventaAdminSetup = new AdminSetup(this,true,registroDatos);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ventaAdminSetup.setVisible(true); 
+        }
+  
+        
+    }//GEN-LAST:event_registrarEmailActionPerformed
+
+    private void botonRegistrarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarTelefonoActionPerformed
+       boolean validandoTelefono = false;
+       int telefono = 0;
+       int idPersona = 0;
+       String NombrePersona = personaTelefono.getSelectedItem().toString();
+       String[] partesNombre = NombrePersona.split(" ");
+       String PrimerNombre = partesNombre[0];
+       String SegundoNombre = partesNombre[1];
+       String PrimerApellido = partesNombre[2];
+       String SegundoApellido = partesNombre[3];
+       String Description = tipoTelefono.getSelectedItem().toString();
+        if(numeroTelefono.getText().isEmpty()){
+           JOptionPane.showMessageDialog(null,"Teléfono no agregado. Campo Vacio");
+       } else {
+           telefono = Integer.parseInt(numeroTelefono.getText().toString());
+           
+           try {
+               idPersona = registroDatos.getPersonID(PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido);
+           } catch (SQLException ex) {
+               Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           try {
+               registroDatos.addPhoneNumber(Description,telefono,idPersona);
+               validandoTelefono = true;
+           } catch (SQLException ex) {
+               Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+               validandoTelefono = false;
+           }
+       }
+        if(validandoTelefono){
+            JOptionPane.showMessageDialog(null,"Telefono Registrado!");
+            this.dispose();
+            AdminSetup ventaAdminSetup = null;
+           try {
+               ventaAdminSetup = new AdminSetup(this,true,registroDatos);
+           } catch (SQLException ex) {
+               Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+           }
+            ventaAdminSetup.setVisible(true); 
+            
+        }
+    }//GEN-LAST:event_botonRegistrarTelefonoActionPerformed
 
     /**
      * @param args the command line arguments

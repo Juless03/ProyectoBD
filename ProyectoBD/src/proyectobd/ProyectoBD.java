@@ -8,6 +8,12 @@ package proyectobd;
 
 import ConexionSQL.Conexion;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,7 +39,21 @@ public class ProyectoBD {
         //Conexion.getStudentEvaluation(1);
         //Conexion.getStudentGroup(2);
         //Conexion.getStudent();
-        System.out.println(Conexion.getIDCourse("ingle"));
+        ArrayList ArrayCursos = new ArrayList();
+        ArrayList ArrayCursos1 = new ArrayList();
+        String Fecha = "22/03/2022";
+        java.sql.Date FechaNacimientoValidada = null;
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        Date FechaDate = null;
+        try {
+            FechaDate = formatoFecha.parse(Fecha);
+        } catch (ParseException ex) {
+           Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        FechaNacimientoValidada = new java.sql.Date(FechaDate.getTime()); 
+        
+        ArrayCursos1 = Conexion.coursesRegistered(ArrayCursos,"Bases de Datos I", 5, FechaNacimientoValidada);
+        System.out.println(ArrayCursos1);
     }
     
 }

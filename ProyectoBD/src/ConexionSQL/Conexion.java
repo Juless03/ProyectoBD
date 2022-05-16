@@ -452,7 +452,6 @@ public class Conexion {
         stmt.setInt(1, pIdPerson);
         stmt.execute();
     }
-
     public static void addEmail(String pEmailDirection, int pIdPerson) throws SQLException {
 
         Connection con = conectarBase();
@@ -462,7 +461,6 @@ public class Conexion {
         stmt.setInt(2, pIdPerson);
         stmt.execute();
     }
-
     public static void updateEmailDirection(int pEmailCode, int pEmailDirection) throws SQLException {
 
         Connection con = conectarBase();
@@ -472,33 +470,24 @@ public class Conexion {
         stmt.setInt(2, pEmailDirection);
         stmt.execute();
     }
-
     public static void updateEmailPerson(int pEmailCode, int pIdPerson) throws SQLException {
-
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_email_person(?, ?) }");
-
         stmt.setInt(1, pEmailCode);
         stmt.setInt(2, pIdPerson);
         stmt.execute();
     }
-
-    public static void addPhoneNumber(String pPhonenumberDescription, String pPhonenumberPhone, int pIdPerson) throws SQLException {
-
+    public static void addPhoneNumber(String pPhonenumberDescription, int pPhonenumberPhone, int pIdPerson) throws SQLException {
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_phonenumber(?, ?, ?) }");
-
         stmt.setString(1, pPhonenumberDescription);
-        stmt.setString(2, pPhonenumberPhone);
+        stmt.setInt(2, pPhonenumberPhone);
         stmt.setInt(3, pIdPerson);
         stmt.execute();
     }
-
     public static void updatePhoneDescription(int pPhonenumberCode, String pPhonenumberDescription) throws SQLException {
-
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminPerson.update_phone_description(?, ?) }");
-
         stmt.setInt(1, pPhonenumberCode);
         stmt.setString(2, pPhonenumberDescription);
         stmt.execute();
@@ -953,8 +942,7 @@ public class Conexion {
         stmt.execute();
     }
     
-    public static void coursesRegistered(ArrayList<String> cursos, String pcCourseName, int pnGroupSemester, Date pnGroupYear) throws SQLException {
-
+    public static ArrayList<String> coursesRegistered(ArrayList<String> cursos, String pcCourseName, int pnGroupSemester, Date pnGroupYear) throws SQLException {
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call coursesRegistered(?, ?, ?) }");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
@@ -964,9 +952,9 @@ public class Conexion {
         stmt.executeQuery();
         ResultSet r = (ResultSet) stmt.getObject(1); 
         while(r.next()){
-            cursos.add(r.getString("Nombre_Curso") + " " + r.getString("Semestre") + " " + r.getString("Año") );  
-            
+            cursos.add(r.getString("course_name") + " " + r.getString("group_semester") + " " + r.getString("group_year") );   
         }
+        return cursos;
     }
     
     public static void noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
