@@ -165,10 +165,12 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
     }//GEN-LAST:event_botonUsuarioActionPerformed
 
     private void botonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoActionPerformed
-        if(!botonUsuario.getText().isEmpty() || botonContraInco.getText().isEmpty()){ 
+        boolean validandoContraseña = false;
+        if(!botonUsuario.getText().isEmpty() && !botonContraInco.getText().isEmpty()){ 
             String Usuario = botonUsuario.getText();
              try {
-                 String Buenas = inicioSesionAd.loginAdmin(botonUsuario.getText(), String.valueOf(botonContraInco.getPassword()));
+                 String EncriptarContraseña = inicioSesionAd.encriptarContraseña(String.valueOf(botonContraInco.getPassword()));
+                 String Buenas = inicioSesionAd.loginAdmin(botonUsuario.getText(),EncriptarContraseña);
                  if(Buenas.equals(Usuario)){
                      JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
                      this.dispose();
@@ -182,6 +184,7 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
          } else {
             JOptionPane.showMessageDialog(null,"Error\nCampos vacios.");
         }
+        
              
     }//GEN-LAST:event_botonIngresoActionPerformed
 

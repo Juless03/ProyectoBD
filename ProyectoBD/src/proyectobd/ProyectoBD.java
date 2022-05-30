@@ -57,6 +57,7 @@ public class ProyectoBD {
         ArrayCursos1 = Conexion.coursesRegistered(ArrayCursos,"Bases de Datos I", 5, FechaNacimientoValidada);
         System.out.println(ArrayCursos1);
         */
+        // Conexion.getPhoneNumber(6);
      
         //System.out.println(Conexion.getIDPhone(11111111));
     }

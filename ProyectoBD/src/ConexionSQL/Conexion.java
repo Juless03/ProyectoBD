@@ -43,14 +43,43 @@ public class Conexion {
             Connection con = DriverManager.getConnection(host, uName, uPass);
             return con;
         }
-        public static void getPhoneNumber(JComboBox cbox_PhoneNumber) throws SQLException {
+        
+         public static String encriptarContraseña(String Contraseña){
+            
+            char arregloContraseña[] = Contraseña.toCharArray();
+            
+            for(int i = 0; i < arregloContraseña.length; i++){ 
+                
+                arregloContraseña[i] = (char)(arregloContraseña[i] + (char)10);
+            }
+            String contraseñaEncriptada = String.valueOf(arregloContraseña);
+            
+        return contraseñaEncriptada;
+        }
+        
+          public static String desencriptarContraseña(String Contraseña){
+            
+            char arregloContraseña[] = Contraseña.toCharArray();
+            
+            for(int i = 0; i < arregloContraseña.length; i++){ 
+                
+                arregloContraseña[i] = (char)(arregloContraseña[i] - (char)10);
+            }
+            String contraseñaEncriptada = String.valueOf(arregloContraseña);
+            
+        return contraseñaEncriptada;
+        }
+        
+        public static void getPhoneNumber(JComboBox cbox_PhoneNumber,int idPerson) throws SQLException {
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{?= call Getters.getPhoneNumber()}");
+        CallableStatement stmt = con.prepareCall("{?= call Getters.getPhoneNumber(?)}"); 
         stmt.registerOutParameter(1, OracleTypes.CURSOR);
+        stmt.setInt(2, idPerson);
         stmt.execute();
         ResultSet r = (ResultSet) stmt.getObject(1);
         while (r.next()) {
             cbox_PhoneNumber.addItem(r.getString("phonenumber_phone"));
+            System.out.println(r.getString("phonenumber_phone"));
             }
         }
         
@@ -62,8 +91,8 @@ public class Conexion {
         stmt.execute();
         int Resultado = stmt.getInt(1);
         return Resultado;
-    }
-        
+        }
+
         
         public static void getStudentGroup(JComboBox comBoxEvaluacion,int pGroupCode) throws SQLException{
         Connection con = conectarBase();
@@ -185,7 +214,7 @@ public class Conexion {
         public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
         
               Connection con = conectarBase(); // 
-              PreparedStatement pstmt = con.prepareStatement("{  call AdminPerson.update_Picture(?,?)  }");
+              PreparedStatement pstmt = con.prepareStatement("{  call AdminPerson.update_person_picture(?,?)  }");
               Blob imagenBlob = null;
               BufferedImage bi = new BufferedImage(mImagen.getWidth(null), mImagen.getHeight(null), BufferedImage.TYPE_INT_ARGB);
               Graphics2D g2d = bi.createGraphics();
@@ -508,11 +537,11 @@ public class Conexion {
         stmt.setString(2, EmailDes);
         stmt.execute();
     }
-    public static void addPhoneNumber(String pPhonenumberDescription, String pPhonenumberPhone, int pIdPerson) throws SQLException {
+    public static void addPhoneNumber(String pPhonenumberDescription, int pPhonenumberPhone, int pIdPerson) throws SQLException {
         Connection con = conectarBase();
         CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_phonenumber(?, ?, ?) }");
         stmt.setString(1, pPhonenumberDescription);
-        stmt.setString(2, pPhonenumberPhone);
+        stmt.setInt(2, pPhonenumberPhone);
         stmt.setInt(3, pIdPerson);
         stmt.execute();
     }
@@ -547,7 +576,7 @@ public class Conexion {
     public static void addGender(String pGenderDescription) throws SQLException {
 
         Connection con = conectarBase();
-        CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_gender(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call AdminPerson.add_gender(?) }");
 
         stmt.setString(1, pGenderDescription);
         stmt.execute();

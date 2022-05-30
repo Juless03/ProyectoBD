@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -39,12 +40,16 @@ public class ModificarPersona extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         titulo1.setVisible(false);
-        botonTexto1.setEnabled(false);
+        botonTexto1.setVisible(false);
         botonTexto3.setVisible(false);
         botonModificar.setEnabled(false);
         comboBoxGeneral.setVisible(false);
         botonFotoSeleccionada.setVisible(false);
         botonSeleccionarFoto.setVisible(false);
+        comboBoxNombres.setVisible(false);
+        tituloTipoTelefono.setVisible(false);
+        comBoxTipoNimero.setVisible(false);
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
       
     }
@@ -62,8 +67,8 @@ public class ModificarPersona extends javax.swing.JDialog {
         botonSeleccionarFoto.setVisible(false);
         modificarDatos.getPerson(botonPersonas);
         comboBoxNombres.setVisible(false);
-        modificarDatos.getPhoneNumber(numeroAModificar);
-        modificarDatos.getPerson(comBoxPersonaEmail);
+        tituloTipoTelefono.setVisible(false);
+        comBoxTipoNimero.setVisible(false);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
@@ -92,20 +97,8 @@ public class ModificarPersona extends javax.swing.JDialog {
         botonRegresar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         comboBoxNombres = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        numeroAModificar = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
+        tituloTipoTelefono = new javax.swing.JLabel();
         comBoxTipoNimero = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        nuevoNumero = new javax.swing.JTextField();
-        botonModificarNumero = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        direccionEmail = new javax.swing.JTextField();
-        comBoxPersonaEmail = new javax.swing.JComboBox<>();
-        modificarEmail = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -114,14 +107,14 @@ public class ModificarPersona extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel1.setText("Seleccione la persona a  modificar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 230, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 230, 30));
 
         botonPersonas.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 302, 40));
+        getContentPane().add(botonPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 302, 40));
 
         botonOpcionModificar.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        botonOpcionModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Genero", "Distrito", "Fecha de nacimiento", "Foto" }));
-        getContentPane().add(botonOpcionModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 160, 60));
+        botonOpcionModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Genero", "Distrito", "Fecha de nacimiento", "Foto", "Teléfono", "Email" }));
+        getContentPane().add(botonOpcionModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 160, 60));
 
         botonModificar.setBackground(new java.awt.Color(255, 193, 5));
         botonModificar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -131,7 +124,7 @@ public class ModificarPersona extends javax.swing.JDialog {
                 botonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 133, 60));
+        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 133, 60));
 
         botonSeleccionar.setBackground(new java.awt.Color(255, 193, 5));
         botonSeleccionar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -141,27 +134,27 @@ public class ModificarPersona extends javax.swing.JDialog {
                 botonSeleccionarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 120, 60));
+        getContentPane().add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 120, 60));
 
         titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 550, 30));
+        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 550, 30));
 
         botonTexto1.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 218, 50));
+        getContentPane().add(botonTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 218, 50));
 
         botonTexto3.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonTexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 218, 50));
+        getContentPane().add(botonTexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 218, 50));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel2.setText("Seleccione la categoria a modificar");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 230, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 230, 40));
 
         comboBoxGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxGeneralActionPerformed(evt);
             }
         });
-        getContentPane().add(comboBoxGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 210, 60));
+        getContentPane().add(comboBoxGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 210, 60));
 
         botonSeleccionarFoto.setText("Seleccionar Foto");
         botonSeleccionarFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -169,10 +162,10 @@ public class ModificarPersona extends javax.swing.JDialog {
                 botonSeleccionarFotoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 130, 70));
+        getContentPane().add(botonSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 130, 70));
 
         botonFotoSeleccionada.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(botonFotoSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 190, 180));
+        getContentPane().add(botonFotoSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 190, 180));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -189,84 +182,33 @@ public class ModificarPersona extends javax.swing.JDialog {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
         comboBoxNombres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido" }));
-        getContentPane().add(comboBoxNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 140, 70));
+        getContentPane().add(comboBoxNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 140, 70));
 
-        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel4.setText("Seleccione el numero a modificar:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
-
-        numeroAModificar.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(numeroAModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 200, 130, -1));
-
-        jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel5.setText("Tipo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, -1, -1));
+        tituloTipoTelefono.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        tituloTipoTelefono.setText("Tipo");
+        getContentPane().add(tituloTipoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 400, 50, 20));
 
         comBoxTipoNimero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         comBoxTipoNimero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Celular", "Trabajo" }));
-        getContentPane().add(comBoxTipoNimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 250, 100, -1));
-
-        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel7.setText("Número");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, -1, -1));
-
-        nuevoNumero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(nuevoNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 300, 100, -1));
-
-        botonModificarNumero.setBackground(new java.awt.Color(255, 193, 5));
-        botonModificarNumero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        botonModificarNumero.setText("Modificar");
-        botonModificarNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificarNumeroActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonModificarNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 340, 100, 50));
-
-        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel8.setText("Direccion Email");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel9.setText("Persona");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, -1, -1));
-
-        direccionEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(direccionEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 530, 190, -1));
-
-        comBoxPersonaEmail.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxPersonaEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 490, 190, -1));
-
-        modificarEmail.setBackground(new java.awt.Color(255, 193, 5));
-        modificarEmail.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        modificarEmail.setText("Modificar");
-        modificarEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarEmailActionPerformed(evt);
-            }
-        });
-        getContentPane().add(modificarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 570, 110, 50));
-
-        jLabel10.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Modificar Email Persona");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, 260, 40));
-
-        jLabel11.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Modificar Teléfono Persona");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 260, 40));
+        getContentPane().add(comBoxTipoNimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 80, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        String PersonaElegida = (String) botonPersonas.getSelectedItem();
-        String[] nombrePartes = PersonaElegida.split(" ");
-        String primerNombre =  nombrePartes[0]; 
-        String segundoNombre = nombrePartes[1];
-        String primerApellido = nombrePartes[2];
-        String segundoApellido = nombrePartes[3];
+        String PersonaElegida;
+        PersonaElegida = (String) botonPersonas.getSelectedItem();
+        String[] nombrePartes;
+        nombrePartes = PersonaElegida.split(" ");
+        String primerNombre;
+        String segundoNombre;
+        String primerApellido;
+        String segundoApellido;
+        
+        primerNombre =  nombrePartes[0]; 
+        segundoNombre = nombrePartes[1];
+        primerApellido = nombrePartes[2];
+        segundoApellido = nombrePartes[3];
         int idPersona = 0;
         boolean validandoFecha = false;
         //boolean validandoFec
@@ -286,11 +228,12 @@ public class ModificarPersona extends javax.swing.JDialog {
                } else {
                    try {
                        modificarDatos.updatePersonFirstName(idPersona,Dato);
+                       botonTexto3.setText(null);
                    } catch (SQLException ex) {
                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
-                   JOptionPane.showMessageDialog(null,"Persona Modificada");
-                   this.dispose();
+                   JOptionPane.showMessageDialog(null,"Primer Nombre Modificado");
+                   
                }
            }
            if(TipoNombre == "Segundo Nombre"){
@@ -300,11 +243,12 @@ public class ModificarPersona extends javax.swing.JDialog {
                    
                    try {
                        modificarDatos.updatePersonMiddleName(idPersona,Dato);
+                       botonTexto3.setText(null);
                    } catch (SQLException ex) {
                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
-                   JOptionPane.showMessageDialog(null,"Persona Modificada");
-                   this.dispose();
+                   JOptionPane.showMessageDialog(null,"Segundo Nombre Modificado");
+                   
                }
            }
             if(TipoNombre == "Primer Apellido"){
@@ -314,11 +258,11 @@ public class ModificarPersona extends javax.swing.JDialog {
                    
                    try {
                        modificarDatos.updatePersonFirstLastName(idPersona,Dato);
+                       botonTexto3.setText(null);
                    } catch (SQLException ex) {
                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
-                   JOptionPane.showMessageDialog(null,"Persona Modificada");
-                   this.dispose();
+                   JOptionPane.showMessageDialog(null,"Primer Apellido Modificado"); 
                }
            }
             if(TipoNombre == "Segundo Apellido"){
@@ -327,19 +271,28 @@ public class ModificarPersona extends javax.swing.JDialog {
                } else {
                    try {
                        modificarDatos.updatePersonSecondLastName(idPersona,Dato);
+                       botonTexto3.setText(null);
                    } catch (SQLException ex) {
                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                    }
-                   JOptionPane.showMessageDialog(null,"Persona Modificada");
-                   this.dispose();
+                   JOptionPane.showMessageDialog(null,"Segundo Apellido Modificado"); 
                }
            }
+            botonPersonas.setVisible(false);
+            botonPersonas.removeAllItems();
+            try {
+                modificarDatos.getPerson(botonPersonas);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           botonPersonas.setVisible(true);
         }
-        
+ 
         if(Modificar == "Genero"){
             titulo1.setText("Genero");
             int Genero = 0;
-            String GeneroNombre = (String) comboBoxGeneral.getSelectedItem();
+            String GeneroNombre;
+            GeneroNombre = (String) comboBoxGeneral.getSelectedItem();
             try {
                 Genero = modificarDatos.getGenderCode(GeneroNombre);
             } catch (SQLException ex) {
@@ -348,7 +301,6 @@ public class ModificarPersona extends javax.swing.JDialog {
             try {
                 modificarDatos.updatePersonGender(idPersona, Genero);
                 JOptionPane.showMessageDialog(null,"Genero Modificado!");
-                this.dispose();
             } catch (SQLException ex) {
                 Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -356,17 +308,16 @@ public class ModificarPersona extends javax.swing.JDialog {
         }
         if(Modificar == "Distrito"){
            int Distrito = 0;
-            String DistritoNombre = (String) comboBoxGeneral.getSelectedItem();
-            try {
-                Distrito = modificarDatos.getDistrictCode(DistritoNombre);
-            } catch (SQLException ex) {
+           String DistritoNombre;
+           DistritoNombre = (String) comboBoxGeneral.getSelectedItem();
+           try {
+               Distrito = modificarDatos.getDistrictCode(DistritoNombre);
+           } catch (SQLException ex) {
                 Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
+           } try {
                 modificarDatos.updatePersonDistrict(idPersona, Distrito);
                 JOptionPane.showMessageDialog(null,"Distrito Modificado!"); 
-                this.dispose();
-            } catch (SQLException ex) {
+                } catch (SQLException ex) {
                 Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -374,14 +325,23 @@ public class ModificarPersona extends javax.swing.JDialog {
            if(botonTexto1.getText().isEmpty()){
                JOptionPane.showMessageDialog(null,"No se ha modificado nada!\nTodos el espacio de fecha está vacio");
             } else {
-                    String FechaNacimientoModicar = botonTexto1.getText();
-                    String[] partesFecha = FechaNacimientoModicar.split("/");
-                    String ParteDia = partesFecha[0];
-                    String ParteMes = partesFecha[1];
-                    String ParteAños = partesFecha[2];
-                    int parte1int = Integer.parseInt(ParteDia);
-                    int parte2int = Integer.parseInt(ParteMes);
-                    int parte3int = Integer.parseInt(ParteAños);
+                    String FechaNacimientoModicar;
+                    String[] partesFecha;
+                    String ParteDia; 
+                    String ParteMes;
+                    String ParteAños;
+                    FechaNacimientoModicar = botonTexto1.getText();
+                    
+                    partesFecha = FechaNacimientoModicar.split("/");
+                    ParteDia = partesFecha[0];
+                    ParteMes = partesFecha[1];
+                    ParteAños = partesFecha[2];
+                    int parte1int = 0;
+                    int parte2int = 0;
+                    int parte3int = 0;
+                    parte1int = Integer.parseInt(ParteDia);
+                    parte2int = Integer.parseInt(ParteMes);
+                    parte3int = Integer.parseInt(ParteAños);
                     if(ParteDia.length() != 2 || ParteMes.length() != 2 || ParteAños.length() != 4){
                             JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nError en el formato.");  
                         } else {
@@ -419,28 +379,121 @@ public class ModificarPersona extends javax.swing.JDialog {
                     try {
                          modificarDatos.updatePersonBirthday(idPersona, FechaNacimiento);
                          JOptionPane.showMessageDialog(null,"Fecha de nacimiento modificada!"); 
-                         this.dispose();
+                         botonTexto1.setText(null);
                     } catch (SQLException ex) {
                         Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                         }
-
                      } else {
                         JOptionPane.showMessageDialog(null,"Error!\nFecha no actualizada!"); 
                     }
-                    
             } 
-          }
+        }
             
         if(Modificar == "Foto"){
             try {
                 modificarDatos.escribeImagenEnBBDD(idPersona,mImagen);
                 JOptionPane.showMessageDialog(null,"Imagen Modificado!");
+                botonFotoSeleccionada.setText(null);
             } catch (SQLException ex) {
                 Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(Modificar == "Teléfono"){
+            boolean validandoTelefono = false;
+            String TelefonoViejo;
+            TelefonoViejo = comboBoxGeneral.getSelectedItem().toString();
+            String TelefonoTipo;
+            TelefonoTipo = comBoxTipoNimero.getSelectedItem().toString();
+            int telefonoNumeroViejo = 0;
+            telefonoNumeroViejo = Integer.parseInt(comboBoxGeneral.getSelectedItem().toString());
+            int idTelefono = 0;
+            String nuevoNumeroTelefono;
+            if(botonTexto3.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+            } else{
+                if(botonTexto3.getText().toString().length() != 8){ 
+                    JOptionPane.showMessageDialog(null,"No se ha modificado nada. El nuevo número debe tener 8 digitos!");
+                } else{ 
+                    nuevoNumeroTelefono = botonTexto3.getText().toString();
+                    try {
+                        idTelefono = modificarDatos.getIDPhone(telefonoNumeroViejo);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        modificarDatos.updatePhoneDescription(idTelefono, TelefonoTipo);
+                        modificarDatos.updatePhoneNumber(idTelefono,nuevoNumeroTelefono);
+                        validandoTelefono = true;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                        validandoTelefono = false;
+                    }
+                }
+            }
+            if(validandoTelefono){
+                int idPersonaTelefono = 0;
+                try {
+                     idPersonaTelefono = modificarDatos.getPersonID(primerNombre,segundoNombre,primerApellido,segundoApellido);
+                 } catch (SQLException ex) {
+                     Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                comboBoxGeneral.setVisible(false);
+                comboBoxGeneral.removeAllItems();
+                try {
+                    modificarDatos.getPhoneNumber(comboBoxGeneral,idPersonaTelefono);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                comboBoxGeneral.setVisible(true);
+                JOptionPane.showMessageDialog(null,"Teléfono modificado!");
+                
+            }
+        }
+        if(Modificar == "Email"){
+          boolean validandoCorreo = false;
+            String nuevoEmail;
+            nuevoEmail = botonTexto1.getText().toString();
+            int IdEmailCode = 0;
+            if(botonTexto1.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
+            } else {
+                try {
+                    IdEmailCode = modificarDatos.getEmailID(idPersona);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Pattern pattern = Pattern.compile("^[_a-z-A-Z0-9-]+(\\.[_a-z0-9-]+)*@" + 
+                    "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$");
+                Matcher mather = pattern.matcher(botonTexto1.getText().toString());
+                if (mather.find()) {
+                    validandoCorreo = true;
+                    try {
+                        modificarDatos.updateEmailDirection(IdEmailCode, nuevoEmail);
+                        validandoCorreo = true;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+                        validandoCorreo = false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null,"El email inválido."); 
+                }
+                if(validandoCorreo){
+                    botonTexto1.setText(null);
+                    JOptionPane.showMessageDialog(null,"Email Modificado."); 
+                }
+            } 
+            }
+     
+        botonPersonas.setVisible(false);
+        botonPersonas.removeAllItems();
+        try {
+            modificarDatos.getPerson(botonPersonas);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        botonPersonas.setVisible(true);
  
     }//GEN-LAST:event_botonModificarActionPerformed
 
@@ -458,10 +511,12 @@ public class ModificarPersona extends javax.swing.JDialog {
             botonFotoSeleccionada.setVisible(false);
             botonSeleccionarFoto.setVisible(false);
             botonTexto1.setVisible(false);
+            tituloTipoTelefono.setVisible(false);
+            comBoxTipoNimero.setVisible(false);
             
 
         }
-         if(opcionSeleccionada == "Genero"){
+        if(opcionSeleccionada == "Genero"){
              titulo1.setVisible(false);
              titulo1.setText("Seleccione el nuevo genero");
              titulo1.setVisible(true);
@@ -481,8 +536,10 @@ public class ModificarPersona extends javax.swing.JDialog {
             botonFotoSeleccionada.setVisible(false);
             botonSeleccionarFoto.setVisible(false);
             comboBoxNombres.setVisible(false);
+            tituloTipoTelefono.setVisible(false);
+            comBoxTipoNimero.setVisible(false);
         }
-         if(opcionSeleccionada == "Distrito"){
+        if(opcionSeleccionada == "Distrito"){
             
              titulo1.setVisible(false);
              titulo1.setText("Seleccione el nuevo distrito");
@@ -501,10 +558,12 @@ public class ModificarPersona extends javax.swing.JDialog {
             botonTexto1.setVisible(false);
             botonTexto3.setVisible(false);
             botonFotoSeleccionada.setVisible(false);
-             botonSeleccionarFoto.setVisible(false);
-              comboBoxNombres.setVisible(false);
+            botonSeleccionarFoto.setVisible(false);
+            comboBoxNombres.setVisible(false);
+            tituloTipoTelefono.setVisible(false);
+            comBoxTipoNimero.setVisible(false);
         }
-          if(opcionSeleccionada == "Fecha de nacimiento"){
+        if(opcionSeleccionada == "Fecha de nacimiento"){
              titulo1.setVisible(false);
              titulo1.setText("Formato fecha nacimiento DD/MM/YYYY");
              titulo1.setVisible(true);
@@ -519,8 +578,10 @@ public class ModificarPersona extends javax.swing.JDialog {
             // Apagar Combobox
             comboBoxGeneral.setVisible(false);
             comboBoxNombres.setVisible(false);
-        }
-            if(opcionSeleccionada == "Foto"){
+            tituloTipoTelefono.setVisible(false);
+            comBoxTipoNimero.setVisible(false);
+            }
+        if(opcionSeleccionada == "Foto"){
              botonModificar.setEnabled(false);
              botonFotoSeleccionada.setVisible(true);
              botonSeleccionarFoto.setVisible(true);
@@ -531,6 +592,66 @@ public class ModificarPersona extends javax.swing.JDialog {
             // Apagar Combobox
             comboBoxGeneral.setVisible(false);
             comboBoxNombres.setVisible(false);
+            tituloTipoTelefono.setVisible(false);
+            comBoxTipoNimero.setVisible(false);
+        }
+        if(opcionSeleccionada == "Teléfono"){
+            String[] nombreCompletoM;
+            String pNombreM;
+            String sNombreM;
+            String pApellidoM;
+            String sApellidoM;
+            String PersonaElegidaTelefono;
+            PersonaElegidaTelefono = (String) botonPersonas.getSelectedItem();
+            nombreCompletoM = PersonaElegidaTelefono.split(" ");
+            pNombreM =  nombreCompletoM[0]; 
+            sNombreM = nombreCompletoM[1];
+            pApellidoM = nombreCompletoM[2];
+            sApellidoM = nombreCompletoM[3];
+
+           int idPersonaTelefonoV = 0;
+           try {
+                idPersonaTelefonoV = modificarDatos.getPersonID(pNombreM,sNombreM,pApellidoM,sApellidoM);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            titulo1.setVisible(false);
+            titulo1.setText("Seleccione el teléfono a modificar");
+            titulo1.setVisible(true);
+            tituloTipoTelefono.setVisible(true);
+            comBoxTipoNimero.setVisible(true);
+            botonModificar.setEnabled(true);
+            botonTexto3.setVisible(true);
+            comboBoxGeneral.setVisible(false);
+            comboBoxGeneral.removeAllItems();
+            try {
+                modificarDatos.getPhoneNumber(comboBoxGeneral,idPersonaTelefonoV);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comboBoxGeneral.setVisible(true);
+            //Apagar ComboBox
+            comboBoxNombres.setVisible(false);
+            botonTexto1.setVisible(false);
+            botonFotoSeleccionada.setVisible(false);
+            botonSeleccionarFoto.setVisible(false);
+  
+        }
+        if(opcionSeleccionada == "Email"){
+            titulo1.setVisible(false);
+            titulo1.setText("Digite el nuevo email");
+            titulo1.setVisible(true);
+            botonTexto1.setVisible(true);
+            botonModificar.setEnabled(true);
+            // Apagar
+            comboBoxGeneral.setVisible(false);
+            botonFotoSeleccionada.setVisible(false);
+            comboBoxNombres.setVisible(false);
+            tituloTipoTelefono.setVisible(false);
+            comBoxTipoNimero.setVisible(false);
+            botonSeleccionarFoto.setVisible(false);
+            botonTexto3.setVisible(false);
+            
         }
     }//GEN-LAST:event_botonSeleccionarActionPerformed
 
@@ -569,103 +690,6 @@ public class ModificarPersona extends javax.swing.JDialog {
         }
     ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_botonRegresarActionPerformed
-
-    private void botonModificarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarNumeroActionPerformed
-        boolean validandoTelefono = false;
-        String Telefono = numeroAModificar.getSelectedItem().toString();
-        int telefonoNunmero = Integer.parseInt(numeroAModificar.getSelectedItem().toString());
-        int idTelefono = 0;
-        String nuevoNumeroTelefono;
-        if(nuevoNumero.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
-                 
-        } else{
-             nuevoNumeroTelefono = nuevoNumero.getText().toString();
-            try {
-                idTelefono = modificarDatos.getIDPhone(telefonoNunmero);
-            } catch (SQLException ex) {
-                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-            }
-     
-            try {
-                modificarDatos.updatePhoneNumber(idTelefono,nuevoNumeroTelefono);
-                validandoTelefono = true;
-            } catch (SQLException ex) {
-                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-                validandoTelefono = false;
-            }
-        }
-        if(validandoTelefono){
-            JOptionPane.showMessageDialog(null,"Teléfono modificado!");
-             this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarDatos);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            ventaAdminSetup.setVisible(true); 
-            
-        }
-        
-           
-    }//GEN-LAST:event_botonModificarNumeroActionPerformed
-
-    private void modificarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmailActionPerformed
-        boolean validandoCorreo = false;
-        String PersonaElegida = (String) comBoxPersonaEmail.getSelectedItem();
-        String[] nombrePartes = PersonaElegida.split(" ");
-        String primerNombre =  nombrePartes[0]; 
-        String segundoNombre = nombrePartes[1];
-        String primerApellido = nombrePartes[2];
-        String segundoApellido = nombrePartes[3];
-        String nuevoEmail = direccionEmail.getText().toString();
-        int idPersona = 0;
-        int IdEmailCode = 0;
-        try {
-            idPersona = modificarDatos.getPersonID(primerNombre,segundoNombre,primerApellido,segundoApellido);
-        } catch (SQLException ex) {
-            Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        if(direccionEmail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
-        } else {
-            try {
-                IdEmailCode = modificarDatos.getEmailID(idPersona);
-            } catch (SQLException ex) {
-                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            Pattern pattern = Pattern.compile("^[_a-z-A-Z0-9-]+(\\.[_a-z0-9-]+)*@" + 
-                "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$");
-            Matcher mather = pattern.matcher(direccionEmail.getText().toString());
-            if (mather.find()) {
-                validandoCorreo = true;
-                try {
-                    modificarDatos.updateEmailDirection(IdEmailCode, nuevoEmail);
-                    validandoCorreo = true;
-                } catch (SQLException ex) {
-                    Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
-                    validandoCorreo = false;
-                }
-            } else {
-                JOptionPane.showMessageDialog(null,"El email inválido."); 
-            }
-            if(validandoCorreo){
-                JOptionPane.showMessageDialog(null,"Email Modificado."); 
-                this.dispose();
-                AdminSetup ventaAdminSetup = null;
-                    try {
-                        ventaAdminSetup = new AdminSetup(this,true, modificarDatos);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                ventaAdminSetup.setVisible(true); 
-
-            }
-            
-    
-        } 
-    }//GEN-LAST:event_modificarEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -713,7 +737,6 @@ public class ModificarPersona extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel botonFotoSeleccionada;
     private javax.swing.JButton botonModificar;
-    private javax.swing.JButton botonModificarNumero;
     private javax.swing.JComboBox<String> botonOpcionModificar;
     private javax.swing.JComboBox<String> botonPersonas;
     private javax.swing.JButton botonRegresar;
@@ -721,25 +744,14 @@ public class ModificarPersona extends javax.swing.JDialog {
     private javax.swing.JButton botonSeleccionarFoto;
     private javax.swing.JTextField botonTexto1;
     private javax.swing.JTextField botonTexto3;
-    private javax.swing.JComboBox<String> comBoxPersonaEmail;
     private javax.swing.JComboBox<String> comBoxTipoNimero;
     private javax.swing.JComboBox<String> comboBoxGeneral;
     private javax.swing.JComboBox<String> comboBoxNombres;
-    private javax.swing.JTextField direccionEmail;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JButton modificarEmail;
-    private javax.swing.JTextField nuevoNumero;
-    private javax.swing.JComboBox<String> numeroAModificar;
     private javax.swing.JLabel titulo1;
+    private javax.swing.JLabel tituloTipoTelefono;
     // End of variables declaration//GEN-END:variables
 }
