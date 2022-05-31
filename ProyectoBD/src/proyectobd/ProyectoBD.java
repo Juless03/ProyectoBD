@@ -58,8 +58,10 @@ public class ProyectoBD {
         System.out.println(ArrayCursos1);
         */
         // Conexion.getPhoneNumber(6);
-     
+        
         //System.out.println(Conexion.getIDPhone(11111111));
+        //System.out.println(Conexion.encriptarContraseña("La@11"));
+        //Conexion.updatePersonDistrict(1, 1);
     }
 
     

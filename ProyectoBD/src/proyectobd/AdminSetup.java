@@ -465,8 +465,13 @@ public class AdminSetup extends javax.swing.JDialog {
 
     private void botonRegistrarGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarGeneroActionPerformed
 
-        RegistrarYModificarGenero venRegistrarYModificarGenero = new RegistrarYModificarGenero(this,true,setupAdmin);
-        venRegistrarYModificarGenero.setVisible(true); 
+        RegistrarYModificarGenero venRegistrarYModificarGenero;
+         try {
+             venRegistrarYModificarGenero = new RegistrarYModificarGenero(this,true,setupAdmin);
+             venRegistrarYModificarGenero.setVisible(true); 
+         } catch (SQLException ex) {
+             Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }//GEN-LAST:event_botonRegistrarGeneroActionPerformed
 
     /**

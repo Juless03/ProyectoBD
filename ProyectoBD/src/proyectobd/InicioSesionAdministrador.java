@@ -171,6 +171,9 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
              try {
                  String EncriptarContraseña = inicioSesionAd.encriptarContraseña(String.valueOf(botonContraInco.getPassword()));
                  String Buenas = inicioSesionAd.loginAdmin(botonUsuario.getText(),EncriptarContraseña);
+                 if(Buenas == null){
+                     JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
+                 } else {
                  if(Buenas.equals(Usuario)){
                      JOptionPane.showMessageDialog(null,"Inicio seccion con exito.");
                      this.dispose();
@@ -178,7 +181,8 @@ public class InicioSesionAdministrador extends javax.swing.JDialog {
                      ventanaAdminSetup.setVisible(true);
                  }else{
                      JOptionPane.showMessageDialog(null,"Error\nEl usuario o la contraseña son incorrectos");
-                 } } catch (SQLException ex) {
+                 } }
+             } catch (SQLException ex) {
                  Logger.getLogger(InicioSesionAdministrador.class.getName()).log(Level.SEVERE, null, ex);
              }
          } else {

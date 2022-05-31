@@ -269,6 +269,15 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
           }
        if(validandoNombre || validandoDescription || validandoPorcentaje || validandoCantMiembros || validandoNombreCurso || validandoFormato){
            JOptionPane.showMessageDialog(null,"Evaluación modificada!");
+            comboBoxEvaluacion.setVisible(false);
+            comboBoxEvaluacion.removeAllItems();
+            try {
+                modificarEvaluaciones.getEvaluation(comboBoxEvaluacion);
+            } catch (SQLException ex) {
+                 Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comboBoxEvaluacion.setVisible(true);
+           
            this.dispose();
             AdminSetup ventaAdminSetup = null;
                 try {

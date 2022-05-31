@@ -317,6 +317,16 @@ public class ModificarCursos extends javax.swing.JDialog {
            }
            if(validandoCreditos & validandoNombre){
                JOptionPane.showMessageDialog(null,"Creditos Y Nombre Modificado!!");
+               // Actualizar ComboBox
+                comBoxCurso.setVisible(false);
+                comBoxCurso.removeAllItems();
+                try {
+                    modificarCurso.getCourse(comBoxCurso);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                comBoxCurso.setVisible(true);
+                
                this.dispose(); 
                AdminSetup ventaAdminSetup = null;
                 try {
@@ -339,6 +349,15 @@ public class ModificarCursos extends javax.swing.JDialog {
                }
                if(validandoNombre){
                    JOptionPane.showMessageDialog(null,"Nombre Modificado!!");
+                    // Actualizar ComboBox
+                    comBoxCurso.setVisible(false);
+                    comBoxCurso.removeAllItems();
+                    try {
+                        modificarCurso.getCourse(comBoxCurso);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    comBoxCurso.setVisible(true);
                    this.dispose();
                     AdminSetup ventaAdminSetup = null;
                     try {
@@ -348,10 +367,8 @@ public class ModificarCursos extends javax.swing.JDialog {
                     }
                     ventaAdminSetup.setVisible(true); 
                }
-           }
-            
-        
-
+               
+         }
 
                
     }//GEN-LAST:event_botonModificarCursoActionPerformed
@@ -464,6 +481,16 @@ public class ModificarCursos extends javax.swing.JDialog {
                  }
             if(validandoAño || validandoProfesor || validandoSemestre || validandoIdCourse){ 
                 JOptionPane.showMessageDialog(null,"Grupo modificado!");
+                // Actualizar ComboBox
+                comBoxGrupo.setVisible(false);
+                comBoxGrupo.removeAllItems();
+                try {
+                    modificarCurso.getCourseGroup(comBoxGrupo);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                comBoxGrupo.setVisible(true);
+                
                 this.dispose();
                 AdminSetup ventaAdminSetup = null;
                     try {
