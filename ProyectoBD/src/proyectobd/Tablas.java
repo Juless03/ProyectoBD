@@ -5,14 +5,16 @@
  */
 package proyectobd;
 
+import ConexionSQL.Conexion;
 import java.awt.Color;
+import java.sql.SQLException;
 
 /**
  *
  * @author paubo
  */
 public class Tablas extends javax.swing.JDialog {
-
+    private Conexion tablas;
     /**
      * Creates new form Tablas
      */
@@ -22,6 +24,99 @@ public class Tablas extends javax.swing.JDialog {
         initComponents();
     }
 
+    Tablas(RegistroPersona aThis, boolean modal, Conexion registroDatos) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = registroDatos;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("Personas");
+        comBoxTablas.addItem("Emails");
+        comBoxTablas.addItem("Telefonos");
+    }
+    
+    Tablas(RegistrarYModificarGenero  aThis, boolean modal, Conexion regisYModificarGenero) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = regisYModificarGenero;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("Géneros");
+    }
+
+    Tablas(RegistrarEvaluaciones aThis, boolean modal, Conexion registrarEvaluaciones) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = registrarEvaluaciones;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("Evaluaciones");
+    }
+
+    Tablas(RegistrarDireccion aThis, boolean modal, Conexion registrarDireccion) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = registrarDireccion;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("País");
+        comBoxTablas.addItem("Canton");
+        comBoxTablas.addItem("Distrito");
+        comBoxTablas.addItem("Provincia");
+    }
+
+    Tablas(RegistrarCursos aThis, boolean modal, Conexion registrarCursos) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = registrarCursos;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("Cursos");
+        comBoxTablas.addItem("Grupos");
+    }
+
+    Tablas(ModificarPersona aThis, boolean modal, Conexion modificarDatos) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = modificarDatos;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("Personas");
+        comBoxTablas.addItem("Emails");
+        comBoxTablas.addItem("Telefonos");
+    }
+
+    Tablas(ModificarEvaluaciones aThis, boolean modal, Conexion modificarEvaluaciones) throws SQLException {
+        super(aThis, modal);
+        initComponents();
+        tablas = modificarEvaluaciones;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("Evaluaciones");
+    }
+
+    Tablas(ModificarDireccion aThis, boolean modal, Conexion modificarDireccion) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = modificarDireccion;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("País");
+        comBoxTablas.addItem("Canton");
+        comBoxTablas.addItem("Distrito");
+        comBoxTablas.addItem("Provincia");
+    }
+
+    Tablas(ModificarCursos aThis, boolean modal, Conexion modificarCurso) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        tablas = modificarCurso;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        comBoxTablas.addItem("Cursos");
+        comBoxTablas.addItem("Grupos");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +129,9 @@ public class Tablas extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaDatos = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        botonRegresar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        comBoxTablas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -43,42 +140,64 @@ public class Tablas extends javax.swing.JDialog {
 
         jScrollPane1.setViewportView(listaDatos);
 
-        jButton1.setBackground(new java.awt.Color(255, 193, 5));
-        jButton1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jButton1.setText("Regresar");
+        botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonRegresar.setText("Cerrar");
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresarActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel2.setText("Seleccione los datos que desea visualizar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(461, 461, 461))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))))
+                        .addGap(84, 84, 84))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(464, 464, 464))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(jLabel2)
+                        .addGap(53, 53, 53)
+                        .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
+    this.dispose();
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,8 +242,10 @@ public class Tablas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonRegresar;
+    private javax.swing.JComboBox<String> comBoxTablas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listaDatos;
     // End of variables declaration//GEN-END:variables

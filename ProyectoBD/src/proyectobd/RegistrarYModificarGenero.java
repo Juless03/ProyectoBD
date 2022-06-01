@@ -57,6 +57,8 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
         botonRegistrarGenero = new javax.swing.JButton();
         botonGeneros = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        botonRegresar = new javax.swing.JButton();
+        botonDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,6 +73,7 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
 
         textoModificarGeneroNombre.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
 
+        botonModificarGenero.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarGenero.setFont(new java.awt.Font("Bell MT", 0, 24)); // NOI18N
         botonModificarGenero.setText("Modificar");
         botonModificarGenero.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +87,7 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
 
         textoRegistrarGeneroNombre.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
 
+        botonRegistrarGenero.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarGenero.setFont(new java.awt.Font("Bell MT", 0, 24)); // NOI18N
         botonRegistrarGenero.setText("Registrar");
         botonRegistrarGenero.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +99,19 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
         jLabel5.setText("Seleccione el genero a modificar");
 
+        botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonRegresar.setText("Regresar");
+
+        botonDatos.setBackground(new java.awt.Color(255, 193, 5));
+        botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonDatos.setText("Ver Datos");
+        botonDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDatosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,34 +119,42 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(450, 450, 450)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(botonRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonDatos))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(textoRegistrarGeneroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(380, 380, 380)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(botonGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(130, 130, 130)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(450, 450, 450)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(textoModificarGeneroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(botonRegistrarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(540, 540, 540)
-                        .addComponent(botonModificarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                                .addComponent(textoRegistrarGeneroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(380, 380, 380)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(90, 90, 90)
+                                        .addComponent(botonGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, 0)
+                                        .addComponent(textoModificarGeneroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(140, 140, 140)
+                                .addComponent(botonRegistrarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(540, 540, 540)
+                                .addComponent(botonModificarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 65, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +188,11 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
                         .addGap(1, 1, 1)
                         .addComponent(botonRegistrarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(botonModificarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonRegresar)
+                    .addComponent(botonDatos))
+                .addContainerGap())
         );
 
         pack();
@@ -239,6 +268,16 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
         
     }//GEN-LAST:event_botonModificarGeneroActionPerformed
 
+    private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
+     Tablas tablas = null;
+        try {
+            tablas = new Tablas(this,true,regisYModificarGenero);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablas.setVisible(true);
+    }//GEN-LAST:event_botonDatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,9 +321,11 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonDatos;
     private javax.swing.JComboBox<String> botonGeneros;
     private javax.swing.JButton botonModificarGenero;
     private javax.swing.JButton botonRegistrarGenero;
+    private javax.swing.JButton botonRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -105,6 +105,7 @@ public class RegistroPersona extends javax.swing.JDialog {
         botonSeleccionarFoto = new javax.swing.JButton();
         botonFoto = new javax.swing.JLabel();
         botonContraseña = new javax.swing.JPasswordField();
+        botonDatos = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -258,6 +259,16 @@ public class RegistroPersona extends javax.swing.JDialog {
 
         botonContraseña.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         getContentPane().add(botonContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, 150, 40));
+
+        botonDatos.setBackground(new java.awt.Color(255, 193, 5));
+        botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonDatos.setText("Ver Datos");
+        botonDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDatosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1131, 670, 100, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -563,6 +574,16 @@ public class RegistroPersona extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_botonSeleccionarFotoActionPerformed
 
+    private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
+        Tablas tablas = null;
+        try {
+            tablas = new Tablas(this,true,registroDatos);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablas.setVisible(true);
+    }//GEN-LAST:event_botonDatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -616,6 +637,7 @@ public class RegistroPersona extends javax.swing.JDialog {
     private javax.swing.JTextField SegundoNombre;
     private javax.swing.JComboBox<String> botonCategoria;
     private javax.swing.JPasswordField botonContraseña;
+    private javax.swing.JButton botonDatos;
     private javax.swing.JComboBox<String> botonDistrito;
     private javax.swing.JTextField botonEmail;
     private javax.swing.JLabel botonFoto;

@@ -79,6 +79,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
         nombrePais = new javax.swing.JTextField();
         botonModificarPais = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -197,6 +198,15 @@ public class ModificarDireccion extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 193, 5));
+        jButton1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jButton1.setText("Ver Dtaos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -272,13 +282,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
                         .addGap(213, 213, 213)
                         .addComponent(paisProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(529, 529, 529)
-                        .addComponent(botonModificarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(291, 291, 291)
-                        .addComponent(botonModificarProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonModificarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(77, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(291, 291, 291)
+                .addComponent(botonModificarProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,7 +362,9 @@ public class ModificarDireccion extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(botonRegresar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonRegresar)
+                            .addComponent(jButton1)))
                     .addComponent(botonModificarProvincia))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -592,6 +607,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
          
     }//GEN-LAST:event_botonModificarPaisActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    Tablas tablas = null;
+        try {
+            tablas = new Tablas(this,true,modificarDireccion);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablas.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -645,6 +670,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> comBoxDistrito;
     private javax.swing.JComboBox<String> comBoxPais;
     private javax.swing.JComboBox<String> comBoxProvincia;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

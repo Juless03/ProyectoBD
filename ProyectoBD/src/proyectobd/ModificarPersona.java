@@ -99,6 +99,7 @@ public class ModificarPersona extends javax.swing.JDialog {
         comboBoxNombres = new javax.swing.JComboBox<>();
         tituloTipoTelefono = new javax.swing.JLabel();
         comBoxTipoNimero = new javax.swing.JComboBox<>();
+        botonDatos = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -191,6 +192,16 @@ public class ModificarPersona extends javax.swing.JDialog {
         comBoxTipoNimero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         comBoxTipoNimero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Celular", "Trabajo" }));
         getContentPane().add(comBoxTipoNimero, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 80, 50));
+
+        botonDatos.setBackground(new java.awt.Color(255, 193, 5));
+        botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonDatos.setText("Ver Datos");
+        botonDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDatosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(955, 700, 110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -691,6 +702,16 @@ public class ModificarPersona extends javax.swing.JDialog {
     ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_botonRegresarActionPerformed
 
+    private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
+    Tablas tablas = null;
+        try {
+            tablas = new Tablas(this,true,modificarDatos);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablas.setVisible(true);
+    }//GEN-LAST:event_botonDatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -735,6 +756,7 @@ public class ModificarPersona extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonDatos;
     private javax.swing.JLabel botonFotoSeleccionada;
     private javax.swing.JButton botonModificar;
     private javax.swing.JComboBox<String> botonOpcionModificar;

@@ -81,6 +81,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
         comBoxGrupo = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         comBoxStatus = new javax.swing.JComboBox<>();
+        botonDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,6 +218,16 @@ public class RegistrarCursos extends javax.swing.JDialog {
         comBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABANDONO", "ACTIVO", " " }));
         getContentPane().add(comBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 430, 220, -1));
 
+        botonDatos.setBackground(new java.awt.Color(255, 193, 5));
+        botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonDatos.setText("Ver Datos");
+        botonDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDatosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1155, 693, 110, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -305,6 +316,16 @@ public class RegistrarCursos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_combBoxProfesoresActionPerformed
 
+    private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
+    Tablas tablas = null;
+        try {
+            tablas = new Tablas(this,true,registrarCursos);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablas.setVisible(true);
+    }//GEN-LAST:event_botonDatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,6 +370,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistrarGrupo;
+    private javax.swing.JButton botonDatos;
     private javax.swing.JButton botonRegistrarCurso;
     private javax.swing.JButton botonRegistrarEstudianteGrupo;
     private javax.swing.JButton botonRegresar;

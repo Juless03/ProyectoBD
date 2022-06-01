@@ -69,6 +69,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         comboBoxEvaluacion = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        botonDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -166,6 +167,16 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         jButton1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jButton1.setText("Bitácora");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 130, 30));
+
+        botonDatos.setBackground(new java.awt.Color(255, 193, 5));
+        botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonDatos.setText("Ver Datos");
+        botonDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDatosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1005, 640, 110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -299,6 +310,16 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreCursoActionPerformed
 
+    private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
+     Tablas tablas = null;
+        try {
+            tablas = new Tablas(this,true,modificarEvaluaciones);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablas.setVisible(true);
+    }//GEN-LAST:event_botonDatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,6 +363,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonDatos;
     private javax.swing.JTextField botonFechaEntrega;
     private javax.swing.JButton botonModificarEvaluacion;
     private javax.swing.JButton botonRegresar;

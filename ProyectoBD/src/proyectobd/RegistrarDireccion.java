@@ -74,6 +74,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         comBoxCanton = new javax.swing.JComboBox<>();
         comBoxProvincia = new javax.swing.JComboBox<>();
         comBoxPais = new javax.swing.JComboBox<>();
+        botonDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -191,7 +192,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
                 botonRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 100, -1));
+        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 100, -1));
 
         comBoxCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         getContentPane().add(comBoxCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 97, -1));
@@ -200,7 +201,17 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         getContentPane().add(comBoxProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 97, -1));
 
         comBoxPais.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 97, -1));
+        getContentPane().add(comBoxPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 97, -1));
+
+        botonDatos.setBackground(new java.awt.Color(255, 193, 5));
+        botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonDatos.setText("Ver Datos");
+        botonDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDatosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1035, 583, 110, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,6 +291,16 @@ public class RegistrarDireccion extends javax.swing.JDialog {
             Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonRegistrarPaisActionPerformed
+
+    private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
+     Tablas tablas = null;
+        try {
+            tablas = new Tablas(this,true,registrarDireccion);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablas.setVisible(true);
+    }//GEN-LAST:event_botonDatosActionPerformed
     
    
     /**
@@ -326,6 +347,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonDatos;
     private javax.swing.JButton botonRegistrarCanton;
     private javax.swing.JButton botonRegistrarDistrito;
     private javax.swing.JButton botonRegistrarPais;
