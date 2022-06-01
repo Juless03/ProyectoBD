@@ -140,18 +140,23 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAdministradorActionPerformed
 
     private void botonProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProfesorActionPerformed
-        ConsultasProfesor evaluacionDocente = new ConsultasProfesor(this,true,Conexion);
-        evaluacionDocente.setVisible(true);       
-    }//GEN-LAST:event_botonProfesorActionPerformed
-
-    private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
-     ConsultasEstudiante consultasEstudiante = null;
+        InicioProfesor inicioProfesor = null;
         try {
-            consultasEstudiante = new ConsultasEstudiante(this,true,Conexion);
+            inicioProfesor = new InicioProfesor(this,true,Conexion);
         } catch (SQLException ex) {
             Logger.getLogger(MenuInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-     consultasEstudiante.setVisible(true);
+        inicioProfesor.setVisible(true);       
+    }//GEN-LAST:event_botonProfesorActionPerformed
+
+    private void botonEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstudianteActionPerformed
+     InicioEstudiante inicioEstudiante = null;
+        try {
+            inicioEstudiante = new InicioEstudiante(this,true,Conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     inicioEstudiante.setVisible(true);
     }//GEN-LAST:event_botonEstudianteActionPerformed
 
     /**

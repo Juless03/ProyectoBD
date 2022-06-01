@@ -26,7 +26,7 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
-    public ConsultasProfesor(MenuInicio aThis, boolean modal, Conexion elContralador) {
+    public ConsultasProfesor(MenuInicio aThis, boolean modal, Conexion elContralador) throws SQLException{
         super(aThis, modal);
         initComponents();
         evaluacionDocente = elContralador;
@@ -34,13 +34,22 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         botonRegresarAdmin.setVisible(false);
     }
     
-    public ConsultasProfesor(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+    public ConsultasProfesor(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException{
         super(aThis, modal);
         initComponents();
         evaluacionDocente = setupAdmin;
         this.getContentPane().setBackground(new Color(157,210,228));
         botonRegresar.setVisible(false);
     }
+
+    ConsultasProfesor(InicioProfesor aThis, boolean modal, Conexion inicioProfesor) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        evaluacionDocente = inicioProfesor;
+        this.getContentPane().setBackground(new Color(157,210,228));
+        botonRegresar.setVisible(false);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,8 +87,6 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         jScrollPane3 = new javax.swing.JScrollPane();
         listaEvaluaciones = new javax.swing.JList<>();
         botonRegresar = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         botonRegresarAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -172,11 +179,6 @@ public class ConsultasProfesor extends javax.swing.JDialog {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel12.setText("Seleccione el profesor: ");
-
-        jComboBox1.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
         botonRegresarAdmin.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresarAdmin.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegresarAdmin.setText("Regresar");
@@ -259,24 +261,14 @@ public class ConsultasProfesor extends javax.swing.JDialog {
                                             .addComponent(añoCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(68, 68, 68)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(418, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(474, 474, 474))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -322,6 +314,13 @@ public class ConsultasProfesor extends javax.swing.JDialog {
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         this.dispose();
+        InicioProfesor inicioProfesor = null;
+        try {
+            inicioProfesor = new InicioProfesor(this,true, evaluacionDocente);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    inicioProfesor.setVisible(true);
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonRegresarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarAdminActionPerformed
@@ -388,11 +387,9 @@ public class ConsultasProfesor extends javax.swing.JDialog {
     private javax.swing.JTextField estudianteEvaluaciones;
     private javax.swing.JTextField evaluacionEvaluaciones;
     private javax.swing.JTextField fechaEntregaEvaluaciones;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

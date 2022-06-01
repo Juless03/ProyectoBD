@@ -44,7 +44,6 @@ public class RegistroPersona extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.getContentPane().setBackground(new Color(157,210,228));
-        this.getContentPane().setBackground(new Color(157,210,228));
         this.setLocationRelativeTo(null);
         
     }

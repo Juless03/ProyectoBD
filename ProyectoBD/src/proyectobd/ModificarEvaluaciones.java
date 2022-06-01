@@ -68,6 +68,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         comboBoxEvaluacion = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -160,6 +161,11 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 430, 50));
 
         getContentPane().add(comboBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 230, 50));
+
+        jButton1.setBackground(new java.awt.Color(255, 193, 5));
+        jButton1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jButton1.setText("Bitácora");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 130, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -342,6 +348,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JTextField cantidadMiemrbros;
     private javax.swing.JComboBox<String> comboBoxEvaluacion;
     private javax.swing.JTextField descripcionEvaluacion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -85,6 +85,7 @@
               <Component id="botonIngreso" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="140" pref="140" max="-2" attributes="0"/>
               <Component id="botonRegresar" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

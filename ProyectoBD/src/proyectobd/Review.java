@@ -43,7 +43,7 @@ public class Review extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    Review(ConsultasEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws IOException, SQLException {
+    Review(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws IOException, SQLException {
         super(aThis, modal);
         initComponents();
         File pathToFile = new File("./imagenes/estrella.png");

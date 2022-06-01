@@ -38,7 +38,6 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
        inicioEstudiante = setupAdmin;
        this.getContentPane().setBackground(new Color(157,210,228));
        inicioEstudiante.getCourse(comBoxCurso);
-       inicioEstudiante.getStudent(comBoxEstudiante);
        botonRegresar.setVisible(false);
     }
     
@@ -48,7 +47,15 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
        inicioEstudiante = conexion;
        this.getContentPane().setBackground(new Color(157,210,228));
        inicioEstudiante.getCourse(comBoxCurso);
-       inicioEstudiante.getStudent(comBoxEstudiante);
+       botonRegresarAdmin.setVisible(false);
+    }
+
+    ConsultasEstudiante(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws SQLException {
+        super(aThis, modal);
+       initComponents();
+       inicioEstudiante = inicioEstudiante;
+       this.getContentPane().setBackground(new Color(157,210,228));
+       inicioEstudiante.getCourse(comBoxCurso);
        botonRegresarAdmin.setVisible(false);
     }
 
@@ -70,15 +77,11 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         añoCurso = new javax.swing.JTextField();
         mostrarCursos = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        comBoxEstudiante = new javax.swing.JComboBox<>();
-        botonReview = new javax.swing.JButton();
         botonRegresarAdmin = new javax.swing.JButton();
         comBoxCurso = new javax.swing.JComboBox<>();
         comBoxSemestre = new javax.swing.JComboBox<>();
         textoCursos = new javax.swing.JTextField();
         evaluacionesText = new javax.swing.JTextField();
-        mostrarEvaluaciones = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,20 +121,6 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        jLabel7.setText("Seleccione el estudiante: ");
-
-        comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-
-        botonReview.setBackground(new java.awt.Color(255, 193, 5));
-        botonReview.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        botonReview.setText("Review");
-        botonReview.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonReviewActionPerformed(evt);
-            }
-        });
-
         botonRegresarAdmin.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresarAdmin.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegresarAdmin.setText("Regresar");
@@ -146,15 +135,6 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         comBoxSemestre.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         comBoxSemestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero", "Segundo " }));
 
-        mostrarEvaluaciones.setBackground(new java.awt.Color(255, 193, 5));
-        mostrarEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        mostrarEvaluaciones.setText("Mostrar");
-        mostrarEvaluaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarEvaluacionesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,90 +144,67 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(394, 394, 394)
-                                .addComponent(jLabel7))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(196, 196, 196)
-                                .addComponent(jLabel2)))
-                        .addGap(39, 39, 39)
-                        .addComponent(comBoxEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addComponent(botonReview, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(219, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comBoxCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comBoxSemestre, 0, 150, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6)
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(mostrarCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(añoCurso)))
-                            .addComponent(textoCursos))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(441, 441, 441)
-                                .addComponent(jLabel3)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(556, 556, 556))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(mostrarEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(119, 119, 119))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(evaluacionesText, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(95, 95, 95))))))))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comBoxCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comBoxSemestre, 0, 150, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(mostrarCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(añoCurso)))
+                    .addComponent(textoCursos))
+                .addGap(71, 74, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(556, 556, 556))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(evaluacionesText, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(287, 287, 287))))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonRegresarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonRegresarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6)
+                    .addComponent(añoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comBoxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(comBoxEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonReview))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(añoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comBoxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(mostrarCursos)
-                            .addComponent(jLabel3)
-                            .addComponent(comBoxSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(123, 123, 123)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mostrarEvaluaciones)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textoCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
-                    .addComponent(evaluacionesText))
+                            .addComponent(comBoxSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addComponent(textoCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(evaluacionesText)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonRegresar)
@@ -259,21 +216,15 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-    this.setVisible(false);      
-    }//GEN-LAST:event_botonRegresarActionPerformed
-
-    private void botonReviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReviewActionPerformed
-
-    Review review = null;
+    this.dispose();
+    InicioEstudiante inicioEstudiante = null;
         try {
-            review = new Review(this,true,inicioEstudiante);
-        } catch (IOException ex) {
-            Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            inicioEstudiante = new InicioEstudiante(this,true, inicioEstudiante);
         } catch (SQLException ex) {
             Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
-    review.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_botonReviewActionPerformed
+    inicioEstudiante.setVisible(true);     
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonRegresarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarAdminActionPerformed
     this.dispose();
@@ -310,19 +261,6 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         }
     
     }//GEN-LAST:event_mostrarCursosActionPerformed
-
-    private void mostrarEvaluacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarEvaluacionesActionPerformed
-     ArrayList<String> evaluaciones = new ArrayList();
-     String estudiante = (String) comBoxEstudiante.getSelectedItem();
-     String [] idEstudiante = estudiante.split(" ");
-     String id = idEstudiante[0];
-        try {
-            inicioEstudiante.noteCourseAndEvaluations(evaluaciones, Integer.parseInt(id));
-            evaluacionesText.setText(evaluaciones.toString());
-        } catch (SQLException ex) {
-            Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_mostrarEvaluacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,9 +309,7 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
     private javax.swing.JTextField añoCurso;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JButton botonRegresarAdmin;
-    private javax.swing.JButton botonReview;
     private javax.swing.JComboBox<String> comBoxCurso;
-    private javax.swing.JComboBox<String> comBoxEstudiante;
     private javax.swing.JComboBox<String> comBoxSemestre;
     private javax.swing.JTextField evaluacionesText;
     private javax.swing.JLabel jLabel1;
@@ -382,9 +318,7 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton mostrarCursos;
-    private javax.swing.JButton mostrarEvaluaciones;
     private javax.swing.JTextField textoCursos;
     // End of variables declaration//GEN-END:variables
 }

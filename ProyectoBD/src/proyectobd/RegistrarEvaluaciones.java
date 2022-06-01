@@ -40,6 +40,22 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         exsPorcentajeObtenido.setEnabled(false);
         botonRegistrarEvaEstudiante.setEnabled(false);
         this.getContentPane().setBackground(new Color(157,210,228));
+        botonRegresar.setVisible(true);
+        botonRegresar2.setVisible(false);
+    }
+    
+    public RegistrarEvaluaciones(InicioProfesor aThis, boolean modal, Conexion setupAdmin) throws SQLException {
+        super(aThis, modal);
+        initComponents();
+        registrarEvaluaciones = setupAdmin;
+        this.setLocationRelativeTo(null);
+        registrarEvaluaciones.getStudent(comBoxEstudiante);
+        comBoxEvaluacion.setEnabled(false);
+        exsPorcentajeObtenido.setEnabled(false);
+        botonRegistrarEvaEstudiante.setEnabled(false);
+        this.getContentPane().setBackground(new Color(157,210,228));
+        botonRegresar2.setVisible(true);
+        botonRegresar.setVisible(false);
     }
 
     /**
@@ -68,7 +84,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         exsPorcentajeObtenido = new javax.swing.JTextField();
         botonRegistrarEvaluacion = new javax.swing.JButton();
         botonRegistrarEvaEstudiante = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonRegresar = new javax.swing.JButton();
         comBoxEstudiante = new javax.swing.JComboBox<>();
         comBoxEvaluacion = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -76,6 +92,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        botonRegresar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -155,15 +172,15 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         });
         getContentPane().add(botonRegistrarEvaEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, 130, 60));
 
-        jButton2.setBackground(new java.awt.Color(255, 193, 5));
-        jButton2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jButton2.setText("Regresar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonRegresar.setText("Regresar");
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 684, 100, -1));
+        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 684, 100, -1));
 
         comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         getContentPane().add(comBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 220, 40));
@@ -194,10 +211,20 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         jLabel13.setText("MM/DD/YYYY");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 110, 30));
 
+        botonRegresar2.setBackground(new java.awt.Color(255, 193, 5));
+        botonRegresar2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonRegresar2.setText("Regresar");
+        botonRegresar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresar2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonRegresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 686, 110, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
     this.dispose();
     AdminSetup ventaAdminSetup = null;
         try {
@@ -206,7 +233,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
     ventaAdminSetup.setVisible(true);          // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonRegistrarEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEvaluacionActionPerformed
     
@@ -300,6 +327,17 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_comBoxEvaluacionActionPerformed
 
+    private void botonRegresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresar2ActionPerformed
+    this.dispose();
+    InicioProfesor inicioProfesor = null;
+        try {
+            inicioProfesor = new InicioProfesor(this,true, registrarEvaluaciones);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    inicioProfesor.setVisible(true);         
+    }//GEN-LAST:event_botonRegresar2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,6 +387,8 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JTextField botonFechaEntrega;
     private javax.swing.JButton botonRegistrarEvaEstudiante;
     private javax.swing.JButton botonRegistrarEvaluacion;
+    private javax.swing.JButton botonRegresar;
+    private javax.swing.JButton botonRegresar2;
     private javax.swing.JComboBox<String> comBoxEstudiante;
     private javax.swing.JComboBox<String> comBoxEvaluacion;
     private javax.swing.JTextField evaluacionDescripcion;
@@ -356,7 +396,6 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JTextField evaluacionNombre;
     private javax.swing.JTextField evaluacionPorcentaje;
     private javax.swing.JTextField exsPorcentajeObtenido;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
