@@ -317,7 +317,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegistrarEvaEstudianteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        comBoxEvaluacion.removeAllItems();
+        /*comBoxEvaluacion.removeAllItems();
         exsPorcentajeObtenido.setEnabled(true);
         botonRegistrarEvaEstudiante.setEnabled(true);
         comBoxEvaluacion.setEnabled(true);
@@ -331,7 +331,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             //comBoxEvaluacion.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void comBoxEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxEvaluacionActionPerformed

@@ -39,7 +39,7 @@ public class Conexion {
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="01Alvarado01";
+    private static final String pass="camelCase110";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -138,7 +138,7 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call getCourseGrupo()}");
         ResultSet r = stmt.executeQuery();
         while(r.next()){
-            cbox_course.addItem(r.getString("course_code") + " " + r.getString("course_name")); 
+            cbox_course.addItem(r.getString("id_course") + " " + r.getString("course_name")); 
         }
     }
 
@@ -171,9 +171,9 @@ public class Conexion {
         }
     }
         
-    public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
+    /*public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call getEvalautionStudent(?)}");
+        CallableStatement stmt = con.prepareCall("{ call getEvaluationStudent(?)}");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
         stmt.setInt(2, pIDStudent);
         stmt.execute();
@@ -181,7 +181,7 @@ public class Conexion {
         while(r.next()){
             comBoxEvaluacion.addItem(r.getString("id_evalxstudent") + " " + r.getString("evaluation_des"));  
         }
-    }
+    }*/
     
     public static void getEvaluation(JComboBox comboBoxEvaluacion) throws SQLException{
         Connection con = conectorBaseNueva();
@@ -190,7 +190,7 @@ public class Conexion {
         stmt.execute();
         ResultSet r = (ResultSet) stmt.getObject(1); 
         while(r.next()){
-            comboBoxEvaluacion.addItem(r.getString("evaluation_code") + " " + r.getString("evaluation_des"));  
+            comboBoxEvaluacion.addItem(r.getString("id_evaluation") + " " + r.getString("evaluation_name") + " " + r.getString("evaluation_des"));  
         }
     }
 
@@ -199,7 +199,7 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call getCourseGroup()}");
         ResultSet r = stmt.executeQuery();
         while(r.next()){
-            cbox_coursegroup.addItem(r.getString("group_code"));  
+            cbox_coursegroup.addItem(r.getString("id_group"));  
         }
     }
     
@@ -312,7 +312,6 @@ public class Conexion {
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
             cbox_distrito.addItem(r.getString("district_name")); 
-            System.out.println(r.getString("district_name"));
         }
     }
 
@@ -887,7 +886,7 @@ public class Conexion {
         return cursos;
     }
     
-    public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
+    /*public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{?= call noteCourseAndEvaluations(?) }");
         stmt.registerOutParameter(1,OracleTypes.CURSOR);
@@ -898,5 +897,5 @@ public class Conexion {
             evaluaciones.add(r.getString("course_name") + " " + r.getString("evaluation_des"));  
         }
         return evaluaciones;
-    }
+    }*/
 }
