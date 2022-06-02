@@ -32,7 +32,7 @@ public class ProyectoBD {
        // System.out.println(Conexion.consultarDistritosNumero("Cahuita"));
        //Conexion.consultarGenero();
         //System.out.println(Conexion.consultarGeneroCodigo("Femenino"));
-        //Conexion.getPerson();
+        //System.out.println(Conexion.getIDCourse("Inglés"));
  
         //Conexion.updateCourseCredits("Cálculo Diferencial", 3);
         //Conexion.updateCourseName("Algebra", "Cálculo Diferencial");
@@ -40,8 +40,8 @@ public class ProyectoBD {
         //Conexion.getStudentGroup(2);
         //Conexion.getStudent();
        
-        ArrayList ArrayCursos = new ArrayList();
-        ArrayList ArrayCursos1 = new ArrayList();
+        //ArrayList ArrayCursos = new ArrayList();
+        //ArrayList ArrayCursos1 = new ArrayList();
          /*
         String Fecha = "22/03/2022";
         java.sql.Date FechaNacimientoValidada = null;
