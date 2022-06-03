@@ -70,8 +70,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
         grupoSemestre = new javax.swing.JTextField();
         BotonRegistrarGrupo = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        sxgReview = new javax.swing.JTextField();
         botonRegistrarEstudianteGrupo = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
         combBoxProfesores = new javax.swing.JComboBox<>();
@@ -162,13 +160,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
         jLabel11.setText("Estudiante");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 220, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel13.setText("Review");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 360, 54, -1));
-
-        sxgReview.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(sxgReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 360, 80, -1));
-
         botonRegistrarEstudianteGrupo.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegistrarEstudianteGrupo.setText("Registrar");
@@ -177,7 +168,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
                 botonRegistrarEstudianteGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 510, 100, -1));
+        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 440, 100, -1));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -212,11 +203,11 @@ public class RegistrarCursos extends javax.swing.JDialog {
 
         jLabel14.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel14.setText("Status");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 430, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 370, -1, -1));
 
         comBoxStatus.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         comBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABANDONO", "ACTIVO", " " }));
-        getContentPane().add(comBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 430, 220, -1));
+        getContentPane().add(comBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 370, 220, -1));
 
         botonDatos.setBackground(new java.awt.Color(255, 193, 5));
         botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -305,7 +296,7 @@ public class RegistrarCursos extends javax.swing.JDialog {
         System.out.println(idEstudiante);
         try {
             registrarCursos.addStudentxgroup(Integer.parseInt(id), Integer.parseInt((String) comBoxGrupo.getSelectedItem()),
-                    Integer.parseInt(sxgReview.getText()),(String) comBoxStatus.getSelectedItem());
+                (String) comBoxStatus.getSelectedItem());
            JOptionPane.showMessageDialog(null,"Estudiante agregado al grupo.");
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
@@ -386,7 +377,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -397,6 +387,5 @@ public class RegistrarCursos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nombreCurso;
-    private javax.swing.JTextField sxgReview;
     // End of variables declaration//GEN-END:variables
 }
