@@ -25,6 +25,48 @@ public class ProyectoBD {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
+        ArrayList<String> prueba = new ArrayList();
+        Conexion.getDataBooklog(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataPerson(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataEmails(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataPhoneNumber(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataGender(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataEvaluation(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataCountry(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataCanton(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataDistrict(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataProvince(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataCourse(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+        Conexion.getdataGroup(prueba);
+        System.out.println(prueba.toString());
+        prueba.clear();
+     
+        
+        
+        
+        
           // Pruebas
         //Conexion.addPhoneNumber("Casa", "88888888", 3);
         //System.out.println(Conexion.inicioSesionAdmin("LauraAdmin", "LauraPassword"));

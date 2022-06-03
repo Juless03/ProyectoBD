@@ -435,7 +435,7 @@ public class AdminSetup extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonProfesoresActionPerformed
 
     private void botonRegistrarGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarGeneroActionPerformed
-
+        this.dispose();
         RegistrarYModificarGenero venRegistrarYModificarGenero;
          try {
              venRegistrarYModificarGenero = new RegistrarYModificarGenero(this,true,setupAdmin);
@@ -450,10 +450,10 @@ public class AdminSetup extends javax.swing.JDialog {
          Booklog booklog = null;
          try {
              booklog = new Booklog(this, true,setupAdmin);
+             booklog.setVisible(true);
          } catch (SQLException ex) {
              Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
          }
-        booklog.setVisible(true);
     }//GEN-LAST:event_botonBitacoraActionPerformed
 
     /**

@@ -40,7 +40,7 @@ public class Conexion {
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="01Alvarado01";
+    private static final String pass="TOVI10toti";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -895,6 +895,107 @@ public class Conexion {
         return cursos;
     }
     
+    public static void getDataBooklog(ArrayList<String> listaBooklog) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call dataBooklog()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaBooklog.add(r.getString("scheme_name") + " " + r.getString("table_name") + " " + r.getString("space_name") + " " + r.getString("old_value") + " " + r.getString("actual_value") + " " + r.getString("creation_date") + " " + r.getString("creation_user")); 
+        }
+    }
+    
+    
+    public static void getdataPerson(ArrayList<String> listaPerson) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call dataPerson()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaPerson.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname") + " " + r.getString("birth_day") + " " + r.getString("type")); 
+        }
+    }
+    
+    public static void getdataEmails(ArrayList<String> listaEmails) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call dataEmails()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaEmails.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname") + " " + r.getString("email_direction")); 
+        }
+    }
+    
+    public static void getdataPhoneNumber(ArrayList<String> listaPhoneNumber) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call dataPhoneNumber()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaPhoneNumber.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname")+ " " + r.getString("number")+ " " + r.getString("type")); 
+        }
+    }
+    
+    public static void getdataGender(ArrayList<String> listaGender) throws SQLException {
+        CallableStatement stmt = con.prepareCall("{ call dataPerson()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaGender.add(r.getString("type")); 
+        }
+    }
+    
+    public static void getdataEvaluation(ArrayList<String> listaEvaluation) throws SQLException {
+        CallableStatement stmt = con.prepareCall("{ call dataEvaluation()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaEvaluation.add(r.getString("evaluation_name") + " " + r.getString("evaluation_des") + " " + r.getString("members") + " " + r.getString("percentage") + " " + r.getString("due_date") + " " + r.getString("id_group")+ " " + r.getString("course_name")); 
+        }
+    }
+    
+    public static void getdataCountry(ArrayList<String> listaCountry) throws SQLException {
+        CallableStatement stmt = con.prepareCall("{ call dataCountry()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaCountry.add(r.getString("country_name")); 
+        }
+    }
+    
+    public static void getdataCanton(ArrayList<String> listaCanton) throws SQLException {
+        CallableStatement stmt = con.prepareCall("{ call dataCanton()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaCanton.add(r.getString("canton_name") + " " + r.getString("province_name")); 
+        }
+    }
+    
+    public static void getdataDistrict(ArrayList<String> listaDistrict) throws SQLException {
+        CallableStatement stmt = con.prepareCall("{ call dataDistrict()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaDistrict.add(r.getString("district_name") + " " + r.getString("canton_name")); 
+        }
+    }
+    
+    public static void getdataProvince(ArrayList<String> listaProvince) throws SQLException {
+        CallableStatement stmt = con.prepareCall("{ call dataProvince()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaProvince.add(r.getString("province_name") + " " + r.getString("country_name")); 
+        }
+    }
+    
+    public static void getdataCourse(ArrayList<String> listaCourse) throws SQLException {
+        CallableStatement stmt = con.prepareCall("{ call dataCourse()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaCourse.add(r.getString("course_name") + " " + r.getString("credits")); 
+        }
+    }
+    
+    public static void getdataGroup(ArrayList<String> listaGroup) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call dataGroup()}"); 
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            listaGroup.add(r.getString("id_group") + " " + r.getString("group_semester") + " " + r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname") + " " + r.getString("course_name")); 
+        }
+    }
     /*public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{?= call noteCourseAndEvaluations(?) }");
