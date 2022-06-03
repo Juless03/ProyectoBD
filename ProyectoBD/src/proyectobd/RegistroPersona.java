@@ -8,6 +8,8 @@ package proyectobd;
 import ConexionSQL.Conexion;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import static java.lang.System.out;
 import java.sql.SQLException;
@@ -18,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -35,7 +38,9 @@ public class RegistroPersona extends javax.swing.JDialog {
     private Conexion registroDatos;
     private ImageIcon fotoSelect;
     private Image mImagen;
+    BufferedImage bufferImage;;
     private boolean foto = false;
+    private String Ruta;
     /**
      * Creates new form RegistroDatos
      */
@@ -46,7 +51,7 @@ public class RegistroPersona extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         
     }
-    public RegistroPersona(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
+    public RegistroPersona(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException, IOException {
         super(aThis, modal);
         initComponents();
         registroDatos = setupAdmin;
@@ -58,6 +63,11 @@ public class RegistroPersona extends javax.swing.JDialog {
         botonContraseña.setVisible(false);
         BotonRegistrar.setEnabled(false);
         
+        File pathToFile = new File("./imagenes/persona.jpg");
+        bufferImage = ImageIO.read(pathToFile);
+        fotoSelect = new ImageIcon(bufferImage.getScaledInstance(botonFoto.getWidth(), botonFoto.getHeight(), Image.SCALE_SMOOTH));
+        botonFoto.setIcon(fotoSelect);
+        this.getContentPane().setBackground(new Color(157,210,228));
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -452,8 +462,21 @@ public class RegistroPersona extends javax.swing.JDialog {
                     if(Categoria == "Estudiante"){
                         if(registroDatos.addPerson(PrimerNombre.getText(), SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText(),Genero,Distrito,FechaNacimientoValidada)){
                             idPersona = registroDatos.getPersonID(PrimerNombre.getText(),SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText());
-                            registroDatos.addStudent(idPersona);
+                            String añoStudent = "2022";
+                            System.out.println("Id person es: " + idPersona);
+                            añoStudent += idPersona;
+                            System.out.println("Id estudiante es: " + añoStudent);
+                            int idStudent = Integer.parseInt(añoStudent);
+                            registroDatos.addStudent(idPersona, idStudent);
                             JOptionPane.showMessageDialog(null,"Estudiante Agregado.");
+                            PrimerNombre.setText("");
+                            PrimerApellido.setText("");
+                            SegundoNombre.setText("");
+                            SegundoApellido.setText("");
+                            FechaNacimiento.setText("");
+                            botonEmail.setText("");
+                            botonTelefono.setText("");
+                            botonContraseña.setText("");  
                             validandoAgregado = true;
                         } else {
                             JOptionPane.showMessageDialog(null,"Estudiante no Agregado.");
@@ -465,6 +488,14 @@ public class RegistroPersona extends javax.swing.JDialog {
                             idPersona = registroDatos.getPersonID(PrimerNombre.getText(),SegundoNombre.getText(),PrimerApellido.getText(),SegundoApellido.getText());
                             registroDatos.addProfessor(idPersona);
                             JOptionPane.showMessageDialog(null,"Profesor Agregado.");  
+                            PrimerNombre.setText("");
+                            PrimerApellido.setText("");
+                            SegundoNombre.setText("");
+                            SegundoApellido.setText("");
+                            FechaNacimiento.setText("");
+                            botonEmail.setText("");
+                            botonTelefono.setText("");
+                            botonContraseña.setText("");                            
                             validandoAgregado = true;
                             } else {
                             JOptionPane.showMessageDialog(null,"Profesor no Agregado.");
@@ -480,6 +511,14 @@ public class RegistroPersona extends javax.swing.JDialog {
                                    String ContraseñaAdmin = registroDatos.encriptarContraseña(String.valueOf(botonContraseña.getPassword())); // String.valueOf(botonContraInco.getPassword()
                                    registroDatos.addAdmin(idPersona,UsuarioAdmin,ContraseñaAdmin);
                                    JOptionPane.showMessageDialog(null,"Admin Agregado.");
+                                    PrimerNombre.setText("");
+                                    PrimerApellido.setText("");
+                                    SegundoNombre.setText("");
+                                    SegundoApellido.setText("");
+                                    FechaNacimiento.setText("");
+                                    botonEmail.setText("");
+                                    botonTelefono.setText("");
+                                    botonContraseña.setText("");
                                    validandoAgregado = true;
                                 } else {
                                     JOptionPane.showMessageDialog(null,"Admin no Agregado.");
@@ -514,16 +553,16 @@ public class RegistroPersona extends javax.swing.JDialog {
                     // AgregarFoto
                     if(foto){
                        try {
-                        registroDatos.escribeImagenEnBBDD(idPersona,mImagen);
-                            JOptionPane.showMessageDialog(null,"Imagen Agregada!");
+                        registroDatos.escribeImagenEnBBDD(idPersona,mImagen); //mImagen Ruta
+                            //JOptionPane.showMessageDialog(null,"Imagen Agregada!");
                         } catch (SQLException ex) {
                             Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (IOException ex) {
                             Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    
+                    } else {
+                        registroDatos.escribeImagenEnBBDD(idPersona,bufferImage); //mImagen Ruta
                     }
-  
                 }
             } else {
                 JOptionPane.showMessageDialog(null,"Persona no agregada.");
@@ -531,6 +570,8 @@ public class RegistroPersona extends javax.swing.JDialog {
      }  catch (SQLException ex) {
             Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
+            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -557,7 +598,7 @@ public class RegistroPersona extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botonSeleccionarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarFotoActionPerformed
-        String Ruta = "";
+        Ruta = "";
         JFileChooser fotoSeleccionada = new JFileChooser();
         FileNameExtensionFilter filtradoFormatos = new FileNameExtensionFilter("JGP, PNG", "jpg", "png");
         fotoSeleccionada.setFileFilter(filtradoFormatos);
@@ -566,6 +607,7 @@ public class RegistroPersona extends javax.swing.JDialog {
         
         if (respuestaFoto == JFileChooser.APPROVE_OPTION) {
             Ruta = fotoSeleccionada.getSelectedFile().getPath();
+            System.out.println("ruta" + Ruta);
             mImagen = new ImageIcon(Ruta).getImage();
             fotoSelect = new ImageIcon(mImagen.getScaledInstance(botonFoto.getWidth(), botonFoto.getHeight(), Image.SCALE_SMOOTH));
             botonFoto.setIcon(fotoSelect);

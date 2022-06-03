@@ -233,62 +233,106 @@ public class RegistrarDireccion extends javax.swing.JDialog {
 
     private void botonRegistrarCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarCantonActionPerformed
         int provincia = 0;
-        String provinciaNombre = (String) comBoxProvincia.getSelectedItem();
-        try{
-            provincia = registrarDireccion.getProvinceCode(provinciaNombre);
-        }catch (SQLException ex){
-            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-  
-        try {
-            registrarDireccion.addCanton(cantonNombre.getText(), provincia);
-            JOptionPane.showMessageDialog(null,"Canton Agregado.");
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        if(!cantonNombre.getText().isEmpty()){
+            String provinciaNombre = (String) comBoxProvincia.getSelectedItem();
+            try{
+                provincia = registrarDireccion.getProvinceCode(provinciaNombre);
+            }catch (SQLException ex){
+                Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                registrarDireccion.addCanton(cantonNombre.getText(), provincia);
+                JOptionPane.showMessageDialog(null,"Canton Agregado.");
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            cantonNombre.setText("");
+            comBoxCanton.setVisible(false);
+            comBoxCanton.removeAllItems();
+            try {
+                registrarDireccion.getCanton(comBoxCanton);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxCanton.setVisible(true);
+        } else{
+            JOptionPane.showMessageDialog(null,"Campos Vacios. Canton no Agregado.");
         } 
 
     }//GEN-LAST:event_botonRegistrarCantonActionPerformed
 
     private void botonRegistrarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarProvinciaActionPerformed
-        int pais = 0;
-        String paisNombre = (String) comBoxPais.getSelectedItem();
-        try{
-            pais = registrarDireccion.getCountryCode(paisNombre);
-        }catch (SQLException ex){
-            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try {
-            registrarDireccion.addProvince(provinciaNombre.getText(), pais);
-            JOptionPane.showMessageDialog(null,"Provincia Agregada.");
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-    }//GEN-LAST:event_botonRegistrarProvinciaActionPerformed
+       if(!provinciaNombre.getText().isEmpty()){ 
+            int pais = 0;
+            String paisNombre = (String) comBoxPais.getSelectedItem();
+            try{
+                pais = registrarDireccion.getCountryCode(paisNombre);
+            }catch (SQLException ex){
+                Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-    private void botonRegistrarDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarDistritoActionPerformed
-        int canton = 0;
-        String cantonNombre = (String) comBoxCanton.getSelectedItem();
-        try{
-            canton = registrarDireccion.getCantonCode(cantonNombre);
-        }catch (SQLException ex){
-            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                registrarDireccion.addProvince(provinciaNombre.getText(), pais);
+                JOptionPane.showMessageDialog(null,"Provincia Agregada.");
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            provinciaNombre.setText("");
+            comBoxProvincia.setVisible(false);
+            comBoxProvincia.removeAllItems();
+            try {
+                registrarDireccion.getProvince(comBoxProvincia);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxProvincia.setVisible(true);
+        } else {
+        JOptionPane.showMessageDialog(null,"Campos vacios. Provincia no Agregada.");
+       }
+       
+    }//GEN-LAST:event_botonRegistrarProvinciaActionPerformed
         
-        try {
-            registrarDireccion.addDistrict(distritoNombre.getText(), canton);
-            JOptionPane.showMessageDialog(null,"Distrito Agregada.");
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+    private void botonRegistrarDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarDistritoActionPerformed
+        if(!distritoNombre.getText().isEmpty()){ 
+            int canton = 0;
+            String cantonNombre = (String) comBoxCanton.getSelectedItem();
+            try{
+                canton = registrarDireccion.getCantonCode(cantonNombre);
+            }catch (SQLException ex){
+                Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                registrarDireccion.addDistrict(distritoNombre.getText(), canton);
+                JOptionPane.showMessageDialog(null,"Distrito Agregado.");
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,"Campos vacios. Distrito no Agregado.");
+        }
     }//GEN-LAST:event_botonRegistrarDistritoActionPerformed
 
     private void botonRegistrarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarPaisActionPerformed
-        try {
-            registrarDireccion.addCountry(paisNombre.getText());
-            JOptionPane.showMessageDialog(null,"País Agregado.");
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+        if(!paisNombre.getText().isEmpty()){ 
+            try {
+                registrarDireccion.addCountry(paisNombre.getText());
+                JOptionPane.showMessageDialog(null,"País Agregado.");
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            paisNombre.setText("");
+            comBoxPais.setVisible(false);
+            comBoxPais.removeAllItems();
+            try {
+                registrarDireccion.getCountry(comBoxPais);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxPais.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,"Campos vacios. País no Agregado.");
         }
     }//GEN-LAST:event_botonRegistrarPaisActionPerformed
 

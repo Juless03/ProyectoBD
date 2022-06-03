@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -39,7 +40,7 @@ public class Conexion {
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="camelCase110";
+    private static final String pass="01Alvarado01";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -204,8 +205,16 @@ public class Conexion {
     }
     
     public void escribeImagenEnBBDD(int idPersona, Image mImagen) throws SQLException, IOException {
-        Connection con = conectorBaseNueva(); // 
-        PreparedStatement pstmt = con.prepareStatement("{?= call update_person_picture(?,?)  }");
+        Connection con = conectorBaseNueva(); //  Image mImagen String Ruta
+        PreparedStatement pstmt = con.prepareStatement("{ call update_person_picture(?,?)  }");
+      /*
+        pstmt.setInt(1, idPersona);
+        File nombre = new File(Ruta);
+        FileInputStream archivofoto = new FileInputStream(nombre);
+        pstmt.setByte(2,archivofoto);
+        pstmt.executeUpdate();
+        */
+       
         Blob imagenBlob = null;
         BufferedImage bi = new BufferedImage(mImagen.getWidth(null), mImagen.getHeight(null), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bi.createGraphics();
@@ -213,13 +222,13 @@ public class Conexion {
         g2d.dispose();
         ByteArrayOutputStream baos = null;
         try {
-            baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "png", baos);
+        baos = new ByteArrayOutputStream();
+        ImageIO.write(bi, "png", baos);
         } finally {
-            try {
-             baos.close();
-            } catch (Exception e) {
-            }
+        try {
+        baos.close();
+        } catch (Exception e) {
+        }
         }
         ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
         pstmt.setBlob(2, bais);
@@ -360,7 +369,7 @@ public class Conexion {
     public static boolean addPerson(String pFirstName, String pMiddleName, String pFirstLastname, String pSecondLastname, int pGenderCode, int pDistrictCode, Date pBirthday) throws SQLException, ParseException {
 
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_person(?,?,?,?,?,?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_person(?,?,?,?,?,?,?) }");
         stmt.setString(1, pFirstName);
         stmt.setString(2, pMiddleName);
         stmt.setString(3, pFirstLastname);
@@ -429,7 +438,7 @@ public class Conexion {
 
     public static void addAdmin(int pIdPerson, String pAdminUser, String pAdminPassword) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_admin(?,?,?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_admin(?,?,?) }");
         stmt.setInt(1, pIdPerson);
         stmt.setString(2, pAdminUser);
         stmt.setString(3, pAdminPassword);
@@ -447,21 +456,22 @@ public class Conexion {
 
     public static void addProfessor(int pIdPerson) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_professor(?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_professor(?) }");
         stmt.setInt(1, pIdPerson);
         stmt.execute();
     }
 
-    public static void addStudent(int pIdPerson) throws SQLException {
+    public static void addStudent(int pIdPerson,int pIdStudent) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_student(?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_student(?,?) }");
         stmt.setInt(1, pIdPerson);
+        stmt.setInt(2, pIdStudent);
         stmt.execute();
     }
     
     public static void addEmail(String pEmailDirection, int pIdPerson) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_email(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_email(?, ?) }");
         stmt.setString(1, pEmailDirection);
         stmt.setInt(2, pIdPerson);
         stmt.execute();
@@ -492,7 +502,7 @@ public class Conexion {
     }
     public static void addPhoneNumber(String pPhonenumberDescription, int pPhonenumberPhone, int pIdPerson) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_phonenumber(?, ?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_phonenumber(?, ?, ?) }");
         stmt.setString(1, pPhonenumberDescription);
         stmt.setInt(2, pPhonenumberPhone);
         stmt.setInt(3, pIdPerson);
@@ -540,7 +550,7 @@ public class Conexion {
     //funciones del paquete adminDirection
     public static void addProvince(String pProvinceName, int pCountryCode) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_person(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_province(?, ?) }");
         stmt.setString(1, pProvinceName);
         stmt.setInt(2, pCountryCode);
         stmt.execute();
@@ -564,7 +574,7 @@ public class Conexion {
 
     public static void addCanton(String pCantonName, int pProvinceCode) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_canton(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_canton(?, ?) }");
         stmt.setString(1, pCantonName);
         stmt.setInt(2, pProvinceCode);
         stmt.execute();
@@ -588,7 +598,7 @@ public class Conexion {
 
     public static void addCountry(String pCountryName) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_country(?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_country(?) }");
         stmt.setString(1, pCountryName);
         stmt.execute();
     }
@@ -603,7 +613,7 @@ public class Conexion {
 
     public static void addDistrict(String pDistrictName, int pCantonCode) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_district(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_district(?, ?) }");
         stmt.setString(1, pDistrictName);
         stmt.setInt(2, pCantonCode);
         stmt.execute();
@@ -644,7 +654,7 @@ public class Conexion {
     //funciones del paquete adminCourse
     public static void addStudentxgroup(int pIdPerson, int pGroupCode, int pReviewCode, String pStatus) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_studentxgroup(?, ?, ?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_studentxgroup(?, ?, ?, ?) }");
         stmt.setInt(1, pIdPerson);
         stmt.setInt(2, pGroupCode);
         stmt.setInt(3, pReviewCode);
