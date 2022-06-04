@@ -34,6 +34,9 @@ public class ModificarDireccion extends javax.swing.JDialog {
         modificarDireccion.getCanton(comBoxCanton);
         modificarDireccion.getCountry(comBoxPais);
         modificarDireccion.getDistrict(comBoxDistrito);
+        modificarDireccion.getProvince(comBoxProvinciaId);
+        modificarDireccion.getCanton(comBoxCantonId);
+        modificarDireccion.getCountry(comBoxPaisId);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
@@ -54,7 +57,6 @@ public class ModificarDireccion extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         comBoxCanton = new javax.swing.JComboBox<>();
         nombreCanton = new javax.swing.JTextField();
-        provinciaCanton = new javax.swing.JTextField();
         botonModificarCanton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -62,7 +64,6 @@ public class ModificarDireccion extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         comBoxDistrito = new javax.swing.JComboBox<>();
         nombreDistrito = new javax.swing.JTextField();
-        cantonDistrito = new javax.swing.JTextField();
         botonModificarDistrito = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -70,7 +71,6 @@ public class ModificarDireccion extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         comBoxProvincia = new javax.swing.JComboBox<>();
         nombreProvincia = new javax.swing.JTextField();
-        paisProvincia = new javax.swing.JTextField();
         botonModificarProvincia = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -80,6 +80,9 @@ public class ModificarDireccion extends javax.swing.JDialog {
         botonModificarPais = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        comBoxProvinciaId = new javax.swing.JComboBox<>();
+        comBoxCantonId = new javax.swing.JComboBox<>();
+        comBoxPaisId = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -96,13 +99,11 @@ public class ModificarDireccion extends javax.swing.JDialog {
         jLabel4.setText("Nombre");
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel5.setText("Id Provincia");
+        jLabel5.setText("Provincia");
 
         comBoxCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
 
         nombreCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        provinciaCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
 
         botonModificarCanton.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarCanton.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -123,13 +124,11 @@ public class ModificarDireccion extends javax.swing.JDialog {
         jLabel8.setText("Nombre");
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel9.setText("Id Canton");
+        jLabel9.setText("Canton");
 
         comBoxDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
 
         nombreDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        cantonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
 
         botonModificarDistrito.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarDistrito.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -150,13 +149,11 @@ public class ModificarDireccion extends javax.swing.JDialog {
         jLabel12.setText("Nombre");
 
         jLabel13.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel13.setText("Id País");
+        jLabel13.setText("País");
 
         comBoxProvincia.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
 
         nombreProvincia.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-
-        paisProvincia.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
 
         botonModificarProvincia.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarProvincia.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -200,10 +197,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
 
         jButton1.setBackground(new java.awt.Color(255, 193, 5));
         jButton1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jButton1.setText("Ver Dtaos");
+        jButton1.setText("Ver Datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        comBoxProvinciaId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comBoxProvinciaIdActionPerformed(evt);
             }
         });
 
@@ -230,24 +233,6 @@ public class ModificarDireccion extends javax.swing.JDialog {
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(comBoxDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel4)
-                        .addGap(233, 233, 233)
-                        .addComponent(nombreCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(295, 295, 295)
-                        .addComponent(jLabel8)
-                        .addGap(180, 180, 180)
-                        .addComponent(nombreDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel5)
-                        .addGap(206, 206, 206)
-                        .addComponent(provinciaCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(295, 295, 295)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cantonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(402, 402, 402)
                         .addComponent(botonModificarCanton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,9 +265,28 @@ public class ModificarDireccion extends javax.swing.JDialog {
                         .addGap(115, 115, 115)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(213, 213, 213)
-                        .addComponent(paisProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comBoxPaisId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(529, 529, 529)
-                        .addComponent(botonModificarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonModificarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(224, 224, 224)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombreCanton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(comBoxProvinciaId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(295, 295, 295)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(comBoxCantonId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(180, 180, 180)
+                                .addComponent(nombreDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
@@ -319,13 +323,17 @@ public class ModificarDireccion extends javax.swing.JDialog {
                     .addComponent(nombreCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(nombreDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(provinciaCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(cantonDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(comBoxProvinciaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comBoxCantonId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -355,9 +363,9 @@ public class ModificarDireccion extends javax.swing.JDialog {
                     .addComponent(botonModificarPais)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
-                            .addComponent(paisProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(comBoxPaisId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -385,17 +393,20 @@ public class ModificarDireccion extends javax.swing.JDialog {
 
     private void botonModificarCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarCantonActionPerformed
         boolean validandoCantonNombre = false;
-        boolean validandoPronvincia = false;
+        boolean validandoProvincia = false;
         String Canton = (String) comBoxCanton.getSelectedItem();
+        String Provincia = (String) comBoxProvinciaId.getSelectedItem();
         int CantonCode = 0;
         int ProvinceCode = 0;
+        String NuevoCanton = nombreCanton.getText().toString();
+        
         try {
             CantonCode = modificarDireccion.getCantonCode(Canton);
         } catch (SQLException ex) {
             Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String NuevoCanton = nombreCanton.getText().toString();
-        if(nombreCanton.getText().isEmpty() && provinciaCanton.getText().isEmpty()){
+        
+        if(nombreCanton.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
         } else {
             if(!nombreCanton.getText().isEmpty()){
@@ -408,19 +419,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
                     validandoCantonNombre = false;
                 }
             }
-            if(!provinciaCanton.getText().isEmpty()){
-                try {
-                    ProvinceCode = Integer.parseInt(provinciaCanton.getText()); 
-                    modificarDireccion.updateCantonProvince(CantonCode,ProvinceCode);
-                    validandoPronvincia = true;
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null,"Error Provincia Canton no modificado!");
-                    validandoPronvincia = false;
-                }
-            }  
+            try {
+                ProvinceCode = modificarDireccion.getProvinceCode(Provincia);
+                modificarDireccion.updateCantonProvince(CantonCode,ProvinceCode);
+                validandoProvincia = true;
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null,"Error Provincia Canton no modificado!");
+            }
         }
-        if(validandoCantonNombre || validandoPronvincia){
+        if(validandoCantonNombre || validandoProvincia){
             JOptionPane.showMessageDialog(null,"Canton Modificado!!");
             // actualizar combobox
             comBoxCanton.setVisible(false);
@@ -443,18 +451,21 @@ public class ModificarDireccion extends javax.swing.JDialog {
     }//GEN-LAST:event_botonModificarCantonActionPerformed
 
     private void botonModificarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarProvinciaActionPerformed
-       boolean validandoProvinciaNombre = false;
+        boolean validandoProvinciaNombre = false;
         boolean validandoPais = false;
         String Provincia = (String) comBoxProvincia.getSelectedItem();
+        String Pais = (String) comBoxPaisId.getSelectedItem();
         int ProvinciaCode = 0;
         int PaisCode = 0;
+        String NuevaProvinciaNombre = nombreProvincia.getText().toString();
+        
         try {
             ProvinciaCode = modificarDireccion.getProvinceCode(Provincia);
         } catch (SQLException ex) {
             Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
         }
-            String NuevaProvinciaNombre = nombreProvincia.getText().toString();
-        if(nombreProvincia.getText().isEmpty() && paisProvincia.getText().isEmpty()){
+            
+        if(nombreProvincia.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
         } else {
             if(!nombreProvincia.getText().isEmpty()){
@@ -467,17 +478,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
                     validandoProvinciaNombre = false;
                 }
             }
-            if(!paisProvincia.getText().isEmpty()){
-                try {
-                    PaisCode = Integer.parseInt(paisProvincia.getText());
-                    modificarDireccion.updateProvinceCountry(ProvinciaCode,PaisCode);
-                    validandoPais = true;
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null,"Error País provincia no modificado!");
-                    validandoPais = false;
-                }
-            }  
+            
+            try {
+                PaisCode = modificarDireccion.getCountryCode(Pais);
+                modificarDireccion.updateProvinceCountry(ProvinciaCode,PaisCode);
+                validandoPais = true;
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null,"Error País provincia no modificado!");
+                validandoPais = false;
+            }
         }
         if(validandoProvinciaNombre || validandoPais){
             JOptionPane.showMessageDialog(null,"Provincia Modificada!!");
@@ -505,15 +515,18 @@ public class ModificarDireccion extends javax.swing.JDialog {
         boolean validandoDistritoNombre = false;
         boolean validandoCanton = false;
         String Distrito = (String) comBoxDistrito.getSelectedItem();
+        String Canton = (String) comBoxCantonId.getSelectedItem();
         int DistritoCode = 0;
         int CantonCode = 0;
+        String NuevoNombreDistrito = nombreDistrito.getText().toString();
+        
         try {
             DistritoCode = modificarDireccion.getDistrictCode(Distrito);
         } catch (SQLException ex) {
             Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
         }
-            String NuevoNombreDistrito = nombreDistrito.getText().toString();
-        if(nombreDistrito.getText().isEmpty() && cantonDistrito.getText().isEmpty()){
+        
+        if(nombreDistrito.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
         } else {
             if(!nombreDistrito.getText().isEmpty()){
@@ -526,17 +539,15 @@ public class ModificarDireccion extends javax.swing.JDialog {
                     validandoDistritoNombre = false;
                 }
             }
-            if(!cantonDistrito.getText().isEmpty()){
-                try {
-                    CantonCode = Integer.parseInt(cantonDistrito.getText());
-                    modificarDireccion.updateDistrictCanton(DistritoCode,CantonCode);
-                    validandoCanton = true;
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null,"Error Canton Distrito no modificado!");
-                    validandoCanton = false;
-                }
-            }  
+            try {
+                CantonCode = modificarDireccion.getCantonCode(Canton);
+                modificarDireccion.updateDistrictCanton(DistritoCode,CantonCode);
+                validandoCanton = true;
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null,"Error Canton Distrito no modificado!");
+                validandoCanton = false;
+            }
         }
         if(validandoDistritoNombre || validandoCanton){
             JOptionPane.showMessageDialog(null,"Distrito Modificada!!");
@@ -564,7 +575,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
     private void botonModificarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarPaisActionPerformed
 
         boolean validandoNombrePais = false;
-        String Pais = (String) comBoxDistrito.getSelectedItem();
+        String Pais = (String) comBoxPais.getSelectedItem();
         int PaisCode = 0;
         String NuevoNombrePais = nombrePais.getText().toString();
         if(nombrePais.getText().isEmpty()){
@@ -617,6 +628,10 @@ public class ModificarDireccion extends javax.swing.JDialog {
         tablas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void comBoxProvinciaIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxProvinciaIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comBoxProvinciaIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -665,11 +680,13 @@ public class ModificarDireccion extends javax.swing.JDialog {
     private javax.swing.JButton botonModificarPais;
     private javax.swing.JButton botonModificarProvincia;
     private javax.swing.JButton botonRegresar;
-    private javax.swing.JTextField cantonDistrito;
     private javax.swing.JComboBox<String> comBoxCanton;
+    private javax.swing.JComboBox<String> comBoxCantonId;
     private javax.swing.JComboBox<String> comBoxDistrito;
     private javax.swing.JComboBox<String> comBoxPais;
+    private javax.swing.JComboBox<String> comBoxPaisId;
     private javax.swing.JComboBox<String> comBoxProvincia;
+    private javax.swing.JComboBox<String> comBoxProvinciaId;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -691,7 +708,5 @@ public class ModificarDireccion extends javax.swing.JDialog {
     private javax.swing.JTextField nombreDistrito;
     private javax.swing.JTextField nombrePais;
     private javax.swing.JTextField nombreProvincia;
-    private javax.swing.JTextField paisProvincia;
-    private javax.swing.JTextField provinciaCanton;
     // End of variables declaration//GEN-END:variables
 }

@@ -399,7 +399,7 @@ public class ModificarPersona extends javax.swing.JDialog {
                     }
             } 
         }
-         /*   
+            
         if(Modificar == "Foto"){
             try {
                 modificarDatos.escribeImagenEnBBDD(idPersona,mImagen);
@@ -411,7 +411,7 @@ public class ModificarPersona extends javax.swing.JDialog {
                 Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        */
+        
         if(Modificar == "Teléfono"){
             boolean validandoTelefono = false;
             String TelefonoViejo;
