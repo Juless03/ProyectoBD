@@ -877,21 +877,6 @@ public class Conexion {
         stmt.execute();
     }
     
-    public static ArrayList<String> coursesRegistered(ArrayList<String> cursos, String pcCourseName, int pnGroupSemester, Date pnGroupYear) throws SQLException {
-        Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call coursesRegistered(?, ?, ?) }");
-        stmt.registerOutParameter(1,OracleTypes.CURSOR);
-        stmt.setString(2, pcCourseName);
-        stmt.setInt(3, pnGroupSemester);
-        stmt.setDate(4, (java.sql.Date) pnGroupYear);
-        stmt.executeQuery();
-        ResultSet r = (ResultSet) stmt.getObject(1); 
-        while(r.next()){
-            cursos.add(r.getString("course_name") + " " + r.getString("group_semester") + " " + r.getString("group_year") );   
-        }
-        return cursos;
-    }
-    
     public static void getDataBooklog(ArrayList<String> listaBooklog) throws SQLException {
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call dataBooklog()}"); 
@@ -1031,16 +1016,124 @@ public class Conexion {
             listaGroup.add(r.getString("course_name"));
         }
     }
-    /*public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {
+    
+    //Paquete Estadisticas
+    public static ArrayList<String> totalStudentsCourseGender(ArrayList<String> totalStudents, int pnCourseCode) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call noteCourseAndEvaluations(?) }");
-        stmt.registerOutParameter(1,OracleTypes.CURSOR);
-        stmt.setInt(2, pnIdPerson);
-        stmt.executeQuery();
-        ResultSet r = (ResultSet) stmt.getObject(1); 
+        CallableStatement stmt = con.prepareCall("{ call totalStudentsCourseGender(?) }");
+        stmt.setInt(1, pnCourseCode);
+        ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            evaluaciones.add(r.getString("course_name") + " " + r.getString("evaluation_des"));  
+            totalStudents.add(r.getString("NombreCurso") + " " + r.getString("Genero") + " " + r.getString("TotalDeEstudiantes") );   
         }
-        return evaluaciones;
-    }*/
+        return totalStudents;
+    }
+    
+    public static ArrayList<String> bestStudentsCourseGender(ArrayList<String> bestStudents, String pcCourseName, String pcGender, int pnTop) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call bestStudentsCourseGender(?, ?, ?) }");
+        stmt.setString(1, pcCourseName);
+        stmt.setString(2, pcGender);
+        stmt.setInt(3, pnTop);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            bestStudents.add(r.getString("NombreCurso") + " " + r.getString("IdPersona") + " " + r.getString("Genero") + " " + r.getString("PorcentajeTotal"));   
+        }
+        return bestStudents;
+    }
+    
+    public static ArrayList<String> notesAverage(ArrayList<String> notes) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call bestStudentsCourseGender()}");
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            notes.add(r.getString("NombreCurso") + " " + r.getString("PromedioDeNotas"));   
+        }
+        return notes;
+    }
+    
+    public static ArrayList<String>  totalStudentsRankAge(ArrayList<String> totalStudents) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call totalStudentsRankAge()}");
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            totalStudents.add(r.getString("Cantidad"));   
+        }
+        return totalStudents;
+    }
+    
+    //Paquete Consultas Estudiante
+    public static ArrayList<String> coursesRegistered(ArrayList<String> courses, int pnIdPerson, int pnGroupSemester, int pnGroupYear) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call coursesRegistered(?, ?, ?) }");
+        stmt.setInt(1, pnIdPerson);
+        stmt.setInt(2, pnGroupSemester);
+        stmt.setInt(3, pnGroupYear);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            courses.add(r.getString("NombreCurso") + " " + r.getString("Semestre") + " " + r.getString("Año"));   
+        }
+        return courses;
+    }
+    
+    public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> notes, int pnIdPerson, String pcCourseName) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call coursesRegistered(?, ?) }");
+        stmt.setInt(1, pnIdPerson);
+        stmt.setString(2, pcCourseName);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            notes.add(r.getString("NombreCurso") + " " + r.getString("EvaluationName") + " " + r.getString("NotaEvaluacion")+ " " + r.getString("NotaTotal"));   
+        }
+        return notes;
+    }
+    
+    //Paquete Consultas Profesor
+    
+    public static ArrayList<String> coursesTaught(ArrayList<String> courses, int pnIdProfessor, int pnSemester, int pnYear) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call coursesTaught(?, ?, ?) }");
+        stmt.setInt(1, pnIdProfessor);
+        stmt.setInt(2, pnSemester);
+        stmt.setInt(3, pnYear);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            courses.add(r.getString("NombreCurso") + " " + r.getString("EvaluationName") + " " + r.getString("Semestre")+ " " + r.getString("Año"));   
+        }
+        return courses;
+    }
+    
+    public static ArrayList<String> totalStudentsCourse(ArrayList<String> totalStudents, String pcCourseName) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call totalStudentsCourse(?)}");
+        stmt.setString(1, pcCourseName);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            totalStudents.add(r.getString("Nombre") + " " + r.getString("NombreCurso") + " " + r.getString("DesEvaluación")+ " " + r.getString("Nota"));   
+        }
+        return totalStudents;
+    }
+    
+    public static ArrayList<String> totalEvaluations(ArrayList<String> totalEvaluations, int pnIdPerson, String pcCourseName) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call totalEvaluations(?, ?)}");
+        stmt.setInt(1, pnIdPerson);
+        stmt.setString(2, pcCourseName);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            totalEvaluations.add(r.getString("Nombre") + " " + r.getString("NombreCurso") + " " + r.getString("DescripcionEvaluacion")+ " " + r.getString("IdEstudiante")+ " " + r.getString("FechaEntrega"));   
+        }
+        return totalEvaluations;
+    }
+    
+    public static ArrayList<String> noteStudentCourse(ArrayList<String> notesStudent, String pcCourseName) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call  noteStudentCourse(?)}");
+        stmt.setString(1, pcCourseName);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            notesStudent.add(r.getString("Nombre") + " " + r.getString("NotaTotal"));   
+        }
+        return notesStudent;
+    }
 }

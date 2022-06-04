@@ -25,7 +25,12 @@ public class ProyectoBD {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        ArrayList<String> prueba = new ArrayList();
+        ArrayList<String> totalStudents = new ArrayList();
+        Conexion.totalStudentsRankAge(totalStudents);
+        System.out.println(totalStudents.toString());
+        
+        
+        /*ArrayList<String> prueba = new ArrayList();
         Conexion.getDataBooklog(prueba);
         System.out.println(prueba.toString());
         prueba.clear();
@@ -61,7 +66,7 @@ public class ProyectoBD {
         prueba.clear();
         Conexion.getdataGroup(prueba);
         System.out.println(prueba.toString());
-        prueba.clear();
+        prueba.clear();*/
         
           // Pruebas
         //Conexion.addPhoneNumber("Casa", "88888888", 3);

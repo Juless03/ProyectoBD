@@ -238,7 +238,7 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarAdminActionPerformed
 
     private void mostrarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarCursosActionPerformed
-    ArrayList<String> cursos = new ArrayList();
+    /*ArrayList<String> cursos = new ArrayList();
     int semestre;
     if( comBoxCurso.getSelectedItem() == "Primero"){
         semestre = 1;
@@ -258,7 +258,7 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
             textoCursos.setText(cursos.toString());
         } catch (SQLException ex) {
             Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     
     }//GEN-LAST:event_mostrarCursosActionPerformed
 
