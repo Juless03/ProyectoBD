@@ -40,7 +40,7 @@ public class Conexion {
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="camelCase110";
+    private static final String pass="TOVI10toti";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -898,10 +898,7 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataPerson()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaPerson.add(r.getString("first_name")); 
-            listaPerson.add(r.getString("middle_name"));
-            listaPerson.add(r.getString("first_lastname"));
-            listaPerson.add(r.getString("second_lastname"));
+            listaPerson.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname")); 
             listaPerson.add(r.getString("birth_day"));
             listaPerson.add(r.getString("type"));
         }
@@ -912,10 +909,7 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataEmails()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaEmails.add(r.getString("first_name")); 
-            listaEmails.add(r.getString("middle_name"));
-            listaEmails.add(r.getString("first_lastname"));
-            listaEmails.add(r.getString("second_lastname"));
+            listaEmails.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname")); 
             listaEmails.add(r.getString("email_direction"));
         }
     }
@@ -925,20 +919,17 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataPhoneNumber()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaPhoneNumber.add(r.getString("first_name")); 
-            listaPhoneNumber.add(r.getString("first_name")); 
-            listaPhoneNumber.add(r.getString("middle_name"));
-            listaPhoneNumber.add(r.getString("first_lastname"));
-            listaPhoneNumber.add(r.getString("second_lastname"));
+            listaPhoneNumber.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname")); 
             listaPhoneNumber.add(r.getString("number"));
             listaPhoneNumber.add(r.getString("type"));
         }
     }
     
     public static void getdataGender(ArrayList<String> listaGender) throws SQLException {
-        CallableStatement stmt = con.prepareCall("{ call dataPerson()}"); 
+        CallableStatement stmt = con.prepareCall("{ call dataGender()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
+            listaGender.add(r.getString("id_gender")); 
             listaGender.add(r.getString("type")); 
         }
     }
@@ -962,6 +953,7 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataCountry()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
+            listaCountry.add(r.getString("id_country")); 
             listaCountry.add(r.getString("country_name")); 
         }
     }
@@ -1009,10 +1001,7 @@ public class Conexion {
         while (r.next()) {
             listaGroup.add(r.getString("id_group")); 
             listaGroup.add(r.getString("group_semester"));
-            listaGroup.add(r.getString("first_name"));
-            listaGroup.add(r.getString("middle_name"));
-            listaGroup.add(r.getString("first_lastname"));
-            listaGroup.add(r.getString("second_lastname"));
+            listaGroup.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname"));
             listaGroup.add(r.getString("course_name"));
         }
     }

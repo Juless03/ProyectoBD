@@ -9,6 +9,9 @@ import ConexionSQL.Conexion;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,7 +19,7 @@ import java.util.ArrayList;
  */
 public class Tablas extends javax.swing.JDialog {
     private Conexion tablas;
-    ArrayList<String> datos = new ArrayList();
+    ArrayList<String> datosDiversos = new ArrayList();
     /**
      * Creates new form Tablas
      */
@@ -33,28 +36,9 @@ public class Tablas extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
         comBoxTablas.addItem("Personas");
-        tablas.getdataPerson(datos);
-        System.out.println("a");
         comBoxTablas.addItem("Emails");
         comBoxTablas.addItem("Telefonos");
         //jTextDatos.setText(datos.toString());
-    }
-    
-    private void mostrar(){
-        String matriz [][] = new String[datos.size()][6];
-        for (int i = 0; i < datos.size(); i++){
-            matriz[i][0] = datos.get(i);
-            matriz[i][1] = datos.get(i);
-            matriz[i][2] = datos.get(i);
-            matriz[i][3] = datos.get(i);
-            matriz[i][4] = datos.get(i);
-            matriz[i][5] = datos.get(i);
-            matriz[i][6] = datos.get(i);
-        }
-        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
-            matriz,
-                new String [] {"Esquema","Tabla", "Espacio", "Valor anterior", "Valor actual","Fecha de cambio", "Usuario"}
-        ));
     }
     
     Tablas(RegistrarYModificarGenero  aThis, boolean modal, Conexion regisYModificarGenero) throws SQLException{
@@ -139,6 +123,224 @@ public class Tablas extends javax.swing.JDialog {
         comBoxTablas.addItem("Grupos");
     }
     
+    private void mostrarPersonas() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataPerson(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][3];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/3; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+3; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=3;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Nombre","Fecha de nacimiento", "Género"}
+        ));
+    }
+    
+    private void mostrarEmails() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataEmails(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][2];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/2; i++){
+            int columnas = 0;
+            for (int j = x; j < x+2; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=2;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Nombre","Email"}
+        ));
+    }
+    
+    private void mostrarTelefonos() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataPhoneNumber(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][3];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/3; i++){
+            int columnas = 0;
+            for (int j = x; j < x+3; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=3;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Nombre","Teléfono", "Tipo"}
+        ));
+    }
+    
+    private void mostrarGenero() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataGender(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][2];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/2; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+2; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=2;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Número","Género"}
+        ));
+    }
+    
+    private void mostrarEvaluacion() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataEvaluation(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][7];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/7; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+7; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=7;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Nombre","Descripción", "Miembros", "Porcentage", "Fecha de entrega","Grupo", "Curso"}
+        ));
+    }
+    
+    private void mostrarCanton() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataCountry(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][2];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/2; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+2; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=2;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Canton","Provincia"}
+        ));
+    }
+    
+    private void mostrarPais() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataCountry(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][2];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/2; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+2; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=2;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Número","País"}
+        ));
+    }
+    
+    private void mostrarDistrito() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataDistrict(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][2];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/2; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+2; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=2;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Distrito","Canton"}
+        ));
+    }
+    
+    private void mostrarProvincia() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataProvince(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][2];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/2; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+2; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=2;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Provincia","Pais"}
+        ));
+    }
+    
+    private void mostrarCurso() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataCourse(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][2];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/2; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+2; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=2;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Curso","Créditos"}
+        ));
+    }
+    
+    private void mostrarGrupo() throws SQLException{
+        datosDiversos.clear();
+        tablas.getdataGroup(datosDiversos);
+        String matriz [][] = new String[datosDiversos.size()][4];
+        int x = 0;
+        for (int i = 0; i < datosDiversos.size()/4; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+4; j++){
+                matriz[i][columnas] = datosDiversos.get(j);
+                columnas++;
+            }
+            x+=4;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Grupo","Semestre", "Profesor", "Curso"}
+        ));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,6 +356,7 @@ public class Tablas extends javax.swing.JDialog {
         comBoxTablas = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDatos = new javax.swing.JTable();
+        botonMostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -170,20 +373,29 @@ public class Tablas extends javax.swing.JDialog {
         });
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel2.setText("Seleccione los datos que desea visualizar");
+        jLabel2.setText("Seleccione los datos que desea visualizar:");
 
         jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jTableDatos);
+
+        botonMostrar.setBackground(new java.awt.Color(255, 193, 5));
+        botonMostrar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonMostrar.setText("Mostrar");
+        botonMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,11 +407,13 @@ public class Tablas extends javax.swing.JDialog {
                         .addGap(20, 20, 20)
                         .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
+                        .addGap(86, 86, 86)
                         .addComponent(jLabel2)
-                        .addGap(53, 53, 53)
-                        .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 171, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(botonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 117, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(477, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,10 +430,11 @@ public class Tablas extends javax.swing.JDialog {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonMostrar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -230,6 +445,88 @@ public class Tablas extends javax.swing.JDialog {
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
     this.dispose();
     }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void botonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarActionPerformed
+    String aMostrar = (String) comBoxTablas.getSelectedItem();
+        System.out.println(aMostrar);
+    if (aMostrar  == "Personas"){
+        try {
+            mostrarPersonas();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Emails"){
+        try {
+            mostrarEmails();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Telefonos"){
+        try {
+            mostrarTelefonos();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Géneros"){
+        try {
+            mostrarGenero();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Evaluaciones"){
+        try {
+            mostrarEvaluacion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "País"){
+        try {
+            mostrarPais();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Canton"){
+        try {
+            mostrarCanton();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Distrito"){
+        try {
+            mostrarDistrito();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Provincia"){
+        try {
+            mostrarProvincia();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Cursos"){
+        try {
+            mostrarCurso();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    else if (aMostrar  == "Grupos"){
+        try {
+            mostrarGrupo();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tablas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    }//GEN-LAST:event_botonMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,6 +571,7 @@ public class Tablas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonMostrar;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JComboBox<String> comBoxTablas;
     private javax.swing.JLabel jLabel1;

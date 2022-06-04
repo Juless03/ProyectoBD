@@ -102,6 +102,11 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         botonRegresar.setText("Regresar");
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresarActionPerformed(evt);
+            }
+        });
 
         botonDatos.setBackground(new java.awt.Color(255, 193, 5));
         botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -277,6 +282,17 @@ public class RegistrarYModificarGenero extends javax.swing.JDialog {
         }
         tablas.setVisible(true);
     }//GEN-LAST:event_botonDatosActionPerformed
+
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
+    this.dispose();
+    AdminSetup ventaAdminSetup = null;
+        try {
+            ventaAdminSetup = new AdminSetup(this,true, regisYModificarGenero);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ventaAdminSetup.setVisible(true);
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
     /**
      * @param args the command line arguments

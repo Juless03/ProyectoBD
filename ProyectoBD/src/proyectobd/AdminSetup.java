@@ -133,6 +133,14 @@ public class AdminSetup extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
+    AdminSetup(RegistrarYModificarGenero aThis, boolean modal, Conexion regisYModificarGenero) throws SQLException{
+        super(aThis, modal);
+        initComponents();
+        setupAdmin = regisYModificarGenero;
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

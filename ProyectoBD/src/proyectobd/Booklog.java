@@ -22,7 +22,6 @@ import javax.swing.table.DefaultTableModel;
 public class Booklog extends javax.swing.JDialog {
      private Conexion booklog;
      ArrayList<String> listaBooklog = new ArrayList();
-     DefaultTableModel modelo;
     /**
      * Creates new form Booklog
      * @param parent
@@ -30,7 +29,6 @@ public class Booklog extends javax.swing.JDialog {
      */
     public Booklog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.modelo = (DefaultTableModel) jTableDatos.getModel();
         this.getContentPane().setBackground(new Color(157,210,228));
         initComponents();
     }
@@ -39,28 +37,29 @@ public class Booklog extends javax.swing.JDialog {
         super(aThis, modal);
         setupAdmin = booklog;
         initComponents();  
-        this.modelo = (DefaultTableModel) jTableDatos.getModel();
         this.setLocationRelativeTo(null);
         Conexion.getDataBooklog(listaBooklog); 
         mostrar();
         this.getContentPane().setBackground(new Color(157,210,228));
     }
-    
+     
     private void mostrar(){
-        String datos [] = new String[listaBooklog.size()];
-        for (int i = 0; i < listaBooklog.size(); i++){
-           datos[0] = listaBooklog.get(i);
-           datos[1] = listaBooklog.get(i+1);
-           datos[2] = listaBooklog.get(i+2);
-           datos[3] = listaBooklog.get(i+3);
-           datos[4] = listaBooklog.get(i+4);
-           datos[5] = listaBooklog.get(i+5);
-           datos[6] = listaBooklog.get(i+6);
-           i += 6;
-           modelo.addRow(datos);
+        String matriz [][] = new String[listaBooklog.size()][7];
+        int x = 0;
+        for (int i = 0; i < listaBooklog.size()/6; i++){
+            System.out.println(x);
+            int columnas = 0;
+            for (int j = x; j < x+7; j++){
+                matriz[i][columnas] = listaBooklog.get(j);
+                columnas++;
+            }
+            x+=7;
         }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Esquema","Tabla", "Espacio", "Valor anterior", "Valor actual","Fecha", "Usuario"}
+        ));
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
