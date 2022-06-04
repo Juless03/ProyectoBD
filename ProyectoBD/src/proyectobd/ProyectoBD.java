@@ -77,7 +77,7 @@ public class ProyectoBD {
         //Conexion.getStudentEvaluation(1);
         //Conexion.getStudentGroup(2);
         //Conexion.getStudent();
-       
+       //Conexion.getStudentEvaluation(20221);
         //ArrayList ArrayCursos = new ArrayList();
         //ArrayList ArrayCursos1 = new ArrayList();
          /*

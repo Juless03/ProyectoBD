@@ -172,12 +172,12 @@ public class Conexion {
         
     public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call getEvaluationStudent(?)}");
+        CallableStatement stmt = con.prepareCall("{ call getEvaluationStudent(?)}"); //JComboBox comBoxEvaluacion,
         stmt.setInt(1, pIDStudent);
-        stmt.execute();
         ResultSet r = stmt.executeQuery();
         while(r.next()){
             comBoxEvaluacion.addItem(r.getString("id_evaluation") + " " + r.getString("evaluation_des"));  
+            //System.out.println(r.getString("id_evaluation") + " " + r.getString("evaluation_des"));
         }
     }
     
@@ -868,11 +868,12 @@ public class Conexion {
         stmt.execute();
     }
 
-    public static void updateEvaluationxstudentPercentage(int pIdEvalxstudent, int pPercentageObtained) throws SQLException {
+    public static void updateEvaluationxstudentPercentage(int pIdPersona, int pIdEvaluation, int pPercentageObtained) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call update_evaluationxstudent_perc(?, ?) }");
-        stmt.setInt(1, pIdEvalxstudent);
-        stmt.setInt(2, pPercentageObtained);
+        CallableStatement stmt = con.prepareCall("{ call update_evalxstudent_perc(?, ?, ?)}");
+        stmt.setInt(1, pIdPersona);
+        stmt.setInt(2, pIdEvaluation);
+        stmt.setInt(3, pPercentageObtained);
         stmt.execute();
     }
     

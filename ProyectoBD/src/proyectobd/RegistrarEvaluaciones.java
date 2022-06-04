@@ -345,13 +345,27 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
 
     private void botonRegistrarEvaEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEvaEstudianteActionPerformed
         boolean validandoActualizacionPorcentaje = false;
-        String NombreEvaluacion = (String) comBoxEvaluacion.getSelectedItem();
-        String[] obteniendoIDEvaluacion= NombreEvaluacion.split(" ");
-        String ID = obteniendoIDEvaluacion[0];
-        int idEstudiante = Integer.parseInt(ID);
-        int porcentajeEvaluacion = Integer.parseInt(exsPorcentajeObtenido.getText().toString());
+        String NombrePersona;
+        NombrePersona = (String) comBoxEstudiante.getSelectedItem();
+        String[] obteniendoIdPersona;
+        obteniendoIdPersona = NombrePersona.split(" ");
+        String idPerson;
+        idPerson = obteniendoIdPersona[0];
+        int idPersona;
+        idPersona = Integer.parseInt(idPerson);
+       
+        String NombreEvaluacion;
+        NombreEvaluacion= (String) comBoxEvaluacion.getSelectedItem();
+        String[] obteniendoIDEvaluacion;
+        obteniendoIDEvaluacion = NombreEvaluacion.split(" ");
+        String ID;
+        ID = obteniendoIDEvaluacion[0];
+        int idEvaluacion;
+        idEvaluacion = Integer.parseInt(ID);
+        int porcentajeEvaluacion;
+        porcentajeEvaluacion = Integer.parseInt(exsPorcentajeObtenido.getText().toString());
         try {
-            registrarEvaluaciones.updateEvaluationxstudentPercentage(idEstudiante, porcentajeEvaluacion);
+            registrarEvaluaciones.updateEvaluationxstudentPercentage(idPersona,idEvaluacion, porcentajeEvaluacion);
             validandoActualizacionPorcentaje = true;
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
@@ -359,13 +373,14 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Error!\nEvaluación no calificada");
         }
         if(validandoActualizacionPorcentaje){
-            JOptionPane.showMessageDialog(null,"Evaluación Calificada!"); 
+            JOptionPane.showMessageDialog(null,"Evaluación Calificada!");
+            exsPorcentajeObtenido.setText("");
         } 
     }//GEN-LAST:event_botonRegistrarEvaEstudianteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Por cambiar
-        /*
+        
         comBoxEvaluacion.removeAllItems();
         exsPorcentajeObtenido.setEnabled(true);
         botonRegistrarEvaEstudiante.setEnabled(true);
@@ -381,7 +396,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void comBoxEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxEvaluacionActionPerformed
