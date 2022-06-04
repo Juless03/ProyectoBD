@@ -40,7 +40,7 @@ public class Conexion {
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="01Alvarado01";
+    private static final String pass="camelCase110";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -829,7 +829,7 @@ public class Conexion {
     
      public static void updateEvaluationCourseCode(int pEvaluationCode, int pCourseCode) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call update_evaluation_course_code(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call update_evaluation_group(?, ?) }");
         stmt.setInt(1, pEvaluationCode);
         stmt.setInt(2, pCourseCode);
         stmt.execute();
