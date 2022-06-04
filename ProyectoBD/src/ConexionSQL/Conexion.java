@@ -34,13 +34,13 @@ import javax.swing.JComboBox;
  */
 public class Conexion {
 
-
+    
     
     // Nueva conexión msql
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="TOVI10toti";
+    private static final String pass="camelCase110";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -105,10 +105,8 @@ public class Conexion {
     public static void getStudentGroup(JComboBox comBoxEvaluacion,int pGroupCode) throws SQLException{
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call getStudentGroup(?)}");
-        stmt.registerOutParameter(1,OracleTypes.CURSOR);
-        stmt.setInt(2, pGroupCode);
-        stmt.execute();
-        ResultSet r = (ResultSet) stmt.getObject(1); 
+        stmt.setInt(1, pGroupCode);
+        ResultSet r = stmt.executeQuery();
         while(r.next()){
             comBoxEvaluacion.addItem(r.getString("id_person") + " " + r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + 
             r.getString("second_lastname") );  
@@ -172,24 +170,22 @@ public class Conexion {
         }
     }
         
-    /*public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
+    public static void getStudentEvaluation(JComboBox comBoxEvaluacion, int pIDStudent) throws SQLException{
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call getEvaluationStudent(?)}");
-        stmt.registerOutParameter(1,OracleTypes.CURSOR);
-        stmt.setInt(2, pIDStudent);
+        stmt.setInt(1, pIDStudent);
         stmt.execute();
-        ResultSet r = (ResultSet) stmt.getObject(1); 
+        ResultSet r = stmt.executeQuery();
         while(r.next()){
-            comBoxEvaluacion.addItem(r.getString("id_evalxstudent") + " " + r.getString("evaluation_des"));  
+            comBoxEvaluacion.addItem(r.getString("id_evaluation") + " " + r.getString("evaluation_des"));  
         }
-    }*/
+    }
     
     public static void getEvaluation(JComboBox comboBoxEvaluacion) throws SQLException{
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call getEvaluation()}");
-        stmt.registerOutParameter(1,OracleTypes.CURSOR);
         stmt.execute();
-        ResultSet r = (ResultSet) stmt.getObject(1); 
+        ResultSet r = stmt.executeQuery();
         while(r.next()){
             comboBoxEvaluacion.addItem(r.getString("id_evaluation") + " " + r.getString("evaluation_name") + " " + r.getString("evaluation_des"));  
         }
@@ -731,7 +727,7 @@ public class Conexion {
 
     public static void updateCourseCredits(String pCourseName, int pCredits) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call update_course_credits2(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call update_courseCredits_name(?, ?) }");
         stmt.setString(1, pCourseName);
         stmt.setInt(2, pCredits);
         stmt.execute();
@@ -739,7 +735,7 @@ public class Conexion {
 
     public static void updateCourseName(String pCourseName, String pNewCourseName) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call update_course_name2(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call update_courseName_name(?, ?) }");
         stmt.setString(1, pCourseName);
         stmt.setString(2, pNewCourseName);
         stmt.execute();
