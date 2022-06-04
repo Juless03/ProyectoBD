@@ -42,6 +42,8 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
         botonRegresar.setVisible(true);
         botonRegresar2.setVisible(false);
+        registrarEvaluaciones.getCourseGroup(comboBoxGrupo);
+        
     }
     
     public RegistrarEvaluaciones(InicioProfesor aThis, boolean modal, Conexion setupAdmin) throws SQLException {
@@ -50,6 +52,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         registrarEvaluaciones = setupAdmin;
         this.setLocationRelativeTo(null);
         registrarEvaluaciones.getStudent(comBoxEstudiante);
+        registrarEvaluaciones.getCourseGroup(comboBoxGrupo);
         comBoxEvaluacion.setEnabled(false);
         exsPorcentajeObtenido.setEnabled(false);
         botonRegistrarEvaEstudiante.setEnabled(false);
@@ -94,6 +97,8 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         botonRegresar2 = new javax.swing.JButton();
         botonDatos = new javax.swing.JButton();
+        comboBoxGrupo = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -220,7 +225,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
                 botonRegresar2ActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 686, 110, -1));
+        getContentPane().add(botonRegresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 680, 110, -1));
 
         botonDatos.setBackground(new java.awt.Color(255, 193, 5));
         botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -231,6 +236,11 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             }
         });
         getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 686, 110, -1));
+
+        getContentPane().add(comboBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 140, 50));
+
+        jLabel14.setText("Grupo:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 80, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -247,44 +257,90 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonRegistrarEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEvaluacionActionPerformed
-    
+       boolean validandoPorcentaje = false;
+       boolean validandoMiembros = false;
+       boolean validandoFecha = false;
+       int idGrupo = 0;
+       idGrupo =  Integer.parseInt(comboBoxGrupo.getSelectedItem().toString());
        java.sql.Date DueDateValida = null;
        boolean validando = false;
        int porcentaje = 0;
-       if(!botonFechaEntrega.getText().isEmpty()){
-       String DueDate = botonFechaEntrega.getText();
-       SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-       Date FechaDate = null;
-       try {
-       FechaDate = formatoFecha.parse(botonFechaEntrega.getText());
-        } catch (ParseException ex) {
-           //Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null,"Error!\nFormato de fecha incorrecto.");
-        }
-       
-        DueDateValida = new java.sql.Date(FechaDate.getTime());} 
-       if(!evaluacionPorcentaje.getText().isEmpty()){
-        porcentaje = Integer.parseInt(evaluacionPorcentaje.getText());    
-        }
-        try {
-            registrarEvaluaciones.addEvaluation(evaluacionNombre.getText(),evaluacionDescripcion.getText(),evaluacionMiembros.getText(),porcentaje,DueDateValida);
-            validando = true;
-        } catch (SQLException ex) {
-            //Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null,"Error!\nEvaluación no agregada");
-            validando = false;
-        }
-        if(validando){
-        JOptionPane.showMessageDialog(null,"Evaluación registrada!");
-        this.dispose();
-         AdminSetup ventaAdminSetup = null;
-        try {
-            ventaAdminSetup = new AdminSetup(this,true,registrarEvaluaciones);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    ventaAdminSetup.setVisible(true);  
-        }
+       if(!evaluacionNombre.getText().isEmpty() && !evaluacionDescripcion.getText().isEmpty() && !evaluacionMiembros.getText().isEmpty() && !evaluacionPorcentaje.getText().isEmpty() &&
+          !botonFechaEntrega.getText().isEmpty()) { 
+           
+           // Fecha
+           String DueDate = botonFechaEntrega.getText();
+           SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+           Date FechaDate = null;
+           try {
+               FechaDate = formatoFecha.parse(botonFechaEntrega.getText());
+                validandoFecha = true;
+            } catch (ParseException ex) {
+                //Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null,"Error!\nFormato de fecha incorrecto.");
+                validandoFecha = false;
+            }
+           if(validandoFecha){
+            DueDateValida = new java.sql.Date(FechaDate.getTime());
+           }
+           // Porcentaje
+           if(isInt(evaluacionPorcentaje.getText())){
+               if(Integer.parseInt(evaluacionPorcentaje.getText()) >= 0){
+                porcentaje = Integer.parseInt(evaluacionPorcentaje.getText());
+                validandoPorcentaje = true;
+                } else {
+                    validandoPorcentaje = false;
+                    JOptionPane.showMessageDialog(null,"Error!\nPorcentaje debe ser un número positivo.");
+               }
+            } else {
+               validandoPorcentaje = false;
+               JOptionPane.showMessageDialog(null,"Error!\nPorcentaje debe ser un número.");
+           }
+           
+           // Miembros
+            if(isInt(evaluacionMiembros.getText())){
+               if(Integer.parseInt(evaluacionMiembros.getText()) >= 0){
+                int miembros = 0;
+                miembros = Integer.parseInt(evaluacionMiembros.getText());
+                validandoMiembros = true;
+                } else {
+                    validandoMiembros = false;
+                    JOptionPane.showMessageDialog(null,"Error!\nMiembros debe ser un número positivo.");
+               }
+            } else {
+               validandoMiembros = false;
+               JOptionPane.showMessageDialog(null,"Error!\nMiembros debe ser un número.");
+           }
+           
+            if(validandoPorcentaje && validandoMiembros && validandoFecha){
+                try {
+                     registrarEvaluaciones.addEvaluation(evaluacionNombre.getText(),evaluacionDescripcion.getText(),evaluacionMiembros.getText(),porcentaje,DueDateValida,idGrupo);
+                     validando = true;
+                 } catch (SQLException ex) {
+                     Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                     JOptionPane.showMessageDialog(null,"Error!\nEvaluación no agregada");
+                     validando = false;
+                }
+                 if(validando){
+                    JOptionPane.showMessageDialog(null,"Evaluación registrada!");
+                    comBoxEvaluacion.setVisible(false);
+                    comBoxEvaluacion.removeAllItems();
+                    try {
+                        registrarEvaluaciones.getEvaluation(comBoxEvaluacion);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    comBoxEvaluacion.setVisible(true);
+                    evaluacionNombre.setText("");
+                    evaluacionPorcentaje.setText("");
+                    evaluacionMiembros.setText("");
+                    botonFechaEntrega.setText("");
+                    evaluacionDescripcion.setText("");
+                 }
+             }
+            } else {
+               JOptionPane.showMessageDialog(null,"Error!\nHay campos vacios");
+           }
     }//GEN-LAST:event_botonRegistrarEvaluacionActionPerformed
 
     private void botonRegistrarEvaEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEvaEstudianteActionPerformed
@@ -303,21 +359,14 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Error!\nEvaluación no calificada");
         }
         if(validandoActualizacionPorcentaje){
-            JOptionPane.showMessageDialog(null,"Evaluación Calificada!");
-            this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true,registrarEvaluaciones);
-                } catch (SQLException ex) {
-                    Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            ventaAdminSetup.setVisible(true); 
-            
+            JOptionPane.showMessageDialog(null,"Evaluación Calificada!"); 
         } 
     }//GEN-LAST:event_botonRegistrarEvaEstudianteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        /*comBoxEvaluacion.removeAllItems();
+        // Por cambiar
+        /*
+        comBoxEvaluacion.removeAllItems();
         exsPorcentajeObtenido.setEnabled(true);
         botonRegistrarEvaEstudiante.setEnabled(true);
         comBoxEvaluacion.setEnabled(true);
@@ -331,7 +380,8 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             //comBoxEvaluacion.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
+        */
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void comBoxEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxEvaluacionActionPerformed
@@ -403,6 +453,16 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             }
         });
     }
+      private boolean isInt(String text) {  
+        try{
+            Integer.parseInt(text);
+            return true;
+        }
+        catch (NumberFormatException nfe){
+            return false;
+        }
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonDatos;
@@ -413,6 +473,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JButton botonRegresar2;
     private javax.swing.JComboBox<String> comBoxEstudiante;
     private javax.swing.JComboBox<String> comBoxEvaluacion;
+    private javax.swing.JComboBox<String> comboBoxGrupo;
     private javax.swing.JTextField evaluacionDescripcion;
     private javax.swing.JTextField evaluacionMiembros;
     private javax.swing.JTextField evaluacionNombre;
@@ -424,6 +485,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

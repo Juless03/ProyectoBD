@@ -40,7 +40,7 @@ public class Conexion {
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="camelCase110";
+    private static final String pass="01Alvarado01";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -783,18 +783,18 @@ public class Conexion {
         stmt.execute();
     }
     
-    public static void addEvaluation(String pEvaluationName, String pEvaluationDes, String pMembers, int pPercentage, Date pDueDate) throws SQLException{
+    public static void addEvaluation(String pEvaluationName, String pEvaluationDes, String pMembers, int pPercentage, Date pDueDate, int pIdGrupo) throws SQLException{
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call add_evaluation(?, ?, ?, ?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_evaluation(?, ?, ?, ?, ?,?) }");
         stmt.setString(1, pEvaluationName);
         stmt.setString(2, pEvaluationDes);
         stmt.setString(3, pMembers);
         stmt.setInt(4, pPercentage);
         stmt.setDate(5, (java.sql.Date) pDueDate);
+        stmt.setInt(6, pIdGrupo);
         stmt.execute(); 
     }
      
-
     public static void updateEvaluationName(int pEvaluationCode, String pEvaluationName) throws SQLException {
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call update_evaluation_name(?, ?) }");
