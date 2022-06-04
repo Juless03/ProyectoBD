@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -21,6 +22,7 @@ import java.util.logging.Logger;
 public class Booklog extends javax.swing.JDialog {
      private Conexion booklog;
      ArrayList<String> listaBooklog = new ArrayList();
+     DefaultTableModel modelo;
     /**
      * Creates new form Booklog
      * @param parent
@@ -28,6 +30,7 @@ public class Booklog extends javax.swing.JDialog {
      */
     public Booklog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.modelo = (DefaultTableModel) jTableDatos.getModel();
         this.getContentPane().setBackground(new Color(157,210,228));
         initComponents();
     }
@@ -35,10 +38,27 @@ public class Booklog extends javax.swing.JDialog {
     Booklog(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException{
         super(aThis, modal);
         setupAdmin = booklog;
+        initComponents();  
+        this.modelo = (DefaultTableModel) jTableDatos.getModel();
         this.setLocationRelativeTo(null);
-        Conexion.getDataBooklog(listaBooklog);
-        jTextDatos.setText(listaBooklog.toString());
-        initComponents();        
+        Conexion.getDataBooklog(listaBooklog); 
+        mostrar();
+        this.getContentPane().setBackground(new Color(157,210,228));
+    }
+    
+    private void mostrar(){
+        String datos [] = new String[listaBooklog.size()];
+        for (int i = 0; i < listaBooklog.size(); i++){
+           datos[0] = listaBooklog.get(i);
+           datos[1] = listaBooklog.get(i+1);
+           datos[2] = listaBooklog.get(i+2);
+           datos[3] = listaBooklog.get(i+3);
+           datos[4] = listaBooklog.get(i+4);
+           datos[5] = listaBooklog.get(i+5);
+           datos[6] = listaBooklog.get(i+6);
+           i += 6;
+           modelo.addRow(datos);
+        }
     }
     
 
@@ -53,7 +73,8 @@ public class Booklog extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         botonRegresar = new javax.swing.JButton();
-        jTextDatos = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableDatos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,39 +90,51 @@ public class Booklog extends javax.swing.JDialog {
             }
         });
 
-        jTextDatos.setText("jTextField1");
-        jTextDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextDatosActionPerformed(evt);
+        jTableDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTableDatos.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Esquema", "Tabla", "Espacio", "Valor anterior", "Valor actual", "Fecha", "Usuario"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(jTableDatos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 937, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(461, 461, 461))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jTextDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(412, 412, 412)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1022, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(113, 113, 113)
-                .addComponent(jTextDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(botonRegresar)
                 .addContainerGap())
         );
@@ -119,10 +152,6 @@ public class Booklog extends javax.swing.JDialog {
          }
     ventaAdminSetup.setVisible(true);  
     }//GEN-LAST:event_botonRegresarActionPerformed
-
-    private void jTextDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDatosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,6 +198,7 @@ public class Booklog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegresar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextDatos;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableDatos;
     // End of variables declaration//GEN-END:variables
 }

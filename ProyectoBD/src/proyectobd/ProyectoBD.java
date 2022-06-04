@@ -62,10 +62,6 @@ public class ProyectoBD {
         Conexion.getdataGroup(prueba);
         System.out.println(prueba.toString());
         prueba.clear();
-     
-        
-        
-        
         
           // Pruebas
         //Conexion.addPhoneNumber("Casa", "88888888", 3);

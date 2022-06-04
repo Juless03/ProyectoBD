@@ -896,7 +896,13 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataBooklog()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaBooklog.add(r.getString("scheme_name") + " " + r.getString("table_name") + " " + r.getString("space_name") + " " + r.getString("old_value") + " " + r.getString("actual_value") + " " + r.getString("creation_date") + " " + r.getString("creation_user")); 
+            listaBooklog.add(r.getString("scheme_name")); 
+            listaBooklog.add(r.getString("table_name"));
+            listaBooklog.add(r.getString("space_name"));
+            listaBooklog.add(r.getString("old_value"));
+            listaBooklog.add(r.getString("actual_value"));
+            listaBooklog.add(r.getString("creation_date"));
+            listaBooklog.add(r.getString("creation_user"));
         }
     }
     
@@ -906,7 +912,12 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataPerson()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaPerson.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname") + " " + r.getString("birth_day") + " " + r.getString("type")); 
+            listaPerson.add(r.getString("first_name")); 
+            listaPerson.add(r.getString("middle_name"));
+            listaPerson.add(r.getString("first_lastname"));
+            listaPerson.add(r.getString("second_lastname"));
+            listaPerson.add(r.getString("birth_day"));
+            listaPerson.add(r.getString("type"));
         }
     }
     
@@ -915,7 +926,11 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataEmails()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaEmails.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname") + " " + r.getString("email_direction")); 
+            listaEmails.add(r.getString("first_name")); 
+            listaEmails.add(r.getString("middle_name"));
+            listaEmails.add(r.getString("first_lastname"));
+            listaEmails.add(r.getString("second_lastname"));
+            listaEmails.add(r.getString("email_direction"));
         }
     }
     
@@ -924,7 +939,13 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataPhoneNumber()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaPhoneNumber.add(r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname")+ " " + r.getString("number")+ " " + r.getString("type")); 
+            listaPhoneNumber.add(r.getString("first_name")); 
+            listaPhoneNumber.add(r.getString("first_name")); 
+            listaPhoneNumber.add(r.getString("middle_name"));
+            listaPhoneNumber.add(r.getString("first_lastname"));
+            listaPhoneNumber.add(r.getString("second_lastname"));
+            listaPhoneNumber.add(r.getString("number"));
+            listaPhoneNumber.add(r.getString("type"));
         }
     }
     
@@ -940,7 +961,14 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataEvaluation()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaEvaluation.add(r.getString("evaluation_name") + " " + r.getString("evaluation_des") + " " + r.getString("members") + " " + r.getString("percentage") + " " + r.getString("due_date") + " " + r.getString("id_group")+ " " + r.getString("course_name")); 
+            listaEvaluation.add(r.getString("evaluation_name")); 
+            listaEvaluation.add(r.getString("evaluation_des"));
+            listaEvaluation.add(r.getString("members"));
+            listaEvaluation.add(r.getString("percentage"));
+            listaEvaluation.add(r.getString("due_date"));
+            listaEvaluation.add(r.getString("id_group"));
+            listaEvaluation.add(r.getString("course_name"));
+            
         }
     }
     
@@ -956,7 +984,8 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataCanton()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaCanton.add(r.getString("canton_name") + " " + r.getString("province_name")); 
+            listaCanton.add(r.getString("canton_name")); 
+            listaCanton.add(r.getString("province_name"));
         }
     }
     
@@ -964,7 +993,8 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataDistrict()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaDistrict.add(r.getString("district_name") + " " + r.getString("canton_name")); 
+            listaDistrict.add(r.getString("district_name")); 
+            listaDistrict.add(r.getString("canton_name"));
         }
     }
     
@@ -972,7 +1002,8 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataProvince()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaProvince.add(r.getString("province_name") + " " + r.getString("country_name")); 
+            listaProvince.add(r.getString("province_name")); 
+            listaProvince.add(r.getString("country_name"));
         }
     }
     
@@ -980,7 +1011,8 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataCourse()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaCourse.add(r.getString("course_name") + " " + r.getString("credits")); 
+            listaCourse.add(r.getString("course_name")); 
+            listaCourse.add(r.getString("credits"));
         }
     }
     
@@ -989,7 +1021,13 @@ public class Conexion {
         CallableStatement stmt = con.prepareCall("{ call dataGroup()}"); 
         ResultSet r = stmt.executeQuery();
         while (r.next()) {
-            listaGroup.add(r.getString("id_group") + " " + r.getString("group_semester") + " " + r.getString("first_name") + " " + r.getString("middle_name") + " " + r.getString("first_lastname") + " " + r.getString("second_lastname") + " " + r.getString("course_name")); 
+            listaGroup.add(r.getString("id_group")); 
+            listaGroup.add(r.getString("group_semester"));
+            listaGroup.add(r.getString("first_name"));
+            listaGroup.add(r.getString("middle_name"));
+            listaGroup.add(r.getString("first_lastname"));
+            listaGroup.add(r.getString("second_lastname"));
+            listaGroup.add(r.getString("course_name"));
         }
     }
     /*public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> evaluaciones, int pnIdPerson ) throws SQLException {

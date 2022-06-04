@@ -8,6 +8,7 @@ package proyectobd;
 import ConexionSQL.Conexion;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,7 @@ import java.sql.SQLException;
  */
 public class Tablas extends javax.swing.JDialog {
     private Conexion tablas;
+    ArrayList<String> datos = new ArrayList();
     /**
      * Creates new form Tablas
      */
@@ -31,8 +33,28 @@ public class Tablas extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
         comBoxTablas.addItem("Personas");
+        tablas.getdataPerson(datos);
+        System.out.println("a");
         comBoxTablas.addItem("Emails");
         comBoxTablas.addItem("Telefonos");
+        //jTextDatos.setText(datos.toString());
+    }
+    
+    private void mostrar(){
+        String matriz [][] = new String[datos.size()][6];
+        for (int i = 0; i < datos.size(); i++){
+            matriz[i][0] = datos.get(i);
+            matriz[i][1] = datos.get(i);
+            matriz[i][2] = datos.get(i);
+            matriz[i][3] = datos.get(i);
+            matriz[i][4] = datos.get(i);
+            matriz[i][5] = datos.get(i);
+            matriz[i][6] = datos.get(i);
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Esquema","Tabla", "Espacio", "Valor anterior", "Valor actual","Fecha de cambio", "Usuario"}
+        ));
     }
     
     Tablas(RegistrarYModificarGenero  aThis, boolean modal, Conexion regisYModificarGenero) throws SQLException{
@@ -127,18 +149,16 @@ public class Tablas extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaDatos = new javax.swing.JList<>();
         botonRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         comBoxTablas = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableDatos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Datos");
-
-        jScrollPane1.setViewportView(listaDatos);
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -152,19 +172,23 @@ public class Tablas extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel2.setText("Seleccione los datos que desea visualizar");
 
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableDatos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(464, 464, 464))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -175,7 +199,15 @@ public class Tablas extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addGap(53, 53, 53)
                         .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 171, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(477, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(464, 464, 464))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +217,9 @@ public class Tablas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(comBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -247,6 +279,6 @@ public class Tablas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listaDatos;
+    private javax.swing.JTable jTableDatos;
     // End of variables declaration//GEN-END:variables
 }
