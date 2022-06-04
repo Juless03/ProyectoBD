@@ -751,11 +751,11 @@ public class Conexion {
         stmt.execute(); 
     }
    
-    public static void updateCourseGroupYear(int pGroupCode, Date pGroupYear) throws SQLException{
+    public static void updateCourseGroupYear(int pGroupCode, int pGroupYear) throws SQLException{
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call update_coursegroup_year(?, ?) }");
         stmt.setInt(1, pGroupCode);
-        stmt.setDate(2, (java.sql.Date) pGroupYear);
+        stmt.setInt(2, pGroupYear);
         stmt.execute(); 
     }
      

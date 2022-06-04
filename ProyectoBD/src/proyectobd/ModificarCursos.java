@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -23,6 +24,8 @@ import javax.swing.JOptionPane;
 public class ModificarCursos extends javax.swing.JDialog {
     private Conexion modificarCurso;
     private String CursoSeleccionado;
+    private boolean modificarProfesorID = false;
+    private boolean modificarCursoID = false;
     /**
      * Creates new form ModificarCursos
      */
@@ -43,11 +46,14 @@ public class ModificarCursos extends javax.swing.JDialog {
         modificarCurso.getCourse(comBoxCurso);
         modificarCurso.getCourseGroup(comBoxGrupo);
         modificarCurso.getCourseGroup(comboboxEstudianteGrupo);
+        modificarCurso.getProfessor(comboBoxProfesor);
+        modificarCurso.getCourseRegistroGrupo(comboBoxCursoModificar);
         checkActivo.setEnabled(false);
         checkAbandono.setEnabled(false);
         botonModificarSxG.setEnabled(false);
         comboBoxEstudianteGrupo.setVisible(false);
-
+        comboBoxProfesor.setEnabled(false);
+        comboBoxCursoModificar.setEnabled(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,8 +76,6 @@ public class ModificarCursos extends javax.swing.JDialog {
         comBoxGrupo = new javax.swing.JComboBox<>();
         botonAño = new javax.swing.JTextField();
         botonSemestre = new javax.swing.JTextField();
-        botonIDProfesor = new javax.swing.JTextField();
-        botonIdCourse = new javax.swing.JTextField();
         botonModificarGrupo = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         comboboxEstudianteGrupo = new javax.swing.JComboBox<>();
@@ -92,6 +96,12 @@ public class ModificarCursos extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         botonDatos = new javax.swing.JButton();
+        comboBoxProfesor = new javax.swing.JComboBox<>();
+        comboBoxCursoModificar = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        botonSeleccionarCurso = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        botonSeleccionarProfesor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,7 +141,7 @@ public class ModificarCursos extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Grupo");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 260, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 260, -1));
 
         titulomodificarSeleccion.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         getContentPane().add(titulomodificarSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
@@ -146,7 +156,7 @@ public class ModificarCursos extends javax.swing.JDialog {
                 comBoxGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(comBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 160, 40));
+        getContentPane().add(comBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 160, 40));
 
         botonAño.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         botonAño.addActionListener(new java.awt.event.ActionListener() {
@@ -154,16 +164,10 @@ public class ModificarCursos extends javax.swing.JDialog {
                 botonAñoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 130, 40));
+        getContentPane().add(botonAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 130, 40));
 
         botonSemestre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(botonSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 130, 40));
-
-        botonIDProfesor.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(botonIDProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 130, 40));
-
-        botonIdCourse.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(botonIdCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, 130, 40));
+        getContentPane().add(botonSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 130, 40));
 
         botonModificarGrupo.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -173,11 +177,11 @@ public class ModificarCursos extends javax.swing.JDialog {
                 botonModificarGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, 120, 60));
+        getContentPane().add(botonModificarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 120, 60));
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel12.setText("Estudiante en un Grupo");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 170, 209, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 200, 209, -1));
 
         comboboxEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         comboboxEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
@@ -185,11 +189,11 @@ public class ModificarCursos extends javax.swing.JDialog {
                 comboboxEstudianteGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(comboboxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 200, 130, 40));
+        getContentPane().add(comboboxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 230, 130, 40));
 
         jLabel14.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel14.setText("Estudiante");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 310, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 340, -1, -1));
 
         botonModificarSxG.setBackground(new java.awt.Color(255, 193, 5));
         botonModificarSxG.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -199,7 +203,7 @@ public class ModificarCursos extends javax.swing.JDialog {
                 botonModificarSxGActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificarSxG, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 120, 50));
+        getContentPane().add(botonModificarSxG, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 450, 120, 50));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -216,21 +220,21 @@ public class ModificarCursos extends javax.swing.JDialog {
         jLabel7.setText("Curso");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 260, -1));
 
-        jLabel3.setText("IDCurso");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 60, 20));
+        jLabel3.setText("Curso");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 60, 20));
 
-        jLabel4.setText("IDProfessor");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 70, 20));
+        jLabel4.setText("Professor");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 60, 20));
 
         jLabel5.setText("Año");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 60, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 60, 30));
 
         jLabel8.setText("Semestre");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 60, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 60, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Status");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 370, 80, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 400, 80, 30));
 
         checkAbandono.setText("ABANDONO");
         checkAbandono.addActionListener(new java.awt.event.ActionListener() {
@@ -238,20 +242,20 @@ public class ModificarCursos extends javax.swing.JDialog {
                 checkAbandonoActionPerformed(evt);
             }
         });
-        getContentPane().add(checkAbandono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 390, 100, 30));
+        getContentPane().add(checkAbandono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 410, 100, 30));
 
         checkActivo.setText("ACTIVO");
-        getContentPane().add(checkActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 360, 100, 30));
+        getContentPane().add(checkActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 380, 100, 30));
 
         jLabel9.setText("Grupo");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 50, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 240, 50, 30));
 
         comboBoxEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxEstudianteGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(comboBoxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 300, 270, 30));
+        getContentPane().add(comboBoxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 330, 270, 30));
 
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -259,14 +263,14 @@ public class ModificarCursos extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 200, 100, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 230, 100, 40));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Seleccione el estudiante a modificar");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 270, 260, 30));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, 260, 30));
 
         jLabel11.setText("DD/MM/YYYY");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 90, 40));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 90, 40));
 
         botonDatos.setBackground(new java.awt.Color(255, 193, 5));
         botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -277,6 +281,32 @@ public class ModificarCursos extends javax.swing.JDialog {
             }
         });
         getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 660, 110, -1));
+
+        getContentPane().add(comboBoxProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 220, 40));
+
+        getContentPane().add(comboBoxCursoModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 220, 40));
+
+        jLabel13.setText("Modificar Curso");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 140, 20));
+
+        botonSeleccionarCurso.setText("Seleccionar");
+        botonSeleccionarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSeleccionarCursoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonSeleccionarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, 110, 40));
+
+        jLabel15.setText("Modificar Profesor");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 390, 140, 20));
+
+        botonSeleccionarProfesor.setText("Seleccionar");
+        botonSeleccionarProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSeleccionarProfesorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonSeleccionarProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 110, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -393,105 +423,83 @@ public class ModificarCursos extends javax.swing.JDialog {
         boolean validandoProfesor = false;
         boolean validandoSemestre = false;
         boolean validandoIdCourse = false;
-        int Grupo = Integer.parseInt(comBoxGrupo.getSelectedItem().toString());
-        if(botonAño.getText().isEmpty() && botonSemestre.getText().isEmpty() && botonIDProfesor.getText().isEmpty() && botonIdCourse.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"No se ha modificado nada \nCampos vacios.");  
-            } 
-        else {
-            if(!botonAño.getText().isEmpty()){
-             String AñoGrupo = botonAño.getText();
-             String[] partesFechaAño = AñoGrupo.split("/");
-             String ParteDia = partesFechaAño[0];
-             String ParteMes = partesFechaAño[1];
-             String ParteAños = partesFechaAño[2];
-             int parte1int = Integer.parseInt(ParteDia);
-             int parte2int = Integer.parseInt(ParteMes);
-             int parte3int = Integer.parseInt(ParteAños);
-             if(ParteDia.length() != 2 || ParteMes.length() != 2 || ParteAños.length() != 4){
-                    JOptionPane.showMessageDialog(null,"Error en el Año del curso \nError en el formato.");  
-                } else {
-                    if(parte1int != 00){
-                    if(parte1int > 0 && parte1int <= 31){
-                    if(parte2int > 0 && parte2int <= 12){
-                    if(parte3int > 1800 && parte3int < 2023){
-                            validandoAño = true;
-                            } else {
-                            JOptionPane.showMessageDialog(null,"Error en Año \nEl año debe estar entre 1800 y 2022");
-                            validandoAño = false;   
-                                    }
-                                } else{
-                                    JOptionPane.showMessageDialog(null,"Error en Año\nEl nes debe estar entre 1 y 12");
-                                    validandoAño = false;
-                                }
-                            } else {
-                                JOptionPane.showMessageDialog(null,"Error en Año\nEl día debe estar entre entre 1 y 31");
-                                validandoAño = false;}
-                            } else {
-                            JOptionPane.showMessageDialog(null,"Error en Año\nDía debe estar entre 1 y 31");
-                                validandoAño = false;
+        int Grupo;
+        Grupo = Integer.parseInt(comBoxGrupo.getSelectedItem().toString());
+        if(botonAño.getText().isEmpty() && botonSemestre.getText().isEmpty() && !modificarProfesorID && !modificarCursoID){
+            JOptionPane.showMessageDialog(null,"No se ha modificado nada \nCampos vacios.");  
+            } else {
+                if(!botonAño.getText().isEmpty()){
+                    if(isInt(botonAño.getText())){
+                        if(botonAño.getText().length() == 4){
+                            int nuevoAño;
+                            nuevoAño = Integer.parseInt(botonAño.getText().toString());
+                            try { 
+                                modificarCurso.updateCourseGroupYear(Grupo, nuevoAño);
+                                botonAño.setText("");
+                            } catch (SQLException ex) {
+                                Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                    }
-                    if(validandoAño){
-                        java.sql.Date nuevoAñoCurso = null;
-                        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-                        Date FechaDate = null;
-                        try {
-                            FechaDate = formatoFecha.parse(botonAño.getText());
-                        } catch (ParseException ex) {
-                            Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+                           validandoAño = true;
+                        } else {
+                            JOptionPane.showMessageDialog(null,"Error \nDigite un año verdadero");
                         }
-                        nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
-                        try {
-                             modificarCurso.updateCourseGroupYear(Grupo, nuevoAñoCurso);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
-                            validandoAño = false;
-                            }
-                         } else {
-                            JOptionPane.showMessageDialog(null,"Error!\nAño no actualizado!"); 
-                        }
-                    }
-                 if(!botonSemestre.getText().isEmpty()){
-                   if (isInt(botonSemestre.getText())){
-                       int nuevoSemestre = Integer.parseInt(botonSemestre.getText());
-                       try {
-                           modificarCurso.updateCourseGroupSemester(Grupo,nuevoSemestre);
-                           validandoSemestre = true;
-                       } catch (SQLException ex) {
-                           Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                       }
-                   } else {
-                       JOptionPane.showMessageDialog(null,"Error!\nSemestre debe ser un número!");
-                   } 
+                    } else {
+                        JOptionPane.showMessageDialog(null,"Error \nEl año debe ser un número entero");  
+                    }     
                 }
-                if(!botonIDProfesor.getText().isEmpty()){
-                    if (isInt(botonIDProfesor.getText())){
-                       int nuevoIdProfesor = Integer.parseInt(botonIDProfesor.getText());
-                       try {
-                           modificarCurso.updateCourseGroupProfessor(Grupo,nuevoIdProfesor);
-                           validandoProfesor = true;
-                       } catch (SQLException ex) {
-                           //Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                           JOptionPane.showMessageDialog(null,"Error!\nEse ID no pertenece a un profesor.");
-                           validandoProfesor = false;
-                       }
-                   }
-                 }
-                if(!botonIdCourse.getText().isEmpty()){
-                    if (isInt(botonIdCourse.getText())){
-                       int nuevoIdCurso = Integer.parseInt(botonIdCourse.getText());
-                       try {
-                           modificarCurso.updateCourseGroupCourse(Grupo,nuevoIdCurso);  
-                           validandoIdCourse = true;
-                       } catch (SQLException ex) {
-                           Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                           validandoIdCourse = false;
 
-                       }
-                   }
-                 }
+                if(!botonSemestre.getText().isEmpty()){
+                    if (isInt(botonSemestre.getText())){
+                        int nuevoSemestre;
+                        nuevoSemestre = Integer.parseInt(botonSemestre.getText());
+                        try {
+                            modificarCurso.updateCourseGroupSemester(Grupo,nuevoSemestre);
+                            validandoSemestre = true;
+                            botonSemestre.setText("");
+                        } catch (SQLException ex) {
+                               Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
+                           }
+                       } else {
+                           JOptionPane.showMessageDialog(null,"Error!\nSemestre debe ser un número!");
+                       } 
+                }
+                
+                if(modificarProfesorID){
+                    String profesorSeleccionado = (String) comboBoxProfesor.getSelectedItem();
+                    String[] obteniendoIdProfesor = profesorSeleccionado.split(" ");
+                    String idProfesor = obteniendoIdProfesor[0];
+                    int nuevoIdProfe;
+                    nuevoIdProfe = Integer.parseInt(idProfesor);
+                    try {
+                        modificarCurso.updateCourseGroupProfessor(Grupo,nuevoIdProfe);
+                        validandoProfesor = true;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
+                        validandoProfesor = false;
+                    }  
+                }
+                
+                if(modificarCursoID){                 
+                    String cursoSeleccionado = (String) comboBoxCursoModificar.getSelectedItem();
+                    String[] obteniendoIDCurso = cursoSeleccionado.split(" ");
+                    String idCurso = obteniendoIDCurso[0];
+                    int nuevoIdCurso;
+                    nuevoIdCurso = Integer.parseInt(idCurso);
+                    try {
+                        modificarCurso.updateCourseGroupCourse(Grupo,nuevoIdCurso);  
+                        validandoIdCourse = true;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
+                        validandoIdCourse = false;
+                    }
+                }
+       
             if(validandoAño || validandoProfesor || validandoSemestre || validandoIdCourse){ 
                 JOptionPane.showMessageDialog(null,"Grupo modificado!");
+                modificarProfesorID = false;
+                modificarCursoID = false;
+                comboBoxProfesor.setEnabled(false);
+                comboBoxCursoModificar.setEnabled(false);
                 // Actualizar ComboBox
                 comBoxGrupo.setVisible(false);
                 comBoxGrupo.removeAllItems();
@@ -501,19 +509,8 @@ public class ModificarCursos extends javax.swing.JDialog {
                     Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 comBoxGrupo.setVisible(true);
-                
-                this.dispose();
-                AdminSetup ventaAdminSetup = null;
-                    try {
-                        ventaAdminSetup = new AdminSetup(this,true, modificarCurso);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                ventaAdminSetup.setVisible(true); 
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null,"No se ha modificado Nada!");
-    
-            
             }
         } 
     }//GEN-LAST:event_botonModificarGrupoActionPerformed
@@ -616,6 +613,16 @@ public class ModificarCursos extends javax.swing.JDialog {
         tablas.setVisible(true);
     }//GEN-LAST:event_botonDatosActionPerformed
 
+    private void botonSeleccionarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarProfesorActionPerformed
+        comboBoxProfesor.setEnabled(true);
+        modificarProfesorID = true;
+    }//GEN-LAST:event_botonSeleccionarProfesorActionPerformed
+
+    private void botonSeleccionarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarCursoActionPerformed
+        modificarCursoID = true;
+        comboBoxCursoModificar.setEnabled(true);
+    }//GEN-LAST:event_botonSeleccionarCursoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -662,26 +669,30 @@ public class ModificarCursos extends javax.swing.JDialog {
     private javax.swing.JTextField botonAño;
     private javax.swing.JTextField botonCreditos;
     private javax.swing.JButton botonDatos;
-    private javax.swing.JTextField botonIDProfesor;
-    private javax.swing.JTextField botonIdCourse;
     private javax.swing.JButton botonModificarCurso;
     private javax.swing.JButton botonModificarGrupo;
     private javax.swing.JButton botonModificarSxG;
     private javax.swing.JTextField botonNombreCurso;
     private javax.swing.JButton botonRegresar;
+    private javax.swing.JButton botonSeleccionarCurso;
+    private javax.swing.JButton botonSeleccionarProfesor;
     private javax.swing.JTextField botonSemestre;
     private javax.swing.JCheckBox checkAbandono;
     private javax.swing.JCheckBox checkActivo;
     private javax.swing.JComboBox<String> comBoxCurso;
     private javax.swing.JComboBox<String> comBoxGrupo;
+    private javax.swing.JComboBox<String> comboBoxCursoModificar;
     private javax.swing.JComboBox<String> comboBoxEstudianteGrupo;
+    private javax.swing.JComboBox<String> comboBoxProfesor;
     private javax.swing.JComboBox<String> comboboxEstudianteGrupo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

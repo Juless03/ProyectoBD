@@ -41,7 +41,6 @@ public class RegistrarCursos extends javax.swing.JDialog {
         registrarCursos.getProfessor(combBoxProfesores);
         this.setLocationRelativeTo(null);
         registrarCursos.getCourseGroup(comBoxGrupo);
-
     }
 
     /**
