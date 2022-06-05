@@ -25,10 +25,17 @@ public class ProyectoBD {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        ArrayList<String> totalStudents = new ArrayList();
-        totalStudents = Conexion.totalStudentsCourseGender(1);
-        System.out.println(totalStudents.toString());
+//        ArrayList<String> totalStudents = new ArrayList();
+//        totalStudents = Conexion.totalStudentsCourseGender(1);
+//        System.out.println(totalStudents.toString());
         
+        ArrayList<String> prueba = new ArrayList();
+        Conexion.coursesTaught(prueba, 11, 2, 2020);
+        System.out.println(prueba.toString());
+
+//        Conexion.coursesRegistered(prueba, 1,1, 2020);
+//        System.out.println(prueba.toString());
+//        
         
         //String[] column = {"Femenino 2", "Masculino 2"};
         //System.out.println(column[0].split(" ")[0]);

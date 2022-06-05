@@ -96,17 +96,17 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         evaluacionDocente.coursesTaught(consultas, idProfesor, semestre, año);
         String matriz [][] = new String[consultas.size()][4];
         int x = 0;
-        for (int i = 0; i < consultas.size()/4; i++){
+        for (int i = 0; i < consultas.size()/3; i++){
             int columnas = 0;
-            for (int j = x; j < x+4; j++){
+            for (int j = x; j < x+3; j++){
                 matriz[i][columnas] = consultas.get(j);
                 columnas++;
             }
-            x+=4;
+            x+=3;
         }
         jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
             matriz,
-                new String [] {"Curso","Evaluación", "Semestre", "Año"}
+                new String [] {"Curso", "Semestre", "Año"}
         ));
     }
     
