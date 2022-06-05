@@ -25,6 +25,8 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class ConsultarEstadisticas extends javax.swing.JDialog {
     private Conexion consultarEstadisticas;
+    private String CursoSeleccionado;
+    private String GeneroSeleccionado;
     /**
      * Creates new form ConsultarEstadisticas
      */
@@ -39,7 +41,7 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         initComponents();
         consultarEstadisticas = setupAdmin;
         consultarEstadisticas.getCourseRegistroGrupo(comboBoxCursoCGenero);
-        consultarEstadisticas.getCourseRegistroGrupo(comboBoxCursoMejoresEs);
+        consultarEstadisticas.getCourse(comboBoxCursoMejoresEs);
         consultarEstadisticas.getGender(comboBoxGenero);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
@@ -157,6 +159,11 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         BotonPromedioNotas.setBackground(new java.awt.Color(255, 193, 5));
         BotonPromedioNotas.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonPromedioNotas.setText("Ver");
+        BotonPromedioNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonPromedioNotasActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonPromedioNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 90, -1));
 
         BotonPorcentajeAbandonos.setBackground(new java.awt.Color(255, 193, 5));
@@ -167,6 +174,11 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         BotonEstudiantesRangoEdad.setBackground(new java.awt.Color(255, 193, 5));
         BotonEstudiantesRangoEdad.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonEstudiantesRangoEdad.setText("Ver");
+        BotonEstudiantesRangoEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEstudiantesRangoEdadActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonEstudiantesRangoEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 440, 90, -1));
 
         BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
@@ -179,6 +191,11 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         });
         getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 100, -1));
 
+        comboBoxCursoCGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxCursoCGeneroActionPerformed(evt);
+            }
+        });
         getContentPane().add(comboBoxCursoCGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 170, 30));
 
         getContentPane().add(comboBoxCursoMejoresEs, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 190, 140, 30));
@@ -192,83 +209,135 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_RangoTopActionPerformed
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-    this.dispose();
-    AdminSetup ventaAdminSetup = null;
+        this.dispose();
+        AdminSetup ventaAdminSetup = null;
         try {
-            ventaAdminSetup = new AdminSetup(this,true, consultarEstadisticas);
+            ventaAdminSetup = new AdminSetup(this, true, consultarEstadisticas);
         } catch (SQLException ex) {
             Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
         }
-    ventaAdminSetup.setVisible(true); 
+        ventaAdminSetup.setVisible(true);
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     private void BotonEstudiantesxCursoxGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesxCursoxGeneroActionPerformed
-        int prueba1 = 10;
-        int prueba2 = 20;
-        
+       String idCurso = (String) comboBoxCursoCGenero.getSelectedItem();
+       String[] obteniendoIDCurso = idCurso.split(" ");
+       String IDCurso = obteniendoIDCurso[0];
+       int IDCURSO = Integer.parseInt(IDCurso);
+       
         ArrayList<String> totalStudents = new ArrayList();
         try {
-            totalStudents = consultarEstadisticas.totalStudentsCourseGender(2);
-            
+            totalStudents = consultarEstadisticas.totalStudentsCourseGender(IDCURSO);
+
         } catch (SQLException ex) {
             Logger.getLogger(ConsultarEstadisticas.class.getName()).log(Level.SEVERE, null, ex);
         }
         DefaultPieDataset datos = new DefaultPieDataset();
-         //String[] column = {"Femenino 2", "Masculino 10"};
 
-        for(int i = 0; i<totalStudents.size(); i++){ 
-            String algo;
-            algo = totalStudents.get(i).split(" ")[0];
-            if(algo != "No binario"){ 
-                String Primero;
-                Primero = totalStudents.get(i).split(" ")[0];
-                System.out.println("entrooooooooooooooooo");
-                int Segundo;
-                Segundo = Integer.parseInt(totalStudents.get(i).split(" ")[1]);
-                datos.setValue(Primero, Segundo);
-            }
-        JFreeChart graficocircular = ChartFactory.createPieChart("Mucha Prueba", datos,true,true,false);
-        ChartPanel panel = new ChartPanel(graficocircular);
-        panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(550,420));
-        panelGrafico.setLayout(new BorderLayout());
-        panelGrafico.add(panel,BorderLayout.NORTH);
-        pack();
-        repaint();
+        for (int i = 0; i < totalStudents.size(); i++) {
+            panelGrafico.removeAll();
+            String Primero = totalStudents.get(i).split("=")[0];
+            int Segundo = Integer.parseInt(totalStudents.get(i).split("=")[1]);
+            datos.setValue(Primero + ": " + Segundo, Segundo);
+            
+            JFreeChart graficocircular = ChartFactory.createPieChart("Estudiantes por curso por género", datos, true, true, false);
+            ChartPanel panel = new ChartPanel(graficocircular);
+            panel.setMouseWheelEnabled(true);
+            panel.setPreferredSize(new Dimension(550, 420));
+            panelGrafico.setLayout(new BorderLayout());
+            panelGrafico.add(panel, BorderLayout.NORTH);
+            pack();
+            panelGrafico.repaint();
         }
-        
-        
-        //datos.setValue("Prueba1", prueba1);
-        //datos.setValue("Prueba2", prueba2);
-        
-   
     }//GEN-LAST:event_BotonEstudiantesxCursoxGeneroActionPerformed
 
     private void BotonTopMejoresEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTopMejoresEstudiantesActionPerformed
-        
-        /*
-        String[] column = {"Femenino 2", "Masculino 2"};
-        System.out.println(column[0].split(" ")[0]);
-        DefaultPieDataset datos = new DefaultPieDataset();
-        for(int i = 0; i<column.length; i++){ 
-            String Primero;
-            Primero = column[i].split(" ")[0];
-            int Segundo;
-            Segundo = Integer.parseInt(column[i].split(" ")[1]);
-            System.out.println("Nombre: " +  Primero);
-            System.out.println("Cantidad: " + Segundo);
-            
-            datos.setValue(Primero, Segundo);
-            //datos.setValue("Prueba2", prueba2);
-        
+        ArrayList<String> totalStudents = new ArrayList();
+        int top = Integer.parseInt(RangoTop.getText());
+        CursoSeleccionado = (String) comboBoxCursoMejoresEs.getSelectedItem();
+        GeneroSeleccionado = (String) comboBoxGenero.getSelectedItem();
+        try {
+            totalStudents = consultarEstadisticas.bestStudentsCourseGender(totalStudents, CursoSeleccionado, GeneroSeleccionado, top);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarEstadisticas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        pack();
-        
-        //panelGrafico.removeAll();
-        //panelGrafico.repaint();
-          // TODO add your handling code here:
-        */
+        DefaultPieDataset datos = new DefaultPieDataset();
+
+        for (int i = 0; i < totalStudents.size(); i++) {
+            panelGrafico.removeAll();
+            String Primero = totalStudents.get(i).split("=")[0];
+            float Segundo = Float.parseFloat(totalStudents.get(i).split("=")[1]);
+            datos.setValue(Primero + ": " + Segundo, Segundo);
+            
+            JFreeChart graficocircular = ChartFactory.createPieChart("Mejores estudiantes por genero y por curso", datos, true, true, false);
+            ChartPanel panel = new ChartPanel(graficocircular);
+            panel.setMouseWheelEnabled(true);
+            panel.setPreferredSize(new Dimension(550, 420));
+            panelGrafico.setLayout(new BorderLayout());
+            panelGrafico.add(panel, BorderLayout.NORTH);
+            pack();
+            panelGrafico.repaint();
+        }
     }//GEN-LAST:event_BotonTopMejoresEstudiantesActionPerformed
+
+    private void comboBoxCursoCGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCursoCGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxCursoCGeneroActionPerformed
+
+    private void BotonPromedioNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPromedioNotasActionPerformed
+        ArrayList<String> totalStudents = new ArrayList();
+        try {
+            totalStudents = consultarEstadisticas.notesAverage(totalStudents);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarEstadisticas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultPieDataset datos = new DefaultPieDataset();
+
+        for (int i = 0; i < totalStudents.size(); i++) {
+            panelGrafico.removeAll();
+            String Primero = totalStudents.get(i).split("=")[0];
+            float Segundo = Float.parseFloat(totalStudents.get(i).split("=")[1]);
+            datos.setValue(Primero + ": " + Segundo, Segundo);
+            
+            JFreeChart graficocircular = ChartFactory.createPieChart("Promedio de notas por curso", datos, true, true, false);
+            ChartPanel panel = new ChartPanel(graficocircular);
+            panel.setMouseWheelEnabled(true);
+            panel.setPreferredSize(new Dimension(550, 420));
+            panelGrafico.setLayout(new BorderLayout());
+            panelGrafico.add(panel, BorderLayout.NORTH);
+            pack();
+            panelGrafico.repaint();
+        }
+    }//GEN-LAST:event_BotonPromedioNotasActionPerformed
+
+    private void BotonEstudiantesRangoEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesRangoEdadActionPerformed
+        ArrayList<String> totalStudents = new ArrayList();
+        try {
+            totalStudents = consultarEstadisticas.totalStudentsRankAge(totalStudents);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarEstadisticas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultPieDataset datos = new DefaultPieDataset();
+
+        for (int i = 0; i < totalStudents.size(); i++) {
+            panelGrafico.removeAll();
+            String Primero = totalStudents.get(i).split("=")[0];
+            int Segundo = Integer.parseInt(totalStudents.get(i).split("=")[1]);
+            datos.setValue(Primero + ": " + Segundo, Segundo);
+            
+            JFreeChart graficocircular = ChartFactory.createPieChart("Total de estudiantes por rango de edad", datos, true, true, false);
+            ChartPanel panel = new ChartPanel(graficocircular);
+            panel.setMouseWheelEnabled(true);
+            panel.setPreferredSize(new Dimension(550, 420));
+            panelGrafico.setLayout(new BorderLayout());
+            panelGrafico.add(panel, BorderLayout.NORTH);
+            pack();
+            panelGrafico.repaint();
+        }
+    }//GEN-LAST:event_BotonEstudiantesRangoEdadActionPerformed
 
     /**
      * @param args the command line arguments

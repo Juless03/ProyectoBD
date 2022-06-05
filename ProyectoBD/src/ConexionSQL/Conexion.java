@@ -1014,7 +1014,7 @@ public class Conexion {
         stmt.setInt(1, pnCourseCode);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            totalStudents.add(r.getString("Genero") + " " + r.getString("TotalDeEstudiantes") );   
+            totalStudents.add(r.getString("Genero") + "=" + r.getString("TotalDeEstudiantes") );   
         }
         return totalStudents;
     }
@@ -1029,27 +1029,27 @@ public class Conexion {
         stmt.setInt(3, pnTop);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            bestStudents.add(r.getString("NombreCurso") + " " + r.getString("IdPersona") + " " + r.getString("Genero") + " " + r.getString("PorcentajeTotal"));   
+            bestStudents.add(r.getString("NombrePersona") + "=" + r.getString("PorcentajeTotal"));   
         }
         return bestStudents;
     }
     
     public static ArrayList<String> notesAverage(ArrayList<String> notes) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call bestStudentsCourseGender()}");
+        CallableStatement stmt = con.prepareCall("{ call notesAverage()}");
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            notes.add(r.getString("NombreCurso") + " " + r.getString("PromedioDeNotas"));   
+            notes.add(r.getString("NombreCurso") + "=" + r.getString("PromedioDeNotas"));   
         }
         return notes;
     }
     
-    public static ArrayList<String>  totalStudentsRankAge(ArrayList<String> totalStudents) throws SQLException {
+    public static ArrayList<String> totalStudentsRankAge(ArrayList<String> totalStudents) throws SQLException {
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call totalStudentsRankAge()}");
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            totalStudents.add(r.getString("Cantidad"));   
+            totalStudents.add(r.getString("Rango") + "=" + r.getString("Cantidad"));   
         }
         return totalStudents;
     }
