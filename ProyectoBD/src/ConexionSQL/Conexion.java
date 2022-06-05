@@ -1063,19 +1063,24 @@ public class Conexion {
         stmt.setInt(3, pnGroupYear);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            courses.add(r.getString("NombreCurso") + " " + r.getString("Semestre") + " " + r.getString("Año"));   
+            courses.add(r.getString("NombreCurso")); 
+            courses.add(r.getString("Semestre"));
+            courses.add(r.getString("Año"));
         }
         return courses;
     }
     
     public static ArrayList<String> noteCourseAndEvaluations(ArrayList<String> notes, int pnIdPerson, String pcCourseName) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call coursesRegistered(?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call noteCourseAndEvaluations(?, ?) }");
         stmt.setInt(1, pnIdPerson);
         stmt.setString(2, pcCourseName);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            notes.add(r.getString("NombreCurso") + " " + r.getString("EvaluationName") + " " + r.getString("NotaEvaluacion")+ " " + r.getString("NotaTotal"));   
+            notes.add(r.getString("NombreCurso"));    
+            notes.add(r.getString("EvaluationName")); 
+            notes.add(r.getString("NotaEvaluacion")); 
+            notes.add(r.getString("NotaTotal")); 
         }
         return notes;
     }
@@ -1090,7 +1095,11 @@ public class Conexion {
         stmt.setInt(3, pnYear);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            courses.add(r.getString("NombreCurso") + " " + r.getString("EvaluationName") + " " + r.getString("Semestre")+ " " + r.getString("Año"));   
+            courses.add(r.getString("NombreCurso"));
+            courses.add(r.getString("EvaluationName")); 
+            courses.add(r.getString("Semestre")); 
+            courses.add(r.getString("Año")); 
+            
         }
         return courses;
     }
@@ -1101,7 +1110,10 @@ public class Conexion {
         stmt.setString(1, pcCourseName);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            totalStudents.add(r.getString("Nombre") + " " + r.getString("NombreCurso") + " " + r.getString("DesEvaluación")+ " " + r.getString("Nota"));   
+            totalStudents.add(r.getString("Nombre")); 
+            totalStudents.add(r.getString("NombreCurso"));
+            totalStudents.add(r.getString("DesEvaluación"));
+            totalStudents.add(r.getString("Nota"));
         }
         return totalStudents;
     }
@@ -1113,19 +1125,31 @@ public class Conexion {
         stmt.setString(2, pcCourseName);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            totalEvaluations.add(r.getString("Nombre") + " " + r.getString("NombreCurso") + " " + r.getString("DescripcionEvaluacion")+ " " + r.getString("IdEstudiante")+ " " + r.getString("FechaEntrega"));   
+            totalEvaluations.add(r.getString("Nombre"));   
+            totalEvaluations.add(r.getString("DescripcionEvaluacion"));
+            totalEvaluations.add(r.getString("IdEstudiante"));
+            totalEvaluations.add(r.getString("FechaEntrega"));
         }
         return totalEvaluations;
     }
     
-    public static ArrayList<String> noteStudentCourse(ArrayList<String> notesStudent, String pcCourseName) throws SQLException {
+//    public static ArrayList<String> noteStudentCourse(ArrayList<String> notesStudent, String pcCourseName) throws SQLException {
+//        Connection con = conectorBaseNueva();
+//        CallableStatement stmt = con.prepareCall("{ call  noteStudentCourse(?)}");
+//        stmt.setString(1, pcCourseName);
+//        ResultSet r = stmt.executeQuery(); 
+//        while(r.next()){
+//            notesStudent.add(r.getString("Nombre") + " " + r.getString("NotaTotal"));   
+//        }
+//        return notesStudent;
+//    }
+    public static void getCoursesFromProfessor(JComboBox cbox_cursos, int pnIdProfessor) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{ call  noteStudentCourse(?)}");
-        stmt.setString(1, pcCourseName);
-        ResultSet r = stmt.executeQuery(); 
-        while(r.next()){
-            notesStudent.add(r.getString("Nombre") + " " + r.getString("NotaTotal"));   
+        CallableStatement stmt = con.prepareCall("{ call coursesFromAProfesor(?)}");
+        stmt.setInt(1, pnIdProfessor);
+        ResultSet r = stmt.executeQuery();
+        while (r.next()) {
+            cbox_cursos.addItem(r.getString("NombreCurso"));
         }
-        return notesStudent;
     }
 }

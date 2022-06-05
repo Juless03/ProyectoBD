@@ -89,7 +89,7 @@ public class InicioProfesor extends javax.swing.JDialog {
             }
         });
 
-        combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel12.setText("Seleccione el profesor: ");
@@ -151,10 +151,19 @@ public class InicioProfesor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultaActionPerformed
-     this.dispose();
+        String NombreProfesor;
+        NombreProfesor = (String) combBoxProfesores.getSelectedItem();
+        String[] obteniendoIdProfesor;
+        obteniendoIdProfesor = NombreProfesor.split(" ");
+        String idProfesor;
+        idProfesor = obteniendoIdProfesor[0];
+        int idProfesorInt;
+        idProfesorInt = Integer.parseInt(idProfesor);
+        
+        this.dispose();
         ConsultasProfesor consultasProfesor = null;
         try {
-            consultasProfesor = new ConsultasProfesor(this,true,inicioProfesor);
+            consultasProfesor = new ConsultasProfesor(this,true,inicioProfesor, idProfesorInt);
         } catch (SQLException ex) {
             Logger.getLogger(InicioProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }

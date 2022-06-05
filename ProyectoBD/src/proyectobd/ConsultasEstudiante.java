@@ -22,6 +22,8 @@ import java.util.logging.Logger;
  */
 public class ConsultasEstudiante extends javax.swing.JDialog {
     private Conexion inicioEstudiante;
+        private int idEstudiante;
+        ArrayList<String> consultas = new ArrayList();
     /**
      * Creates new form InicioEstudiante
      */
@@ -39,15 +41,26 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
        this.getContentPane().setBackground(new Color(157,210,228));
        inicioEstudiante.getCourse(comBoxCurso);
        botonRegresar.setVisible(false);
+       inicioEstudiante.getStudent(comBoxEstudiante);
+       String NombreProfesor;
+        NombreProfesor = (String) comBoxEstudiante.getSelectedItem();
+        String[] obteniendoIdProfesor;
+        obteniendoIdProfesor = NombreProfesor.split(" ");
+        String idProfesora;
+        idProfesora = obteniendoIdProfesor[0];
+        idEstudiante= Integer.parseInt(idProfesora);
     }
     
-    ConsultasEstudiante(MenuInicio aThis, boolean modal, Conexion conexion) throws SQLException {
+    ConsultasEstudiante(InicioEstudiante aThis, boolean modal, Conexion conexion, int id) throws SQLException {
        super(aThis, modal);
        initComponents();
        inicioEstudiante = conexion;
        this.getContentPane().setBackground(new Color(157,210,228));
        inicioEstudiante.getCourse(comBoxCurso);
        botonRegresarAdmin.setVisible(false);
+       idEstudiante = id;
+       comBoxEstudiante.setVisible(false);
+       jLabel7.setVisible(false);
     }
 
     ConsultasEstudiante(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws SQLException {
@@ -57,6 +70,46 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
        this.getContentPane().setBackground(new Color(157,210,228));
        inicioEstudiante.getCourse(comBoxCurso);
        botonRegresarAdmin.setVisible(false);
+    }
+    
+    private void mostrarCursos(int año, int semestre) throws SQLException{
+        consultas.clear();
+        jTableDatos.clearSelection();
+        inicioEstudiante.coursesRegistered(consultas, idEstudiante,semestre, año);
+        String matriz [][] = new String[consultas.size()][3];
+        int x = 0;
+        for (int i = 0; i < consultas.size()/3; i++){
+            int columnas = 0;
+            for (int j = x; j < x+3; j++){
+                matriz[i][columnas] = consultas.get(j);
+                columnas++;
+            }
+            x+=3;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Curso","Semestre", "Año"}
+        ));
+    }
+    
+    private void mostrarEvaluaciones(String curso) throws SQLException{
+        consultas.clear();
+        jTableDatos.clearSelection();
+        inicioEstudiante.noteCourseAndEvaluations(consultas, idEstudiante, curso);
+        String matriz [][] = new String[consultas.size()][4];
+        int x = 0;
+        for (int i = 0; i < consultas.size()/4; i++){
+            int columnas = 0;
+            for (int j = x; j < x+4; j++){
+                matriz[i][columnas] = consultas.get(j);
+                columnas++;
+            }
+            x+=4;
+        }
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            matriz,
+                new String [] {"Curso","Evaluacion", "Nota Evaluacion", "Nota Total"}
+        ));
     }
 
     /**
@@ -71,37 +124,44 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         añoCurso = new javax.swing.JTextField();
         mostrarCursos = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
         botonRegresarAdmin = new javax.swing.JButton();
-        comBoxCurso = new javax.swing.JComboBox<>();
         comBoxSemestre = new javax.swing.JComboBox<>();
-        textoCursos = new javax.swing.JTextField();
-        evaluacionesText = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableDatos = new javax.swing.JTable();
+        comBoxCurso = new javax.swing.JComboBox<>();
+        mostrarEvaluaciones = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        comBoxEstudiante = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Estudiante");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(568, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel2.setText("Cursos");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 95, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel3.setText("Evaluaciones");
-
-        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel4.setText("Nombre");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(891, 134, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setText("Semestre");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 184, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel6.setText("Año");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 142, -1, -1));
+        getContentPane().add(añoCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 142, 100, -1));
 
         mostrarCursos.setBackground(new java.awt.Color(255, 193, 5));
         mostrarCursos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -111,6 +171,7 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
                 mostrarCursosActionPerformed(evt);
             }
         });
+        getContentPane().add(mostrarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 180, 100, -1));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -120,6 +181,7 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
                 botonRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 734, 100, -1));
 
         botonRegresarAdmin.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresarAdmin.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -129,88 +191,51 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
                 botonRegresarAdminActionPerformed(evt);
             }
         });
-
-        comBoxCurso.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(botonRegresarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 734, 100, -1));
 
         comBoxSemestre.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        comBoxSemestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero", "Segundo " }));
+        comBoxSemestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+        getContentPane().add(comBoxSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 183, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comBoxCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comBoxSemestre, 0, 150, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mostrarCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(añoCurso)))
-                    .addComponent(textoCursos))
-                .addGap(71, 74, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(556, 556, 556))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(evaluacionesText, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(287, 287, 287))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonRegresarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(54, 54, 54)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(añoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comBoxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(mostrarCursos)
-                            .addComponent(comBoxSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(textoCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(evaluacionesText)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRegresar)
-                    .addComponent(botonRegresarAdmin))
-                .addContainerGap())
-        );
+        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel4.setText("Curso");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(759, 184, -1, -1));
+
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTableDatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 239, 1110, 477));
+
+        comBoxCurso.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(comBoxCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(816, 182, 223, -1));
+
+        mostrarEvaluaciones.setBackground(new java.awt.Color(255, 193, 5));
+        mostrarEvaluaciones.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        mostrarEvaluaciones.setText("Mostrar");
+        mostrarEvaluaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarEvaluacionesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mostrarEvaluaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(1077, 180, 109, -1));
+
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel7.setText("Seleccione el estudiante antes de iniciar:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+
+        comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(comBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 250, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,29 +263,26 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarAdminActionPerformed
 
     private void mostrarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarCursosActionPerformed
-    /*ArrayList<String> cursos = new ArrayList();
-    int semestre;
-    if( comBoxCurso.getSelectedItem() == "Primero"){
-        semestre = 1;
-    }else{
-        semestre = 2;
-    }
-    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-       Date FechaDate = null;
+    String añoString = añoCurso.getText();
+    int año = Integer.parseInt(añoString);
+    String semestreString = (String) comBoxSemestre.getSelectedItem();
+    int semestre = Integer.parseInt(semestreString);
         try {
-            FechaDate = formatoFecha.parse(añoCurso.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       java.sql.Date nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
-        try {
-            inicioEstudiante.coursesRegistered(cursos,(String) comBoxCurso.getSelectedItem(), semestre, nuevoAñoCurso);
-            textoCursos.setText(cursos.toString());
+            mostrarCursos(año,semestre);
         } catch (SQLException ex) {
             Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    
+        }
+        añoCurso.setText("");
     }//GEN-LAST:event_mostrarCursosActionPerformed
+
+    private void mostrarEvaluacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarEvaluacionesActionPerformed
+       String curso = (String) comBoxCurso.getSelectedItem();
+        try {
+            mostrarEvaluaciones(curso);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_mostrarEvaluacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,15 +332,18 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
     private javax.swing.JButton botonRegresar;
     private javax.swing.JButton botonRegresarAdmin;
     private javax.swing.JComboBox<String> comBoxCurso;
+    private javax.swing.JComboBox<String> comBoxEstudiante;
     private javax.swing.JComboBox<String> comBoxSemestre;
-    private javax.swing.JTextField evaluacionesText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableDatos;
     private javax.swing.JButton mostrarCursos;
-    private javax.swing.JTextField textoCursos;
+    private javax.swing.JButton mostrarEvaluaciones;
     // End of variables declaration//GEN-END:variables
 }

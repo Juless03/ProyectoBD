@@ -4,6 +4,7 @@ import ConexionSQL.Conexion;
 import java.awt.Color;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,6 +14,7 @@ import java.util.logging.Logger;
  */
 public class InicioEstudiante extends javax.swing.JDialog {
     private Conexion inicioEstudiante;
+    ArrayList<String> consultas = new ArrayList();
     /**
      * Creates new form NewJDialog
      */
@@ -35,9 +37,10 @@ public class InicioEstudiante extends javax.swing.JDialog {
         super(aThis, modal);
         this.getContentPane().setBackground(new Color(157,210,228));
         initComponents();
-        //inicioEstudiante.getStudent(comBoxEstudiante);
         inicioEstudiante = inicioEstudiante;
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,7 +63,7 @@ public class InicioEstudiante extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Estudiante");
 
-        comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel7.setText("Seleccione el estudiante: ");
@@ -155,9 +158,18 @@ public class InicioEstudiante extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultasActionPerformed
+        String NombreProfesor;
+        NombreProfesor = (String) comBoxEstudiante.getSelectedItem();
+        String[] obteniendoIdProfesor;
+        obteniendoIdProfesor = NombreProfesor.split(" ");
+        String idProfesor;
+        idProfesor = obteniendoIdProfesor[0];
+        int idProfesorInt;
+        idProfesorInt = Integer.parseInt(idProfesor);
+        
         ConsultasEstudiante consultasEstudiante = null;
         try {
-            consultasEstudiante = new ConsultasEstudiante(this,true,inicioEstudiante);
+            consultasEstudiante = new ConsultasEstudiante(this,true,inicioEstudiante, idProfesorInt);
         } catch (SQLException ex) {
             Logger.getLogger(InicioEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
