@@ -20,16 +20,18 @@ import java.util.logging.Logger;
  * @author Juley
  */
 public class ProyectoBD {
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        ArrayList<String> totalStudents = new ArrayList();
-        Conexion.totalStudentsRankAge(totalStudents);
-        System.out.println(totalStudents.toString());
+
         
-        
+        //String[] column = {"Femenino 2", "Masculino 2"};
+        //System.out.println(column[0].split(" ")[0]);
+        //ArrayList<String> totalStudents = new ArrayList();
+        //totalStudents = Conexion.totalStudentsCourseGender(1);
+        //System.out.println(totalStudents.toString());
         /*ArrayList<String> prueba = new ArrayList();
         Conexion.getDataBooklog(prueba);
         System.out.println(prueba.toString());

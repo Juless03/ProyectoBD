@@ -6,10 +6,18 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.List;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -26,10 +34,13 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
     }
     
-    public ConsultarEstadisticas(AdminSetup aThis, boolean modal, Conexion setupAdmin) {
+    public ConsultarEstadisticas(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
         super(aThis, modal);
         initComponents();
         consultarEstadisticas = setupAdmin;
+        consultarEstadisticas.getCourseRegistroGrupo(comboBoxCursoCGenero);
+        consultarEstadisticas.getCourseRegistroGrupo(comboBoxCursoMejoresEs);
+        consultarEstadisticas.getGender(comboBoxGenero);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
@@ -46,15 +57,13 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        NombreCurso = new javax.swing.JTextField();
         BotonEstudiantesxCursoxGenero = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        NombreCursoMejoresEstudiantes = new javax.swing.JTextField();
         RangoTop = new javax.swing.JTextField();
-        Genero = new javax.swing.JComboBox<>();
+        comboBoxGenero = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -63,57 +72,54 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         BotonPorcentajeAbandonos = new javax.swing.JButton();
         BotonEstudiantesRangoEdad = new javax.swing.JButton();
         BotonRegresar = new javax.swing.JButton();
+        comboBoxCursoCGenero = new javax.swing.JComboBox<>();
+        comboBoxCursoMejoresEs = new javax.swing.JComboBox<>();
+        panelGrafico = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Estadísticas del sistema");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel2.setText("Elija la estadística que desea visualizar:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel3.setText("Total de estudiantes por curso por género");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        jLabel4.setText("Ingrese el nombre del curso:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
-
-        NombreCurso.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(NombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 98, -1));
+        jLabel4.setText("Curso");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 70, -1));
 
         BotonEstudiantesxCursoxGenero.setBackground(new java.awt.Color(255, 193, 5));
         BotonEstudiantesxCursoxGenero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonEstudiantesxCursoxGenero.setText("Ver");
-        getContentPane().add(BotonEstudiantesxCursoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 240, 90, -1));
+        BotonEstudiantesxCursoxGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEstudiantesxCursoxGeneroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonEstudiantesxCursoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 90, -1));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel5.setText("Top de mejores estudiantes");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 150, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        jLabel6.setText("Ingrese el nombre del curso:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
+        jLabel6.setText("Curso");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 190, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        jLabel7.setText("Ingrese el género:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, -1, -1));
+        jLabel7.setText("Género");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 230, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jLabel8.setText("Ingrese el rango del top:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, -1, -1));
-
-        NombreCursoMejoresEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        NombreCursoMejoresEstudiantes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreCursoMejoresEstudiantesActionPerformed(evt);
-            }
-        });
-        getContentPane().add(NombreCursoMejoresEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, 57, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 280, -1, -1));
 
         RangoTop.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         RangoTop.addActionListener(new java.awt.event.ActionListener() {
@@ -121,43 +127,47 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
                 RangoTopActionPerformed(evt);
             }
         });
-        getContentPane().add(RangoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 57, -1));
+        getContentPane().add(RangoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 270, 130, 30));
 
-        Genero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        Genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(Genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 240, 70, -1));
+        comboBoxGenero.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        getContentPane().add(comboBoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 230, 140, -1));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel9.setText("Promedio de notas por curso");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel10.setText("Porcentaje de abandonos de curso");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 1, 16)); // NOI18N
         jLabel11.setText("Total de estudiantes por rango de edad");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 410, -1, -1));
 
         BotonTopMejoresEstudiantes.setBackground(new java.awt.Color(255, 193, 5));
         BotonTopMejoresEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonTopMejoresEstudiantes.setText("Ver");
-        getContentPane().add(BotonTopMejoresEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 327, 90, -1));
+        BotonTopMejoresEstudiantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonTopMejoresEstudiantesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonTopMejoresEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 320, 90, -1));
 
         BotonPromedioNotas.setBackground(new java.awt.Color(255, 193, 5));
         BotonPromedioNotas.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonPromedioNotas.setText("Ver");
-        getContentPane().add(BotonPromedioNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 505, 90, -1));
+        getContentPane().add(BotonPromedioNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 90, -1));
 
         BotonPorcentajeAbandonos.setBackground(new java.awt.Color(255, 193, 5));
         BotonPorcentajeAbandonos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonPorcentajeAbandonos.setText("Ver");
-        getContentPane().add(BotonPorcentajeAbandonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 505, 90, -1));
+        getContentPane().add(BotonPorcentajeAbandonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 90, -1));
 
         BotonEstudiantesRangoEdad.setBackground(new java.awt.Color(255, 193, 5));
         BotonEstudiantesRangoEdad.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         BotonEstudiantesRangoEdad.setText("Ver");
-        getContentPane().add(BotonEstudiantesRangoEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, 90, -1));
+        getContentPane().add(BotonEstudiantesRangoEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 440, 90, -1));
 
         BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -169,12 +179,13 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         });
         getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 100, -1));
 
+        getContentPane().add(comboBoxCursoCGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 170, 30));
+
+        getContentPane().add(comboBoxCursoMejoresEs, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 190, 140, 30));
+        getContentPane().add(panelGrafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 550, 420));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NombreCursoMejoresEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCursoMejoresEstudiantesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreCursoMejoresEstudiantesActionPerformed
 
     private void RangoTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RangoTopActionPerformed
         // TODO add your handling code here:
@@ -190,6 +201,74 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
         }
     ventaAdminSetup.setVisible(true); 
     }//GEN-LAST:event_BotonRegresarActionPerformed
+
+    private void BotonEstudiantesxCursoxGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesxCursoxGeneroActionPerformed
+        int prueba1 = 10;
+        int prueba2 = 20;
+        
+        ArrayList<String> totalStudents = new ArrayList();
+        try {
+            totalStudents = consultarEstadisticas.totalStudentsCourseGender(2);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarEstadisticas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultPieDataset datos = new DefaultPieDataset();
+         //String[] column = {"Femenino 2", "Masculino 10"};
+
+        for(int i = 0; i<totalStudents.size(); i++){ 
+            String algo;
+            algo = totalStudents.get(i).split(" ")[0];
+            if(algo != "No binario"){ 
+                String Primero;
+                Primero = totalStudents.get(i).split(" ")[0];
+                System.out.println("entrooooooooooooooooo");
+                int Segundo;
+                Segundo = Integer.parseInt(totalStudents.get(i).split(" ")[1]);
+                datos.setValue(Primero, Segundo);
+            }
+        JFreeChart graficocircular = ChartFactory.createPieChart("Mucha Prueba", datos,true,true,false);
+        ChartPanel panel = new ChartPanel(graficocircular);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(550,420));
+        panelGrafico.setLayout(new BorderLayout());
+        panelGrafico.add(panel,BorderLayout.NORTH);
+        pack();
+        repaint();
+        }
+        
+        
+        //datos.setValue("Prueba1", prueba1);
+        //datos.setValue("Prueba2", prueba2);
+        
+   
+    }//GEN-LAST:event_BotonEstudiantesxCursoxGeneroActionPerformed
+
+    private void BotonTopMejoresEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTopMejoresEstudiantesActionPerformed
+        
+        /*
+        String[] column = {"Femenino 2", "Masculino 2"};
+        System.out.println(column[0].split(" ")[0]);
+        DefaultPieDataset datos = new DefaultPieDataset();
+        for(int i = 0; i<column.length; i++){ 
+            String Primero;
+            Primero = column[i].split(" ")[0];
+            int Segundo;
+            Segundo = Integer.parseInt(column[i].split(" ")[1]);
+            System.out.println("Nombre: " +  Primero);
+            System.out.println("Cantidad: " + Segundo);
+            
+            datos.setValue(Primero, Segundo);
+            //datos.setValue("Prueba2", prueba2);
+        
+        }
+        pack();
+        
+        //panelGrafico.removeAll();
+        //panelGrafico.repaint();
+          // TODO add your handling code here:
+        */
+    }//GEN-LAST:event_BotonTopMejoresEstudiantesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,10 +319,10 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
     private javax.swing.JButton BotonPromedioNotas;
     private javax.swing.JButton BotonRegresar;
     private javax.swing.JButton BotonTopMejoresEstudiantes;
-    private javax.swing.JComboBox<String> Genero;
-    private javax.swing.JTextField NombreCurso;
-    private javax.swing.JTextField NombreCursoMejoresEstudiantes;
     private javax.swing.JTextField RangoTop;
+    private javax.swing.JComboBox<String> comboBoxCursoCGenero;
+    private javax.swing.JComboBox<String> comboBoxCursoMejoresEs;
+    private javax.swing.JComboBox<String> comboBoxGenero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -255,5 +334,6 @@ public class ConsultarEstadisticas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel panelGrafico;
     // End of variables declaration//GEN-END:variables
 }

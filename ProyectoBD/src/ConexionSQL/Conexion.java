@@ -1007,16 +1007,19 @@ public class Conexion {
     }
     
     //Paquete Estadisticas
-    public static ArrayList<String> totalStudentsCourseGender(ArrayList<String> totalStudents, int pnCourseCode) throws SQLException {
+    public static ArrayList<String> totalStudentsCourseGender(int pnCourseCode) throws SQLException {
         Connection con = conectorBaseNueva();
+        ArrayList<String> totalStudents = new ArrayList();
         CallableStatement stmt = con.prepareCall("{ call totalStudentsCourseGender(?) }");
         stmt.setInt(1, pnCourseCode);
         ResultSet r = stmt.executeQuery(); 
         while(r.next()){
-            totalStudents.add(r.getString("NombreCurso") + " " + r.getString("Genero") + " " + r.getString("TotalDeEstudiantes") );   
+            totalStudents.add(r.getString("Genero") + " " + r.getString("TotalDeEstudiantes") );   
         }
         return totalStudents;
     }
+    
+    
     
     public static ArrayList<String> bestStudentsCourseGender(ArrayList<String> bestStudents, String pcCourseName, String pcGender, int pnTop) throws SQLException {
         Connection con = conectorBaseNueva();

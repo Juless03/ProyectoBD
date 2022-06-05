@@ -416,8 +416,13 @@ public class AdminSetup extends javax.swing.JDialog {
 
     private void BotonEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstadisticasActionPerformed
         this.dispose();
-        ConsultarEstadisticas consultarEstadisticas = new ConsultarEstadisticas(this,true,setupAdmin);
-        consultarEstadisticas.setVisible(true);      
+        ConsultarEstadisticas consultarEstadisticas;
+         try {
+             consultarEstadisticas = new ConsultarEstadisticas(this,true,setupAdmin);
+             consultarEstadisticas.setVisible(true); 
+         } catch (SQLException ex) {
+             Logger.getLogger(AdminSetup.class.getName()).log(Level.SEVERE, null, ex);
+         }    
     }//GEN-LAST:event_BotonEstadisticasActionPerformed
 
     private void BotonEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEstudiantesActionPerformed
