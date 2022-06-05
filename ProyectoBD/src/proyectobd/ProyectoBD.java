@@ -7,6 +7,7 @@ package proyectobd;
 
 
 import ConexionSQL.Conexion;
+import static ConexionSQL.Conexion.getIdEvalution;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,7 +32,8 @@ public class ProyectoBD {
         
         ArrayList<String> prueba = new ArrayList();
         Conexion.coursesTaught(prueba, 11, 2, 2020);
-        System.out.println(prueba.toString());
+         String a = Conexion.getIdEvalution(4, "QuizBases");
+        System.out.println(a);
 
 //        Conexion.coursesRegistered(prueba, 1,1, 2020);
 //        System.out.println(prueba.toString());

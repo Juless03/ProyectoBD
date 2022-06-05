@@ -1151,4 +1151,26 @@ public class Conexion {
             cbox_cursos.addItem(r.getString("NombreCurso"));
         }
     }
+    
+    public static ArrayList<String> studentsInGroup(ArrayList<String> totalEvaluations, int pnIdGroup) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{ call studentsInGroup(?)}");
+        stmt.setInt(1, pnIdGroup);
+        ResultSet r = stmt.executeQuery(); 
+        while(r.next()){
+            totalEvaluations.add(r.getString("id_person"));   
+        }
+        return totalEvaluations;
+    }
+    
+    public static String getIdEvalution(int pnIdGroup, String pcName) throws SQLException {
+        Connection con = conectorBaseNueva();
+        CallableStatement stmt = con.prepareCall("{?= call getIdEvalution(?,?)}");
+        stmt.registerOutParameter(1, Types.VARCHAR);
+        stmt.setInt(2, pnIdGroup);
+        stmt.setString(3, pcName);
+        stmt.execute();
+        String Resultado = stmt.getString(1);
+        return Resultado;
+    }
 }

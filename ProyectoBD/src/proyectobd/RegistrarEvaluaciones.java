@@ -6,14 +6,17 @@
 package proyectobd;
 
 import ConexionSQL.Conexion;
+import static ConexionSQL.Conexion.studentsInGroup;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import oracle.net.aso.i;
 
 /**
  *
@@ -59,6 +62,22 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
         botonRegresar2.setVisible(true);
         botonRegresar.setVisible(false);
+    }
+    
+    public void registrarExS(int idGroup, String evaluation_name) throws SQLException{
+        ArrayList<String> estudiantes = new ArrayList();
+        try {
+            studentsInGroup(estudiantes, idGroup);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int estudiante;
+        String evaluation = registrarEvaluaciones.getIdEvalution(idGroup, evaluation_name);
+        int id_evaluation =Integer.parseInt(evaluation);
+        for (int i = 0; i < estudiantes.size(); i++){
+            estudiante = Integer.parseInt(estudiantes.get(i));
+            registrarEvaluaciones.addEvaluationxStudent(estudiante, id_evaluation, 0);
+        }
     }
 
     /**
@@ -329,6 +348,11 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
                         registrarEvaluaciones.getEvaluation(comBoxEvaluacion);
                     } catch (SQLException ex) {
                         Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        registrarExS(idGrupo, evaluacionDescripcion.getText());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     comBoxEvaluacion.setVisible(true);
                     evaluacionNombre.setText("");
