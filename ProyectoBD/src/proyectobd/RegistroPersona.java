@@ -127,45 +127,45 @@ public class RegistroPersona extends javax.swing.JDialog {
         jLabel1.setText("Registro de Persona");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel2.setText("Primer Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel3.setText("Segundo Nombre");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel4.setText("Primer Apellido");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel6.setText("Segundo Apellido");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel7.setText("Foto:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 50, -1));
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jLabel7.setText("Foto");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 50, -1));
 
-        PrimerNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        PrimerNombre.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         PrimerNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrimerNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(PrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 120, 30));
+        getContentPane().add(PrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 140, 30));
 
-        SegundoNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(SegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 120, 30));
+        SegundoNombre.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(SegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 140, 30));
 
         PrimerApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(PrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, 120, 30));
+        getContentPane().add(PrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, 140, 30));
 
         SegundoApellido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(SegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, 120, 30));
+        getContentPane().add(SegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 140, 30));
 
-        FechaNacimiento.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 120, 30));
+        FechaNacimiento.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 140, 30));
 
         BotonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -177,25 +177,25 @@ public class RegistroPersona extends javax.swing.JDialog {
         });
         getContentPane().add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, -1, -1));
 
-        botonGenero.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        botonGenero.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         botonGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGeneroActionPerformed(evt);
             }
         });
-        getContentPane().add(botonGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 150, 40));
+        getContentPane().add(botonGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 190, 40));
 
-        botonCategoria.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        botonCategoria.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor", "Admin" }));
-        getContentPane().add(botonCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, 110, 40));
+        getContentPane().add(botonCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 130, 40));
 
-        botonDistrito.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        botonDistrito.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         botonDistrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDistritoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 150, 40));
+        getContentPane().add(botonDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 190, 40));
 
         BotonRegistrar.setBackground(new java.awt.Color(255, 193, 5));
         BotonRegistrar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -212,29 +212,33 @@ public class RegistroPersona extends javax.swing.JDialog {
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel10.setText("Tipo Teléfono");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 250, 100, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 240, 100, -1));
 
-        tipoTelefono.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        tipoTelefono.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         tipoTelefono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa ", "Celular", "Oficina" }));
-        getContentPane().add(tipoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 270, 70, 30));
+        getContentPane().add(tipoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 260, 100, 30));
 
-        jLabel17.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel17.setText("Fecha Nacimiento");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, -1, -1));
-        getContentPane().add(botonEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 170, 30));
 
-        tituloContraseña.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        botonEmail.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(botonEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 170, 30));
+
+        tituloContraseña.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         tituloContraseña.setText("Contraseña");
-        getContentPane().add(tituloContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 600, 110, 30));
+        getContentPane().add(tituloContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 600, 110, 30));
 
-        jLabel18.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel18.setText("Email");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 80, -1));
-        getContentPane().add(botonTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 170, 30));
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 80, -1));
+
+        botonTelefono.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(botonTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 260, 170, 30));
 
         jLabel19.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel19.setText("Opcional");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 80, -1));
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, 80, -1));
 
         jButton1.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
         jButton1.setText("Seleccionar");
@@ -243,31 +247,32 @@ public class RegistroPersona extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, 110, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 110, 40));
 
         jLabel20.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel20.setText("Seleccione la categoria");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, 190, -1));
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 190, -1));
 
         tituloRequisitosContraseña.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         tituloRequisitosContraseña.setText("Debe tener Mayusculas, Minusculas, Números y Caracteres");
-        getContentPane().add(tituloRequisitosContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 380, 30));
+        getContentPane().add(tituloRequisitosContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 380, 30));
 
-        jLabel16.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel16.setText("Teléfono");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 280, 80, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, 80, -1));
 
+        botonSeleccionarFoto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         botonSeleccionarFoto.setText("Seleccionar Foto");
         botonSeleccionarFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSeleccionarFotoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 120, 40));
-        getContentPane().add(botonFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 120, 100));
+        getContentPane().add(botonSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 130, 40));
+        getContentPane().add(botonFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 120, 100));
 
         botonContraseña.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(botonContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, 150, 40));
+        getContentPane().add(botonContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 190, 40));
 
         botonDatos.setBackground(new java.awt.Color(255, 193, 5));
         botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -305,6 +310,7 @@ public class RegistroPersona extends javax.swing.JDialog {
         String Categoria = botonCategoria.getSelectedItem().toString();
         boolean validandoPrimerNombre = false;
         boolean validandoPrimerApellido = false;
+        boolean validandoFecha = false;
         boolean validandoFomatoFecha = false;
         boolean validandoContraseña = false;
         boolean validandoTelefono = false;
@@ -326,8 +332,9 @@ public class RegistroPersona extends javax.swing.JDialog {
             validandoPrimerApellido = true;
         }
            //Fecha
-        if(FechaNacimiento.getText().isEmpty()){   
-            validandoFomatoFecha = true;
+        if(FechaNacimiento.getText().isEmpty()){ 
+            JOptionPane.showMessageDialog(null,"Error\nFecha de Nacimiento vacia");
+            validandoFomatoFecha = false;
         } else {
             String FechaNacimientoRegistro = FechaNacimiento.getText();
             String[] partesFecha = FechaNacimientoRegistro.split("/");
@@ -357,7 +364,7 @@ public class RegistroPersona extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(null,"Error en Fecha de Nacimiento \nEl día debe estar entre entre 1 y 31");
                         validandoFomatoFecha = false;}
                     } else {
-                    JOptionPane.showMessageDialog(null,"Error en Fecha DE Nacimiento \nDía debe estar entre 1 y 31");
+                        JOptionPane.showMessageDialog(null,"Error en Fecha DE Nacimiento \nDía debe estar entre 1 y 31");
                         validandoFomatoFecha = false;
                     }
                 } 

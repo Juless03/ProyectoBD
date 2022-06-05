@@ -126,56 +126,57 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         jLabel1.setText("Registrar Evaluaciones");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
         jLabel2.setText("Evaluación");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 141, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel3.setText("Nombre");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Descripción");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
-        jLabel5.setText("Cantidad de personas");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jLabel5.setText("Miembros");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 90, -1));
 
-        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel6.setText("Porcentaje");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, 30));
 
-        evaluacionNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(evaluacionNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 100, -1));
+        evaluacionNombre.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(evaluacionNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 130, 40));
 
-        evaluacionDescripcion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(evaluacionDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 230, 140));
+        evaluacionDescripcion.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        evaluacionDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        getContentPane().add(evaluacionDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 230, 140));
 
-        evaluacionPorcentaje.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(evaluacionPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 100, -1));
+        evaluacionPorcentaje.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(evaluacionPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 130, 40));
 
-        evaluacionMiembros.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(evaluacionMiembros, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 100, -1));
+        evaluacionMiembros.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(evaluacionMiembros, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 130, 40));
 
-        jLabel8.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
         jLabel8.setText("Evaluar un Estudiante");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 141, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel9.setText("Estudiante");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 210, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel10.setText("Evaluación");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 300, 110, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 300, 110, -1));
 
-        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel11.setText("Porcentaje Obtenido");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 380, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, -1, -1));
 
-        exsPorcentajeObtenido.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(exsPorcentajeObtenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 370, 110, 40));
+        exsPorcentajeObtenido.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(exsPorcentajeObtenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 360, 150, 40));
 
         botonRegistrarEvaluacion.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -185,7 +186,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
                 botonRegistrarEvaluacionActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 120, 70));
+        getContentPane().add(botonRegistrarEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 120, 70));
 
         botonRegistrarEvaEstudiante.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarEvaEstudiante.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -195,7 +196,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
                 botonRegistrarEvaEstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarEvaEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, 130, 60));
+        getContentPane().add(botonRegistrarEvaEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 420, 130, 60));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -207,21 +208,25 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         });
         getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 684, 100, -1));
 
-        comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 220, 40));
+        comBoxEstudiante.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(comBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 200, 270, 40));
 
-        comBoxEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        comBoxEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         comBoxEvaluacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comBoxEvaluacionActionPerformed(evt);
             }
         });
-        getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, 280, 40));
+        getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 340, 40));
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Fecha de entrega");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 100, 40));
-        getContentPane().add(botonFechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 120, 30));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 160, 40));
 
+        botonFechaEntrega.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(botonFechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 130, 40));
+
+        jButton3.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jButton3.setText("Seleccionar ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,11 +235,12 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 200, 100, 40));
 
-        jLabel7.setText("Seleccione el id de la evaluación");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 270, 220, -1));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Seleccione la evaluación a calificar");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 220, -1));
 
         jLabel13.setText("MM/DD/YYYY");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 110, 30));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 110, 30));
 
         botonRegresar2.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -256,10 +262,12 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         });
         getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 686, 110, -1));
 
+        comboBoxGrupo.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         getContentPane().add(comboBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 140, 50));
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setText("Grupo:");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 80, 50));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 80, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -386,20 +394,24 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         ID = obteniendoIDEvaluacion[0];
         int idEvaluacion;
         idEvaluacion = Integer.parseInt(ID);
-        int porcentajeEvaluacion;
-        porcentajeEvaluacion = Integer.parseInt(exsPorcentajeObtenido.getText().toString());
-        try {
-            registrarEvaluaciones.updateEvaluationxstudentPercentage(idPersona,idEvaluacion, porcentajeEvaluacion);
-            validandoActualizacionPorcentaje = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-            validandoActualizacionPorcentaje = false;
-            JOptionPane.showMessageDialog(null,"Error!\nEvaluación no calificada");
+        if(!exsPorcentajeObtenido.getText().isEmpty()){ 
+            int porcentajeEvaluacion;
+            porcentajeEvaluacion = Integer.parseInt(exsPorcentajeObtenido.getText().toString());
+            try {
+                registrarEvaluaciones.updateEvaluationxstudentPercentage(idPersona,idEvaluacion, porcentajeEvaluacion);
+                validandoActualizacionPorcentaje = true;
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                validandoActualizacionPorcentaje = false;
+                JOptionPane.showMessageDialog(null,"Error!\nEvaluación no calificada");
+            }
+            if(validandoActualizacionPorcentaje){
+                JOptionPane.showMessageDialog(null,"Evaluación Calificada!");
+                exsPorcentajeObtenido.setText("");
+            } 
+        } else {
+            JOptionPane.showMessageDialog(null,"Error\nCampo porcentaje vacio!");
         }
-        if(validandoActualizacionPorcentaje){
-            JOptionPane.showMessageDialog(null,"Evaluación Calificada!");
-            exsPorcentajeObtenido.setText("");
-        } 
     }//GEN-LAST:event_botonRegistrarEvaEstudianteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -492,7 +504,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
             }
         });
     }
-      private boolean isInt(String text) {  
+    private boolean isInt(String text) {  
         try{
             Integer.parseInt(text);
             return true;

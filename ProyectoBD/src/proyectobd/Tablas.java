@@ -223,7 +223,7 @@ public class Tablas extends javax.swing.JDialog {
     
     private void mostrarCanton() throws SQLException{
         datosDiversos.clear();
-        tablas.getdataCountry(datosDiversos);
+        tablas.getdataCanton(datosDiversos);
         String matriz [][] = new String[datosDiversos.size()][2];
         int x = 0;
         for (int i = 0; i < datosDiversos.size()/2; i++){

@@ -85,89 +85,89 @@ public class RegistrarCursos extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Registro de Cursos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(551, 31, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel2.setText("Créditos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 217, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
-        cursoCreditos.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(cursoCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 217, 80, -1));
+        cursoCreditos.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(cursoCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 140, 40));
 
-        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel3.setText("Nombre del Curso");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 287, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
-        nombreCurso.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(nombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 287, 80, -1));
+        nombreCurso.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(nombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 140, 40));
 
         botonRegistrarCurso.setBackground(new java.awt.Color(255, 193, 5));
-        botonRegistrarCurso.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonRegistrarCurso.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonRegistrarCurso.setText("Registrar");
         botonRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 357, 100, -1));
+        getContentPane().add(botonRegistrarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 120, 50));
 
-        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
         jLabel4.setText("Curso");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 138, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
         jLabel5.setText("Grupo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 160, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
         jLabel6.setText("Estudiante en un Grupo");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 140, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 170, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel7.setText("Año");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 217, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel8.setText("Profesor");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel9.setText("Semestre");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 287, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel10.setText("Curso");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, -1, 20));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, 20));
 
-        grupoAño.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(grupoAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 217, 157, -1));
+        grupoAño.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(grupoAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 110, 40));
 
-        grupoSemestre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(grupoSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 287, 157, -1));
+        grupoSemestre.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(grupoSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 110, 40));
 
         BotonRegistrarGrupo.setBackground(new java.awt.Color(255, 193, 5));
-        BotonRegistrarGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        BotonRegistrarGrupo.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         BotonRegistrarGrupo.setText("Registrar");
         BotonRegistrarGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRegistrarGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegistrarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, 100, -1));
+        getContentPane().add(BotonRegistrarGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 120, 50));
 
-        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel11.setText("Estudiante");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 220, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, -1, -1));
 
         botonRegistrarEstudianteGrupo.setBackground(new java.awt.Color(255, 193, 5));
-        botonRegistrarEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        botonRegistrarEstudianteGrupo.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         botonRegistrarEstudianteGrupo.setText("Registrar");
         botonRegistrarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarEstudianteGrupoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 440, 100, -1));
+        getContentPane().add(botonRegistrarEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 420, 120, 50));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -179,34 +179,34 @@ public class RegistrarCursos extends javax.swing.JDialog {
         });
         getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 696, 100, -1));
 
-        combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
+        combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         combBoxProfesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combBoxProfesoresActionPerformed(evt);
             }
         });
-        getContentPane().add(combBoxProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 361, 230, -1));
+        getContentPane().add(combBoxProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 270, 40));
 
-        comBoxCurso.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 436, 157, -1));
+        comBoxCurso.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(comBoxCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 270, 40));
 
-        comBoxEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1044, 217, 230, -1));
+        comBoxEstudiantes.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
+        getContentPane().add(comBoxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 220, 320, 40));
 
-        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel12.setText("Grupo");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 290, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 290, -1, -1));
 
-        comBoxGrupo.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        getContentPane().add(comBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 290, 220, -1));
+        comBoxGrupo.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
+        getContentPane().add(comBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 280, 320, 40));
 
-        jLabel14.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel14.setText("Status");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 370, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, -1, -1));
 
-        comBoxStatus.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
-        comBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABANDONO", "ACTIVO", " " }));
-        getContentPane().add(comBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 370, 220, -1));
+        comBoxStatus.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        comBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ABANDONO", "ACTIVO" }));
+        getContentPane().add(comBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 360, 220, -1));
 
         botonDatos.setBackground(new java.awt.Color(255, 193, 5));
         botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -233,70 +233,121 @@ public class RegistrarCursos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonRegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarCursoActionPerformed
-        try {
-            registrarCursos.addCourse(Integer.parseInt(cursoCreditos.getText()), nombreCurso.getText());
-            JOptionPane.showMessageDialog(null,"Curso Agregado.");
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       if(!cursoCreditos.getText().isEmpty() && !nombreCurso.getText().isEmpty()){
+           if(isInt(cursoCreditos.getText()) && Integer.parseInt(cursoCreditos.getText()) >= 0){
+                try {
+                registrarCursos.addCourse(Integer.parseInt(cursoCreditos.getText()), nombreCurso.getText());
+                JOptionPane.showMessageDialog(null,"Curso Agregado.");
+                cursoCreditos.setText("");
+                nombreCurso.setText("");
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+           } else {
+            JOptionPane.showMessageDialog(null,"Error Los creditos deben ser un número.");
+           }
+           
+       } else {
+           JOptionPane.showMessageDialog(null,"Error Campos vacios.");
+       }
     }//GEN-LAST:event_botonRegistrarCursoActionPerformed
 
     private void BotonRegistrarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarGrupoActionPerformed
-
-       boolean validandoRegistroCurso = false;
-       String idProfesor = (String) combBoxProfesores.getSelectedItem();
-       String[] obteniendoIDEstudiante = idProfesor.split(" ");
-       String ID = obteniendoIDEstudiante[0];
-       int idProfe = Integer.parseInt(ID);
-       String idCurso = (String) comBoxCurso.getSelectedItem();
-       String[] obteniendoIDCurso = idCurso.split(" ");
-       String IDCurso = obteniendoIDCurso[0];
-       int IDCURSO = Integer.parseInt(IDCurso);
-
-
-
-       SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-       Date FechaDate = null;
-        try {
-            FechaDate = formatoFecha.parse(grupoAño.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null,"Error en formato.");
-        }
-       java.sql.Date nuevoAñoCurso = new java.sql.Date(FechaDate.getTime());
-        try {
-            registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText().toString()), idProfe,
-            IDCURSO);
-            validandoRegistroCurso = true;
-            JOptionPane.showMessageDialog(null,"Grupo Agregado.");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null,"curso no agregado");
-            validandoRegistroCurso = false;
-        }
-        if(validandoRegistroCurso){
-          JOptionPane.showMessageDialog(null,"Grupo Agregado.");
-          this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, registrarCursos);
-                } catch (SQLException ex) {
-                    Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+       if(!grupoAño.getText().isEmpty() && !grupoSemestre.getText().isEmpty()){
+            if(isInt(grupoAño.getText()) && grupoAño.getText().length() == 4 && Integer.parseInt(grupoAño.getText()) >= 1920){
+                if(isInt(grupoSemestre.getText()) && Integer.parseInt(grupoSemestre.getText()) > 0){
+                    boolean validandoRegistroCurso = false;
+                    String idProfesor;
+                    idProfesor = (String) combBoxProfesores.getSelectedItem();
+                    String[] obteniendoIDEstudiante;
+                    obteniendoIDEstudiante = idProfesor.split(" ");
+                    String ID;
+                    ID = obteniendoIDEstudiante[0];
+                    int idProfe;
+                    idProfe = Integer.parseInt(ID);
+                    String idCurso;
+                    idCurso= (String) comBoxCurso.getSelectedItem();
+                    String[] obteniendoIDCurso;
+                    obteniendoIDCurso = idCurso.split(" ");
+                    String IDCurso;
+                    IDCurso= obteniendoIDCurso[0];
+                    int IDCURSO;
+                    IDCURSO = Integer.parseInt(IDCurso);
+                    int nuevoAñoCurso;
+                    nuevoAñoCurso = Integer.parseInt(grupoAño.getText());
+                    try {
+                        registrarCursos.addCourseGroup(nuevoAñoCurso, Integer.parseInt(grupoSemestre.getText()), idProfe, IDCURSO);
+                        validandoRegistroCurso = true;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null,"curso no agregado");
+                        validandoRegistroCurso = false;
+                    }
+                    if(validandoRegistroCurso){
+                      JOptionPane.showMessageDialog(null,"Grupo Agregado.");
+                      grupoAño.setText("");
+                      grupoSemestre.setText("");
+                      combBoxProfesores.setVisible(false);
+                      combBoxProfesores.removeAllItems();
+                      try {
+                          registrarCursos.getProfessor(combBoxProfesores);
+                      } catch (SQLException ex) {
+                         Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      combBoxProfesores.setVisible(true);
+                      
+                      comBoxCurso.setVisible(false);
+                      comBoxCurso.removeAllItems();
+                      try {
+                          registrarCursos.getCourseRegistroGrupo(comBoxCurso);
+                      } catch (SQLException ex) {
+                         Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      comBoxCurso.setVisible(true);
+                     }
+                } else {
+                    JOptionPane.showMessageDialog(null,"Error Semestre debe ser un número entero.");
                 }
-            ventaAdminSetup.setVisible(true); 
-         }
+            } else {
+                JOptionPane.showMessageDialog(null,"Error Digite un Año correcto.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,"Error campos vacios.");
+        }
     }//GEN-LAST:event_BotonRegistrarGrupoActionPerformed
 
     private void botonRegistrarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarEstudianteGrupoActionPerformed
-        String estudiante = (String) comBoxEstudiantes.getSelectedItem();
-        String [] idEstudiante = estudiante.split(" ");
-        String id = idEstudiante[0];
-        System.out.println(idEstudiante);
+        String estudiante = comBoxEstudiantes.getSelectedItem().toString();
+        String [] obteniendoidEstudiante;
+        obteniendoidEstudiante = estudiante.split(" ");
+        String idEstudiante;
+        idEstudiante = obteniendoidEstudiante[0];
+        int idEstu;
+        idEstu = Integer.parseInt(idEstudiante);
+        int idGrupo;
+        idGrupo = Integer.parseInt(comBoxGrupo.getSelectedItem().toString());
+        String Status;
+        Status = comBoxStatus.getSelectedItem().toString();
         try {
-            registrarCursos.addStudentxgroup(Integer.parseInt(id), Integer.parseInt((String) comBoxGrupo.getSelectedItem()),
-                (String) comBoxStatus.getSelectedItem());
-           JOptionPane.showMessageDialog(null,"Estudiante agregado al grupo.");
+            registrarCursos.addStudentxgroup(idEstu, idGrupo,Status);
+            JOptionPane.showMessageDialog(null,"Estudiante agregado al grupo.");
+            comBoxEstudiantes.setVisible(false);
+            comBoxEstudiantes.removeAllItems();
+            try {
+                registrarCursos.getStudent(comBoxEstudiantes);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxEstudiantes.setVisible(true);
+            
+            comBoxGrupo.setVisible(false);
+            comBoxGrupo.removeAllItems();
+            try {
+                registrarCursos.getCourseGroup(comBoxGrupo);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarPersona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxGrupo.setVisible(true);        
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCursos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -356,6 +407,16 @@ public class RegistrarCursos extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    private boolean isInt(String text) {  
+        try{
+            Integer.parseInt(text);
+            return true;
+        }
+        catch (NumberFormatException nfe){
+            return false;
+        }
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -40,7 +40,7 @@ public class Conexion {
     private static Connection con;
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="TOVI10toti";
+    private static final String pass="01Alvarado01";
     private static final String url="jdbc:mysql://localhost:3306/mtec";
     /*
       public static Connection conectorBaseNueva() throws SQLException {
@@ -741,10 +741,10 @@ public class Conexion {
         stmt.execute();
     }
 
-    public static void addCourseGroup(Date pGroupYear, int pGroupSemester, int pIdProfessor, int pIdCourse) throws SQLException{
+    public static void addCourseGroup(int pGroupYear, int pGroupSemester, int pIdProfessor, int pIdCourse) throws SQLException{
         Connection con = conectorBaseNueva();
         CallableStatement stmt = con.prepareCall("{ call add_coursegroup(?, ?, ?, ?) }");
-        stmt.setDate(1, (java.sql.Date) pGroupYear);
+        stmt.setInt(1, pGroupYear);
         stmt.setInt(2, pGroupSemester);
         stmt.setInt(3, pIdProfessor);
         stmt.setInt(4, pIdCourse);

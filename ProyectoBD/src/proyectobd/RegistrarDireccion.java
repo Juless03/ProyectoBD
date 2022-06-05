@@ -52,9 +52,6 @@ public class RegistrarDireccion extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cantonNombre = new javax.swing.JTextField();
@@ -75,48 +72,40 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         comBoxProvincia = new javax.swing.JComboBox<>();
         comBoxPais = new javax.swing.JComboBox<>();
         botonDatos = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         jLabel1.setText("Registro Direcciones");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel2.setText("Canton");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel2.setText("Distrito");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 150, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel3.setText("Distrito");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel4.setText("Provincia");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel5.setText("País");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 380, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel6.setText("Nombre");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 80, 40));
 
-        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel7.setText("Provincia");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
-        cantonNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(cantonNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 97, -1));
+        cantonNombre.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(cantonNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 140, 40));
 
-        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel8.setText("Nombre");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel9.setText("Canton");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
 
         distritoNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         distritoNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +113,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
                 distritoNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(distritoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 97, -1));
+        getContentPane().add(distritoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, 140, 40));
 
         botonRegistrarCanton.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarCanton.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -134,7 +123,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
                 botonRegistrarCantonActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 100, -1));
+        getContentPane().add(botonRegistrarCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 110, 50));
 
         botonRegistrarDistrito.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarDistrito.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -144,25 +133,25 @@ public class RegistrarDireccion extends javax.swing.JDialog {
                 botonRegistrarDistritoActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, -1, -1));
+        getContentPane().add(botonRegistrarDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, 110, 50));
 
-        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel10.setText("Nombre");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 61, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 61, 20));
 
-        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel11.setText("País");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 52, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 52, -1));
 
         provinciaNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(provinciaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 97, -1));
+        getContentPane().add(provinciaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 140, 40));
 
-        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel12.setText("Nombre");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, 67, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 67, -1));
 
         paisNombre.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(paisNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 97, -1));
+        getContentPane().add(paisNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, 140, 40));
 
         botonRegistrarProvincia.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarProvincia.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -172,7 +161,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
                 botonRegistrarProvinciaActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, -1, -1));
+        getContentPane().add(botonRegistrarProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 120, 50));
 
         botonRegistrarPais.setBackground(new java.awt.Color(255, 193, 5));
         botonRegistrarPais.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -182,7 +171,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
                 botonRegistrarPaisActionPerformed(evt);
             }
         });
-        getContentPane().add(botonRegistrarPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, -1, -1));
+        getContentPane().add(botonRegistrarPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 110, 50));
 
         botonRegresar.setBackground(new java.awt.Color(255, 193, 5));
         botonRegresar.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -194,14 +183,14 @@ public class RegistrarDireccion extends javax.swing.JDialog {
         });
         getContentPane().add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 100, -1));
 
-        comBoxCanton.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 97, -1));
+        comBoxCanton.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(comBoxCanton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 230, 140, 40));
 
-        comBoxProvincia.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 97, -1));
+        comBoxProvincia.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(comBoxProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 140, 40));
 
-        comBoxPais.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        getContentPane().add(comBoxPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 97, -1));
+        comBoxPais.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        getContentPane().add(comBoxPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 140, 40));
 
         botonDatos.setBackground(new java.awt.Color(255, 193, 5));
         botonDatos.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
@@ -212,6 +201,22 @@ public class RegistrarDireccion extends javax.swing.JDialog {
             }
         });
         getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1035, 583, 110, 30));
+
+        jLabel13.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel13.setText("País");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, 150, -1));
+
+        jLabel14.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel14.setText("Canton");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel15.setText("Canton");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
+        jLabel16.setText("Provincia");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 150, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -306,6 +311,7 @@ public class RegistrarDireccion extends javax.swing.JDialog {
             try {
                 registrarDireccion.addDistrict(distritoNombre.getText(), canton);
                 JOptionPane.showMessageDialog(null,"Distrito Agregado.");
+                distritoNombre.setText("");
             } catch (SQLException ex) {
                 Logger.getLogger(RegistrarDireccion.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -406,10 +412,11 @@ public class RegistrarDireccion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
