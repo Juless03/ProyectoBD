@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +36,7 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         evaluacionDocente = elContralador;
         this.getContentPane().setBackground(new Color(157,210,228));
         botonRegresarAdmin.setVisible(false);
+        this.setLocationRelativeTo(null);
     }
     
     public ConsultasProfesor(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException{
@@ -43,20 +45,20 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         evaluacionDocente = setupAdmin;
         this.getContentPane().setBackground(new Color(157,210,228));
         botonRegresar.setVisible(false);
-        evaluacionDocente.getCoursesFromProfessor(comBoxCursosEvaluaciones, idProfesor);
-        evaluacionDocente.getCoursesFromProfessor(comboBoxCursosProfesor, idProfesor);
-        evaluacionDocente.getStudent(jComboBoxEstudiantes);
         evaluacionDocente.getProfessor(combBoxProfesores);
-        String NombreProfesor;
-        NombreProfesor = (String) combBoxProfesores.getSelectedItem();
-        String[] obteniendoIdProfesor;
-        obteniendoIdProfesor = NombreProfesor.split(" ");
-        String idProfesora;
-        idProfesora = obteniendoIdProfesor[0];
-        idProfesor = Integer.parseInt(idProfesora);
+        this.setLocationRelativeTo(null);
+        añoCursos.setEnabled(false);
+        botonMostrarCursos.setEnabled(false);
+        comBoxSemestre.setEnabled(false);
+        comboBoxCursosProfesor.setEnabled(false);
+        botonMostrarEstudiantes.setEnabled(false);
+        jComboBoxEstudiantes.setEnabled(false);
+        comBoxCursosEvaluaciones.setEnabled(false);
+        botonMostrarEvaluaciones.setEnabled(false);
+        
     }
 
-    ConsultasProfesor(InicioProfesor aThis, boolean modal, Conexion inicioProfesor, int id) throws SQLException{
+    public ConsultasProfesor(InicioProfesor aThis, boolean modal, Conexion inicioProfesor, int id) throws SQLException{
         super(aThis, modal);
         initComponents();
         evaluacionDocente = inicioProfesor;
@@ -68,6 +70,8 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         evaluacionDocente.getStudent(jComboBoxEstudiantes);
         jLabel8.setVisible(false);
         combBoxProfesores.setVisible(false);
+        this.setLocationRelativeTo(null);
+        botonSeleccionarProfe.setVisible(false);
     }
     
     private void mostrarConsultaEstudiantes(String course) throws SQLException{
@@ -163,6 +167,7 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         comBoxCursosEvaluaciones = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         combBoxProfesores = new javax.swing.JComboBox<>();
+        botonSeleccionarProfe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -173,7 +178,7 @@ public class ConsultasProfesor extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel2.setText("Cursos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 118, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel3.setText("Estudiantes");
@@ -202,7 +207,7 @@ public class ConsultasProfesor extends javax.swing.JDialog {
                 botonMostrarCursosActionPerformed(evt);
             }
         });
-        getContentPane().add(botonMostrarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(282, 200, 100, -1));
+        getContentPane().add(botonMostrarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 100, -1));
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel9.setText("Estudiante");
@@ -292,6 +297,14 @@ public class ConsultasProfesor extends javax.swing.JDialog {
         combBoxProfesores.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         getContentPane().add(combBoxProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 220, -1));
 
+        botonSeleccionarProfe.setText("Seleccionar Profesor");
+        botonSeleccionarProfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSeleccionarProfeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonSeleccionarProfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 150, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -327,16 +340,27 @@ public class ConsultasProfesor extends javax.swing.JDialog {
     }//GEN-LAST:event_botonMostrarEstudiantesActionPerformed
 
     private void botonMostrarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarCursosActionPerformed
-    String añoString = añoCursos.getText();
-    int año = Integer.parseInt(añoString);
-    String semestreString = (String) comBoxSemestre.getSelectedItem();
-    int semestre = Integer.parseInt(semestreString);
-        try {
-            mostrarCursos(semestre,año);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConsultasProfesor.class.getName()).log(Level.SEVERE, null, ex);
+    
+         if(!añoCursos.getText().isEmpty()){
+            if(isInt(añoCursos.getText()) && añoCursos.getText().length() == 4){
+                String añoString = añoCursos.getText();
+                int año = Integer.parseInt(añoString);
+                String semestreString = (String) comBoxSemestre.getSelectedItem();
+                int semestre = Integer.parseInt(semestreString);
+                    try {
+                        mostrarCursos(semestre,año);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConsultasProfesor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            } else {
+                JOptionPane.showMessageDialog(null,"Error! Digite un año valido");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,"Error! Campo de año vacio");
         }
-        añoCursos.setText("");
+        
+        
+        
     }//GEN-LAST:event_botonMostrarCursosActionPerformed
 
     private void botonMostrarEvaluacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarEvaluacionesActionPerformed
@@ -355,6 +379,53 @@ public class ConsultasProfesor extends javax.swing.JDialog {
             Logger.getLogger(ConsultasProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonMostrarEvaluacionesActionPerformed
+
+    private void botonSeleccionarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarProfeActionPerformed
+        String NombreProfesor;
+        NombreProfesor = (String) combBoxProfesores.getSelectedItem();
+        String[] obteniendoIdProfesor;
+        obteniendoIdProfesor = NombreProfesor.split(" ");
+        String idProfesora;
+        idProfesora = obteniendoIdProfesor[0];
+        idProfesor = Integer.parseInt(idProfesora);
+        
+        comBoxCursosEvaluaciones.setVisible(false);
+        comBoxCursosEvaluaciones.removeAllItems();
+        try {
+            evaluacionDocente.getCoursesFromProfessor(comBoxCursosEvaluaciones, idProfesor);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        comBoxCursosEvaluaciones.setVisible(true);
+        
+        comboBoxCursosProfesor.setVisible(false);
+        comboBoxCursosProfesor.removeAllItems();
+        try {
+            evaluacionDocente.getCoursesFromProfessor(comboBoxCursosProfesor, idProfesor);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        comboBoxCursosProfesor.setVisible(true);
+        
+        jComboBoxEstudiantes.setVisible(false);
+        jComboBoxEstudiantes.removeAllItems();
+        try {
+            evaluacionDocente.getStudent(jComboBoxEstudiantes);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jComboBoxEstudiantes.setVisible(true);
+ 
+        añoCursos.setEnabled(true);
+        botonMostrarCursos.setEnabled(true);
+        comBoxSemestre.setEnabled(true);
+        comboBoxCursosProfesor.setEnabled(true);
+        botonMostrarEstudiantes.setEnabled(true);
+        jComboBoxEstudiantes.setEnabled(true);
+        comBoxCursosEvaluaciones.setEnabled(true);
+        botonMostrarEvaluaciones.setEnabled(true);
+    }//GEN-LAST:event_botonSeleccionarProfeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,6 +469,15 @@ public class ConsultasProfesor extends javax.swing.JDialog {
             }
         });
     }
+     private boolean isInt(String text) {  
+        try{
+            Integer.parseInt(text);
+            return true;
+        }
+        catch (NumberFormatException nfe){
+            return false;
+        }  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField añoCursos;
@@ -406,6 +486,7 @@ public class ConsultasProfesor extends javax.swing.JDialog {
     private javax.swing.JButton botonMostrarEvaluaciones;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JButton botonRegresarAdmin;
+    private javax.swing.JButton botonSeleccionarProfe;
     private javax.swing.JComboBox<String> comBoxCursosEvaluaciones;
     private javax.swing.JComboBox<String> comBoxSemestre;
     private javax.swing.JComboBox<String> combBoxProfesores;

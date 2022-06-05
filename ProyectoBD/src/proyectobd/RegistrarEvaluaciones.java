@@ -219,7 +219,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         });
         getContentPane().add(comBoxEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 340, 40));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jLabel12.setText("Fecha de entrega");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 160, 40));
 
@@ -265,8 +265,8 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         comboBoxGrupo.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         getContentPane().add(comboBoxGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 140, 50));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel14.setText("Grupo:");
+        jLabel14.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
+        jLabel14.setText("Grupo");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 80, 50));
 
         pack();
@@ -511,8 +511,7 @@ public class RegistrarEvaluaciones extends javax.swing.JDialog {
         }
         catch (NumberFormatException nfe){
             return false;
-        }
-       
+        }  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

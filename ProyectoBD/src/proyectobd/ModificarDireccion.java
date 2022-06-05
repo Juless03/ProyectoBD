@@ -430,6 +430,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
         }
         if(validandoCantonNombre || validandoProvincia){
             JOptionPane.showMessageDialog(null,"Canton Modificado!!");
+            nombreCanton.setText("");
             // actualizar combobox
             comBoxCanton.setVisible(false);
             comBoxCanton.removeAllItems();
@@ -439,14 +440,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
                 Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
             }
             comBoxCanton.setVisible(true);
-            this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            ventaAdminSetup.setVisible(true); 
+            
+            
+            comBoxCantonId.setVisible(false);
+            comBoxCantonId.removeAllItems();
+            try {
+                modificarDireccion.getCanton(comBoxCantonId);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxCantonId.setVisible(true);
         }
     }//GEN-LAST:event_botonModificarCantonActionPerformed
 
@@ -491,6 +494,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
         }
         if(validandoProvinciaNombre || validandoPais){
             JOptionPane.showMessageDialog(null,"Provincia Modificada!!");
+            nombreProvincia.setText("");
             // actualizar combobox
             comBoxProvincia.setVisible(false);
             comBoxProvincia.removeAllItems();
@@ -500,14 +504,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
                 Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
             }
             comBoxProvincia.setVisible(true);
-            this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            ventaAdminSetup.setVisible(true); 
+            
+            
+            comBoxProvinciaId.setVisible(false);
+            comBoxProvinciaId.removeAllItems();
+            try {
+                modificarDireccion.getProvince(comBoxProvinciaId);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxProvinciaId.setVisible(true);
         }
     }//GEN-LAST:event_botonModificarProvinciaActionPerformed
 
@@ -552,6 +558,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
         if(validandoDistritoNombre || validandoCanton){
             JOptionPane.showMessageDialog(null,"Distrito Modificada!!");
             // actualizar combobox
+            nombreDistrito.setText("");
             comBoxDistrito.setVisible(false);
             comBoxDistrito.removeAllItems();
             try {
@@ -560,15 +567,6 @@ public class ModificarDireccion extends javax.swing.JDialog {
                 Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
             }
             comBoxDistrito.setVisible(true);
-            
-            this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            ventaAdminSetup.setVisible(true); 
         }
     }//GEN-LAST:event_botonModificarDistritoActionPerformed
 
@@ -597,6 +595,7 @@ public class ModificarDireccion extends javax.swing.JDialog {
         }
         if(validandoNombrePais){
             JOptionPane.showMessageDialog(null,"País modificado!");
+            nombrePais.setText("");
             // actualizar combobox
             comBoxPais.setVisible(false);
             comBoxPais.removeAllItems();
@@ -606,14 +605,16 @@ public class ModificarDireccion extends javax.swing.JDialog {
                 Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
             }
             comBoxPais.setVisible(true);
-            this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarDireccion);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarDireccion.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            ventaAdminSetup.setVisible(true); 
+
+            comBoxPaisId.setVisible(false);
+            comBoxPaisId.removeAllItems();
+            try {
+                modificarDireccion.getCountry(comBoxPaisId);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comBoxPaisId.setVisible(true);
+            
         }
          
     }//GEN-LAST:event_botonModificarPaisActionPerformed

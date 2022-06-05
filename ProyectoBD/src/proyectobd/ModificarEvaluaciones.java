@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class ModificarEvaluaciones extends javax.swing.JDialog {
     private Conexion modificarEvaluaciones;
+    private boolean idcursoModificar = false;
     /**
      * Creates new form ModificarEvaluaciones
      */
@@ -37,6 +38,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         modificarEvaluaciones.getEvaluation(comboBoxEvaluacion);
         this.getContentPane().setBackground(new Color(157,210,228));
         this.setLocationRelativeTo(null);
+        comBoxGrupoId.setEnabled(false);
         modificarEvaluaciones.getCourseGroup(comBoxGrupoId);
 
     }
@@ -70,6 +72,8 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         comboBoxEvaluacion = new javax.swing.JComboBox<>();
         botonDatos = new javax.swing.JButton();
         comBoxGrupoId = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,13 +82,13 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         jLabel1.setText("Modificar Evaluaciones");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         jLabel2.setText("DD/MM/YYYY");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 160, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 160, 20));
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel4.setText("Nombre");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setText("Descripción");
@@ -108,7 +112,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
                 nombreEvaluacionActionPerformed(evt);
             }
         });
-        getContentPane().add(nombreEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, 40));
+        getContentPane().add(nombreEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 130, 40));
 
         descripcionEvaluacion.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         getContentPane().add(descripcionEvaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 211, 124));
@@ -148,7 +152,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Llene lo que desea modificar");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 290, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 290, 30));
 
         jLabel11.setText("Seleccione la evaluación que desea modificar");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 430, 50));
@@ -165,7 +169,18 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         });
         getContentPane().add(botonDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1005, 640, 110, -1));
 
-        getContentPane().add(comBoxGrupoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 110, 30));
+        getContentPane().add(comBoxGrupoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, 110, 30));
+
+        jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 90, 30));
+
+        jLabel9.setText("Modificar Grupo");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 350, 110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,111 +201,147 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonModificarEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarEvaluacionActionPerformed
-       boolean validandoNombre = false;
-       boolean validandoDescription = false;
-       boolean validandoPorcentaje = false;
-       boolean validandoCantMiembros = false;
-       boolean validandoNombreCurso = false;
-       boolean validandoFormato = false;
-       int idGrupo = 0;
-       idGrupo =  Integer.parseInt(comBoxGrupoId.getSelectedItem().toString());
-       String NombreEvaluacion = (String) comboBoxEvaluacion.getSelectedItem();
-       String[] obteniendoIDEvaluacion= NombreEvaluacion.split(" ");
-       String ID = obteniendoIDEvaluacion[0];
-       int idEvaluacion = Integer.parseInt(ID);
-       if(!nombreEvaluacion.getText().isEmpty()){
-           try {
-               modificarEvaluaciones.updateEvaluationName(idEvaluacion,nombreEvaluacion.getText().toString());
-               validandoNombre = true;
-           } catch (SQLException ex) {
-               Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-               validandoNombre = false;
-               JOptionPane.showMessageDialog(null,"Nombre no actualizado");
-               
-           }
-       }
-       if(!descripcionEvaluacion.getText().isEmpty()){
-           try {
-               modificarEvaluaciones.updateEvaluationDes(idEvaluacion,descripcionEvaluacion.getText().toString());
-               validandoDescription = true;
-           } catch (SQLException ex) {
-               Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-               validandoDescription = false;
-               JOptionPane.showMessageDialog(null,"Descripción no actualizada");
-           }
-       }
-       if(!porcentajeEvaluacion.getText().isEmpty()){
-           int porcentaje = Integer.parseInt(porcentajeEvaluacion.getText()); 
-           try {
-               modificarEvaluaciones.updateEvaluationPercentage(idEvaluacion,porcentaje);
-               validandoPorcentaje = true;
-           } catch (SQLException ex) {
-               Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-               validandoPorcentaje = false;
-               JOptionPane.showMessageDialog(null,"Porcentaje no actualizado");
-           }
-       }
-       if(!cantidadMiemrbros.getText().isEmpty()){
-           try {
-               modificarEvaluaciones.updateEvaluationMembers(idEvaluacion,cantidadMiemrbros.getText().toString());
-               validandoCantMiembros = true;
-           } catch (SQLException ex) {
-               Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-               validandoCantMiembros = false;
-               JOptionPane.showMessageDialog(null,"Miemrbros no actualizado");
-           }
-       }
-        try {
-            modificarEvaluaciones.updateEvaluationCourseCode(idEvaluacion,idGrupo);
-           validandoNombreCurso = true;
-        } catch (SQLException ex) {
-            Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
-            validandoNombreCurso = false;
-            JOptionPane.showMessageDialog(null,"IdCurso no actualizado!");
-       }
-       if(!botonFechaEntrega.getText().isEmpty()){
-            java.sql.Date DueDateValida = null;
 
-            String DueDate = botonFechaEntrega.getText();
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-            Date FechaDate = null;
-            try {
-                FechaDate = formatoFecha.parse(botonFechaEntrega.getText());
-                validandoFormato = true;
-             } catch (ParseException ex) {
-                //Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null,"Error!\nFormato de fecha incorrecto.");
-                validandoFormato = false;
-             }
-             DueDateValida = new java.sql.Date(FechaDate.getTime());
-             if(validandoFormato){
+            boolean validandoNombre = false;
+            boolean validandoDescription = false;
+            boolean validandoPorcentaje = false;
+            boolean validandoCantMiembros = false;
+            boolean validandoNombreCurso = false;
+            boolean validandoFormato = false;
+            boolean validandoGrupo = false;
+            int idGrupo = 0;
+            idGrupo =  Integer.parseInt(comBoxGrupoId.getSelectedItem().toString());
+            String NombreEvaluacion;
+            NombreEvaluacion = (String) comboBoxEvaluacion.getSelectedItem();
+            String[] obteniendoIDEvaluacion;
+            obteniendoIDEvaluacion = NombreEvaluacion.split(" ");
+            String ID;
+            ID = obteniendoIDEvaluacion[0];
+            int idEvaluacion;
+            idEvaluacion = Integer.parseInt(ID);
+            if(!nombreEvaluacion.getText().isEmpty()){
                 try {
-                    modificarEvaluaciones.updateEvaluationDueDate(idEvaluacion,DueDateValida);
+                    modificarEvaluaciones.updateEvaluationName(idEvaluacion,nombreEvaluacion.getText().toString());
+                    validandoNombre = true;
                 } catch (SQLException ex) {
                     Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    validandoNombre = false;
+                    JOptionPane.showMessageDialog(null,"Nombre no actualizado");
                 }
             }
-          }
-       if(validandoNombre || validandoDescription || validandoPorcentaje || validandoCantMiembros || validandoNombreCurso || validandoFormato){
-           JOptionPane.showMessageDialog(null,"Evaluación modificada!");
-            comboBoxEvaluacion.setVisible(false);
-            comboBoxEvaluacion.removeAllItems();
-            try {
-                modificarEvaluaciones.getEvaluation(comboBoxEvaluacion);
-            } catch (SQLException ex) {
-                 Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            comboBoxEvaluacion.setVisible(true);
-           
-           this.dispose();
-            AdminSetup ventaAdminSetup = null;
+            if(!descripcionEvaluacion.getText().isEmpty()){
                 try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarEvaluaciones);
+                    modificarEvaluaciones.updateEvaluationDes(idEvaluacion,descripcionEvaluacion.getText().toString());
+                    validandoDescription = true;
                 } catch (SQLException ex) {
                     Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    validandoDescription = false;
+                    JOptionPane.showMessageDialog(null,"Descripción no actualizada");
                 }
-            ventaAdminSetup.setVisible(true);   
-       }
+            }
+            if(!porcentajeEvaluacion.getText().isEmpty()){
+                if(isInt(porcentajeEvaluacion.getText()) && Integer.parseInt(porcentajeEvaluacion.getText()) >= 0){
+                    int porcentaje = Integer.parseInt(porcentajeEvaluacion.getText()); 
+                    try {
+                        modificarEvaluaciones.updateEvaluationPercentage(idEvaluacion,porcentaje);
+                        validandoPorcentaje = true;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        validandoPorcentaje = false;
+                        JOptionPane.showMessageDialog(null,"Porcentaje no actualizado");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null,"Porcentaje debe ser un número positivo");
+                    validandoPorcentaje = false;
+                }
+            }
+            if(!cantidadMiemrbros.getText().isEmpty()){
+                if(isInt(cantidadMiemrbros.getText()) && Integer.parseInt(cantidadMiemrbros.getText()) > 0){
+                    try {
+                        modificarEvaluaciones.updateEvaluationMembers(idEvaluacion,cantidadMiemrbros.getText().toString());
+                        validandoCantMiembros = true;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        validandoCantMiembros = false;
+                        JOptionPane.showMessageDialog(null,"Miemrbros no actualizado");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null,"Miembros debe ser un número positivo");
+                    validandoCantMiembros = false;
+                }
+            }
+            if(idcursoModificar){
+                try {
+                    modificarEvaluaciones.updateEvaluationCourseCode(idEvaluacion,idGrupo);
+                    validandoNombreCurso = true;
+            
+                } catch (SQLException ex) {
+                    Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    validandoNombreCurso = false;
+                    JOptionPane.showMessageDialog(null,"IdCurso no actualizado!");
+                }
+            }
+            if(!botonFechaEntrega.getText().isEmpty()){
+                java.sql.Date DueDateValida = null;
+                String DueDate = botonFechaEntrega.getText();
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                Date FechaDate = null;
+                try {
+                    FechaDate = formatoFecha.parse(botonFechaEntrega.getText());
+                    validandoFormato = true;
+                } catch (ParseException ex) {
+                    Logger.getLogger(RegistroPersona.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error!\nFormato de fecha incorrecto.");
+                    validandoFormato = false;
+                }
+                DueDateValida = new java.sql.Date(FechaDate.getTime());
+                if(validandoFormato){
+                    try {
+                        modificarEvaluaciones.updateEvaluationDueDate(idEvaluacion,DueDateValida);
+                    } catch (SQLException ex) {
+                         Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            if(validandoNombre || validandoDescription || validandoPorcentaje || validandoCantMiembros || validandoNombreCurso || validandoFormato){
+                JOptionPane.showMessageDialog(null,"Evaluación modificada!");
+                if(validandoNombre){
+                    nombreEvaluacion.setText("");
+                }
+                if(validandoDescription){ 
+                    descripcionEvaluacion.setText("");
+                }
+                if(validandoPorcentaje){
+                    porcentajeEvaluacion.setText("");
+                }
+                if(validandoCantMiembros){
+                    cantidadMiemrbros.setText("");
+                }
+                if(validandoNombreCurso){
+                    comBoxGrupoId.setEnabled(false);
+                    comBoxGrupoId.removeAllItems();
+                    try {
+                        modificarEvaluaciones.getCourseGroup(comBoxGrupoId);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModificarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    }   
+                }
+                if(validandoFormato){
+                    botonFechaEntrega.setText("");
+                }
+                comboBoxEvaluacion.setVisible(false);
+                comboBoxEvaluacion.removeAllItems();
+                try {
+                    modificarEvaluaciones.getEvaluation(comboBoxEvaluacion);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                comboBoxEvaluacion.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null,"Evaluación no Modificada!");
+            }
+        
+      
     }//GEN-LAST:event_botonModificarEvaluacionActionPerformed
 
     private void botonDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosActionPerformed
@@ -302,6 +353,11 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
         }
         tablas.setVisible(true);
     }//GEN-LAST:event_botonDatosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        idcursoModificar = true;
+        comBoxGrupoId.setEnabled(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,6 +400,15 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
             }
         });
     }
+    private boolean isInt(String text) {  
+        try{
+            Integer.parseInt(text);
+            return true;
+        }
+        catch (NumberFormatException nfe){
+            return false;
+        }  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonDatos;
@@ -354,6 +419,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> comBoxGrupoId;
     private javax.swing.JComboBox<String> comboBoxEvaluacion;
     private javax.swing.JTextField descripcionEvaluacion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -364,6 +430,7 @@ public class ModificarEvaluaciones extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nombreEvaluacion;
     private javax.swing.JTextField porcentajeEvaluacion;
     // End of variables declaration//GEN-END:variables

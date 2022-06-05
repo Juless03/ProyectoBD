@@ -51,7 +51,7 @@ public class ModificarCursos extends javax.swing.JDialog {
         checkActivo.setEnabled(false);
         checkAbandono.setEnabled(false);
         botonModificarSxG.setEnabled(false);
-        comboBoxEstudianteGrupo.setVisible(false);
+        comboBoxEstudiante.setEnabled(false);
         comboBoxProfesor.setEnabled(false);
         comboBoxCursoModificar.setEnabled(false);
     }
@@ -91,7 +91,7 @@ public class ModificarCursos extends javax.swing.JDialog {
         checkAbandono = new javax.swing.JCheckBox();
         checkActivo = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
-        comboBoxEstudianteGrupo = new javax.swing.JComboBox<>();
+        comboBoxEstudiante = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -250,12 +250,12 @@ public class ModificarCursos extends javax.swing.JDialog {
         jLabel9.setText("Grupo");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 240, 50, 30));
 
-        comboBoxEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+        comboBoxEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxEstudianteGrupoActionPerformed(evt);
+                comboBoxEstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(comboBoxEstudianteGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 330, 270, 30));
+        getContentPane().add(comboBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 330, 270, 30));
 
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -331,17 +331,17 @@ public class ModificarCursos extends javax.swing.JDialog {
         boolean validandoCreditos = false;
         boolean validandoNombre = false;
         CursoSeleccionado = (String) comBoxCurso.getSelectedItem();
-           if(botonCreditos.getText().isEmpty() && botonNombreCurso.getText().isEmpty()){ 
-               JOptionPane.showMessageDialog(null,"Por favor llene los campos a modificar");
-           } else {
-                if(!botonCreditos.getText().isEmpty()){
-                   if (isInt(botonCreditos.getText())){
-                       int Creditos = Integer.parseInt(botonCreditos.getText());
-                       try {
-                           modificarCurso.updateCourseCredits(CursoSeleccionado,Creditos);
-                           validandoCreditos = true;
-                       } catch (SQLException ex) {
-                           Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        if(botonCreditos.getText().isEmpty() && botonNombreCurso.getText().isEmpty()){ 
+           JOptionPane.showMessageDialog(null,"Por favor llene los campos a modificar");
+       } else {
+            if(!botonCreditos.getText().isEmpty()){
+                if (isInt(botonCreditos.getText())){
+                    int Creditos = Integer.parseInt(botonCreditos.getText());
+                    try {
+                      modificarCurso.updateCourseCredits(CursoSeleccionado,Creditos);
+                      validandoCreditos = true;
+                   } catch (SQLException ex) {
+                        Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
                        }
                    } else {
                     JOptionPane.showMessageDialog(null,"Error en creditos:\nSolo debe ingresar números.");} 
@@ -358,6 +358,8 @@ public class ModificarCursos extends javax.swing.JDialog {
            }
            if(validandoCreditos & validandoNombre){
                JOptionPane.showMessageDialog(null,"Creditos Y Nombre Modificado!!");
+               botonCreditos.setText("");
+               botonNombreCurso.setText("");
                // Actualizar ComboBox
                 comBoxCurso.setVisible(false);
                 comBoxCurso.removeAllItems();
@@ -367,30 +369,18 @@ public class ModificarCursos extends javax.swing.JDialog {
                     Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 comBoxCurso.setVisible(true);
-                
-               this.dispose(); 
-               AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarCurso);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                ventaAdminSetup.setVisible(true); 
+
            } else {
                if(validandoCreditos){
                    JOptionPane.showMessageDialog(null,"Creditos Modificados!!");
-                   this.dispose();
-                   AdminSetup ventaAdminSetup = null;
-                    try {
-                       ventaAdminSetup = new AdminSetup(this,true, modificarCurso);
-                   } catch (SQLException ex) {
-                       Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                   }
-                   ventaAdminSetup.setVisible(true); 
+                   botonCreditos.setText("");
+
                }
                if(validandoNombre){
                    JOptionPane.showMessageDialog(null,"Nombre Modificado!!");
                     // Actualizar ComboBox
+                    botonCreditos.setText("");
+                    botonNombreCurso.setText("");
                     comBoxCurso.setVisible(false);
                     comBoxCurso.removeAllItems();
                     try {
@@ -399,14 +389,6 @@ public class ModificarCursos extends javax.swing.JDialog {
                         Logger.getLogger(RegistrarYModificarGenero.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     comBoxCurso.setVisible(true);
-                   this.dispose();
-                    AdminSetup ventaAdminSetup = null;
-                    try {
-                        ventaAdminSetup = new AdminSetup(this,true, modificarCurso);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    ventaAdminSetup.setVisible(true); 
                }
                
          }
@@ -530,7 +512,7 @@ public class ModificarCursos extends javax.swing.JDialog {
         String StatusNuevo = null;
         int idEstudiante = 0;
         int Grupo = Integer.parseInt(comboboxEstudianteGrupo.getSelectedItem().toString());
-        String NombreEstudiante = (String) comboBoxEstudianteGrupo.getSelectedItem();
+        String NombreEstudiante = (String) comboBoxEstudiante.getSelectedItem();
         String[] obteniendoIDEstudiante = NombreEstudiante.split(" ");
         String ID = obteniendoIDEstudiante[0];
         idEstudiante = Integer.parseInt(ID);
@@ -563,15 +545,13 @@ public class ModificarCursos extends javax.swing.JDialog {
         }
         if(validandoActualizacion){
             JOptionPane.showMessageDialog(null,"Exito!\nEstudiante modificado");
-            this.dispose();
-            AdminSetup ventaAdminSetup = null;
-                try {
-                    ventaAdminSetup = new AdminSetup(this,true, modificarCurso);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ModificarCursos.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-            ventaAdminSetup.setVisible(true); 
-            
+            botonModificarSxG.setEnabled(false);
+            checkActivo.setEnabled(false);
+            checkActivo.setSelected(false);
+            checkAbandono.setEnabled(false);
+            checkAbandono.setSelected(false);
+            comboBoxEstudiante.setEnabled(false);
+
         }
         
             
@@ -580,24 +560,26 @@ public class ModificarCursos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonModificarSxGActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        comboBoxEstudianteGrupo.removeAllItems();
+        
+        comboBoxEstudiante.removeAllItems();
         checkActivo.setEnabled(true);
         checkAbandono.setEnabled(true);
-        botonModificarSxG.setEnabled(true);
-        int idGrupo = Integer.parseInt(comboboxEstudianteGrupo.getSelectedItem().toString());
+        botonModificarSxG.setEnabled(true); 
+        int idGrupo; //
+        idGrupo = Integer.parseInt(comboboxEstudianteGrupo.getSelectedItem().toString());
         try {
-            comboBoxEstudianteGrupo.setVisible(false);
-            modificarCurso.getStudentGroup(comboBoxEstudianteGrupo,idGrupo);
-            comboBoxEstudianteGrupo.setVisible(true);
+            comboBoxEstudiante.setVisible(false);
+            modificarCurso.getStudentGroup(comboBoxEstudiante,idGrupo);
+            comboBoxEstudiante.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarEvaluaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
+        comboBoxEstudiante.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void comboBoxEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEstudianteGrupoActionPerformed
+    private void comboBoxEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEstudianteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxEstudianteGrupoActionPerformed
+    }//GEN-LAST:event_comboBoxEstudianteActionPerformed
 
     private void botonAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñoActionPerformed
         // TODO add your handling code here:
@@ -682,7 +664,7 @@ public class ModificarCursos extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> comBoxCurso;
     private javax.swing.JComboBox<String> comBoxGrupo;
     private javax.swing.JComboBox<String> comboBoxCursoModificar;
-    private javax.swing.JComboBox<String> comboBoxEstudianteGrupo;
+    private javax.swing.JComboBox<String> comboBoxEstudiante;
     private javax.swing.JComboBox<String> comboBoxProfesor;
     private javax.swing.JComboBox<String> comboboxEstudianteGrupo;
     private javax.swing.JButton jButton1;

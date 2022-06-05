@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,9 +33,10 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         initComponents();
         this.getContentPane().setBackground(new Color(157,210,228));
         botonRegresarAdmin.setVisible(false);
+        this.setLocationRelativeTo(null);
     }
 
-    ConsultasEstudiante(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
+    public ConsultasEstudiante(AdminSetup aThis, boolean modal, Conexion setupAdmin) throws SQLException {
        super(aThis, modal);
        initComponents();
        inicioEstudiante = setupAdmin;
@@ -49,9 +51,10 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
         String idProfesora;
         idProfesora = obteniendoIdProfesor[0];
         idEstudiante= Integer.parseInt(idProfesora);
+        this.setLocationRelativeTo(null);
     }
     
-    ConsultasEstudiante(InicioEstudiante aThis, boolean modal, Conexion conexion, int id) throws SQLException {
+    public ConsultasEstudiante(InicioEstudiante aThis, boolean modal, Conexion conexion, int id) throws SQLException {
        super(aThis, modal);
        initComponents();
        inicioEstudiante = conexion;
@@ -61,15 +64,17 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
        idEstudiante = id;
        comBoxEstudiante.setVisible(false);
        jLabel7.setVisible(false);
+       this.setLocationRelativeTo(null);
     }
 
-    ConsultasEstudiante(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws SQLException {
+    public ConsultasEstudiante(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws SQLException {
         super(aThis, modal);
        initComponents();
        inicioEstudiante = inicioEstudiante;
        this.getContentPane().setBackground(new Color(157,210,228));
        inicioEstudiante.getCourse(comBoxCurso);
        botonRegresarAdmin.setVisible(false);
+       this.setLocationRelativeTo(null);
     }
     
     private void mostrarCursos(int año, int semestre) throws SQLException{
@@ -263,16 +268,24 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegresarAdminActionPerformed
 
     private void mostrarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarCursosActionPerformed
-    String añoString = añoCurso.getText();
-    int año = Integer.parseInt(añoString);
-    String semestreString = (String) comBoxSemestre.getSelectedItem();
-    int semestre = Integer.parseInt(semestreString);
-        try {
-            mostrarCursos(año,semestre);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        if(!añoCurso.getText().isEmpty()){
+            if(isInt(añoCurso.getText()) && añoCurso.getText().length() == 4){
+                String añoString = añoCurso.getText();
+                int año = Integer.parseInt(añoString);
+                String semestreString = (String) comBoxSemestre.getSelectedItem();
+                int semestre = Integer.parseInt(semestreString);
+                    try {
+                        mostrarCursos(año,semestre);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConsultasEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    añoCurso.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null,"Error! Digite un año valido");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,"Error! Campo de año vacio");
         }
-        añoCurso.setText("");
     }//GEN-LAST:event_mostrarCursosActionPerformed
 
     private void mostrarEvaluacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarEvaluacionesActionPerformed
@@ -325,6 +338,15 @@ public class ConsultasEstudiante extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    private boolean isInt(String text) {  
+        try{
+            Integer.parseInt(text);
+            return true;
+        }
+        catch (NumberFormatException nfe){
+            return false;
+        }  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

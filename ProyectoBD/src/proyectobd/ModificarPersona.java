@@ -414,17 +414,18 @@ public class ModificarPersona extends javax.swing.JDialog {
         
         if(Modificar == "Teléfono"){
             boolean validandoTelefono = false;
-            String TelefonoViejo;
-            TelefonoViejo = comboBoxGeneral.getSelectedItem().toString();
-            String TelefonoTipo;
-            TelefonoTipo = comBoxTipoNimero.getSelectedItem().toString();
-            int telefonoNumeroViejo = 0;
-            telefonoNumeroViejo = Integer.parseInt(comboBoxGeneral.getSelectedItem().toString());
-            int idTelefono = 0;
-            String nuevoNumeroTelefono;
             if(botonTexto3.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null,"No se ha modificado nada. Campos vacios!");
             } else{
+                
+                String TelefonoViejo;
+                TelefonoViejo = comboBoxGeneral.getSelectedItem().toString();
+                String TelefonoTipo;
+                TelefonoTipo = comBoxTipoNimero.getSelectedItem().toString();
+                int telefonoNumeroViejo = 0;
+                telefonoNumeroViejo = Integer.parseInt(comboBoxGeneral.getSelectedItem().toString());
+                int idTelefono = 0;
+                String nuevoNumeroTelefono;
                 if(botonTexto3.getText().toString().length() != 8){ 
                     JOptionPane.showMessageDialog(null,"No se ha modificado nada. El nuevo número debe tener 8 digitos!");
                 } else{ 
@@ -460,7 +461,7 @@ public class ModificarPersona extends javax.swing.JDialog {
                 }
                 comboBoxGeneral.setVisible(true);
                 JOptionPane.showMessageDialog(null,"Teléfono modificado!");
-                
+                botonTexto3.setText(""); 
             }
         }
         if(Modificar == "Email"){
