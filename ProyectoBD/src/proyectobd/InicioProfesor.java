@@ -40,6 +40,7 @@ public class InicioProfesor extends javax.swing.JDialog {
         initComponents();
         inicioProfesor = conexion;
         inicioProfesor.getProfessor(combBoxProfesores);
+        this.setLocationRelativeTo(null);
     }
 
     InicioProfesor(ConsultasProfesor aThis, boolean modal, Conexion evaluacionDocente) throws SQLException{

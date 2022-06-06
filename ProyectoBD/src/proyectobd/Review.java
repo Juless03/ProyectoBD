@@ -40,10 +40,11 @@ public class Review extends javax.swing.JDialog {
         estrella3.setIcon(imageIcon);
         estrella4.setIcon(imageIcon);
         estrella5.setIcon(imageIcon);
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(157,210,228));
     }
 
-    Review(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws IOException, SQLException {
+    public Review(InicioEstudiante aThis, boolean modal, Conexion inicioEstudiante) throws IOException, SQLException {
         super(aThis, modal);
         initComponents();
         File pathToFile = new File("./imagenes/estrella.png");
@@ -57,6 +58,7 @@ public class Review extends javax.swing.JDialog {
         this.getContentPane().setBackground(new Color(157,210,228));
         review = inicioEstudiante;
         review.getStudent(comBoxEstudiantes);
+        this.setLocationRelativeTo(null);
         review.getProfessor(comBoxProfesor);
     }
 
@@ -256,6 +258,7 @@ public class Review extends javax.swing.JDialog {
         } catch (SQLException ex) {
             Logger.getLogger(Review.class.getName()).log(Level.SEVERE, null, ex);
         }
+        descripccionReview.setText("");
     }//GEN-LAST:event_botonEnviarActionPerformed
 
     private void estrella1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrella1ActionPerformed

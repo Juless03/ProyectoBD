@@ -677,7 +677,7 @@ public class Conexion {
 
     public static void addReview(int pStars, String pReviewDescription, int pIdPerson, int pIdProfessor) throws SQLException {
         Connection con = conectorBaseNueva();
-        CallableStatement stmt = con.prepareCall("{?= call add_review(?, ?, ?, ?) }");
+        CallableStatement stmt = con.prepareCall("{ call add_review(?, ?, ?, ?) }");
         stmt.setInt(1, pStars);
         stmt.setString(2, pReviewDescription);
         stmt.setInt(3, pIdPerson);

@@ -31,6 +31,7 @@ public class InicioEstudiante extends javax.swing.JDialog {
         initComponents();
         inicioEstudiante.getStudent(comBoxEstudiante);
         inicioEstudiante = conexion;
+        this.setLocationRelativeTo(null);
     }
 
     InicioEstudiante(ConsultasEstudiante aThis, boolean modal, InicioEstudiante inicioEstudiante) throws SQLException {
